@@ -1,4 +1,5 @@
 import isObject from "../../../../utils/isObject.js";
+import {getValueFromObjectByPath} from "../../../../utils/getValueFromObjectByPath.js";
 import InterfaceWfsExtern from "./interface.wfs.extern.js";
 import {
     between,
@@ -211,14 +212,30 @@ export default class InterfaceWfsIntern {
             else if (
                 !this.checkRule(
                     rules[i],
-                    Array.isArray(rules[i]?.attrName) ? feature.get(rules[i].attrName[0]) : feature.get(rules[i].attrName),
-                    Array.isArray(rules[i]?.attrName) ? feature.get(rules[i].attrName[1]) : undefined
+                    Array.isArray(rules[i]?.attrName) ? this.getPropertyFromFeature(feature, rules[i].attrName[0]) : this.getPropertyFromFeature(feature, rules[i].attrName),
+                    Array.isArray(rules[i]?.attrName) ? this.getPropertyFromFeature(feature, rules[i].attrName[1]) : undefined
                 )
             ) {
                 return false;
             }
         }
         return true;
+    }
+
+    /**
+     * Returns the property of the feature, recognizes @-path.
+     * @param {ol/Feature} feature The feature.
+     * @param {String} attrName The attrName to look up.
+     * @returns {*} The property.
+     */
+    getPropertyFromFeature (feature, attrName) {
+        if (typeof attrName !== "string") {
+            return undefined;
+        }
+        if (attrName.startsWith("@")) {
+            return getValueFromObjectByPath(feature.getProperties(), attrName);
+        }
+        return feature.get(attrName);
     }
 
     /**

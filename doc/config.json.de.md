@@ -1567,7 +1567,7 @@ Hinweis: Das Highlighting funktioniert nur, wenn der Layer in der config.json ü
 
 [inherits]: # (Portalconfig.menu.tool)
 
-Das Filterwerkzeug bietet eine Reihe von Optionen zum Filtern von Vektordaten aus WFS(❗) Diensten.
+Das Filterwerkzeug bietet eine Reihe von Optionen zum Filtern von Vektordaten aus WFS-, OAF-, GeoJSON- und SensorThingsAPI-Diensten an.
 
 |Name|Verpflichtend|Typ|Default|Beschreibung|Expert|
 |----|-------------|---|-------|------------|------|
@@ -1960,6 +1960,18 @@ Beispiel für ein FeatureInfo-Snippet. Zeigt alle Werte der konfigurierten Attri
     "title": "Steckbrief",
     "attrName": ["tierartengruppe", "deutscher_artname", "artname", "rote_liste_d", "rote_liste_hh"],
     "type": "featureInfo"
+}
+```
+
+**Beispiel**
+
+Beispiel für ein SliderRange-Snippet für die SensorThingsAPI (STA).
+
+```json
+{
+    "type": "sliderRange",
+    "title": "Anzahl der Fahrräder",
+    "attrName": "@Datastreams.0.Observations.0.result"
 }
 ```
 

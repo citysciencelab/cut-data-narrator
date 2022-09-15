@@ -81,6 +81,7 @@ export default class MapHandler {
         }
         else {
             this.handlers.setParserAttributeByLayerId(layerId, "loadingStrategy", "all");
+            this.handlers.setParserAttributeByLayerId(layerId, "loadThingsOnlyInCurrentExtent", false);
         }
 
         if (Array.isArray(visibleLayer) && !visibleLayer.length) {
@@ -199,7 +200,7 @@ export default class MapHandler {
         }
 
         if (!this.isLayerActivated(filterId) && !this.isSourceUpdated(filterId)) {
-            layerSource.once("featuresloadend", () => {
+            (layerModel.get("typ") === "SensorThings" ? layerModel : layerSource).once("featuresloadend", () => {
                 if (typeof onActivated === "function") {
                     onActivated();
                 }

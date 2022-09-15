@@ -64,6 +64,9 @@ export default function STALayer (attrs) {
         ]
     };
 
+    this.onceEvents = {
+        "featuresloadend": []
+    };
     this.mqttClient = null;
     this.options = {};
 
@@ -124,6 +127,9 @@ STALayer.prototype.createLayer = function (attrs) {
                 this.featuresLoaded(attrs.id, features);
                 if (this.get("isSelected") || attrs.isSelected) {
                     LoaderOverlay.hide();
+                }
+                while (this.onceEvents.featuresloadend.length) {
+                    this.onceEvents.featuresloadend.shift()();
                 }
             },
             onLoadingError: error => {
@@ -1493,4 +1499,20 @@ STALayer.prototype.replaceValueInArrayByReference = function (result, referenceA
         }
     }
     return true;
+};
+
+/**
+ * Once function which registers given handler by event name.
+ * @param {String} eventName The event name.
+ * @param {Function} handler The handler.
+ * @returns {void}
+ */
+STALayer.prototype.once = function (eventName, handler) {
+    if (typeof handler !== "function") {
+        return;
+    }
+
+    if (eventName === "featuresloadend") {
+        this.onceEvents.featuresloadend.push(handler);
+    }
 };

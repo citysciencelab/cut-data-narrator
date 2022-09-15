@@ -14,6 +14,8 @@ import InterfaceOafIntern from "./interface.oaf.intern.js";
 import InterfaceOafExtern from "./interface.oaf.extern.js";
 import InterfaceGeojsonIntern from "./interface.geojson.intern.js";
 import InterfaceGeojsonExtern from "./interface.geojson.extern.js";
+import InterfaceStaIntern from "./interface.sta.intern.js";
+import InterfaceStaExtern from "./interface.sta.extern.js";
 
 /**
  * FilterApi is the api to use in vue environment. It encapsulates the filter interfaces.
@@ -38,7 +40,9 @@ export default class FilterApi {
                 oafIntern: new InterfaceOafIntern(FilterApi.intervalRegister, {getFeaturesByLayerId, isFeatureInMapExtent, isFeatureInGeometry}),
                 oafExtern: new InterfaceOafExtern(),
                 geojsonIntern: new InterfaceGeojsonIntern(FilterApi.intervalRegister, {getFeaturesByLayerId, isFeatureInMapExtent, isFeatureInGeometry}),
-                geojsonExtern: new InterfaceGeojsonExtern()
+                geojsonExtern: new InterfaceGeojsonExtern(),
+                staIntern: new InterfaceStaIntern(FilterApi.intervalRegister, {getFeaturesByLayerId, isFeatureInMapExtent, isFeatureInGeometry}),
+                staExtern: new InterfaceStaExtern()
             };
         }
     }
@@ -110,6 +114,18 @@ export default class FilterApi {
                 onerror(new Error("FilterApi.setServiceByLayerModel: Filtering geojson extern is not supported."));
             }
         }
+        else if (type === "sensorthings") {
+            if (!extern) {
+                this.service = {
+                    type,
+                    extern,
+                    layerId
+                };
+            }
+            else {
+                onerror(new Error("FilterApi.setServiceByLayerModel: Filtering sta extern is not supported."));
+            }
+        }
         else if (typeof onerror === "function") {
             onerror(new Error("FilterApi.setServiceByLayerModel: Unknown layer type " + type));
         }
@@ -156,7 +172,7 @@ export default class FilterApi {
                         obj.onerror(error);
                     }
                 });
-            });
+            }, this.filterId);
         }
         else {
             FilterApi.waitingList[cacheKey].push({onsuccess, onerror});
@@ -339,6 +355,12 @@ export default class FilterApi {
         }
         else if (type === "geojson" && service.extern) {
             return FilterApi.interfaces.geojsonExtern;
+        }
+        else if (type === "sensorthings" && !service.extern) {
+            return FilterApi.interfaces.staIntern;
+        }
+        else if (type === "sensorthings" && service.extern) {
+            return FilterApi.interfaces.staExtern;
         }
         else if (typeof onerror === "function") {
             onerror(new Error("FilterApi.getInterfaceByService: Unknown service type " + type));

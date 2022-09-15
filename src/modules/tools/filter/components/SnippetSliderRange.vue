@@ -120,10 +120,10 @@ export default {
                 this.resetMemoryAdjustMinMax();
             }
 
-            if (typeof adjusting.adjust?.min !== "undefined" && (typeof this.getMemoryAdjustMin() === "undefined" || adjusting.adjust.min < this.getMemoryAdjustMin())) {
+            if (typeof adjusting.adjust?.min !== "undefined" && adjusting.adjust?.min !== false && (typeof this.getMemoryAdjustMin() === "undefined" || adjusting.adjust.min < this.getMemoryAdjustMin())) {
                 this.setMemoryAdjustMin(adjusting.adjust.min);
             }
-            if (typeof adjusting.adjust?.max !== "undefined" && (typeof this.getMemoryAdjustMax() === "undefined" || adjusting.adjust.max < this.getMemoryAdjustMax())) {
+            if (typeof adjusting.adjust?.max !== "undefined" && adjusting.adjust?.max !== false && (typeof this.getMemoryAdjustMax() === "undefined" || adjusting.adjust.max > this.getMemoryAdjustMax())) {
                 this.setMemoryAdjustMax(adjusting.adjust.max);
             }
 
@@ -440,11 +440,16 @@ export default {
         emitCurrentRule (value, startup = false) {
             if (!this.isCurrentSource("slider")) {
                 this.changeRule(value, startup);
+                this.$nextTick(() => {
+                    this.$emit("enableFilterButton");
+                });
                 return;
             }
+            this.$emit("disableFilterButton");
             this.setIntervalEmitCurrentRule(() => {
                 if (!this.isSliderMouseDown()) {
                     this.changeRule(value, startup);
+                    this.$emit("enableFilterButton");
                 }
             }, this.timeoutSlider);
         },
@@ -511,6 +516,7 @@ export default {
                 this.inputFrom = value;
                 return;
             }
+            this.$emit("disableFilterButton");
             this.setIntervalInputReaction(() => {
                 this.sliderFrom = value;
             }, this.timeoutInput);
@@ -525,6 +531,7 @@ export default {
                 this.inputUntil = value;
                 return;
             }
+            this.$emit("disableFilterButton");
             this.setIntervalInputReaction(() => {
                 this.sliderUntil = value;
             }, this.timeoutInput);
@@ -655,7 +662,10 @@ export default {
         setSliderMouseUp () {
             this.sliderMouseDown = false;
             if (!this.isInitializing && !this.isAdjusting) {
-                this.emitCurrentRule([this.sliderFrom, this.sliderUntil]);
+                this.emitCurrentRule([
+                    parseFloat(this.sliderFrom),
+                    parseFloat(this.sliderUntil)
+                ]);
             }
         }
     }

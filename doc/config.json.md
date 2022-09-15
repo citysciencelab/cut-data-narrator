@@ -1630,7 +1630,7 @@ Hint: highlighting only works if there is a styleId in config.json configured fo
 
 [inherits]: # (Portalconfig.menu.tool)
 
-The filter tool offers a range of options to filter vector data from WFS(❗) services.
+The filter tool offers a range of options to filter vector data from WFS, OAF, GeoJSON and SensorThingsAPI services.
 
 |Name|Required|Type|Default|Description|Expert|
 |----|--------|----|-------|-----------|------|
@@ -1983,7 +1983,7 @@ Example for a date range snippet. A date range with two attrName for min and max
 }
 ```
 
-**Beispiel**
+**Example**
 
 Example of a DateRange snippet. With the slider turned off (`display`: `datepicker`). With two attribute names for min and max values, two `subTitles` different from the attrName and different date formats. Additionally a period is preset. Please note that the format of the preset values is based on `format`.
 
@@ -1999,7 +1999,7 @@ Example of a DateRange snippet. With the slider turned off (`display`: `datepick
 }
 ```
 
-**Beispiel**
+**Example**
 
 Example of a DateRange snippet. With time points preset via `prechecked` and min and max values preset via `value`.
 
@@ -2024,6 +2024,18 @@ Example for a feature info snippet. Displays all values of the configured attrib
     "title": "Steckbrief",
     "attrName": ["tierartengruppe", "deutscher_artname", "artname", "rote_liste_d", "rote_liste_hh"],
     "type": "featureInfo"
+}
+```
+
+**Example**
+
+Example for a slider range snippet of SensorThingsAPI (STA).
+
+```json
+{
+    "type": "sliderRange",
+    "title": "Anzahl der Fahrräder",
+    "attrName": "@Datastreams.0.Observations.0.result"
 }
 ```
 

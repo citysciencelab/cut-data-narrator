@@ -145,32 +145,32 @@ describe("src/module/tools/filter/utils/mapHandler.js", () => {
         });
         it("should set the internal layers and filteredIds for the given filter id and layer id", () => {
             let called_addLayerByLayerId = false,
-                called_layerId = false,
-                called_key = false,
-                called_value = false;
-            const map = new MapHandler({
-                getLayerByLayerId: () => "layerModel",
-                showFeaturesByIds: () => false,
-                createLayerIfNotExists: () => false,
-                zoomToFilteredFeatures: () => false,
-                zoomToExtent: () => false,
-                addLayerByLayerId: layerId => {
-                    called_addLayerByLayerId = layerId;
-                },
-                getLayers: () => {
-                    return {
-                        getArray: () => [{
-                            getVisible: () => true,
-                            get: () => "layerId"
-                        }]
-                    };
-                },
-                setParserAttributeByLayerId: (layerId, key, value) => {
-                    called_layerId = layerId;
-                    called_key = key;
-                    called_value = value;
-                }
-            }, onerror.call);
+                called_layerId = false;
+            const called_key = [],
+                called_value = [],
+                map = new MapHandler({
+                    getLayerByLayerId: () => "layerModel",
+                    showFeaturesByIds: () => false,
+                    createLayerIfNotExists: () => false,
+                    zoomToFilteredFeatures: () => false,
+                    zoomToExtent: () => false,
+                    addLayerByLayerId: layerId => {
+                        called_addLayerByLayerId = layerId;
+                    },
+                    getLayers: () => {
+                        return {
+                            getArray: () => [{
+                                getVisible: () => true,
+                                get: () => "layerId"
+                            }]
+                        };
+                    },
+                    setParserAttributeByLayerId: (layerId, key, value) => {
+                        called_layerId = layerId;
+                        called_key.push(key);
+                        called_value.push(value);
+                    }
+                }, onerror.call);
 
             map.initializeLayer("filterId", "layerId", false, onerror.call);
 
@@ -179,8 +179,8 @@ describe("src/module/tools/filter/utils/mapHandler.js", () => {
             expect(map.layers.filterId).to.equal("layerModel");
             expect(map.filteredIds.filterId).to.be.an("array").and.to.be.empty;
             expect(called_layerId).to.equal("layerId");
-            expect(called_key).to.equal("loadingStrategy");
-            expect(called_value).to.equal("all");
+            expect(called_key).to.deep.equal(["loadingStrategy", "loadThingsOnlyInCurrentExtent"]);
+            expect(called_value).to.deep.equal(["all", false]);
         });
         it("should set doNotLoadInitially to true if extern is set", () => {
             let called_layerId = false,

@@ -356,8 +356,8 @@ export class SensorThingsMqttConnector {
         return this.options.mqttVersion === "3.1.1";
     }
     /**
-     * checks if the used mqtt version is 3.1
-     * @returns {Boolean}  true if version is 3.1
+     * checks if the used mqtt version is 5.0
+     * @returns {Boolean}  true if version is 5.0
      */
     isV50 () {
         return this.options.mqttVersion === "5.0";

@@ -98,7 +98,8 @@ export default {
             amountOfFilteredItems: false,
             precheckedSnippets: [],
             filteredItems: [],
-            isLockedHandleActiveStrategy: false
+            isLockedHandleActiveStrategy: false,
+            filterButtonDisabled: false
         };
     },
     computed: {
@@ -769,6 +770,12 @@ export default {
          */
         getTimeoutSlider (snippet) {
             return snippet?.timeouts?.slider ? snippet.timeouts.slider : undefined;
+        },
+        disableFilterButton () {
+            this.filterButtonDisabled = true;
+        },
+        enableFilterButton () {
+            this.filterButtonDisabled = false;
         }
     }
 };
@@ -973,6 +980,8 @@ export default {
                     @changeRule="changeRule"
                     @deleteRule="deleteRule"
                     @setSnippetPrechecked="setSnippetPrechecked"
+                    @disableFilterButton="disableFilterButton"
+                    @enableFilterButton="enableFilterButton"
                 />
             </div>
             <div
@@ -1029,6 +1038,8 @@ export default {
                     @changeRule="changeRule"
                     @deleteRule="deleteRule"
                     @setSnippetPrechecked="setSnippetPrechecked"
+                    @disableFilterButton="disableFilterButton"
+                    @enableFilterButton="enableFilterButton"
                 />
             </div>
             <div
@@ -1052,6 +1063,7 @@ export default {
             <button
                 v-if="!isStrategyActive()"
                 class="btn btn-primary btn-sm"
+                :disabled="filterButtonDisabled || disabled"
                 @click="filter()"
             >
                 {{ labelFilterButton }}

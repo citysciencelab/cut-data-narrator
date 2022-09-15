@@ -545,10 +545,12 @@ export default {
                 this.changeRule(value, startup);
                 return;
             }
+            this.$emit("disableFilterButton");
             clearTimeout(this.intvEmitCurrentRule);
             this.intvEmitCurrentRule = setTimeout(() => {
                 if (!this.sliderMouseDown) {
                     this.changeRule(value, startup);
+                    this.$emit("enableFilterButton");
                 }
             }, this.timeoutSlider);
         },

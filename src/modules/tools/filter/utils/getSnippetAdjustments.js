@@ -55,7 +55,24 @@ function getAttrValuesOfItemsGroupedByAttrNames (items, relevantAttrNames) {
             else if (!isObject(assoc[attrName])) {
                 assoc[attrName] = {};
             }
-            if (typeof item.get(attrName) === "undefined") {
+            if (attrName.startsWith("@") && item.get("Datastreams")) {
+                const pathArray = attrName.substring(1, attrName.length).split(".").filter(path => path !== "."),
+                    dIdx = pathArray[1],
+                    observation = pathArray[2],
+                    oIdx = pathArray[3],
+                    res = pathArray[4],
+                    datastreams = item.get("Datastreams");
+
+                if (!isNaN(Number(dIdx)) && observation && !isNaN(Number(oIdx)) && res
+                    && datastreams[dIdx]
+                    && datastreams[dIdx][observation]
+                    && datastreams[dIdx][observation][oIdx]
+                    && datastreams[dIdx][observation][oIdx][res]) {
+                    assoc[attrName][item.get("Datastreams")[dIdx][observation][oIdx][res]] = true;
+                }
+                return;
+            }
+            else if (typeof item.get(attrName) === "undefined") {
                 return;
             }
             assoc[attrName][item.get(attrName)] = true;
