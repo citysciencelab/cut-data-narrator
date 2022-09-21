@@ -140,7 +140,8 @@ const GazetteerModel = Backbone.Model.extend({
             coordinate: searchResult.geometry.coordinates,
             icon: "bi-signpost-split-fill",
             id: searchResult.name.replace(/ /g, "") + translatedType,
-            properties: searchResult.properties
+            properties: searchResult.properties,
+            storedQuery: searchResult.type
         }, evtType);
     },
 

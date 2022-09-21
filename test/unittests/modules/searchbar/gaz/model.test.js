@@ -129,6 +129,9 @@ describe("modules/searchbar/gaz", () => {
                 type: "street",
                 geometry: {
                     coordinates: [10, 20]
+                },
+                properties: {
+                    name: "abc"
                 }
             };
 
@@ -140,7 +143,11 @@ describe("modules/searchbar/gaz", () => {
                 type: "modules.searchbar.type.street",
                 coordinate: searchResult.geometry.coordinates,
                 icon: "bi-signpost-split-fill",
-                id: searchResult.name.replace(/ /g, "") + "modules.searchbar.type.street"
+                id: searchResult.name.replace(/ /g, "") + "modules.searchbar.type.street",
+                properties: {
+                    name: "abc"
+                },
+                storedQuery: "street"
             }, null]);
         });
     });

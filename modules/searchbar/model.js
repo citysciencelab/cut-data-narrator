@@ -257,6 +257,7 @@ const SearchbarModel = Backbone.Model.extend(/** @lends SearchbarModel.prototype
             if (clonedAttributes.length > 1) {
                 Radio.trigger("Searchbar", "createRecommendedList");
             }
+            Radio.trigger("Searchbar", "hit", value);
         }
     },
 

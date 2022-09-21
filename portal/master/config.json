@@ -27,36 +27,7 @@
         "searchDistricts": true,
         "searchParcels": true,
         "searchStreetKey": true,
-        "gfiOnClick": {
-          "gfiTheme": "default",
-          "gfiAttributes": {
-            "strassenname": "Straßenname",
-            "hausnummer": "Hausnummer",
-            "hausnummernzusatz": "Buchstabe/Adressierungszusatz",
-            "strasse_kurz": "Straßenschlüssel",
-            "postleitzahl": "Postleitzahl",
-            "status": "Amtlich vergebene Adresse",
-            "bezirke": "Bezirk",
-            "postOrtsteil": "Stadtteil",
-            "ortsteil_kurz": "Ortsteil",
-            "baubloecke": "Baublock",
-            "statistischesgebiet": "Statistisches Gebiet",
-            "alkis_flurstuecksnummer": "Flurstücksnummer",
-            "alkis_gemarkung": "Gemarkung",
-            "amtsgericht": "Amtsgericht",
-            "amtsgericht_name": "Name des Amtsgerichtes",
-            "finanzamtnr": "Finanzamt",
-            "finanzamt": "Name des Finanzamtes",
-            "grundbuchbezirk": "Grundbuchschlüssel",
-            "polizeikommissariat": "Polizeikommissariat",
-            "grundschulnr": "Grundschulnummer",
-            "grundschule": "Name der Grundschule",
-            "wahlbezirk": "Wahlbezirk (Bezirksversammlungswahl 2021)",
-            "wahlkreisbt": "Wahlkreis (Bundestagswahl 2021)",
-            "wahlkreisbu": "Wahlkreis (Bürgerschaftswahl 2015)",
-            "wahlkreis_bv": "Wahlkreis (Bezirksversammlungswahl 2019)"
-          }
-        }
+        "gfiOnClick": true
       },
       "elasticSearch": {
         "minChars": 3,
