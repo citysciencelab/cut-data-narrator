@@ -104,7 +104,9 @@
         "removeLayer": "Layer entfernen",
         "levelUp": "Ebene nach oben",
         "levelDown": "Ebene nach unten",
-        "externalTechnicalData": "Externe Fachdaten"
+        "externalTechnicalData": "Externe Fachdaten",
+        "selectedFeatures": "Markierte Flächen",
+        "selectedData": "Ausgewählte Daten"
     },
     "date": "Datum",
     "time": "Zeit",
@@ -1181,6 +1183,7 @@
             "newYearsEve": "Silvester"
         },
         "parametricURL": {
+            "name": "URL-Parameter",
             "alertWrongLayerIds": "Im aufgerufenen Link sind Themen enthalten, die nicht mehr gefunden werden können.</br> Um diese Fehlermeldung zukünftig nicht mehr zu erhalten unternehmen Sie bitte folgende Schritte:<ul> <li> Prüfen Sie Ihren gewünschten Kartenausschnitt auf fehlende Inhalte.</li> <li>Speichern Sie Ihre Auswahl erneut mit dem Werkzeug \"Auswahl Speichern\" ab.</li></ul>",
             "alertWrongAmountVisibility": "<strong>Parametrisierter Aufruf fehlerhaft!</strong></br>Die Angaben zu <b>layerIds</b> passen nicht zu <b>visibility</b> bzw. <b>transparency</b>. Sie müssen jeweils in der gleichen Anzahl angegeben werden.",
             "errorLoadConfig": "Die gewünschte Konfigurationsdatei konnte unter folgendem Pfad nicht geladen werden: {{url}}<br>Der URL-Paramater <strong>configJson</strong> verlangt eine Datei mit der Endung \".json\".<br>Es wird versucht die config.json unter dem Standardpfad zu laden.",

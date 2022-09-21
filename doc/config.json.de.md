@@ -44,6 +44,7 @@ Es existieren die im Folgenden aufgelisteten Konfigurationen:
 |searchBar|nein|**[searchBar](#markdown-header-portalconfigsearchbar)**||Über die Suchleiste können verschiedene Suchen gleichzeitig angefragt werden.|false|
 |layersRemovable|nein|Boolean|false|Gibt an, ob der Layer gelöscht werden darf.|false|
 |quickHelp|nein|**[quickHelp](#markdown-header-portalconfigquickHelp)**||Konfiguration neuer und Manipulation bestehender QuickHelp-Fenster.|false|
+|treeHighlightedFeatures|nein|**[treeHighlightedFeatures](#markdown-header-portalconfigtreehighlightedfeatures)**||Konfiguration zusätzlich zum Highlighting von Features.|false|
 
 ***
 
@@ -545,6 +546,26 @@ Konfiguration der Suche über die sichtbaren VectorLayer. Bei der Layerdefinitio
     "minChars": 3,
     "layerTypes": ["WFS", "GeoJSON"]
 }
+```
+***
+
+#### Portalconfig.treeHighlightedFeatures
+Konfiguration zusätzlich zum Highlighting von Features. Wenn mit dem Werkzeug "Liste" oder "Features auswählen" oder per Url-Parameter Features hervorgehoben werden, dann ist ein Layer mit diesen Features im Menü-Baum auswählbar. Bei dem treeType 'default' oder 'custom' wird ein Ordner für diese Layer angelegt.
+
+|Name|Verpflichtend|Typ|Default|Beschreibung|Expert|
+|----|-------------|---|-------|------------|------|
+|active|nein|Boolean|false|Gibt an, ob dieses Feature aktiv ist.|false|
+|layerName|nein|String|"common:tree.selectedFeatures"|Name der erzeugten Layer mit den hervorgehobenen Features. Der Name enthält zusätzlich den Namen des Werkzeuges mit dem gearbeitet wurde.|true|
+|folderName|nein|String|"common:tree.selectedData"|Name des Ordners im Menü-Baum, der hinzugefügt wird.|false|
+
+**Beispiel**
+```
+#!json
+"treeHighlightedFeatures": {
+    "active": false,
+    "layerName": "common:tree.selectedFeatures",
+    "folderName": "common:tree.selectedData"
+},
 ```
 ***
 

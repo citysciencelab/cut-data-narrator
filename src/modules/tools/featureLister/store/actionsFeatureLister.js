@@ -1,5 +1,6 @@
 import {getLayerWhere} from "@masterportal/masterportalapi/src/rawLayerList";
 import {getCenter} from "ol/extent";
+import {createLayerAddToTree} from "../../../../utils/createLayerAddToTree";
 
 export default {
     /**
@@ -30,7 +31,8 @@ export default {
      * @param {String} featureIndex index of the clicked Feature
      * @returns {void}
      */
-    clickOnFeature ({state, commit, dispatch}, featureIndex) {
+    clickOnFeature ({state, commit, dispatch, rootGetters}, featureIndex) {
+        // hier debuggen
         if (featureIndex !== "" && featureIndex >= 0 && featureIndex <= state.shownFeatures) {
             const feature = state.gfiFeaturesOfLayer[featureIndex],
                 featureGeometry = state.rawFeaturesOfLayer[featureIndex].getGeometry(),
@@ -50,6 +52,9 @@ export default {
                     }
                     dispatch("Maps/setZoomLevel", styleObj.zoomLevel, {root: true});
                 }
+            }
+            if (rootGetters.treeHighlightedFeatures?.active) {
+                createLayerAddToTree([state.layerId], [state.layer.features[featureIndex]], rootGetters.treeType, rootGetters.treeHighlightedFeatures, "common:menu.tools.featureLister");
             }
         }
     },

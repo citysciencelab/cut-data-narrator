@@ -1,6 +1,7 @@
 import {expect} from "chai";
 import sinon from "sinon";
 import actions from "../../../store/actionsFeatureLister";
+import * as clatt from "../../../../../../utils/createLayerAddToTree";
 
 describe("tools/featureLister/store/actionsFeatureLister", () => {
     let commit, dispatch, rootGetters;
@@ -47,15 +48,23 @@ describe("tools/featureLister/store/actionsFeatureLister", () => {
                     gfiFeaturesOfLayer: [{erstesFeature: "first"}, {zweitesFeature: "second"}, {drittesFeature: "third"}],
                     rawFeaturesOfLayer: [{getGeometry: () => "Point"}, {getGeometry: () => "Point"}],
                     layer: {
-                        geometryType: "Point"
-                    }
-                };
+                        geometryType: "Point",
+                        features: [{erstesFeature: "first"}, {zweitesFeature: "second"}, {drittesFeature: "third"}]
+                    },
+                    layerId: "layerId"
+                },
+                createLayerAddToTreeStub = sinon.spy(clatt, "createLayerAddToTree");
 
-            rootGetters = {"Maps/getView": {fit: () => true}};
+            rootGetters = {"Maps/getView": {fit: () => true}, treeHighlightedFeatures: {active: true}, treeType: "light"};
 
             actions.clickOnFeature({state, commit, dispatch, rootGetters}, featureIndex);
             expect(commit.firstCall.args[0]).to.equal("setSelectedFeature");
             expect(commit.firstCall.args[1]).to.eql(state.gfiFeaturesOfLayer[1]);
+            expect(dispatch.firstCall.args[0]).to.eql("switchToDetails");
+            expect(createLayerAddToTreeStub.calledOnce).to.be.true;
+            expect(createLayerAddToTreeStub.firstCall.args[0]).to.be.deep.equals([state.layerId]);
+            expect(createLayerAddToTreeStub.firstCall.args[1]).to.be.deep.equals([state.layer.features[featureIndex]]);
+            expect(createLayerAddToTreeStub.firstCall.args[2]).to.be.deep.equals("light");
         });
     });
 

@@ -6,6 +6,7 @@ import Point from "ol/geom/Point.js";
 import Feature from "ol/Feature.js";
 import axios from "axios";
 import {getLayerList} from "@masterportal/masterportalapi/src/rawLayerList";
+import {createLayerAddToTree} from "../utils/createLayerAddToTree";
 
 export default {
     /**
@@ -44,17 +45,18 @@ export default {
 
     /**
      * highlight Features for Points
-     * @param {String} modelId The model Id
-     * @param {String} styleId The style Id
-     * @param {String} name Layer name
-     * @param {Object} gfiAttributes GFI attributes configuration
+     * @param {String} styleId The styleId of the highlight-layer to create
+     * @param {String} layerId The id of the highlight-layer to create
+     * @param {String} name The name of the highlight-layer to create
+     * @param {Object} rawLayer the raw layer
      * @param {Array} features The loaded WFS features
      * @param {Function} dispatch dispatch function
+     * @param {Function} rootGetters rootGetters function
      * @returns {void}
     */
-    highlightPointFeature: function (modelId, styleId, name, gfiAttributes, features, dispatch) {
-        const styleListModel = Radio.request("StyleList", "returnModelById", modelId),
-            highlightLayer = this.createVectorLayer(modelId, styleId, name, gfiAttributes);
+    highlightPointFeature: function (styleId, layerId, name, rawLayer, features, dispatch, rootGetters) {
+        const styleListModel = Radio.request("StyleList", "returnModelById", styleId),
+            highlightLayer = this.createVectorLayer(styleId, layerId, name, rawLayer.gfiAttributes);
         let hadPoint = false;
 
         features.forEach(feature => {
@@ -73,28 +75,45 @@ export default {
                 highlightLayer.getSource().addFeature(iconFeature);
             }
         });
-
         if (hadPoint) {
-            highlightLayer.setVisible(true);
-            dispatch("Maps/addLayerOnTop", highlightLayer, {root: true});
-            dispatch("Maps/zoomToExtent", {extent: highlightLayer.getSource().getExtent()}, {root: true});
+            this.showLayer(rawLayer, highlightLayer, dispatch, rootGetters);
         }
     },
 
     /**
+     * Creates a new layer with features and shows it in tree.
+     * @param {Object} rawLayer the raw layer
+     * @param {Object} highlightLayer new layer containing features to highlight
+     * @param {Function} dispatch dispatch function
+     * @param {Function} rootGetters rootGetters function
+     * @returns {void}
+     */
+    showLayer: function (rawLayer, highlightLayer, dispatch, rootGetters) {
+        if (rootGetters.treeHighlightedFeatures?.active) {
+            createLayerAddToTree([rawLayer.id], highlightLayer.getSource().getFeatures(), rootGetters.treeType, rootGetters.treeHighlightedFeatures, "common:utils.parametricURL.name");
+        }
+        else {
+            highlightLayer.setVisible(true);
+        }
+        dispatch("Maps/addLayerOnTop", highlightLayer, {root: true});
+        dispatch("Maps/zoomToExtent", {extent: highlightLayer.getSource().getExtent()}, {root: true});
+    },
+
+    /**
      * highlight Features / Line and Polygon
-     * @param {String} modelId The model Id
-     * @param {String} styleId The style Id
-     * @param {String} name Layer name
+     * @param {String} styleId The styleId of the highlight-layer to create
+     * @param {String} layerId The id of the highlight-layer to create
+     * @param {String} name The name of the highlight-layer to create
      * @param {String} geometryRequested Polygon or LineString
-     * @param {Object} gfiAttributes GFI attributes configuration
+     * @param {Object} rawLayer the raw layer
      * @param {Array} features The loaded WFS features
      * @param {Function} dispatch dispatch function
+     * @param {Function} rootGetters rootGetters function
      * @returns {void}
     */
-    highlightLineOrPolygonFeature: function (modelId, styleId, name, geometryRequested, gfiAttributes, features, dispatch) {
-        const styleListModel = Radio.request("StyleList", "returnModelById", modelId),
-            highlightLayer = this.createVectorLayer(modelId, styleId, name, gfiAttributes);
+    highlightLineOrPolygonFeature: function (styleId, layerId, name, geometryRequested, rawLayer, features, dispatch, rootGetters) {
+        const styleListModel = Radio.request("StyleList", "returnModelById", styleId),
+            highlightLayer = this.createVectorLayer(styleId, layerId, name, rawLayer.gfiAttributes);
         let hadGeometry = false;
 
         features.forEach(feature => {
@@ -114,9 +133,7 @@ export default {
         });
 
         if (hadGeometry) {
-            highlightLayer.setVisible(true);
-            dispatch("Maps/addLayerOnTop", highlightLayer, {root: true});
-            dispatch("Maps/zoomToExtent", {extent: highlightLayer.getSource().getExtent()}, {root: true});
+            this.showLayer(rawLayer, highlightLayer, dispatch, rootGetters);
         }
     },
 
@@ -134,11 +151,12 @@ export default {
     /**
      * handles the response from a wfs get feature request
      * @param {Function} dispatch dispatch function
+     * @param {Function} rootGetters rootGetters function
      * @param {string} response - XML to be sent as String
      * @param {Object} highlightFeaturesLayer The configuration for the Layer.
      * @returns {void}
     */
-    handleGetFeatureResponse: function (dispatch, response, highlightFeaturesLayer) {
+    handleGetFeatureResponse: function (dispatch, rootGetters, response, highlightFeaturesLayer) {
         if (response.status !== 200) {
             console.warn(response.status);
             dispatch("Alerting/addSingleAlert", i18next.t("common:modules.highlightFeaturesByAttribute.messages.requestFailed"), {root: true});
@@ -158,9 +176,9 @@ export default {
             }
         }
 
-        this.highlightPointFeature(this.settings.pointStyleId, "highlight_point_layer", "highlightPoint", highlightFeaturesLayer.gfiAttributes, features, dispatch);
-        this.highlightLineOrPolygonFeature(this.settings.polygonStyleId, "highlight_polygon_layer", "highlightPolygon", "Polygon", highlightFeaturesLayer.gfiAttributes, features, dispatch);
-        this.highlightLineOrPolygonFeature(this.settings.lineStyleId, "highlight_line_layer", "highlightLine", "LineString", highlightFeaturesLayer.gfiAttributes, features, dispatch);
+        this.highlightPointFeature(this.settings.pointStyleId, "highlight_point_layer", "highlightPoint", highlightFeaturesLayer, features, dispatch, rootGetters);
+        this.highlightLineOrPolygonFeature(this.settings.polygonStyleId, "highlight_polygon_layer", "highlightPolygon", "Polygon", highlightFeaturesLayer, features, dispatch, rootGetters);
+        this.highlightLineOrPolygonFeature(this.settings.lineStyleId, "highlight_line_layer", "highlightLine", "LineString", highlightFeaturesLayer, features, dispatch, rootGetters);
     },
 
     /**
@@ -246,13 +264,14 @@ export default {
     /**
      * highlight Features by Attributes
      * @param {Object} dispatch dispatch function
+     * @param {Object} rootGetters rootGetters function
      * @param {String} wfsId the WFS Id
      * @param {String} propName the queried property name
      * @param {String} propValue the queried property value
      * @param {String} queryType the query type
      * @returns {void}
     */
-    highlightFeaturesByAttribute: function (dispatch, wfsId, propName, propValue, queryType) {
+    highlightFeaturesByAttribute: function (dispatch, rootGetters, wfsId, propName, propValue, queryType) {
         const layerList = getLayerList(),
             layer = layerList.find(layerConf => layerConf.id === wfsId),
             isEqual = queryType && queryType.toLowerCase() === "isequal",
@@ -276,7 +295,7 @@ export default {
             timeout: layer?.timeout
         })
             .then(response => {
-                this.handleGetFeatureResponse(dispatch, response, layer);
+                this.handleGetFeatureResponse(dispatch, rootGetters, response, layer);
             })
             .catch(error => this.handleGetFeatureError(dispatch, error));
     }

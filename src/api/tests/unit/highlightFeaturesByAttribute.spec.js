@@ -6,6 +6,7 @@ import VectorSource from "ol/source/Vector.js";
 import VectorLayer from "ol/layer/Vector.js";
 import {Style} from "ol/style.js";
 import handleAxiosError from "../../utils/handleAxiosError.js";
+import * as clatt from "../../../utils/createLayerAddToTree";
 
 describe("api/highlightFeaturesByAttribute", () => {
     const expectedEqualToOGC = `<ogc:PropertyIsEqualTo matchCase='false' wildCard='%' singleChar='#' escapeChar='!'>
@@ -94,15 +95,52 @@ describe("api/highlightFeaturesByAttribute", () => {
     });
 
     describe("highlight(Point/Polygon/LineString)Feature", () => {
-        let request, highlightVector;
-
-        after(function () {
-            sinon.restore();
-            sinon.resetHistory();
-        });
+        const pointFeatures = [
+                {
+                    id: "456",
+                    getGeometry: () => sinon.spy({
+                        getType: () => "Point",
+                        getCoordinates: () => [100, 100]
+                    }),
+                    getProperties: () => []
+                },
+                {
+                    id: "789",
+                    getGeometry: () => sinon.spy({
+                        getType: () => "Point",
+                        getCoordinates: () => [150, 150]
+                    }),
+                    getProperties: () => []
+                }
+            ],
+            polygonFeatures = [
+                {
+                    id: "123",
+                    getGeometry: () => new Polygon([[[565086.1948534324, 5934664.461947621], [565657.6945448224, 5934738.54524095], [565625.9445619675, 5934357.545446689], [565234.3614400891, 5934346.962119071], [565086.1948534324, 5934664.461947621]]]),
+                    getProperties: () => []
+                },
+                {
+                    id: "456",
+                    getGeometry: () => new Polygon([[[565086.1948534324, 5934664.461947621], [565657.6945448224, 5934738.54524095], [565625.9445619675, 5934357.545446689], [565234.3614400891, 5934346.962119071], [565086.1948534324, 5934664.461947621]]]),
+                    getProperties: () => []
+                }
+            ],
+            lineFeatures = [
+                {
+                    id: "123",
+                    getGeometry: () => new LineString([[0, 0], [1000, 0]]),
+                    getProperties: () => []
+                },
+                {
+                    id: "456",
+                    getGeometry: () => new LineString([[0, 0], [1000, 0]]),
+                    getProperties: () => []
+                }
+            ];
+        let styleListRequest, highlightVector, createLayerAddToTreeStub;
 
         beforeEach(function () {
-            request = sinon.stub(Radio, "request").callsFake(function (channel, topic) {
+            styleListRequest = sinon.stub(Radio, "request").callsFake(function (channel, topic) {
                 if (channel === "StyleList" && topic === "returnModelById") {
                     return {
                         has () {
@@ -132,6 +170,7 @@ describe("api/highlightFeaturesByAttribute", () => {
                 style: new Style()
             });
             sinon.stub(highlightFeaturesByAttribute, "createVectorLayer").returns(highlightVector);
+            createLayerAddToTreeStub = sinon.stub(clatt, "createLayerAddToTree");
         });
 
         afterEach(function () {
@@ -144,30 +183,34 @@ describe("api/highlightFeaturesByAttribute", () => {
                     id: "123",
                     gfiAttributes: "showAll"
                 },
-                features = [
-                    {
-                        id: "456",
-                        getGeometry: () => sinon.spy({
-                            getType: () => "Point",
-                            getCoordinates: () => [100, 100]
-                        }),
-                        getProperties: () => []
-                    },
-                    {
-                        id: "789",
-                        getGeometry: () => sinon.spy({
-                            getType: () => "Point",
-                            getCoordinates: () => [150, 150]
-                        }),
-                        getProperties: () => []
-                    }
-                ],
-                dispatch = sinon.spy();
+                dispatch = sinon.spy(),
+                rootGetters = {treeHighlightedFeatures: null, treeType: "light"};
 
-            highlightFeaturesByAttribute.highlightPointFeature("defaultHighlightFeaturesPoint", "highlight_point_layer", "highlightPoint", layer.gfiAttributes, features, dispatch);
-            expect(request.calledOnce).to.be.true;
-            expect(request.firstCall.args).to.deep.equals(["StyleList", "returnModelById", "defaultHighlightFeaturesPoint"]);
+            highlightFeaturesByAttribute.highlightPointFeature("defaultHighlightFeaturesPoint", "highlight_point_layer", "highlightPoint", layer, pointFeatures, dispatch, rootGetters);
+            expect(styleListRequest.calledOnce).to.be.true;
+            expect(styleListRequest.firstCall.args).to.deep.equals(["StyleList", "returnModelById", "defaultHighlightFeaturesPoint"]);
             expect(await highlightVector.getSource().getFeatures()).to.be.an("array").with.lengthOf(2);
+            expect(createLayerAddToTreeStub.notCalled).to.be.true;
+        });
+
+        it("should call returnModelById and return 2 features for Points with treeHighlightedFeatures is true", async () => {
+            const layer = {
+                    id: "123",
+                    gfiAttributes: "showAll"
+                },
+                dispatch = sinon.spy(),
+                rootGetters = {treeHighlightedFeatures: {active: true}, treeType: "light"};
+
+            highlightFeaturesByAttribute.highlightPointFeature("defaultHighlightFeaturesPoint", "highlight_point_layer", "highlightPoint", layer, pointFeatures, dispatch, rootGetters);
+            expect(styleListRequest.calledOnce).to.be.true;
+            expect(styleListRequest.firstCall.args).to.deep.equals(["StyleList", "returnModelById", "defaultHighlightFeaturesPoint"]);
+            expect(await highlightVector.getSource().getFeatures()).to.be.an("array").with.lengthOf(2);
+
+            expect(createLayerAddToTreeStub.calledOnce).to.be.true;
+            expect(createLayerAddToTreeStub.firstCall.args[0]).to.be.deep.equals(["123"]);
+            expect(createLayerAddToTreeStub.firstCall.args[1]).to.be.an("Array");
+            expect(createLayerAddToTreeStub.firstCall.args[1].length).to.be.equals(2);
+            expect(createLayerAddToTreeStub.firstCall.args[2]).to.be.deep.equals("light");
         });
 
         it("should call returnModelById and return 2 features for Polygons", async () => {
@@ -175,50 +218,70 @@ describe("api/highlightFeaturesByAttribute", () => {
                     id: "012",
                     gfiAttributes: "showAll"
                 },
-                features = [
-                    {
-                        id: "123",
-                        getGeometry: () => new Polygon([[[565086.1948534324, 5934664.461947621], [565657.6945448224, 5934738.54524095], [565625.9445619675, 5934357.545446689], [565234.3614400891, 5934346.962119071], [565086.1948534324, 5934664.461947621]]]),
-                        getProperties: () => []
-                    },
-                    {
-                        id: "456",
-                        getGeometry: () => new Polygon([[[565086.1948534324, 5934664.461947621], [565657.6945448224, 5934738.54524095], [565625.9445619675, 5934357.545446689], [565234.3614400891, 5934346.962119071], [565086.1948534324, 5934664.461947621]]]),
-                        getProperties: () => []
-                    }
-                ],
-                dispatch = sinon.spy();
+                dispatch = sinon.spy(),
+                rootGetters = {treeHighlightedFeatures: {active: false}, treeType: "light"};
 
-            highlightFeaturesByAttribute.highlightLineOrPolygonFeature("defaultHighlightFeaturesPolygon", "highlight_polygon_layer", "highlightPolygon", "Polygon", layer.gfiAttributes, features, dispatch);
-            expect(request.calledOnce).to.be.true;
-            expect(request.firstCall.args).to.deep.equals(["StyleList", "returnModelById", "defaultHighlightFeaturesPolygon"]);
+            highlightFeaturesByAttribute.highlightLineOrPolygonFeature("defaultHighlightFeaturesPolygon", "highlight_polygon_layer", "highlightPolygon", "Polygon", layer, polygonFeatures, dispatch, rootGetters);
+            expect(styleListRequest.calledOnce).to.be.true;
+            expect(styleListRequest.firstCall.args).to.deep.equals(["StyleList", "returnModelById", "defaultHighlightFeaturesPolygon"]);
             expect(await highlightVector.getSource().getFeatures()).to.be.an("array").with.lengthOf(2);
         });
+
+        it("should call returnModelById and return 2 features for Polygons with treeHighlightedFeatures is true", async () => {
+            const layer = {
+                    id: "012",
+                    gfiAttributes: "showAll"
+                },
+                dispatch = sinon.spy(),
+                rootGetters = {treeHighlightedFeatures: {active: true}, treeType: "custom"};
+
+            highlightFeaturesByAttribute.highlightLineOrPolygonFeature("defaultHighlightFeaturesPolygon", "highlight_polygon_layer", "highlightPolygon", "Polygon", layer, polygonFeatures, dispatch, rootGetters);
+            expect(styleListRequest.calledOnce).to.be.true;
+            expect(styleListRequest.firstCall.args).to.deep.equals(["StyleList", "returnModelById", "defaultHighlightFeaturesPolygon"]);
+            expect(await highlightVector.getSource().getFeatures()).to.be.an("array").with.lengthOf(2);
+
+            expect(createLayerAddToTreeStub.calledOnce).to.be.true;
+            expect(createLayerAddToTreeStub.firstCall.args[0]).to.be.deep.equals(["012"]);
+            expect(createLayerAddToTreeStub.firstCall.args[1]).to.be.an("Array");
+            expect(createLayerAddToTreeStub.firstCall.args[1].length).to.be.equals(2);
+            expect(createLayerAddToTreeStub.firstCall.args[2]).to.be.deep.equals("custom");
+        });
+
 
         it("should call returnModelById and return 2 features for Lines", async () => {
             const layer = {
                     id: "012",
                     gfiAttributes: "showAll"
                 },
-                features = [
-                    {
-                        id: "123",
-                        getGeometry: () => new LineString([[0, 0], [1000, 0]]),
-                        getProperties: () => []
-                    },
-                    {
-                        id: "456",
-                        getGeometry: () => new LineString([[0, 0], [1000, 0]]),
-                        getProperties: () => []
-                    }
-                ],
-                dispatch = sinon.spy();
+                dispatch = sinon.spy(),
+                rootGetters = {treeHighlightedFeatures: {active: false}, treeType: "light"};
 
-            highlightFeaturesByAttribute.highlightLineOrPolygonFeature("defaultHighlightFeaturesLine", "highlight_line_layer", "highlightLine", "LineString", layer.gfiAttributes, features, dispatch);
-            expect(request.calledOnce).to.be.true;
-            expect(request.firstCall.args).to.deep.equals(["StyleList", "returnModelById", "defaultHighlightFeaturesLine"]);
+            highlightFeaturesByAttribute.highlightLineOrPolygonFeature("defaultHighlightFeaturesLine", "highlight_line_layer", "highlightLine", "LineString", layer, lineFeatures, dispatch, rootGetters);
+            expect(styleListRequest.calledOnce).to.be.true;
+            expect(styleListRequest.firstCall.args).to.deep.equals(["StyleList", "returnModelById", "defaultHighlightFeaturesLine"]);
             expect(await highlightVector.getSource().getFeatures()).to.be.an("array").with.lengthOf(2);
         });
+
+        it("should call returnModelById and return 2 features for Lines with treeHighlightedFeatures is true", async () => {
+            const layer = {
+                    id: "012",
+                    gfiAttributes: "showAll"
+                },
+                dispatch = sinon.spy(),
+                rootGetters = {treeHighlightedFeatures: {active: true}, treeType: "custom"};
+
+            highlightFeaturesByAttribute.highlightLineOrPolygonFeature("defaultHighlightFeaturesLine", "highlight_line_layer", "highlightLine", "LineString", layer, lineFeatures, dispatch, rootGetters);
+            expect(styleListRequest.calledOnce).to.be.true;
+            expect(styleListRequest.firstCall.args).to.deep.equals(["StyleList", "returnModelById", "defaultHighlightFeaturesLine"]);
+            expect(await highlightVector.getSource().getFeatures()).to.be.an("array").with.lengthOf(2);
+
+            expect(createLayerAddToTreeStub.calledOnce).to.be.true;
+            expect(createLayerAddToTreeStub.firstCall.args[0]).to.be.deep.equals(["012"]);
+            expect(createLayerAddToTreeStub.firstCall.args[1]).to.be.an("Array");
+            expect(createLayerAddToTreeStub.firstCall.args[1].length).to.be.equals(2);
+            expect(createLayerAddToTreeStub.firstCall.args[2]).to.be.deep.equals("custom");
+        });
+
     });
 
     describe("configHasErrors", () => {

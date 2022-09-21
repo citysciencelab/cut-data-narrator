@@ -103,7 +103,9 @@
         "removeLayer": "Remove Layer",
         "levelUp": "Level up",
         "levelDown": "Level down",
-        "externalTechnicalData": "External technical data"
+        "externalTechnicalData": "External technical data",
+        "selectedFeatures": "Marked areas",
+        "selectedData": "Selected data"
     },
     "date": "Date",
     "time": "Time",
@@ -1181,6 +1183,7 @@
             "newYearsEve": "New Year's Eve"
         },
         "parametricURL": {
+            "name": "URL-parameter",
             "alertWrongLayerIds": "The called link contains topics that can no longer be found.</br> To avoid receiving this error message in the future, please take the following steps:<ul> <li>Check your desired map section for missing content.</li> <li>Save your selection again with the tool \"Save selection\".</li></ul>",
             "alertWrongAmountVisibility": "<strong>Parameterized call incorrect!</strong></br>The specifications for <b>layerIds</b> do not match <b>visibility</b> or <b>transparency</b>. They must be specified in the same number in each case.",
             "errorLoadConfig": "The requested configuration file could not be loaded under the following path: {{url}}<br>The URL paramater <strong>configJson</strong> requests a file with the extension \".json\".<br>An attempt is made to load the config.json under the default path.",
