@@ -49,6 +49,7 @@ The configuration options listed in the following table exist:
 |searchBar|no|**[searchBar](#markdown-header-portalconfigsearchbar)**||The search bar allows requesting information from various search services at once.|false|
 |layersRemovable|no|Boolean|false|Defines whether layers may be removed from a portal during its run-time.|false|
 |quickHelp|no|**[quickHelp](#markdown-header-portalconfigquickHelp)**||Configuration of new and manipulation of existing QuickHelp windows.|false|
+|treeHighlightedFeatures|nein|**[treeHighlightedFeatures](#markdown-header-portalconfigtreehighlightedfeatures)**||Konfiguration zusätzlich zum Highlighting von Features.|false|
 
 ***
 
@@ -575,7 +576,25 @@ Visible vector layer search configuration. For all vector layers supposed to be 
 ```
 
 ***
+#### Portalconfig.treeHighlightedFeatures
+Konfiguration zusätzlich zum Highlighting von Features. Wenn mit dem Werkzeug "Liste" oder "Features auswählen" oder per Url-Parameter Features hervorgehoben werden, dann ist ein Layer mit diesen Features im Menü-Baum auswählbar. Bei dem treeType 'default' oder 'custom' wird ein Ordner für diese Layer angelegt.
 
+|Name|Verpflichtend|Typ|Default|Beschreibung|Expert|
+|----|-------------|---|-------|------------|------|
+|active|nein|Boolean|false|Gibt an, ob dieses Feature aktiv ist.|false|
+|layerName|nein|String|"common:tree.selectedFeatures"|Name der erzeugten Layer mit den hervorgehobenen Features. Der Name enthält zusätzlich den Namen des Werkzeuges mit dem gearbeitet wurde.|true|
+|folderName|nein|String|"common:tree.selectedData"|Name des Ordners im Menü-Baum, der hinzugefügt wird.|false|
+
+**Beispiel**
+```
+#!json
+"treeHighlightedFeatures": {
+    "active": false,
+    "layerName": "common:tree.selectedFeatures",
+    "folderName": "common:tree.selectedData"
+},
+```
+***
 ### Portalconfig.controls
 
 |Name|Required|Type|Default|Description|Expert|
