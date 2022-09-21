@@ -49,7 +49,7 @@ The configuration options listed in the following table exist:
 |searchBar|no|**[searchBar](#markdown-header-portalconfigsearchbar)**||The search bar allows requesting information from various search services at once.|false|
 |layersRemovable|no|Boolean|false|Defines whether layers may be removed from a portal during its run-time.|false|
 |quickHelp|no|**[quickHelp](#markdown-header-portalconfigquickHelp)**||Configuration of new and manipulation of existing QuickHelp windows.|false|
-|treeHighlightedFeatures|nein|**[treeHighlightedFeatures](#markdown-header-portalconfigtreehighlightedfeatures)**||Konfiguration zusätzlich zum Highlighting von Features.|false|
+|treeHighlightedFeatures|no|**[treeHighlightedFeatures](#markdown-header-portalconfigtreehighlightedfeatures)**||Configuration in addition to highlighting features.|false|
 
 ***
 
@@ -577,13 +577,13 @@ Visible vector layer search configuration. For all vector layers supposed to be 
 
 ***
 #### Portalconfig.treeHighlightedFeatures
-Konfiguration zusätzlich zum Highlighting von Features. Wenn mit dem Werkzeug "Liste" oder "Features auswählen" oder per Url-Parameter Features hervorgehoben werden, dann ist ein Layer mit diesen Features im Menü-Baum auswählbar. Bei dem treeType 'default' oder 'custom' wird ein Ordner für diese Layer angelegt.
+Configuration in addition to highlighting features. If features are highlighted with the "List" or "Select Features" tool or via url parameter, then a layer with these features is selectable in the menu tree. With the treeType 'default' or 'custom' a folder is created for these layers.
 
-|Name|Verpflichtend|Typ|Default|Beschreibung|Expert|
-|----|-------------|---|-------|------------|------|
-|active|nein|Boolean|false|Gibt an, ob dieses Feature aktiv ist.|false|
-|layerName|nein|String|"common:tree.selectedFeatures"|Name der erzeugten Layer mit den hervorgehobenen Features. Der Name enthält zusätzlich den Namen des Werkzeuges mit dem gearbeitet wurde.|true|
-|folderName|nein|String|"common:tree.selectedData"|Name des Ordners im Menü-Baum, der hinzugefügt wird.|false|
+|Name|Required|Type|Default|Description|Expert|
+|----|--------|----|-------|-----------|------|
+|active|no|Boolean|false|Indicates whether this feature is active.|false|
+|layerName|no|String|"common:tree.selectedFeatures"|Name of the created layer with the highlighted features. The name also contains the name of the tool that was used.|true|
+|folderName|no|String|"common:tree.selectedData"|Name of the folder in the menu tree that will be added.|false|
 
 **Beispiel**
 ```

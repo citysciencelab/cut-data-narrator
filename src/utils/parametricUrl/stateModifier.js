@@ -124,7 +124,7 @@ function callActions (state) {
             wfsId = state.urlParams?.wfsId;
 
         if (propName && propValue && wfsId) {
-            highlightFeaturesByAttribute.highlightFeaturesByAttribute(store.dispatch, wfsId, propName, propValue, queryType);
+            highlightFeaturesByAttribute.highlightFeaturesByAttribute(store.dispatch, store.getters, wfsId, propName, propValue, queryType);
         }
         else {
             console.warn("Not all required URL parameters given for highlightFeaturesByAttribute.");
