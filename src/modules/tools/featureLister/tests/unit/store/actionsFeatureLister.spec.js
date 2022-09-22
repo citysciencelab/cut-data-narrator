@@ -62,7 +62,7 @@ describe("tools/featureLister/store/actionsFeatureLister", () => {
             expect(commit.firstCall.args[1]).to.eql(state.gfiFeaturesOfLayer[1]);
             expect(dispatch.firstCall.args[0]).to.eql("switchToDetails");
             expect(createLayerAddToTreeStub.calledOnce).to.be.true;
-            expect(createLayerAddToTreeStub.firstCall.args[0]).to.be.deep.equals([state.layerId]);
+            expect(createLayerAddToTreeStub.firstCall.args[0]).to.be.deep.equals(state.layerId);
             expect(createLayerAddToTreeStub.firstCall.args[1]).to.be.deep.equals([state.layer.features[featureIndex]]);
             expect(createLayerAddToTreeStub.firstCall.args[2]).to.be.deep.equals("light");
         });

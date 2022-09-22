@@ -105,8 +105,7 @@
         "levelUp": "Ebene nach oben",
         "levelDown": "Ebene nach unten",
         "externalTechnicalData": "Externe Fachdaten",
-        "selectedFeatures": "Markierte Flächen",
-        "selectedData": "Ausgewählte Daten"
+        "selectedFeatures": "Auswahl:"
     },
     "date": "Datum",
     "time": "Zeit",

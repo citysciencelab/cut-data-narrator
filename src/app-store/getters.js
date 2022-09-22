@@ -23,7 +23,7 @@ export default {
     menuConfig: state => state?.configJson?.Portalconfig?.menu || null,
     portalConfig: state => state?.configJson?.Portalconfig || null,
     imagePath: state => state?.configJs.wfsImgPath || null,
-    treeHighlightedFeatures: state => state?.configJson?.Portalconfig?.treeHighlightedFeatures || false,
+    treeHighlightedFeatures: state => state?.configJson?.Portalconfig?.tree?.highlightedFeatures || false,
 
     /**
      * Returns the treeType from config.json. If not defined treeType 'light' is returned.

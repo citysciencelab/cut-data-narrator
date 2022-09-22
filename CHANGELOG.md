@@ -18,6 +18,7 @@
 - Alerting: attribute "multipleAlert" allows to add single alert or multiple-alert as a list.
 - MapMarker: Added function for rotation in 3D.
 - Reusable component SimpleButton.
+- Added a config.json configuration in addition to highlighting features: 'treeHighlightedFeatures'. If features are highlighted with the "List" or "Select Features" tool with "Zoom to this Feature" or via url parameter, then a layer with these features is selectable in the menu tree.
 
 ### Changed
 - OAF:

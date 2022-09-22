@@ -316,10 +316,9 @@ const Parser = Backbone.Model.extend(/** @lends Parser.prototype */{
      * @param {String} i18nKey - key for the name to translate
      * @param {Boolean} [invertLayerOrder=false] inverts the order the layers when added to the map on folder click
      * @param {Boolean} [isFolderSelectable=false] flag if folder is selectable or not
-     * @param {String} [insertBeforeFolderId=null] id of the folder the added folder shall be inserted before in tree
      * @returns {void}
      */
-    addFolder: function (name, id, parentId, level, isExpanded, i18nKey, invertLayerOrder = false, isFolderSelectable = false, insertBeforeFolderId = null) {
+    addFolder: function (name, id, parentId, level, isExpanded, i18nKey, invertLayerOrder = false, isFolderSelectable = false) {
         const itemList = this.get("itemList"),
             folder = {
                 type: "folder",
@@ -346,12 +345,7 @@ const Parser = Backbone.Model.extend(/** @lends Parser.prototype */{
             }
         });
         if (!folderExists) {
-            if (insertBeforeFolderId) {
-                this.addItemByPosition(folder, this.postionForFolder(this.getPreviousFolderId(insertBeforeFolderId)));
-            }
-            else {
-                this.addItem(folder);
-            }
+            this.addItem(folder);
         }
     },
 
@@ -792,7 +786,7 @@ const Parser = Backbone.Model.extend(/** @lends Parser.prototype */{
                 isInitiallyExpanded: false,
                 level: 0,
                 quickHelp: store.getters["QuickHelp/isSet"]
-            }, this.postionForFolder(this.getPreviousFolderId(id)));
+            }, this.postionForFolder(this.getPreviousFolderName(id)));
         }
         else {
             this.removeItem(id);
@@ -803,29 +797,29 @@ const Parser = Backbone.Model.extend(/** @lends Parser.prototype */{
     /**
      * Receive the position where a folder has to be inserted in the itemList.
      *
-     * @param {String} previousFolderId id of the previous folder in the tree
+     * @param {String} previousFolderName Name of the previous folder in the tree
      * @returns {Number} Position for the folder after the folder with the given name.
      */
-    postionForFolder: function (previousFolderId) {
+    postionForFolder: function (previousFolderName) {
         const itemList = this.get("itemList"),
-            index = itemList.findIndex(item => item.id === previousFolderId);
+            index = itemList.findIndex(item => item.name === previousFolderName);
 
         return index > -1 ? index + 1 : itemList.length + 1;
     },
     /**
-     * Returns the id of the folder that should be before the folder with the id.
+     * Returns the folder that should be before the folder with the id.
      *
      * @param {String} id Id of the folder that should be added.
-     * @returns {String} id of the previous folder in the tree.
+     * @returns {String} Name of the previous folder in the tree.
      */
-    getPreviousFolderId (id) {
+    getPreviousFolderName (id) {
         switch (id) {
             case "3d_daten":
-                return "Baselayer";// "Hintergrundkarten";
+                return "Hintergrundkarten";
             case "TimeLayer":
-                return "Overlayer";// "Fachdaten";
+                return "Fachdaten";
             default:
-                return "Overlayer";// "Fachdaten";
+                return "Fachdaten";
         }
     },
 

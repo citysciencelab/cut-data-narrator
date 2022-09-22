@@ -32,7 +32,6 @@ export default {
      * @returns {void}
      */
     clickOnFeature ({state, commit, dispatch, rootGetters}, featureIndex) {
-        // hier debuggen
         if (featureIndex !== "" && featureIndex >= 0 && featureIndex <= state.shownFeatures) {
             const feature = state.gfiFeaturesOfLayer[featureIndex],
                 featureGeometry = state.rawFeaturesOfLayer[featureIndex].getGeometry(),
@@ -54,7 +53,7 @@ export default {
                 }
             }
             if (rootGetters.treeHighlightedFeatures?.active) {
-                createLayerAddToTree([state.layerId], [state.layer.features[featureIndex]], rootGetters.treeType, rootGetters.treeHighlightedFeatures, "common:menu.tools.featureLister");
+                createLayerAddToTree(state.layerId, [state.layer.features[featureIndex]], rootGetters.treeType, rootGetters.treeHighlightedFeatures);
             }
         }
     },

@@ -90,7 +90,7 @@ export default {
      */
     showLayer: function (rawLayer, highlightLayer, dispatch, rootGetters) {
         if (rootGetters.treeHighlightedFeatures?.active) {
-            createLayerAddToTree([rawLayer.id], highlightLayer.getSource().getFeatures(), rootGetters.treeType, rootGetters.treeHighlightedFeatures, "common:utils.parametricURL.name");
+            createLayerAddToTree(rawLayer.id, highlightLayer.getSource().getFeatures(), rootGetters.treeType, rootGetters.treeHighlightedFeatures);
         }
         else {
             highlightLayer.setVisible(true);

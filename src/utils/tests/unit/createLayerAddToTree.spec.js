@@ -119,12 +119,12 @@ describe("src/utils/createLayerAddToTree.js", () => {
             sinon.restore();
         });
 
-        it("test create new layer - layerIds is not an array shall do nothing", () => {
-            const layerIds = "idOriginal",
+        it("test create new layer - layerId is null shall do nothing", () => {
+            const layerId = null,
                 features = [{featureId: "featureId"}],
                 treeType = "light";
 
-            createLayerAddToTree(layerIds, features, treeType);
+            createLayerAddToTree(layerId, features, treeType);
 
             expect(addItemCalled).to.be.equals(0);
             expect(addedModelId).to.be.null;
@@ -136,11 +136,11 @@ describe("src/utils/createLayerAddToTree.js", () => {
         });
 
         it("test create new layer - layer does not exist", () => {
-            const layerIds = ["unknown"],
+            const layerId = "unknown",
                 features = [{featureId: "featureId"}],
                 treeType = "light";
 
-            createLayerAddToTree(layerIds, features, treeType);
+            createLayerAddToTree(layerId, features, treeType);
 
             expect(addItemCalled).to.be.equals(1);
             expect(addedModelId).to.be.equals("unknown");
@@ -152,11 +152,11 @@ describe("src/utils/createLayerAddToTree.js", () => {
         });
 
         it("test create new layer and addFeatures, treeType light", () => {
-            const layerIds = ["idOriginal"],
+            const layerId = "idOriginal",
                 features = [{featureId: "featureId"}],
                 treeType = "light";
 
-            createLayerAddToTree(layerIds, features, treeType, treeHighlightedFeatures, "name");
+            createLayerAddToTree(layerId, features, treeType, treeHighlightedFeatures);
 
             expect(addItemCalled).to.be.equals(1);
             expect(addedModelId.indexOf("idOriginal_")).to.be.equals(0);
@@ -169,12 +169,12 @@ describe("src/utils/createLayerAddToTree.js", () => {
         });
 
         it("test use existing layer and addFeatures, treeType light", () => {
-            const layerIds = ["idOriginal"],
+            const layerId = "idOriginal",
                 features = [{featureId: "featureId"}],
                 treeType = "light";
 
             layerInCollection = true;
-            createLayerAddToTree(layerIds, features, treeType, treeHighlightedFeatures, "name");
+            createLayerAddToTree(layerId, features, treeType, treeHighlightedFeatures);
 
             expect(addItemCalled).to.be.equals(0);
             expect(setIsSelectedSpy.calledOnce).to.be.true;
@@ -185,15 +185,15 @@ describe("src/utils/createLayerAddToTree.js", () => {
         });
 
         it("test create new layer and addFeatures, treeType NOT light", () => {
-            const layerIds = ["idOriginal"],
+            const layerId = "idOriginal",
                 features = [{featureId: "featureId"}],
                 treeType = "custom";
 
-            createLayerAddToTree(layerIds, features, treeType, treeHighlightedFeatures, "name");
+            createLayerAddToTree(layerId, features, treeType, treeHighlightedFeatures);
 
             expect(addItemCalled).to.be.equals(1);
             expect(addedModelId.indexOf("idOriginal_")).to.be.equals(0);
-            expect(addItemAttributes.parentId).to.be.equals("markedDataFolder");
+            expect(addItemAttributes.parentId).to.be.equals("SelectedLayer");
             expect(setIsSelectedSpy.calledOnce).to.be.true;
             expect(returnStyleModelCalled).to.be.true;
             expect(styleSetAtNewLayer).to.be.true;
@@ -202,12 +202,12 @@ describe("src/utils/createLayerAddToTree.js", () => {
         });
 
         it("test use existing layer and addFeatures, treeType NOT light", () => {
-            const layerIds = ["idOriginal"],
+            const layerId = "idOriginal",
                 features = [{featureId: "featureId"}],
                 treeType = "custom";
 
             layerInCollection = true;
-            createLayerAddToTree(layerIds, features, treeType, treeHighlightedFeatures, "name");
+            createLayerAddToTree(layerId, features, treeType, treeHighlightedFeatures);
 
             expect(addItemCalled).to.be.equals(0);
             expect(setIsSelectedSpy.calledOnce).to.be.true;

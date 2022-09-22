@@ -104,8 +104,7 @@
         "levelUp": "Level up",
         "levelDown": "Level down",
         "externalTechnicalData": "External technical data",
-        "selectedFeatures": "Marked areas",
-        "selectedData": "Selected data"
+        "selectedFeatures": "Selection:"
     },
     "date": "Date",
     "time": "Time",

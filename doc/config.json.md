@@ -49,7 +49,7 @@ The configuration options listed in the following table exist:
 |searchBar|no|**[searchBar](#markdown-header-portalconfigsearchbar)**||The search bar allows requesting information from various search services at once.|false|
 |layersRemovable|no|Boolean|false|Defines whether layers may be removed from a portal during its run-time.|false|
 |quickHelp|no|**[quickHelp](#markdown-header-portalconfigquickHelp)**||Configuration of new and manipulation of existing QuickHelp windows.|false|
-|treeHighlightedFeatures|no|**[treeHighlightedFeatures](#markdown-header-portalconfigtreehighlightedfeatures)**||Configuration in addition to highlighting features.|false|
+|tree|no|**[tree](#markdown-header-portalconfigtree)**||Configuration of menu tree.|false|
 
 ***
 
@@ -574,24 +574,39 @@ Visible vector layer search configuration. For all vector layers supposed to be 
     }
 }
 ```
-
 ***
-#### Portalconfig.treeHighlightedFeatures
-Configuration in addition to highlighting features. If features are highlighted with the "List" or "Select Features" tool or via url parameter, then a layer with these features is selectable in the menu tree. With the treeType 'default' or 'custom' a folder is created for these layers.
+#### Portalconfig.tree
+Configuration of the menu tree.
+
+|Name|Required|Type|Default|Description|Expert|
+|----|--------|----|-------|-----------|------|
+|highlightedFeatures|no|**[tree](#markdown-header-portalconfigtreehighlightedFeatures)**||Configuration in addition to feature highlighting.|false|
+
+**Example**
+```
+#!json
+"tree":{
+    "highlightedFeatures": {
+        "active": true,
+        "layerName": "common:tree.selectedFeatures"
+    }
+},
+```
+***
+#### Portalconfig.tree.highlightedFeatures
+Configuration in addition to highlighting features. If features are highlighted with the "List" or "Select Features" tool with "Zoom to this Feature" or via url parameter, then a layer with these features is selectable in the menu tree.
 
 |Name|Required|Type|Default|Description|Expert|
 |----|--------|----|-------|-----------|------|
 |active|no|Boolean|false|Indicates whether this feature is active.|false|
 |layerName|no|String|"common:tree.selectedFeatures"|Name of the created layer with the highlighted features. The name also contains the name of the tool that was used.|true|
-|folderName|no|String|"common:tree.selectedData"|Name of the folder in the menu tree that will be added.|false|
 
-**Beispiel**
+**Example**
 ```
 #!json
 "treeHighlightedFeatures": {
     "active": false,
-    "layerName": "common:tree.selectedFeatures",
-    "folderName": "common:tree.selectedData"
+    "layerName": "common:tree.selectedFeatures"
 },
 ```
 ***

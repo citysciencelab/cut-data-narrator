@@ -6,6 +6,12 @@
       "link": "https://geoinfo.hamburg.de",
       "toolTip": "Landesbetrieb Geoinformation und Vermessung"
     },
+    "tree":{
+			"highlightedFeatures": {
+				"active": true,
+				"layerName": "common:tree.selectedFeatures"
+			}
+		},
     "quickHelp": {
       "configs": {
         "search": true,

@@ -207,7 +207,7 @@ describe("api/highlightFeaturesByAttribute", () => {
             expect(await highlightVector.getSource().getFeatures()).to.be.an("array").with.lengthOf(2);
 
             expect(createLayerAddToTreeStub.calledOnce).to.be.true;
-            expect(createLayerAddToTreeStub.firstCall.args[0]).to.be.deep.equals(["123"]);
+            expect(createLayerAddToTreeStub.firstCall.args[0]).to.be.deep.equals("123");
             expect(createLayerAddToTreeStub.firstCall.args[1]).to.be.an("Array");
             expect(createLayerAddToTreeStub.firstCall.args[1].length).to.be.equals(2);
             expect(createLayerAddToTreeStub.firstCall.args[2]).to.be.deep.equals("light");
@@ -241,7 +241,7 @@ describe("api/highlightFeaturesByAttribute", () => {
             expect(await highlightVector.getSource().getFeatures()).to.be.an("array").with.lengthOf(2);
 
             expect(createLayerAddToTreeStub.calledOnce).to.be.true;
-            expect(createLayerAddToTreeStub.firstCall.args[0]).to.be.deep.equals(["012"]);
+            expect(createLayerAddToTreeStub.firstCall.args[0]).to.be.deep.equals("012");
             expect(createLayerAddToTreeStub.firstCall.args[1]).to.be.an("Array");
             expect(createLayerAddToTreeStub.firstCall.args[1].length).to.be.equals(2);
             expect(createLayerAddToTreeStub.firstCall.args[2]).to.be.deep.equals("custom");
@@ -276,7 +276,7 @@ describe("api/highlightFeaturesByAttribute", () => {
             expect(await highlightVector.getSource().getFeatures()).to.be.an("array").with.lengthOf(2);
 
             expect(createLayerAddToTreeStub.calledOnce).to.be.true;
-            expect(createLayerAddToTreeStub.firstCall.args[0]).to.be.deep.equals(["012"]);
+            expect(createLayerAddToTreeStub.firstCall.args[0]).to.be.deep.equals("012");
             expect(createLayerAddToTreeStub.firstCall.args[1]).to.be.an("Array");
             expect(createLayerAddToTreeStub.firstCall.args[1].length).to.be.equals(2);
             expect(createLayerAddToTreeStub.firstCall.args[2]).to.be.deep.equals("custom");

@@ -23,6 +23,9 @@ describe("src/modules/tools/selectFeatures/store/gettersSelectFeatures.js", () =
             id: layerId,
             values_: {
                 id: layerId
+            },
+            get: (key) => {
+                return key;
             }
         };
         feature = {
@@ -59,11 +62,10 @@ describe("src/modules/tools/selectFeatures/store/gettersSelectFeatures.js", () =
             expect(dispatch.getCall(3).args[0]).to.equal("Maps/setZoomLevel");
             expect(dispatch.getCall(3).args[1]).to.deep.equal(state.highlightVectorRulesPointLine.zoomLevel);
             expect(createLayerAddToTreeStub.calledOnce).to.be.true;
-            expect(createLayerAddToTreeStub.firstCall.args[0]).to.be.deep.equals([layerId]);
+            expect(createLayerAddToTreeStub.firstCall.args[0]).to.be.deep.equals(layerId);
             expect(createLayerAddToTreeStub.firstCall.args[1]).to.be.deep.equals([feature]);
             expect(createLayerAddToTreeStub.firstCall.args[2]).to.be.equals("custom");
             expect(createLayerAddToTreeStub.firstCall.args[3]).to.be.deep.equals(rootGetters.treeHighlightedFeatures);
-            expect(createLayerAddToTreeStub.firstCall.args[4]).to.be.equals("common:menu.tools.selectFeatures");
         });
 
         it("highlightFeature treeHighlightedFeatures is not active", () => {
@@ -77,7 +79,7 @@ describe("src/modules/tools/selectFeatures/store/gettersSelectFeatures.js", () =
             expect(dispatch.secondCall.args[1].id).to.equal(feature.id);
             expect(dispatch.secondCall.args[1].type).to.equal("increase");
             expect(dispatch.secondCall.args[1].feature).to.deep.equal(feature);
-            expect(dispatch.secondCall.args[1].layer).to.deep.equal(layerVisible);
+            expect(dispatch.secondCall.args[1].layer.id).to.deep.equal(layerVisible.id);
             expect(dispatch.secondCall.args[1].highlightStyle.fill).to.deep.equal(state.highlightVectorRulesPointLine.fill);
             expect(dispatch.thirdCall.args[0]).to.equal("Maps/setCenter");
             expect(dispatch.thirdCall.args[1]).to.deep.equal([100, 100]);
