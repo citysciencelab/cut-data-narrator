@@ -554,7 +554,7 @@ Konfiguration des Menü-Baums.
 
 |Name|Verpflichtend|Typ|Default|Beschreibung|Expert|
 |----|-------------|---|-------|------------|------|
-|highlightedFeatures|nein|**[tree](#markdown-header-portalconfigtreehighlightedFeatures)**||Konfiguration zusätzlich zum Highlighting von Features.|false|
+|highlightedFeatures|nein|**[highlightedFeatures](#markdown-header-portalconfigtreehighlightedfeatures)**||Konfiguration zusätzlich zum Highlighting von Features.|false|
 
 **Beispiel**
 ```

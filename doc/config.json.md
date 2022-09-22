@@ -580,7 +580,7 @@ Configuration of the menu tree.
 
 |Name|Required|Type|Default|Description|Expert|
 |----|--------|----|-------|-----------|------|
-|highlightedFeatures|no|**[tree](#markdown-header-portalconfigtreehighlightedFeatures)**||Configuration in addition to feature highlighting.|false|
+|highlightedFeatures|no|**[highlightedFeatures](#markdown-header-portalconfigtreehighlightedfeatures)**||Configuration in addition to feature highlighting.|false|
 
 **Example**
 ```
