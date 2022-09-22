@@ -18,7 +18,7 @@ export default {
         ToolTemplate
     },
     computed: {
-        ...mapGetters(["ignoredKeys", "treeType"]),
+        ...mapGetters(["ignoredKeys"]),
         ...mapGetters("Tools/SelectFeatures", Object.keys(getters))
     },
     watch: {
@@ -38,7 +38,6 @@ export default {
     },
     methods: {
         ...mapMutations("Tools/SelectFeatures", Object.keys(mutations)),
-        ...mapMutations("Maps", ["addLayerToMap", "removeLayerFromMap"]),
         ...mapActions("Maps", {
             addInteractionToMap: "addInteraction",
             removeInteractionFromMap: "removeInteraction"
@@ -113,9 +112,7 @@ export default {
                     layer => {
                         layer.get("source").forEachFeatureIntersectingExtent(
                             extent,
-                            feature => {
-                                this.prepareFeature(layer, feature);
-                            }
+                            feature => this.prepareFeature(layer, feature)
                         );
                     }
                 );
