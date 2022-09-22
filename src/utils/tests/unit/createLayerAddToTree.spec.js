@@ -6,40 +6,13 @@ describe("src/utils/createLayerAddToTree.js", () => {
     let styleSetAtNewLayer = false,
         addedFeatures = null,
         setIsSelectedSpy,
+        originalLayer,
+        newLayer,
         createdLayer;
-
-    const newLayer = {
-            getSource: () => {
-                return {
-                    addFeatures: (features) => {
-                        addedFeatures = features;
-                    },
-                    getFeatures: () => {
-                        return addedFeatures ? [...addedFeatures] : [];
-                    }
-                };
-            },
-            setStyle: () => {
-                styleSetAtNewLayer = true;
-            }
-
-        },
-        originalLayer = {
-            id: "idOriginal",
-            get: (key) => {
-                if (key === "layer") {
-                    return {};
-                }
-                return null;
-            },
-            setIsSelected: sinon.stub(),
-            attributes: {}
-        },
-        treeHighlightedFeatures = {
-            active: true,
-            layerName: "common:tree.selectedFeatures",
-            folderName: "common:tree.selectedData"
-        };
+    const treeHighlightedFeatures = {
+        active: true,
+        layerName: "common:tree.selectedFeatures"
+    };
 
     describe("createLayerAddToTree", () => {
         let addItemCalled = 0,
@@ -74,20 +47,52 @@ describe("src/utils/createLayerAddToTree.js", () => {
                 },
                 setIsSelected: setIsSelectedSpy
             };
+            newLayer = {
+                getSource: () => {
+                    return {
+                        addFeatures: (features) => {
+                            addedFeatures = features;
+                        },
+                        getFeatures: () => {
+                            return addedFeatures ? [...addedFeatures] : [];
+                        }
+                    };
+                },
+                setStyle: () => {
+                    styleSetAtNewLayer = true;
+                }
+
+            };
+            originalLayer = {
+                id: "idOriginal",
+                name: "originalName",
+                get: (key) => {
+                    if (key === "layer") {
+                        return {};
+                    }
+                    if (key === "name") {
+                        return "originalName";
+                    }
+                    return null;
+                },
+                setIsSelected: sinon.stub(),
+                attributes: {}
+            };
             sinon.stub(Radio, "request").callsFake((...args) => {
                 let ret = null;
-
 
                 args.forEach(arg => {
                     if (arg === "getModelByAttributes") {
                         if (args[2].id === "idOriginal") {
                             ret = originalLayer;
-                        }// name -> layerName
-                        else if (args[2].id?.indexOf("_") > -1) {
-                            ret = createdLayer;
                         }
-                        else if (layerInCollection && args[2].name.indexOf("tree.selectedFeatures") > -1) {
-                            ret = createdLayer;
+                        else if (args[2].id?.indexOf("_") > -1) {
+                            if (layerInCollection) {
+                                ret = createdLayer;
+                            }
+                            else {
+                                layerInCollection = true;
+                            }
                         }
                     }
                     if (arg === "returnModelById") {

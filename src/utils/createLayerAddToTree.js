@@ -33,7 +33,7 @@ function createLayerAddToTree (layerId, features, treeType, thfConfig = {}) {
             refreshTree(treeType);
         }
         else {
-            console.warn("Layer with id ", layerId, " not found, with features was not created!");
+            console.warn("Layer with id ", layerId, " not found, layer with features was not created!");
         }
     }
 }
@@ -106,7 +106,6 @@ function setAttributes (layer, id, layerName, layerNameKey, treeType) {
             setter("name", i18next.t(layerNameKey) + " " + attributes.name);
         }
     };
-
     return attributes;
 }
 
@@ -122,9 +121,7 @@ function setStyle (layer, styleId) {
 
     if (styleModel !== undefined) {
         layer.get("layer").setStyle((feature) => {
-            const feat = feature !== undefined ? feature : this;
-
-            return styleModel.createStyle(feat, false);
+            return styleModel.createStyle(feature, false);
         });
     }
 }
