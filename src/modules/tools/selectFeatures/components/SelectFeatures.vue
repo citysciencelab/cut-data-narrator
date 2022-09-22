@@ -9,7 +9,6 @@ import getters from "../store/gettersSelectFeatures";
 import mutations from "../store/mutationsSelectFeatures";
 
 import {isUrl} from "../../../../utils/urlHelper";
-import {createLayerAddToTree} from "../../../../utils/createLayerAddToTree";
 import {isEmailAddress} from "../../../../utils/isEmailAddress.js";
 import {isPhoneNumber, getPhoneNumberAsWebLink} from "../../../../utils/isPhoneNumber.js";
 
@@ -19,7 +18,7 @@ export default {
         ToolTemplate
     },
     computed: {
-        ...mapGetters(["ignoredKeys", "treeType", "treeHighlightedFeatures"]),
+        ...mapGetters(["ignoredKeys", "treeType"]),
         ...mapGetters("Tools/SelectFeatures", Object.keys(getters))
     },
     watch: {
@@ -105,9 +104,7 @@ export default {
          * @returns {void}
          */
         setFeaturesFromDrag: function () {
-            const extent = this.dragBoxInteraction.getGeometry().getExtent(),
-                features = [],
-                layers = [];
+            const extent = this.dragBoxInteraction.getGeometry().getExtent();
 
             mapCollection.getMap("2D").getLayers()
                 .getArray()
@@ -118,15 +115,10 @@ export default {
                             extent,
                             feature => {
                                 this.prepareFeature(layer, feature);
-                                features.push(feature);
                             }
                         );
-                        layers.push(layer.get("id"));
                     }
                 );
-            if (this.treeHighlightedFeatures?.active) {
-                createLayerAddToTree(layers, features, this.treeType, this.treeHighlightedFeatures, "common:menu.tools.selectFeatures");
-            }
         },
 
         /**
@@ -310,7 +302,7 @@ export default {
                 selected = this.selectedFeaturesWithRenderInformation[featureIndex];
 
             mapCollection.getMap(this.$store.state.Maps.mode).getView().fit(selected.item.getGeometry());
-            this.highlightFeature({featureId: selected.item, layerId: selected.layerId});
+            this.highlightFeature({feature: selected.item, layerId: selected.layerId});
         },
 
         /**

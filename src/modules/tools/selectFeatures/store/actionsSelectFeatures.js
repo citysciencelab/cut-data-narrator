@@ -1,25 +1,28 @@
 import {getLayerWhere} from "@masterportal/masterportalapi/src/rawLayerList";
+import {createLayerAddToTree} from "../../../../utils/createLayerAddToTree";
 import {getCenter} from "ol/extent";
 
 export default {
     /**
      * Highlights a feature depending on its geometryType.
+     * If config parameter 'treeHighlightedFeatures' is active, a layer containing the highlighted feature is added to menu tree.
      * @param {Object} param.state the state
      * @param {Object} param.dispatch the dispatch
-     * @param {String} feature id of the feature to be highlighted.
+     * @param {String} feature feature to be highlighted
+     * @param {String} layerId id of the dedicated layer
      * @returns {void}
      */
-    highlightFeature ({state, rootGetters, dispatch}, {featureId, layerId}) {
+    highlightFeature ({state, rootGetters, dispatch}, {feature, layerId}) {
         dispatch("Maps/removeHighlightFeature", "decrease", {root: true});
         const layer = rootGetters["Maps/getVisibleLayerList"].find((l) => l.values_.id === layerId),
-            featureGeometryType = featureId.getGeometry().getType(),
-            featureIdString = featureId.getId(),
+            featureGeometryType = feature.getGeometry().getType(),
+            featureId = feature.getId(),
             styleObj = featureGeometryType.toLowerCase().indexOf("polygon") > -1 ? state.highlightVectorRulesPolygon : state.highlightVectorRulesPointLine,
             highlightObject = {
                 type: featureGeometryType === "Point" || featureGeometryType === "MultiPoint" ? "increase" : "highlightPolygon",
-                id: featureIdString,
+                id: featureId,
                 layer: layer,
-                feature: featureId,
+                feature: feature,
                 scale: styleObj.image?.scale
             },
             rawLayer = getLayerWhere({id: layerId});
@@ -45,12 +48,15 @@ export default {
 
         if (styleObj && styleObj.zoomLevel) {
             if (featureGeometryType === "Point") {
-                dispatch("Maps/setCenter", featureId.getGeometry().getCoordinates(), {root: true});
+                dispatch("Maps/setCenter", feature.getGeometry().getCoordinates(), {root: true});
             }
             else {
-                dispatch("Maps/setCenter", getCenter(featureId.getGeometry().getExtent()), {root: true});
+                dispatch("Maps/setCenter", getCenter(feature.getGeometry().getExtent()), {root: true});
             }
             dispatch("Maps/setZoomLevel", styleObj.zoomLevel, {root: true});
+        }
+        if (rootGetters.treeHighlightedFeatures?.active) {
+            createLayerAddToTree([layerId], [feature], rootGetters.treeType, rootGetters.treeHighlightedFeatures, "common:menu.tools.selectFeatures");
         }
     }
 };

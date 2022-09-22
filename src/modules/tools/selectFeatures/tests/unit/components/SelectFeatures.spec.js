@@ -1,11 +1,8 @@
 import Vuex from "vuex";
 import VectorLayer from "ol/layer/Vector.js";
-import VectorSource from "ol/source/Vector.js";
-import Feature from "ol/Feature.js";
 import {config, shallowMount, createLocalVue} from "@vue/test-utils";
 import SelectFeaturesComponent from "../../../components/SelectFeatures.vue";
 import SelectFeaturesModule from "../../../store/indexSelectFeatures";
-import * as clatt from "../../../../../../utils/createLayerAddToTree";
 import {expect} from "chai";
 import sinon from "sinon";
 
@@ -45,10 +42,9 @@ describe("src/modules/tools/selectFeatures/components/SelectFeatures.vue", () =>
             }
         ];
 
-    let store, map, layer1, layer2, createLayerAddToTreeStub, treeHighlightedFeatures;
+    let store, map, layer1, layer2;
 
     beforeEach(() => {
-        treeHighlightedFeatures = false;
         layer1 = new VectorLayer();
         layer2 = new VectorLayer();
         map = {
@@ -76,10 +72,7 @@ describe("src/modules/tools/selectFeatures/components/SelectFeatures.vue", () =>
             },
             getters: {
                 uiStyle: () => true,
-                treeType: () => "light",
-                treeHighlightedFeatures: () => {
-                    return {active: treeHighlightedFeatures};
-                }
+                treeType: () => "light"
             },
             state: {
                 configJson: mockConfigJson
@@ -87,7 +80,6 @@ describe("src/modules/tools/selectFeatures/components/SelectFeatures.vue", () =>
         });
         mapCollection.clear();
         mapCollection.addMap(map, "2D");
-        createLayerAddToTreeStub = sinon.spy(clatt, "createLayerAddToTree");
         store.commit("Tools/SelectFeatures/setActive", true);
     });
 
@@ -132,49 +124,5 @@ describe("src/modules/tools/selectFeatures/components/SelectFeatures.vue", () =>
         expect(wrapper.vm.isValidValue("NULL")).to.equal(false);
         expect(wrapper.vm.isValidValue(1)).to.equal(false);
         expect(wrapper.vm.isValidValue("Wert")).to.equal(true);
-    });
-
-    it("setFeaturesFromDrag shall call createLayerAddToTree", async () => {
-        let wrapper = null;
-
-        treeHighlightedFeatures = true;
-        store.state.Tools.SelectFeatures.dragBoxInteraction = {
-            getGeometry: () => {
-                return {
-                    getExtent: () => [100, 2000]
-                };
-            }
-        };
-        layer1.setSource(new VectorSource());
-        layer1.set("visible", true);
-        layer1.set("id", "id");
-        layer1.getSource().addFeature(new Feature());
-        wrapper = shallowMount(SelectFeaturesComponent, {store, localVue});
-        wrapper.vm.setFeaturesFromDrag();
-
-        expect(createLayerAddToTreeStub.calledOnce).to.be.true;
-        expect(createLayerAddToTreeStub.firstCall.args[0]).to.be.deep.equals(["id"]);
-        expect(createLayerAddToTreeStub.firstCall.args[1]).to.be.deep.equals([]);
-        expect(createLayerAddToTreeStub.firstCall.args[2]).to.be.deep.equals("light");
-    });
-    it("setFeaturesFromDrag shall not call createLayerAddToTree", async () => {
-        let wrapper = null;
-
-        store.state.Tools.SelectFeatures.dragBoxInteraction = {
-            getGeometry: () => {
-                return {
-                    getExtent: () => [100, 2000]
-                };
-            }
-        };
-        layer1.setSource(new VectorSource());
-        layer1.set("visible", true);
-        layer1.set("id", "id");
-        layer1.getSource().addFeature(new Feature());
-
-        wrapper = shallowMount(SelectFeaturesComponent, {store, localVue});
-        wrapper.vm.setFeaturesFromDrag();
-
-        expect(createLayerAddToTreeStub.notCalled).to.be.true;
     });
 });
