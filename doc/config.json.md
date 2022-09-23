@@ -604,7 +604,7 @@ Configuration in addition to highlighting features. If features are highlighted 
 **Example**
 ```
 #!json
-"treeHighlightedFeatures": {
+"highlightedFeatures": {
     "active": false,
     "layerName": "common:tree.selectedFeatures"
 },

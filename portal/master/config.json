@@ -8,8 +8,7 @@
     },
     "tree":{
 			"highlightedFeatures": {
-				"active": true,
-				"layerName": "common:tree.selectedFeatures"
+				"active": true
 			}
 		},
     "quickHelp": {

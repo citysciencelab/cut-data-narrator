@@ -579,7 +579,7 @@ Konfiguration zusätzlich zum Highlighting von Features. Wenn mit dem Werkzeug "
 **Beispiel**
 ```
 #!json
-"treeHighlightedFeatures": {
+"highlightedFeatures": {
     "active": false,
     "layerName": "common:tree.selectedFeatures"
 },

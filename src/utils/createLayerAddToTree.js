@@ -75,9 +75,6 @@ function refreshTree (treeType) {
     if (treeType === "light") {
         Radio.trigger("ModelList", "refreshLightTree");
     }
-    else {
-        Radio.trigger("ModelList", "renderTree");
-    }
 }
 
 /**

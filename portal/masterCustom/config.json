@@ -6,6 +6,12 @@
         "tree": true
       }
     },
+    "tree":{
+      "highlightedFeatures": {
+          "active": true,
+          "layerName": "common:tree.selectedFeatures"
+      }
+    },
     "searchBar": {
       "minChars": 3,
       "gazetteer": {
