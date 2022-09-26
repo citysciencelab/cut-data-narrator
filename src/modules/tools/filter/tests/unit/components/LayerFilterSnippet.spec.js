@@ -2,7 +2,7 @@ import Vuex from "vuex";
 import {config, shallowMount, createLocalVue} from "@vue/test-utils";
 import LayerFilterSnippet from "../../../components/LayerFilterSnippet.vue";
 import {expect} from "chai";
-
+import MapHandler from "../../../utils/mapHandler.js";
 const localVue = createLocalVue();
 
 localVue.use(Vuex);
@@ -19,7 +19,10 @@ describe("src/modules/tools/filter/components/LayerFilterSnippet.vue", () => {
                     service: {
                         type: "something external"
                     }
-                }
+                },
+                mapHandler: new MapHandler({
+                    isLayerActivated: () => false
+                })
             },
             localVue
         });

@@ -86,9 +86,13 @@ describe("tools/filter/store/actionsFilter", () => {
         it("serialize the state", done => {
             const rulesOfFilters = state.rulesOfFilters,
                 selectedAccordions = state.selectedAccordions,
+                geometryFeature = {},
+                geometrySelectorOptions = state.geometrySelectorOptions,
                 result = {
                     rulesOfFilters,
-                    selectedAccordions
+                    selectedAccordions,
+                    geometryFeature,
+                    geometrySelectorOptions
                 },
                 serializiedString = JSON.stringify(result);
 
@@ -103,14 +107,22 @@ describe("tools/filter/store/actionsFilter", () => {
         it("deserialize the state", done => {
             const rulesOfFilters = [],
                 selectedAccordions = [],
+                geometryFeature = {},
+                geometrySelectorOptions = {
+                    invertGeometry: true
+                },
                 payload = {
                     rulesOfFilters,
-                    selectedAccordions
+                    selectedAccordions,
+                    geometryFeature,
+                    geometrySelectorOptions
                 };
 
             testAction(deserializeState, payload, state, {}, [
                 {type: "setRulesArray", payload: {rulesOfFilters}, dispatch: true},
                 {type: "setSelectedAccordions", payload: selectedAccordions, commit: true},
+                {type: "setGeometryFilterByFeature", payload: {jsonFeature: geometryFeature, invert: true}, dispatch: true},
+                {type: "setGeometrySelectorOptions", payload: geometrySelectorOptions, commit: true},
                 {type: "setActive", payload: true, commit: true}
             ], {}, done);
         });

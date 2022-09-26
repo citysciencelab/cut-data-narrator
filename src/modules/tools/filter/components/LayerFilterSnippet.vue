@@ -197,6 +197,13 @@ export default {
         if (typeof this.filterHits === "number" && !this.isStrategyActive()) {
             this.amountOfFilteredItems = this.filterHits;
         }
+        if (!this.mapHandler.isLayerActivated(this.layerConfig.filterId)
+            && isObject(this.filterGeometry)
+            && typeof this.isLayerFilterSelected === "function"
+            && this.isLayerFilterSelected(this.layerConfig.filterId)
+            || this.isLayerFilterSelected === true) {
+            this.handleActiveStrategy();
+        }
     },
     methods: {
         isRule,

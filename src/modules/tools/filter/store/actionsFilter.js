@@ -1,5 +1,10 @@
 import {isRule} from "../utils/isRule.js";
+import {GeoJSON} from "ol/format.js";
+import {
+    Polygon
+} from "ol/geom";
 import FilterConfigConverter from "../utils/filterConfigConverter.js";
+import isObject from "../../../../utils/isObject.js";
 
 export default {
     /**
@@ -132,9 +137,13 @@ export default {
     serializeState: (context) => {
         const rulesOfFilters = context.state.rulesOfFilters,
             selectedAccordions = context.state.selectedAccordions,
+            geometrySelectorOptions = context.state.geometrySelectorOptions,
+            geometryFeature = getGeometryFeature(context.state.geometryFeature, geometrySelectorOptions.invertGeometry),
             result = {
                 rulesOfFilters,
-                selectedAccordions
+                selectedAccordions,
+                geometryFeature,
+                geometrySelectorOptions
             };
         let resultString = "";
 
@@ -171,7 +180,72 @@ export default {
             });
             context.dispatch("setRulesArray", {rulesOfFilters: rulesOfFiltersCopy});
             context.commit("setSelectedAccordions", selectedAccordions);
+            context.dispatch("setGeometryFilterByFeature", {jsonFeature: payload?.geometryFeature, invert: payload?.geometrySelectorOptions?.invertGeometry});
+            context.commit("setGeometrySelectorOptions", payload?.geometrySelectorOptions);
             context.commit("setActive", true);
         }
+    },
+    /**
+     * Sets the geometryFilter by given feature.
+     * @param {Object} context the context Vue instance.
+     * @param {Object} payload The payload.
+     * @param {Object} payload.jsonFeature The feature as json.
+     * @param {Object} payload.invert True if geometry should be inverted.
+     * @returns {void}
+     */
+    setGeometryFilterByFeature (context, {jsonFeature, invert}) {
+        if (!jsonFeature) {
+            return;
+        }
+        let feature;
+
+        try {
+            feature = new GeoJSON().readFeature(jsonFeature);
+        }
+        catch (error) {
+            context.dispatch("Alerting/addSingleAlert",
+                i18next.t("common:modules.tools.filter.upload.geometryParseError"),
+                {root: true}
+            );
+            return;
+        }
+        const cleanGeometryFromFeature = feature.getGeometry(),
+            geometryWithInvert = new Polygon([
+                [
+                    [-1877994.66, 3932281.56],
+                    [-1877994.66, 9494203.2],
+                    [804418.76, 9494203.2],
+                    [804418.76, 3932281.56],
+                    [-1877994.66, 3932281.56]
+                ],
+                cleanGeometryFromFeature.getCoordinates()[0]
+            ]);
+
+        if (invert && isObject(feature) && typeof feature.setGeometry === "function") {
+            feature.setGeometry(geometryWithInvert);
+        }
+        context.commit("setGeometryFeature", feature);
+        context.commit("setFilterGeometry", cleanGeometryFromFeature);
     }
 };
+/**
+ * Gets the feature as GeoJSON parsed.
+ * @param {ol/Feature} feature The ol feature.
+ * @param {Boolean} invert True if feature has inverted geometry.
+ * @returns {Object} The JSON object.
+ */
+function getGeometryFeature (feature, invert) {
+    if (typeof feature?.getGeometry !== "function") {
+        return {};
+    }
+
+    const coordinates = feature.getGeometry().getCoordinates()[1],
+        geometryFeature = feature.clone();
+
+    if (invert) {
+        geometryFeature.setGeometry(new Polygon([
+            coordinates
+        ]));
+    }
+    return JSON.parse(new GeoJSON().writeFeature(geometryFeature));
+}

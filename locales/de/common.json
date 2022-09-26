@@ -469,6 +469,9 @@
                 "download": {
                     "label": "Gefilterte Daten herunterladen",
                     "labelBtn": "Herunterladen"
+                },
+                "upload": {
+                    "geometryParseError": "Die angegebene Geometry konnte nicht geladen werden"
                 }
             },
             "pendler": {

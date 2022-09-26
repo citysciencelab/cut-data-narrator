@@ -469,6 +469,9 @@
                 "download": {
                     "label": "Download filtered data",
                     "labelBtn": "Download"
+                },
+                "upload": {
+                    "geometryParseError": "Could not parse given geometry"
                 }
             },
             "pendler": {
