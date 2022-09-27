@@ -99,6 +99,17 @@ export default {
                         this.$refs["close-icon"].focus();
                     }
                 }
+
+                if (this.uiStyle === "TABLE") {
+                    const el = this.$refs["tool-div"];
+
+                    if (newValue && el) {
+                        el.style.display = "block";
+                    }
+                    else if (el) {
+                        el.style.display = "none";
+                    }
+                }
             });
 
         }
@@ -188,6 +199,7 @@ export default {
     <div
         v-if="active"
         :id="renderToWindowMobile ? '' : 'tool-sidebar-vue'"
+        ref="tool-div"
         :class="{
             'tool-window-vue': renderToWindowMobile,
             'table-tool-win-all-vue': uiStyle === 'TABLE',
@@ -408,6 +420,7 @@ export default {
     }
 
     .table-tool-win-all-vue {
+        display:none;
         border-radius: 12px;
         margin-bottom: 30px;
         .win-heading {
