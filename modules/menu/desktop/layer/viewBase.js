@@ -198,7 +198,12 @@ const LayerBaseView = Backbone.View.extend(/** @lends LayerBaseView.prototype */
             focusElementSelector = this.$el.find(selector);
         }
         else {
-            focusElementSelector = this.$el.find("#" + this.model.get("domId"));
+            try {
+                focusElementSelector = this.$el.find("#" + this.model.get("domId"));
+            }
+            catch (e) {
+                focusElementSelector = document.getElementById(this.model.get("domId"));
+            }
         }
         if (focusElementSelector) {
             focusElementSelector.focus();
