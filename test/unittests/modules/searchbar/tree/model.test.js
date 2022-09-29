@@ -79,7 +79,11 @@ describe("modules/searchbar/tree", function () {
 
         it("All layers should stay inside, because buttonOblique and button3d are true", function () {
             const controlsConfig = {
-                buttonOblique: true,
+                startTool: {
+                    "tools": [
+                        "obliqueViewer"
+                    ]
+                },
                 button3d: true
             };
 
@@ -90,7 +94,11 @@ describe("modules/searchbar/tree", function () {
 
         it("Layers of type TERRAIN3D and TILESET3D are taken, because buttonOblique is true and button3d false", function () {
             const controlsConfig = {
-                buttonOblique: true,
+                startTool: {
+                    "tools": [
+                        "obliqueViewer"
+                    ]
+                },
                 button3d: false
             };
 
@@ -114,7 +122,9 @@ describe("modules/searchbar/tree", function () {
 
         it("Layers of type OBLIQUE are taken, because buttonOblique is false and button3d true", function () {
             const controlsConfig = {
-                buttonOblique: false,
+                startTool: {
+                    "tools": []
+                },
                 button3d: true
             };
 
@@ -142,7 +152,9 @@ describe("modules/searchbar/tree", function () {
 
         it("Layers of type TERRAIN3D, TILESET3D and OBLIQUE are taken, because buttonOblique and button3d are true", function () {
             const controlsConfig = {
-                buttonOblique: false,
+                startTool: {
+                    "tools": []
+                },
                 button3d: false
             };
 

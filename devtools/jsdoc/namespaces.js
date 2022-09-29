@@ -34,12 +34,6 @@
  */
 
 /**
- * @namespace ButtonOblique
- * @memberof Controls
- * @description Button to activate oblique pictures.
- */
-
-/**
  * @namespace Freeze
  * @memberof Controls
  * @description Button to freeze the current view of the application. Useful to avoid accidentally change of map e.g. on a touch table.

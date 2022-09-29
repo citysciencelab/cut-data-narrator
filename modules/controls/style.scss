@@ -275,21 +275,3 @@
         cursor: default;
     }
 }
-/***** Oblique *****/
-.buttonOblique {
-    margin-top: 1.25rem;
-}
-.buttonOblique > .bootstrap-icon {
-    font-size: 1.4rem;
-    margin-top: .2rem;
-    padding: .375rem .44rem .19rem .44rem;
-    border: 0;
-}
-
-@media (max-width: 767px) {
-    .attributions-view {
-        dl {
-            max-width: calc(100vw - 35px);
-        }
-    }
-}

@@ -17,21 +17,6 @@ async function prepare3D (driver) {
 }
 
 /**
- * Activates OB mode for opened Masterportal.
- * This is prepared here to rerun universally applicable tests
- * in multiple modes. Turning the OB mode on/off and other
- * mode-specific tests are done from 2D mode in separate files.
- * @param {selenium.webdriver.Driver} driver to manipulate
- * @returns {void}
- */
-async function prepareOB (driver) {
-    await driver.wait(until.elementLocated(By.css("#buttonOblique")));
-    await (await driver.findElement(By.css("#buttonOblique"))).click();
-    // downloads >42MB before setting compass, give it some time
-    await driver.wait(until.elementLocated(By.css("#orientation3d .control-box-container.oblique #zoom-in")), 120000);
-}
-
-/**
  * Loads url and waits until loading overlays are hidden and backbone is initialized.
  * Will also prepare mode.
  * @param {selenium-webdriver.driver} driver driver object
@@ -51,9 +36,6 @@ async function loadUrl (driver, url, mode) {
     // prepare 3D resp. OB mode for tests - 2D mode is initial mode, nothing to do
     if (mode === "3D") {
         await prepare3D(driver);
-    }
-    else if (mode === "OB") {
-        await prepareOB(driver);
     }
 }
 

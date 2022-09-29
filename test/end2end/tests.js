@@ -62,8 +62,6 @@ function tests (builder, url, browsername, resolution, config, mode, capability)
                 require("../../src/modules/controls/backForward/tests/end2end/BackForward.e2e.js"),
                 // TODO - uncommented Button3D because the pipeline takes too long
                 // require("./tests/modules/controls/Button3D.js"),
-                // TODO pull OB to different suites array - maybe depending on environment variable? up for discussion
-                // require("./tests/modules/controls/ButtonOblique.js"),
                 require("../../src/modules/controls/freeze/tests/end2end/Freeze.e2e.js"),
                 require("../../src/modules/controls/fullScreen/tests/end2end/FullScreen.e2e.js"),
                 require("../../src/modules/controls/orientation/tests/end2end/Orientation.e2e.js"),

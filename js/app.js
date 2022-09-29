@@ -44,7 +44,6 @@ import TreeFilterView from "../modules/treeFilter/view";
 import ControlsView from "../modules/controls/view";
 import SearchbarView from "../modules/searchbar/view";
 import Button3DView from "../modules/controls/button3d/view";
-import ButtonObliqueView from "../modules/controls/buttonOblique/view";
 import Orientation3DView from "../modules/controls/orientation3d/view";
 import VirtualcityModel from "../modules/tools/virtualCity/model";
 import LoaderOverlay from "../src/utils/loaderOverlay";
@@ -208,13 +207,6 @@ async function loadApp () {
                     if (control.attr === true) {
                         element = controlsView.addRowTR(control.id);
                         new Button3DView({el: element});
-                    }
-                    break;
-                }
-                case "buttonOblique": {
-                    if (control.attr === true) {
-                        element = controlsView.addRowTR(control.id);
-                        new ButtonObliqueView({el: element});
                     }
                     break;
                 }
