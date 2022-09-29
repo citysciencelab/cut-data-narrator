@@ -1683,6 +1683,7 @@ If you use this tool in conjunction with external filtering (`external`: `true`)
 |strokeWidth|no|Number|1|The thickness of the border of the geometry.|false|
 |defaultBuffer|no|Number|20|The geometry "LineString" is given a buffer (in meters) to make the LineString a "tube". This is the default distance from the center to the edge in meters.|false|
 |circleSides|no|Number|256|The geometry "Circle" is converted to a polygon for technical reasons. This is the number of polygon points of the resulting geometry.|false|
+|additionalGeometries|no|Boolean|false|Geometries from a layer can additionally be added to the filter by the id. In that case, an attribute for the name of the geometry must also be specified.|false|
 
 **Example**
 
@@ -1707,7 +1708,13 @@ Example of a complete configuration with the default settings of the filterGeome
     "invertGeometry": true,
     "fillColor": "rgba(0, 0, 0, 0.33)",
     "strokeColor": "rgba(0, 0, 0, 1)",
-    "strokeWidth": 1
+    "strokeWidth": 1,
+    "additionalGeometries": [
+        {
+            "layerId": "1692",
+            "attrNameForTitle": "bezirk_name"
+        }
+    ]
 }
 ```
 

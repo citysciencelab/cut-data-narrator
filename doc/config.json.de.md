@@ -1620,6 +1620,7 @@ Sollten Sie dieses Tool in Verbindung mit externer Filterung nutzen (`extern`: `
 |strokeWidth|nein|Number|1|Die Dicke der Umrandung der Geometrie.|false|
 |defaultBuffer|nein|Number|20|Der Geometrie "LineString" wird ein Buffer (in Metern) gegeben, um aus dem LineString einen "Schlauch" zu machen. Dies ist der Standard-Abstand von der Mitte zum Rand in Metern.|false|
 |circleSides|nein|Number|256|Die Geometrie "Circle" wird aus technischen Gründen in ein Polygon konvertiert. Dies ist die Anzahl der Polygon-Punkte der resultierenden Geometrie.|false|
+|additionalGeometries|nein|Boolean|false|Geometrien aus einem Layer können dem Filter über die Layer-ID hinzugefügt werden. Zusätzlich muss ein Attribut für den Namen der Geometrie angegeben werden.|false|
 
 **Beispiel**
 
@@ -1644,7 +1645,13 @@ Beispiel für eine vollständige Konfiguration mit den Standard-Einstellungen de
     "invertGeometry": true,
     "fillColor": "rgba(0, 0, 0, 0.33)",
     "strokeColor": "rgba(0, 0, 0, 1)",
-    "strokeWidth": 1
+    "strokeWidth": 1,
+        "additionalGeometries": [
+        {
+            "layerId": "1692",
+            "attrNameForTitle": "bezirk_name"
+        }
+    ]
 }
 ```
 

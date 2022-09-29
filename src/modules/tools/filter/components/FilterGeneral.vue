@@ -23,6 +23,9 @@ import {
 import FilterList from "./FilterList.vue";
 import isObject from "../../../../utils/isObject.js";
 import GeometryFilter from "./GeometryFilter.vue";
+import {getLayerWhere} from "@masterportal/masterportalapi/src/rawLayerList";
+import {getFeatureGET} from "../../../../api/wfs/getFeature";
+import {WFS} from "ol/format.js";
 
 export default {
     name: "FilterGeneral",
@@ -61,6 +64,7 @@ export default {
     },
     created () {
         this.$on("close", this.close);
+        this.getFeaturesOfAdditionalGeometries(this.geometrySelectorOptions.additionalGeometries);
     },
     mounted () {
         this.convertConfig({
@@ -94,6 +98,26 @@ export default {
                 model.set("isActive", false);
             }
         },
+
+        /**
+         * Gets the features of the additional geometries by the given layer id.
+         * @param {Object[]} additionalGeometries - The additional geometries.
+         * @param {String} additionalGeometries[].layerId - The id of the layer.
+         * @returns {void}
+         */
+        async getFeaturesOfAdditionalGeometries (additionalGeometries) {
+            if (additionalGeometries) {
+                const wfsReader = new WFS();
+
+                for (const additionalGeometry of additionalGeometries) {
+                    const rawLayer = getLayerWhere({id: additionalGeometry.layerId}),
+                        features = await getFeatureGET(rawLayer.url, {version: rawLayer.version, featureType: rawLayer.featureType});
+
+                    additionalGeometry.features = wfsReader.readFeatures(features);
+                }
+            }
+        },
+
         /**
          * Update selectedAccordions array.
          * @param {String[]|String} filterIds ids which should be added or removed
@@ -233,17 +257,17 @@ export default {
                     :circle-sides="geometrySelectorOptions.circleSides"
                     :default-buffer="geometrySelectorOptions.defaultBuffer"
                     :geometries="geometrySelectorOptions.geometries"
+                    :additional-geometries="geometrySelectorOptions.additionalGeometries"
                     :invert-geometry="geometrySelectorOptions.invertGeometry"
                     :fill-color="geometrySelectorOptions.fillColor"
                     :stroke-color="geometrySelectorOptions.strokeColor"
                     :stroke-width="geometrySelectorOptions.strokeWidth"
                     :filter-geometry="filterGeometry"
                     :geometry-feature="geometryFeature"
-                    :selected-geometry-index="geometrySelectorOptions.selectedGeometry"
+                    :init-selected-geometry-index="geometrySelectorOptions.selectedGeometry"
                     @updateFilterGeometry="updateFilterGeometry"
                     @updateGeometryFeature="updateGeometryFeature"
                     @updateGeometrySelectorOptions="updateGeometrySelectorOptions"
-                    @setGfiActive="setGfiActive"
                 />
                 <FilterList
                     v-if="Array.isArray(layerConfigs) && layerConfigs.length && layerSelectorVisible"

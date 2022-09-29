@@ -10,9 +10,12 @@ import {
     LineString,
     LinearRing,
     Point,
-    Polygon
+    Polygon,
+    MultiPolygon
 } from "ol/geom";
 import isObject from "../../../../utils/isObject.js";
+import {translateKeyWithPlausibilityCheck} from "../../../../utils/translateKeyWithPlausibilityCheck.js";
+import sortBy from "../../../../utils/sortBy";
 
 export default {
     name: "GeometryFilter",
@@ -36,6 +39,11 @@ export default {
             type: Array,
             required: false,
             default: () => ["Polygon", "Rectangle", "Circle", "LineString"]
+        },
+        additionalGeometries: {
+            type: [Array, Boolean],
+            required: false,
+            default: false
         },
         invertGeometry: {
             type: Boolean,
@@ -62,7 +70,7 @@ export default {
             required: false,
             default: undefined
         },
-        selectedGeometryIndex: {
+        initSelectedGeometryIndex: {
             type: Number,
             required: false,
             default: 0
@@ -74,17 +82,26 @@ export default {
             buffer: this.defaultBuffer,
             isBufferInputVisible: false,
             isGeometryVisible: false,
-            selectedGeometry: this.selectedGeometryIndex
+            selectedGeometryIndex: this.initSelectedGeometryIndex
         };
     },
     watch: {
-        selectedGeometry () {
+        selectedGeometryIndex (newValue) {
+            const selectedGeometry = this.getSelectedGeometry(newValue);
+
             this.removeInteraction(this.draw);
-            this.setDrawInteraction();
+            if (selectedGeometry.type === "additional") {
+                this.layer.getSource().clear();
+                this.update(selectedGeometry.feature, selectedGeometry.type, selectedGeometry.feature.getGeometry());
+                this.layer.getSource().addFeature(this.feature);
+            }
+            else {
+                this.setDrawInteraction(selectedGeometry.type);
+            }
         },
         isActive (val) {
             this.draw.setActive(val);
-            this.$emit("setGfiActive", !val);
+            this.setGfiActive(!val);
         },
         buffer (val) {
             if (!this.feature) {
@@ -112,19 +129,8 @@ export default {
         }
     },
     created () {
-        this.ol3Parser = new jsts.io.OL3Parser();
-        this.ol3Parser.inject(
-            Point,
-            LineString,
-            LinearRing,
-            Polygon
-        );
-
-        this.initFeatureGeometry = null;
-
+        this.setNonReactiveData();
         this.initializeLayer(this.filterGeometry);
-        this.setLayer();
-        this.setDrawInteraction();
     },
 
     beforeDestroy () {
@@ -135,86 +141,34 @@ export default {
     methods: {
         ...mapActions("Maps", ["addInteraction", "removeInteraction", "addLayer"]),
         ...mapMutations("Maps", ["removeLayerFromMap"]),
+        ...mapMutations("Tools/Gfi", {setGfiActive: "setActive"}),
+        translateKeyWithPlausibilityCheck,
 
         /**
-         * Translates the given key using i18next.
-         * @param {String} translationKey The key to translate.
-         * @returns {String} The translation.
-         */
-        translate (translationKey) {
-            return this.$t(translationKey);
-        },
-
-        /**
-         * Returns the list of all possible geometries with translations.
-         * @returns {Object[]} A list of objects containing type an name of geometries.
-         */
-        getGeometries () {
-            const result = [],
-                possibleGeometries = {
-                    "Polygon": this.$t("common:modules.tools.filter.geometryFilter.geometries.polygon"),
-                    "Rectangle": this.$t("common:modules.tools.filter.geometryFilter.geometries.rectangle"),
-                    "Circle": this.$t("common:modules.tools.filter.geometryFilter.geometries.circle"),
-                    "LineString": this.$t("common:modules.tools.filter.geometryFilter.geometries.lineString")
-                };
-
-            this.geometries.forEach(type => {
-                if (Object.prototype.hasOwnProperty.call(possibleGeometries, type)) {
-                    result.push({
-                        type,
-                        name: possibleGeometries[type]
-                    });
-                }
-            });
-
-            return result;
-        },
-
-        /**
-         * Returns the currently selected geometry bases on the index set at the select box.
-         * @returns {Object} The currently selected geometry as object with type and name.
-         */
-        getSelectedGeometry () {
-            const geometries = this.getGeometries();
-
-            return geometries[this.selectedGeometry];
-        },
-
-        /**
-         * Sets the draw action when the selected geometry changes.
+         * Sets all needed non reactive data.
          * @returns {void}
          */
-        setDrawInteraction () {
-            const selectedGeometry = this.getSelectedGeometry();
+        setNonReactiveData () {
+            // the current feature of the geometry filter
+            this.feature = undefined;
 
-            this.draw = new Draw({
-                source: this.layer.getSource(),
-                type: selectedGeometry.type === "Rectangle" ? "Circle" : selectedGeometry.type,
-                geometryFunction: this.getGeometryFunction(selectedGeometry.type, this.circleSides)
-            });
-            this.draw.setActive(this.isActive);
-            this.draw.on("drawend", (evt) => {
-                const geometry = this.getGeometryOnDrawEnd(evt.feature, selectedGeometry.type, this.buffer);
+            // jsts is used to calculate a buffer around a linestring
+            this.ol3Parser = new jsts.io.OL3Parser();
+            this.ol3Parser.inject(
+                Point,
+                LineString,
+                LinearRing,
+                Polygon
+            );
 
-                this.feature = evt.feature;
-                this.initFeatureGeometry = evt.feature.getGeometry();
-                this.isGeometryVisible = true;
-                this.isBufferInputVisible = selectedGeometry.type === "LineString";
-                this.setGeometryAtFeature(this.feature, geometry, this.invertGeometry);
-                this.$emit("updateFilterGeometry", geometry);
-                this.$emit("updateGeometryFeature", this.feature);
-                this.$emit("updateGeometrySelectorOptions", {
-                    "selectedGeometry": this.selectedGeometry,
-                    "defaultBuffer": Number(this.buffer)
-                });
-            });
+            // is also used to calculate the buffer around a linestring
+            this.initFeatureGeometry = null;
 
-            this.draw.on("drawstart", () => {
-                this.isGeometryVisible = false;
-                this.layer.getSource().clear();
-            });
+            // sets the layer representing the filter geometry
+            this.setLayer();
 
-            this.addInteraction(this.draw);
+            // sets the interaction to draw the filter geometry
+            this.setDrawInteraction(this.getSelectedGeometry(this.selectedGeometryIndex).type);
         },
 
         /**
@@ -245,10 +199,206 @@ export default {
         },
 
         /**
-         * Removes the current area from the map.
+         * Sets interaction for drawing feature geometries and registers it at the map.
+         * @param {String} drawType - Geometry type of the geometry being drawn with this interaction.
          * @returns {void}
          */
-        removeGeometry () {
+        setDrawInteraction (drawType) {
+            this.draw = new Draw({
+                source: this.layer.getSource(),
+                type: drawType === "Rectangle" ? "Circle" : drawType,
+                geometryFunction: this.getGeometryFunction(drawType, this.circleSides)
+            });
+
+            this.draw.on("drawend", (evt) => {
+                const feature = evt.feature,
+                    geometry = this.getGeometryOnDrawEnd(feature, drawType, this.buffer);
+
+                this.initFeatureGeometry = feature.getGeometry();
+                this.update(feature, drawType, geometry);
+            });
+
+            this.draw.on("drawstart", () => {
+                this.isGeometryVisible = false;
+                this.layer.getSource().clear();
+            });
+
+            this.draw.setActive(this.isActive);
+            this.addInteraction(this.draw);
+        },
+
+        /**
+         * Returns the currently selected geometry bases on the index set at the select box.
+         * @param {Number} index - The index of the selected geometry.
+         * @returns {Object} The currently selected geometry as object with type and name.
+         */
+        getSelectedGeometry (index) {
+            const geometries = this.getGeometries();
+
+            return geometries[index];
+        },
+
+        /**
+         * Returns the list of all possible geometries with translations.
+         * @returns {Object[]} A list of objects containing type and name of geometries.
+         */
+        getGeometries () {
+            const result = [],
+                possibleGeometries = {
+                    "Polygon": this.$t("common:modules.tools.filter.geometryFilter.geometries.polygon"),
+                    "Rectangle": this.$t("common:modules.tools.filter.geometryFilter.geometries.rectangle"),
+                    "Circle": this.$t("common:modules.tools.filter.geometryFilter.geometries.circle"),
+                    "LineString": this.$t("common:modules.tools.filter.geometryFilter.geometries.lineString")
+                },
+                additionalGeometries = this.prepareAdditionalGeometries(this.additionalGeometries);
+
+            this.geometries.forEach(type => {
+                if (Object.prototype.hasOwnProperty.call(possibleGeometries, type)) {
+                    result.push({
+                        type,
+                        name: possibleGeometries[type]
+                    });
+                }
+            });
+
+            return result.concat(sortBy(additionalGeometries, "name"));
+        },
+
+        /**
+         * Returns a list of all additional geometries.
+         * @param {Object|Boolean} additionalGeometries - The additional geometries otherwise false.
+         * @returns {Object[]} A list of objects containing the prepared additional geometries.
+         */
+        prepareAdditionalGeometries (additionalGeometries) {
+            const result = [];
+
+            if (!additionalGeometries) {
+                return result;
+            }
+            additionalGeometries.forEach(additionalGeometry => {
+                additionalGeometry.features.forEach(feature => {
+                    result.push({
+                        type: "additional",
+                        feature: feature,
+                        name: feature.get(`${additionalGeometry.attrNameForTitle}`)
+                    });
+                });
+            });
+
+            return result;
+        },
+
+        /**
+         * Returns the geometry of the given feature and calculates a buffer around the geometry if it is a linestring.
+         * @param {ol/Feature} feature - The feature to get the geometry from.
+         * @param {String} type - The type of the feature geometry.
+         * @param {Number} buffer - The buffer to use for buffered line.
+         * @returns {ol/geom/Geometry} The geometry of the feature.
+         */
+        getGeometryOnDrawEnd (feature, type, buffer) {
+            if (type === "LineString") {
+                const jstsGeom = this.ol3Parser.read(feature.getGeometry()),
+                    buffered = jstsGeom.buffer(buffer);
+
+                return this.ol3Parser.write(buffered);
+            }
+            return feature.getGeometry();
+        },
+
+        /**
+         * Returns the geometryFunction for the given geometry type.
+         * @param {String} selectedGeometryType The geometry type.
+         * @param {Number} circleSides The number of points to use in case of a circle to polygon transformation.
+         * @returns {Function} The function to use or undefined.
+         */
+        getGeometryFunction (selectedGeometryType, circleSides) {
+            if (selectedGeometryType === "Rectangle") {
+                return createBox();
+            }
+            else if (selectedGeometryType === "Circle") {
+                return createRegularPolygon(circleSides < 3 ? 3 : circleSides);
+            }
+            return undefined;
+        },
+
+        /**
+         * Update the geometry filter.
+         * @param {ol/Feature} feature - The current feature to get the geometry from.
+         * @param {String} type - The type of the feature geometry.
+         * @param {ol/geom/Geometry} geometry - The geometry to set.
+         * @returns {void}
+         */
+        update (feature, type, geometry) {
+            this.feature = feature;
+            this.isGeometryVisible = true;
+            this.isBufferInputVisible = type === "LineString";
+            this.setGeometryAtFeature(this.feature, geometry, this.invertGeometry);
+            this.$emit("updateFilterGeometry", geometry);
+            this.$emit("updateGeometryFeature", this.feature);
+            this.$emit("updateGeometrySelectorOptions", {
+                "selectedGeometry": this.selectedGeometryIndex,
+                "defaultBuffer": Number(this.buffer)
+            });
+        },
+
+        /**
+         * Sets the given geometry or the inverted at the feature of the instance.
+         * @param {ol/Feature} feature - The feature to set the geometry at.
+         * @param {ol/geom/Geometry} geometry - The geometry to set.
+         * @param {Boolean} invertGeometry - If the geometry should be inverted.
+         * @returns {void}
+         */
+        setGeometryAtFeature (feature, geometry, invertGeometry) {
+            if (invertGeometry && typeof invertGeometry === "boolean") {
+                const quiteLargePolygon = new Polygon([
+                    [
+                        [-1877994.66, 3932281.56],
+                        [-1877994.66, 9494203.2],
+                        [804418.76, 9494203.2],
+                        [804418.76, 3932281.56],
+                        [-1877994.66, 3932281.56]
+                    ]
+                ]);
+
+                if (geometry instanceof Polygon) {
+                    this.addInteriorPolygon(quiteLargePolygon, geometry);
+                    feature.setGeometry(quiteLargePolygon);
+                }
+                else if (geometry instanceof MultiPolygon) {
+                    geometry.getPolygons().forEach(polygon => {
+                        this.addInteriorPolygon(quiteLargePolygon, polygon);
+                    });
+                    feature.setGeometry(quiteLargePolygon);
+                }
+            }
+            else {
+                feature.setGeometry(geometry);
+            }
+        },
+
+        /**
+         * Adds interior linear ring(s) to a polygon.
+         * If necessary, the coordinates are converted to the correct geometry layout (e.g. "XYZ" -> "XY").
+         * @param {ol/geom/Polygon} polygon - The surface of the polygon (outer-boundary).
+         * @param {ol/geom/Polygon} interiorPolygon - The hole(s) in the surface of the polygon (inner-boundary).
+         * @return {void}
+         */
+        addInteriorPolygon (polygon, interiorPolygon) {
+            if (interiorPolygon.getLayout() !== "XY") {
+                const coords = interiorPolygon.getCoordinates();
+
+                interiorPolygon.setCoordinates(coords, "XY");
+            }
+            interiorPolygon.getLinearRings().forEach(linearRing => {
+                polygon.appendLinearRing(linearRing);
+            });
+        },
+
+        /**
+         * Resets the geometry filter.
+         * @returns {void}
+         */
+        reset () {
             this.isGeometryVisible = false;
             this.isBufferInputVisible = false;
             this.layer.getSource().clear();
@@ -273,65 +423,6 @@ export default {
             const geomCoordinate = coordinates.length === 2 ? coordinates[1] : coordinates[0];
 
             this.$emit("updateFilterGeometry", new Polygon([geomCoordinate]));
-        },
-
-        /**
-         * Returns the geometryFunction for the given geometry type.
-         * @param {String} selectedGeometryType The geometry type.
-         * @param {Number} circleSides The number of points to use in case of a circle to polygon transformation.
-         * @returns {Function} The function to use or undefined.
-         */
-        getGeometryFunction (selectedGeometryType, circleSides) {
-            if (selectedGeometryType === "Rectangle") {
-                return createBox();
-            }
-            else if (selectedGeometryType === "Circle") {
-                return createRegularPolygon(circleSides < 3 ? 3 : circleSides);
-            }
-            return undefined;
-        },
-
-        /**
-         * Sets the given geometry at the feature of the instance.
-         * @param {ol/Feature} feature The feature to set the geometry at.
-         * @param {ol/geom/Geometry} geometry The geometry to set.
-         * @param {Boolean} invertGeometry If the geometry should be inverted.
-         * @returns {void}
-         */
-        setGeometryAtFeature (feature, geometry, invertGeometry) {
-            if (invertGeometry) {
-                feature.setGeometry(new Polygon([
-                    [
-                        [-1877994.66, 3932281.56],
-                        [-1877994.66, 9494203.2],
-                        [804418.76, 9494203.2],
-                        [804418.76, 3932281.56],
-                        [-1877994.66, 3932281.56]
-                    ],
-                    geometry.getCoordinates()[0]
-                ]));
-            }
-            else {
-                feature.setGeometry(geometry);
-            }
-        },
-
-        /**
-         * Returns the geometry of the given feature.
-         * @param {ol/Feature} feature The feature to get the geometry from.
-         * @param {String} selectedGeometryType The geometry type.
-         * @param {Number} buffer The buffer to use for buffered line.
-         * @returns {ol/geom/Geometry} The geometry of the feature.
-         */
-        getGeometryOnDrawEnd (feature, selectedGeometryType, buffer) {
-            if (selectedGeometryType === "LineString") {
-                const jstsGeom = this.ol3Parser.read(feature.getGeometry()),
-                    buffered = jstsGeom.buffer(buffer);
-
-                // convert back from JSTS and replace the geometry on the feature
-                return this.ol3Parser.write(buffered);
-            }
-            return feature.getGeometry();
         },
 
         /**
@@ -365,13 +456,13 @@ export default {
                         class="form-check-label"
                         for="geometryFilterChecked"
                     >
-                        {{ translate("common:modules.tools.filter.geometryFilter.activate") }}
+                        {{ translateKeyWithPlausibilityCheck("common:modules.tools.filter.geometryFilter.activate", key => $t(key)) }}
                     </label>
                     <div
                         id="geometryFilterHelp"
                         class="form-text"
                     >
-                        {{ translate("common:modules.tools.filter.geometryFilter.help") }}
+                        {{ translateKeyWithPlausibilityCheck("common:modules.tools.filter.geometryFilter.help", key => $t(key)) }}
                     </div>
                 </div>
             </div>
@@ -382,7 +473,7 @@ export default {
                 <div class="form-floating">
                     <select
                         id="geometrySelect"
-                        v-model="selectedGeometry"
+                        v-model="selectedGeometryIndex"
                         class="form-select"
                     >
                         <option
@@ -394,7 +485,7 @@ export default {
                         </option>
                     </select>
                     <label for="geometrySelect">
-                        {{ translate("common:modules.tools.filter.geometryFilter.selectGeometry") }}
+                        {{ translateKeyWithPlausibilityCheck("common:modules.tools.filter.geometryFilter.selectGeometry", key => $t(key)) }}
                     </label>
                 </div>
             </div>
@@ -406,7 +497,7 @@ export default {
                     for="inputLineBuffer"
                     class="form-label"
                 >
-                    {{ translate("common:modules.tools.filter.geometryFilter.buffer") }}
+                    {{ translateKeyWithPlausibilityCheck("common:modules.tools.filter.geometryFilter.buffer", key => $t(key)) }}
                 </label>
                 <input
                     id="inputLineBuffer"
@@ -420,9 +511,9 @@ export default {
                 <button
                     id="buttonRemoveGeometry"
                     class="btn btn-primary"
-                    @click="removeGeometry"
+                    @click="reset"
                 >
-                    {{ translate("common:modules.tools.filter.geometryFilter.removeGeometry") }}
+                    {{ translateKeyWithPlausibilityCheck("common:modules.tools.filter.geometryFilter.removeGeometry", key => $t(key)) }}
                 </button>
             </div>
         </form>
