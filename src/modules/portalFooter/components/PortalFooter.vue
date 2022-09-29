@@ -53,13 +53,14 @@ export default {
          * @returns {void}
          */
         toggleTool (toolModelId, event) {
-            let model;
+            let model, active;
 
             if (toolModelId) {
                 if (store.state.Tools[toolModelId]) {
                     model = getComponent(store.state.Tools[toolModelId].id);
+                    active = store.getters["Tools/" + toolModelId + "/active"];
                     Radio.trigger("ModelList", "setActiveToolsToFalse", store.getters["Tools/getActiveToolNames"]);
-                    store.dispatch("Tools/setToolActive", {id: toolModelId, active: !model.attributes.isActive});
+                    store.commit("Tools/" + toolModelId + "/setActive", !active);
                 }
                 else {
                     model = Radio.request("ModelList", "getModelByAttributes", {id: toolModelId});
@@ -68,7 +69,7 @@ export default {
                     if (event) {
                         event.preventDefault();
                     }
-                    model.setIsActive(!model.attributes.isActive);
+                    model.setIsActive(!active);
                 }
             }
         },

@@ -478,7 +478,7 @@ const ModelList = Backbone.Collection.extend(/** @lends ModelList.prototype */{
                 : activatedToolModel.deactivateGFI;
         let activeToolsToDeactivate = [];
 
-        if (!deactivateGFI) {
+        if (!deactivateGFI && deactivateGFI !== undefined) {
             alwaysActiveTools.push(this.findWhere({id: "gfi"}));
         }
 
