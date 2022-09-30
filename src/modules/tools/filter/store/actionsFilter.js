@@ -194,7 +194,7 @@ export default {
      * @returns {void}
      */
     setGeometryFilterByFeature (context, {jsonFeature, invert}) {
-        if (!jsonFeature) {
+        if (!isObject(jsonFeature) || Object.keys(jsonFeature).length === 0) {
             return;
         }
         let feature;
