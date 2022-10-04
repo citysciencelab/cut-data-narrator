@@ -67,7 +67,7 @@
     }
   ],
   "dependencies": {
-    "@masterportal/masterportalapi": "^2.7.0",
+    "@masterportal/masterportalapi": "^2.8.0",
     "@panter/vue-i18next": "^0.15.2",
     "@popperjs/core": "^2.11.5",
     "axios": "^0.27.2",
