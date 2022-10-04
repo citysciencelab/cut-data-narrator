@@ -61,7 +61,7 @@ function convertStringLayersIntoObjects (layers) {
  */
 function addFilterIds (layers, nextFilterId = {}) {
     if (typeof nextFilterId.id !== "number") {
-        nextFilterId.id = 0;
+        nextFilterId.id = Math.floor(Math.random() * 1000);
         nextFilterId.inc = () => {
             nextFilterId.id++;
         };

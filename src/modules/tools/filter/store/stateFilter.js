@@ -27,6 +27,7 @@ export default {
     minScale: 5000,
     saveTo: "void",
     layers: [],
+    layerGroups: [],
     rulesOfFilters: [],
     serializedString: "",
     selectedAccordions: [],

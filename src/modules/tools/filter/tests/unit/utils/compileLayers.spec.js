@@ -2,7 +2,6 @@ import {expect} from "chai";
 import {
     removeInvalidLayers,
     convertStringLayersIntoObjects,
-    addFilterIds,
     addSnippetArrayIfMissing,
     createLayerConfigsAssoc
 } from "../../../utils/compileLayers.js";
@@ -42,25 +41,6 @@ describe("src/modules/tools/filter/utils/compileLayers.js", () => {
                 ];
 
             addSnippetArrayIfMissing(layers);
-            expect(layers).to.deep.equal(expected);
-        });
-    });
-    describe("addFilterIds", () => {
-        it("should add an incremented filterId to all layers, should override", () => {
-            const layers = [
-                    {filterId: "A"},
-                    {filterId: "B"},
-                    {filterId: "C"},
-                    {filterId: "F"}
-                ],
-                expected = [
-                    {filterId: 0},
-                    {filterId: 1},
-                    {filterId: 2},
-                    {filterId: 3}
-                ];
-
-            addFilterIds(layers);
             expect(layers).to.deep.equal(expected);
         });
     });

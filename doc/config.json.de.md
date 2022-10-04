@@ -1577,6 +1577,7 @@ Das Filterwerkzeug bietet eine Reihe von Optionen zum Filtern von Vektordaten au
 |geometrySelectorOptions|nein|[filterGeometrySelector](#markdown-header-portalconfigmenutoolfilterfiltergeometryselector)[]|false|Optionen für ein zusätzliches Werkzeug zur Filterung innerhalb eines selbst gezeichneten Gebietes. Sollten Sie dieses Tool in Verbindung mit externer Filterung nutzen (`extern`: `true`), denken Sie bitte daran Ihren Layer-Filter mit geometryName zu konfigurieren.|false|
 |minScale|nein|Integer|5000|Der minimale Zoom-Level an dem das Zoomen nach Filterung immer stoppt.|false|
 |layers|nein|[filterLayer](#markdown-header-portalconfigmenutoolfilterfilterlayer)[]|[]|Konfiguration der zu filternden Layer. Wenn hier ein Array von Layer-Ids angegeben wird, versucht das System eine automatische Ermittlung der Layer- und seine Snippet-Einstellungen.|false|
+|layerGroups|nein|[filterLayerGroups](#markdown-header-portalconfigmenutoolfilterlayerGroups)[]|[]|Konfiguration der zu filternden zusammengehörenden Layern.|false|
 
 **Beispiel**
 
@@ -1594,6 +1595,17 @@ Beispiel für die Konfiguration eines Filters mit einem einzigen Layer. Das Laye
         "geometrySelectorOptions": {
             "visible": true
         },
+        "layerGroups":
+        [
+            {
+                "title": "GRUPPE 1",
+                "layers": [
+                    {
+                        "layerId": "47"
+                    }
+                ]
+            }
+        ],
         "layers": [
             {
                 "layerId": "8712"
@@ -1671,7 +1683,6 @@ Beispiel für eine vollständig veränderte Konfiguration des filterGeometrySele
     "strokeWidth": 2
 }
 ```
-
 ***
 
 #### Portalconfig.menu.tool.filter.filterLayer
@@ -1723,6 +1734,47 @@ Dieses Beispiel konfiguriert ein Layer mit nur einem einzigen Snippet. Die Art d
             "attrName": "rebbz_homepage"
         }
     ]
+}
+```
+
+***
+
+#### Portalconfig.menu.tool.filter.filterLayerGroups
+
+Ein Objekt zum Definieren eines Gruppen-Layers zum Filtern.
+
+|Name|Verpflichtend|Typ|Default|Beschreibung|Expert|
+|----|-------------|---|-------|-----------|-------|
+|title|ja|String||Der für den Gruppen-Layer zu verwendende Titel (wenn layerSelectorVisible true ist). Kann auch ein Übersetzungsschlüssel sein.|false|
+|layers|nein|String|[]|Konfiguration der zu filternden Layer. Kann auch ein Array von einfachen Layer-IDs sein - wenn ja, werden der Layer und alle Snippets automatisch identifiziert. Der typ von layers ist filterLayer, hier wurde aber als String definiert um wiederholdene Definitionen innerhalb von layerGroups zu vermeiden. | false |
+
+**Example**
+
+layerGroups definiert zusammengehörige Layer. Jede Gruppe hat einen Titel und eine Liste von Layern. Diese werden zusammen im Filter angezeigt.
+
+```json
+{
+  "layerGroups": [
+    {
+      "title": "GRUPPE 1",
+      "layers": [
+        {
+          "layerId": "47"
+        },
+        {
+          "layerId": "7315"
+        }
+      ]
+    },
+    {
+      "title": "GRUPPE 2",
+      "layers": [
+        {
+          "layerId": "5105"
+        }
+      ]
+    }
+  ]
 }
 ```
 

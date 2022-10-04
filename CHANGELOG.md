@@ -7,6 +7,7 @@
 ## Unreleased - in development
 ### Added
 - highlightFeaturesByAttribute: new isIn filter, offering the possibility to search for multiple values
+- related filters can be displayed together with new attribute layerGroups in config.json.
 
 ### Changed
 

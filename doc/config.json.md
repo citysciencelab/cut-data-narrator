@@ -1640,6 +1640,7 @@ The filter tool offers a range of options to filter vector data from WFS, OAF, G
 |geometrySelectorOptions|no|[filterGeometrySelector](#markdown-header-portalconfigmenutoolfilterfiltergeometryselector)[]|false|Options for an additional tool for filtering within a self-drawn area. If you use this tool in conjunction with external filtering (`external`: `true`), please remember to configure your layer filter with geometryName.|false|
 |minScale|no|Integer|5000|Minimum zoom level the filter zooms in when displaying filter results.|false|
 |layers|no|[filterLayer](#markdown-header-portalconfigmenutoolfilterfilterlayer)[]|[]|Configuration of layers to be filtered. Can be an array of plain layer ids also - if so the layer and all snippets are identified automatically.|false|
+|layerGroups|no|[filterLayerGroups](#markdown-header-portalconfigmenutoolfilterfilterlayergroups)[]|[]|Configuration of the related layers to be filtered.|false|
 
 **Example**
 
@@ -1647,21 +1648,31 @@ The following example uses only a layer id to generate the filter automatically.
 
 ```json
 {
-    "filter":{
-        "active": false,
-        "name": "Filter",
-        "icon": "bi-funnel-fill",
-        "renderToWindow": false,
-        "deactivateGFI": false,
-        "layerSelectorVisible": false,
-        "geometrySelectorOptions": {
-            "visible": true
-        },
-        "layers": [
+    "filter": {
+      "active": false,
+      "name": "Filter",
+      "icon": "bi-funnel-fill",
+      "renderToWindow": false,
+      "deactivateGFI": false,
+      "layerSelectorVisible": false,
+      "geometrySelectorOptions": {
+        "visible": true
+      },
+      "layerGroups": [
+        {
+          "title": "GRUPPE 1",
+          "layers": [
             {
-                "layerId": "8712"
+              "layerId": "47"
             }
-        ]
+          ]
+        }
+      ],
+      "layers": [
+        {
+          "layerId": "8712"
+        }
+      ]
     }
 }
 ```
@@ -1787,6 +1798,47 @@ In this example one snippet is set with only an attrName. The snippet type is de
             "attrName": "rebbz_homepage"
         }
     ]
+}
+```
+
+***
+
+#### Portalconfig.menu.tool.filter.filterLayerGroups
+
+An object to define a group layer to filter with.
+
+|Name|Required|Type|Default|Description|Expert|
+|----|--------|---|--------|-----------|------|
+|title|yes|String||The title to use for the group layer (if layerSelectorVisible true). Can be a translation key also.|false|
+|layers|no|String|[]|Configuration of layers to be filtered. Can be an array of plain layer ids also - if so the layer and all snippets are identified automatically. The type of layers is filterLayer, but here it was defined as string to avoid repetitive definitions within layerGroups.|false|
+
+**Example**
+
+layerGroups defines related layers. Each group has a title and a list of layers. These are displayed together in the filter.
+
+```json
+{
+  "layerGroups": [
+    {
+      "title": "GRUPPE 1",
+      "layers": [
+        {
+          "layerId": "47"
+        },
+        {
+          "layerId": "7315"
+        }
+      ]
+    },
+    {
+      "title": "GRUPPE 2",
+      "layers": [
+        {
+          "layerId": "5105"
+        }
+      ]
+    }
+  ]
 }
 ```
 

@@ -49,6 +49,9 @@ export default {
                 getLayers
             }),
             layerConfigs: [],
+            selectedLayerGroups: [],
+            preparedLayerGroups: [],
+            flattenPreparedLayerGroups: [],
             layerLoaded: {},
             layerFilterSnippetPostKey: ""
         };
@@ -79,6 +82,21 @@ export default {
                 this.$el.remove();
             }
         });
+
+        if (Array.isArray(this.layerGroups) && this.layerGroups.length > 0) {
+            this.layerGroups.forEach(layerGroup => {
+                if (isObject(layerGroup)) {
+                    this.preparedLayerGroups.push(compileLayers(layerGroup.layers));
+                }
+            });
+            if (Array.isArray(this.preparedLayerGroups) && this.preparedLayerGroups.length > 0) {
+                this.preparedLayerGroups.forEach(group => {
+                    group.forEach(layer => {
+                        this.flattenPreparedLayerGroups.push(layer);
+                    });
+                });
+            }
+        }
     },
     methods: {
         ...mapMutations("Tools/Filter", Object.keys(mutations)),
@@ -119,16 +137,43 @@ export default {
         },
 
         /**
+         * Update selected layer group.
+         * @param {Number} layerGroupIndex index of the layer group
+         * @returns {void}
+         */
+        updateSelectedLayerGroups (layerGroupIndex) {
+            const index = this.selectedLayerGroups.indexOf(layerGroupIndex);
+
+            if (index >= 0) {
+                this.selectedLayerGroups.splice(index, 1);
+            }
+            else {
+                this.selectedLayerGroups.push(layerGroupIndex);
+            }
+        },
+        /**
          * Update selectedAccordions array.
-         * @param {String[]|String} filterIds ids which should be added or removed
-         * @returns {Object[]} selected layer fetched from config
+         * @param {String[]} filterIds ids which should be added or removed
+         * @returns {void|undefined} returns undefinied, if filterIds is not an array and not a number.
          */
         updateSelectedAccordions (filterIds) {
-            if (!Array.isArray(filterIds) && typeof filterIds !== "number") {
+            if (!Array.isArray(filterIds)) {
                 return;
             }
 
             this.setSelectedAccordions(this.transformLayerConfig(this.layerConfigs, filterIds));
+        },
+        /**
+         * Update selectedAccordions array in groups.
+         * @param {String[]} filterIds ids which should be added or removed
+         * @returns {void|undefined} returns undefinied, if filterIds is not an array and not a number.
+         */
+        updateSelectedAccordionsInGroups (filterIds) {
+            if (!Array.isArray(filterIds)) {
+                return;
+            }
+
+            this.setSelectedAccordions(this.transformLayerConfig(this.flattenPreparedLayerGroups, filterIds));
         },
         /**
          * Transform given layer config to an lightweight array of layerIds and filterIds.
@@ -182,14 +227,6 @@ export default {
          */
         setLayerLoaded (filterId) {
             this.layerLoaded[filterId] = true;
-        },
-        /**
-         * Setting the post key for layerFilterSnippet
-         * @param {String} value the post key of layerFilterSnippet
-         * @returns {void}
-         */
-        setLayerFilterSnippetPostKey (value) {
-            this.layerFilterSnippetPostKey = value;
         },
         /**
          * Sets the geometry/area to filter in.
@@ -269,6 +306,79 @@ export default {
                     @updateGeometryFeature="updateGeometryFeature"
                     @updateGeometrySelectorOptions="updateGeometrySelectorOptions"
                 />
+                <div v-if="Array.isArray(layerGroups) && layerGroups.length">
+                    <div
+                        v-for="(layerGroup, key) in layerGroups"
+                        :key="key"
+                        class="layerGroupContainer"
+                    >
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <h2
+                                    class="panel-title"
+                                >
+                                    <a
+                                        role="button"
+                                        data-toggle="collapse"
+                                        data-parent="#accordion"
+                                        tabindex="0"
+                                        @click="updateSelectedLayerGroups(layerGroups.indexOf(layerGroup))"
+                                        @keydown.enter="updateSelectedLayerGroups(layerGroups.indexOf(layerGroup))"
+                                    >
+                                        {{ layerGroup.title ? layerGroup.title : key }}
+                                        <span
+                                            v-if="!selectedLayerGroups.includes(layerGroups.indexOf(layerGroup))"
+                                            class="bi bi-chevron-down float-end"
+                                        />
+                                        <span
+                                            v-else
+                                            class="bi bi-chevron-up float-end"
+                                        />
+                                    </a>
+                                </h2>
+                                <div
+                                    role="tabpanel"
+                                    :class="['accordion-collapse', 'collapse', selectedLayerGroups.includes(layerGroups.indexOf(layerGroup)) ? 'show' : '']"
+                                >
+                                    <FilterList
+                                        v-if="Array.isArray(preparedLayerGroups) && preparedLayerGroups.length && layerSelectorVisible"
+                                        class="layerSelector"
+                                        :filters="preparedLayerGroups[layerGroups.indexOf(layerGroup)]"
+                                        :changed-selected-layers="selectedAccordions"
+                                        :multi-layer-selector="multiLayerSelector"
+                                        @selectedaccordions="updateSelectedAccordionsInGroups"
+                                        @setLayerLoaded="setLayerLoaded"
+                                    >
+                                        <template
+                                            #default="slotProps"
+                                        >
+                                            <div
+                                                :class="['accordion-collapse', 'collapse', isLayerFilterSelected(slotProps.layer.filterId) ? 'show' : '']"
+                                                role="tabpanel"
+                                            >
+                                                <LayerFilterSnippet
+                                                    v-if="isLayerFilterSelected(slotProps.layer.filterId) || layerLoaded[slotProps.layer.filterId]"
+                                                    :api="slotProps.layer.api"
+                                                    :layer-config="slotProps.layer"
+                                                    :map-handler="mapHandler"
+                                                    :min-scale="minScale"
+                                                    :live-zoom-to-features="liveZoomToFeatures"
+                                                    :filter-rules="rulesOfFilters[slotProps.layer.filterId]"
+                                                    :filter-hits="filtersHits[slotProps.layer.filterId]"
+                                                    :filter-geometry="filterGeometry"
+                                                    :is-layer-filter-selected="isLayerFilterSelected"
+                                                    @updateRules="updateRules"
+                                                    @deleteAllRules="deleteAllRules"
+                                                    @updateFilterHits="updateFilterHits"
+                                                />
+                                            </div>
+                                        </template>
+                                    </FilterList>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <FilterList
                     v-if="Array.isArray(layerConfigs) && layerConfigs.length && layerSelectorVisible"
                     class="layerSelector"
@@ -328,4 +438,10 @@ export default {
 
 <style lang="scss" scoped>
     @import "~/css/mixins.scss";
+    .layerGroupContainer {
+        background-color: #f5f5f5;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ddd;
+    }
 </style>
