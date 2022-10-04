@@ -128,18 +128,24 @@ export default {
             }
 
             if (adjusting.finish) {
-                if (!this.isSelfSnippetId(adjusting?.snippetId)) {
+                if (!this.isSelfSnippetId(adjusting?.snippetId) || (this.isSelfSnippetId(adjusting?.snippetId) && !this.hasRuleSet)) {
                     if (typeof this.getMemoryAdjustMin() !== "undefined") {
                         this.currentSliderMin = this.getMemoryAdjustMin();
                     }
                     if (typeof this.getMemoryAdjustMax() !== "undefined") {
                         this.currentSliderMax = this.getMemoryAdjustMax();
                     }
+
                     if (!this.hasRuleSet || this.currentSliderMin > this.sliderFrom) {
                         this.sliderFrom = this.currentSliderMin;
                     }
                     if (!this.hasRuleSet || this.currentSliderMax < this.sliderUntil) {
                         this.sliderUntil = this.currentSliderMax;
+                    }
+
+                    if (typeof adjusting?.snippetId === "undefined" && !this.hasRuleSet) {
+                        this.inputFrom = this.currentSliderMin;
+                        this.inputUntil = this.currentSliderMax;
                     }
                 }
 
