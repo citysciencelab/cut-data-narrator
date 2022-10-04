@@ -42,11 +42,12 @@ export default class InterfaceStaIntern {
      * @param {Function} onerror A function(errorMsg).
      * @param {Boolean} [minOnly=false] If only min is of interest.
      * @param {Boolean} [maxOnly=false] If only max is of interest.
-     * @param {Object} obj The obj.
+     * @param {Boolean} [isDate=false] If is date - not implemented yet.
+     * @param {Object} obj The filterQuestion.
      * @param {Number} obj.filterId The filter id.
      * @returns {void}
      */
-    getMinMax (service, attrName, onsuccess, onerror, minOnly, maxOnly, {filterId}) {
+    getMinMax (service, attrName, onsuccess, onerror, minOnly, maxOnly, isDate, {filterId}) {
         this.interfaceStaExtern.getMinMax(service, attrName, onsuccess, onerror, minOnly, maxOnly, filterId);
     }
 
