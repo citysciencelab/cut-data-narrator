@@ -1,6 +1,7 @@
 import store from "../../../../app-store";
 import {intersects} from "ol/extent.js";
 import LayerGroup from "ol/layer/Group";
+import isObject from "../../../../utils/isObject";
 
 /**
  * Returns the map projection.
@@ -67,7 +68,7 @@ function isFeatureInMapExtent (feature) {
  * @returns {Boolean} true if the feature intersects the geometry
  */
 function isFeatureInGeometry (feature, geometry) {
-    if (typeof geometry?.intersectsExtent !== "function") {
+    if (typeof geometry?.intersectsExtent !== "function" || !isObject(feature)) {
         return false;
     }
     return geometry.intersectsExtent(feature.getGeometry().getExtent());

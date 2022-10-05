@@ -199,9 +199,9 @@ export default {
         }
         if (!this.mapHandler.isLayerActivated(this.layerConfig.filterId)
             && isObject(this.filterGeometry)
-            && typeof this.isLayerFilterSelected === "function"
+            && (typeof this.isLayerFilterSelected === "function"
             && this.isLayerFilterSelected(this.layerConfig.filterId)
-            || this.isLayerFilterSelected === true) {
+            || this.isLayerFilterSelected === true)) {
             this.handleActiveStrategy();
         }
     },
