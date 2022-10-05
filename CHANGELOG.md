@@ -6,12 +6,12 @@
 ## Known Issues
 
 ---
-## Unreleased - in development
+## v2.26.0 - 2022-10-05
 ### __Breaking Changes__
 
 ### Added
 - Draw-Tool:
-  - If there are attributes set on the feature of drawn layer, after clicking on the feature, the attributes will be shown in standard gfi theme.
+    - if there are attributes set on the feature of drawn layer, after clicking on the feature, the attributes will be shown in standard gfi theme.
 - The following NPM package has been added:
     - devDependencies:
         - @babel/plugin-transform-modules-commonjs: 7.18.6
@@ -20,7 +20,7 @@
 - Reusable component SimpleButton.
 - Added a config.json configuration in addition to highlighting features: 'treeHighlightedFeatures'. If features are highlighted with the "List" or "Select Features" tool with "Zoom to this Feature" or via url parameter, then a layer with these features is selectable in the menu tree.
 - Filter:
-  - STA: There is now the possibility to filter SensorThingsAPI layers.
+    - STA: There is now the possibility to filter SensorThingsAPI layers.
 
 ### Changed
 - OAF:
@@ -47,13 +47,13 @@
 - The image of the default MapMarker was removed from img folder.
 
 ### Fixed
-- Issue #765: mobile: order of menu entries at first level does no longer change after selected an entry and went back to menu
+- Issue #765: mobile: order of menu entries at first level does no longer change after selected an entry and went back to menu.
 - Issue #825 The Control layerAttributions remain open when a layer with content is activated until they are explicitly collapsed.
 - Issue #826: Tool WFS Search did not work with a parcel.json that had "fluren" with local values. This has been resolved.
 - Issue #829: xml2json parser (used in meta data context) broke on valid XML. It has been extended for the unattended cases.
 - Issue #832: ElasticSearch API fixed for GET requests. (URL building was incomplete.)
-- drawTool: circles can be drawn with setting defined again
 - Issue #835: small quickHelp issue has been fixed (showed topic 3 again instead of 5).
+- drawTool: circles can be drawn with setting defined again.
 - TreeType 'default': if a layer, configured in config.json is not found in services.json, no error occurs.
 
 ---
