@@ -6,6 +6,22 @@
 ## Known Issues
 
 ---
+
+## Unreleased - in development
+### __Breaking Changes__
+
+### Added
+
+### Changed
+
+### Deprecated
+
+### Removed
+
+### Fixed
+
+---
+
 ## v2.26.0 - 2022-10-05
 ### __Breaking Changes__
 
@@ -57,6 +73,7 @@
 - TreeType 'default': if a layer, configured in config.json is not found in services.json, no error occurs.
 
 ---
+
 ## v2.25.0 - 2022-09-07
 ### Added
 - KeepOpen attribute for tools:
