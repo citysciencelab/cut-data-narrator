@@ -211,6 +211,38 @@ export default {
     },
 
     /**
+     * builds the filter snippet for isin property searching
+     * @param {String} wildCard the configured wildCard character
+     * @param {String} singleChar the configured singleChar character
+     * @param {String} escapeChar the configured escapeChar character
+     * @param {String} propPrefix the configured search prefix (e.g. app:)
+     * @param {String} propName the property/type-Name
+     * @param {String} propValue the value to search for (,-separated)
+     * @returns {String} query snippet
+    */
+    getOGCFilterSnippetIn: function (wildCard, singleChar, escapeChar, propPrefix, propName, propValue) {
+        let result = "",
+            value = "";
+
+        const valueItems = propValue.split(",");
+
+        if (valueItems.length >= 2) {
+            result += "<ogc:Or>";
+        }
+        for (value of valueItems) {
+            result += `<ogc:PropertyIsEqualTo matchCase='false' wildCard='${wildCard}' singleChar='${singleChar}' escapeChar='${escapeChar}'>
+                <ogc:PropertyName>${propPrefix}${propName}</ogc:PropertyName>
+                <ogc:Literal>${value}</ogc:Literal>
+            </ogc:PropertyIsEqualTo>`;
+        }
+        if (valueItems.length >= 2) {
+            result += "</ogc:Or>";
+        }
+
+        return result;
+    },
+
+    /**
      * builds the request body for WFS search
      * @param {String} featureType the feature queried
      * @param {String} version WFS version
@@ -275,15 +307,26 @@ export default {
         const layerList = getLayerList(),
             layer = layerList.find(layerConf => layerConf.id === wfsId),
             isEqual = queryType && queryType.toLowerCase() === "isequal",
+            isIn = queryType && queryType.toLowerCase() === "isin",
             filterSnippet = this.getOGCFilterSnippet(isEqual,
                 layer?.wildCard,
                 layer?.singleChar,
                 layer?.escapeChar,
                 layer?.featurePrefix,
                 propName,
-                propValue),
-            requestBody = this.getWFSQuery(layer?.featureType, layer?.version, filterSnippet);
+                propValue);
+        let requestBody = this.getWFSQuery(layer?.featureType, layer?.version, filterSnippet);
 
+        if (isIn) {
+            const filterSnippetIn = this.getOGCFilterSnippetIn(layer?.wildCard,
+                layer?.singleChar,
+                layer?.escapeChar,
+                layer?.featurePrefix,
+                propName,
+                propValue);
+
+            requestBody = this.getWFSQuery(layer?.featureType, layer?.version, filterSnippetIn);
+        }
         if (this.configHasErrors(layer, wfsId)) {
             dispatch("Alerting/addSingleAlert", i18next.t("common:modules.highlightFeaturesByAttribute.messages.configurationError"), {root: true});
             return;
