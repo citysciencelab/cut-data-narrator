@@ -401,8 +401,8 @@
               {
                 "id": "gelber Pin",
                 "type": "image",
-                "scale": 0.5,
-                "value": "https://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png"
+                "scale": 2,
+                "value": "pin-angle-fill-ylw.svg"
               }
             ]
           },
