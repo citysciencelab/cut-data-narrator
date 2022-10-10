@@ -11,6 +11,7 @@
 ### __Breaking Changes__
 
 ### Added
+- highlightFeaturesByAttribute: new isIn filter, offering the possibility to search for multiple values
 
 ### Changed
 
@@ -33,14 +34,10 @@
         - @babel/plugin-transform-modules-commonjs: 7.18.6
 - Alerting: attribute "multipleAlert" allows to add single alert or multiple-alert as a list.
 - MapMarker: Added function for rotation in 3D.
-<<<<<<< HEAD
 - Reusable component SimpleButton.
 - Added a config.json configuration in addition to highlighting features: 'treeHighlightedFeatures'. If features are highlighted with the "List" or "Select Features" tool with "Zoom to this Feature" or via url parameter, then a layer with these features is selectable in the menu tree.
 - Filter:
     - STA: There is now the possibility to filter SensorThingsAPI layers.
-=======
-- highlightFeaturesByAttribute: new isIn filter, offering the possibility to search for multiple values
->>>>>>> 31cdcb49f (BG-3246: added changelog entry)
 
 ### Changed
 - OAF:
