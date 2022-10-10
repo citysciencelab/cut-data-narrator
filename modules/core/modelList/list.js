@@ -1001,11 +1001,17 @@ const ModelList = Backbone.Collection.extend(/** @lends ModelList.prototype */{
     showModelInTree: function (modelId) {
         const mode = Radio.request("Map", "getMapMode"),
             lightModel = Radio.request("Parser", "getItemByAttributes", {id: modelId}),
-            dropdown = Dropdown.getInstance("#root li:first-child > .dropdown-toggle");
+            isMobile = Radio.request("Util", "isViewMobile");
 
+        let dropdown;
+
+        if (!isMobile) {
+            dropdown = Dropdown.getInstance("#root li:first-child > .dropdown-toggle");
+            // open the layerTree
+            dropdown.show();
+        }
         this.closeAllExpandedFolder();
-        // open the layerTree
-        dropdown.show();
+
         // Parent and possible siblings are added
         this.addAndExpandModelsRecursive(lightModel.parentId);
         if (this.get(modelId).get("supported").indexOf(mode) >= 0) {

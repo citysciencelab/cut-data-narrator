@@ -20,6 +20,7 @@
 ### Removed
 
 ### Fixed
+#837: search and layerTree work on mobile again.
 
 ---
 

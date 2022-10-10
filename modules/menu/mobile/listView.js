@@ -142,11 +142,18 @@ const MobileMenu = Backbone.View.extend({
                     }
                     if (groupedModels.other) {
                         groupedModels.other.sort((itemA, itemB) => itemA.get("name") - itemB.get("name"));
+                        modelsSorted = groupedModels.folder ? groupedModels.folder.concat(groupedModels.other) : [].concat(groupedModels.other);
                     }
-                    modelsSorted = groupedModels.folder ? groupedModels.folder.concat(groupedModels.other) : [].concat(groupedModels.other);
+                    else {
+                        modelsSorted = groupedModels.folder;
+                    }
                 }
                 else {
-                    const allModels = groupedModels.folder ? groupedModels.folder.concat(groupedModels.other) : [].concat(groupedModels.other);
+                    let allModels = groupedModels.folder;
+
+                    if (groupedModels.other) {
+                        allModels = groupedModels.folder ? groupedModels.folder.concat(groupedModels.other) : [].concat(groupedModels.other);
+                    }
 
                     if (modelsToShow[0].get("parentId") === "root") {
                         that.rootModelsOrder.forEach(id => {
