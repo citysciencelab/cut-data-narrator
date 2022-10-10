@@ -14,6 +14,7 @@
 - highlightFeaturesByAttribute: new isIn filter, offering the possibility to search for multiple values
 
 ### Changed
+- Search results of the Gazetteer were extended by properties.
 
 ### Deprecated
 
