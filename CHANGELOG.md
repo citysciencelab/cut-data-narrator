@@ -20,7 +20,8 @@
 ### Removed
 
 ### Fixed
-#837: search and layerTree work on mobile again.
+- Issue #837: search and layerTree work on mobile again.
+- Issue #840: The URL parameter `zoomToExtent` now works again.
 
 ---
 

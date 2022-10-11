@@ -1,12 +1,16 @@
+import * as crs from "@masterportal/masterportalapi/src/crs";
+import {expect} from "chai";
+import Feature from "ol/Feature";
+import LayerGroup from "ol/layer/Group";
 import Map from "ol/Map";
+import Point from "ol/geom/Point";
+import sinon from "sinon";
 import View from "ol/View";
 import VectorLayer from "ol/layer/Vector";
 import VectorSource from "ol/source/Vector";
-import LayerGroup from "ol/layer/Group";
-import Feature from "ol/Feature";
-import Point from "ol/geom/Point";
+
+import actions from "../../../store/actions/actionsMapInteractionsZoomTo";
 import store from "../../../../../app-store";
-import {expect} from "chai";
 
 describe("src/core/maps/store/actions/actionsMapInteractionsZoomTo.js", () => {
     /**
@@ -42,10 +46,12 @@ describe("src/core/maps/store/actions/actionsMapInteractionsZoomTo.js", () => {
             name: "Duck_group",
             layers: [layer3, layer4]
         });
-    let map,
+    let dispatch,
+        map,
         mapView;
 
     beforeEach(() => {
+        dispatch = sinon.spy();
         mapCollection.clear();
         map = new Map({
             id: "ol",
@@ -76,13 +82,18 @@ describe("src/core/maps/store/actions/actionsMapInteractionsZoomTo.js", () => {
         mapCollection.addMap(map, "2D");
         mapView = mapCollection.getMapView("2D");
     });
-    describe.skip("zoomToExtent", () => {
+
+    describe("zoomToExtent", () => {
         it("Zoom to the extent with duration 0 milliseconds", () => {
-            store.dispatch("Maps/zoomToExtent", {extent: [565760.049, 5931747.185, 568940.626, 5935453.891], options: {duration: 0}});
+            actions.zoomToExtent({}, {
+                extent: [565760.049, 5931747.185, 568940.626, 5935453.891],
+                options: {duration: 0}
+            });
             expect(mapView.getCenter()).to.deep.equal([567350.3375, 5933600.538]);
             expect(Math.round(mapView.getZoom())).equals(4);
         });
     });
+
     describe("zoomToFilteredFeatures", () => {
         const ids = ["Tick", "Track"],
             zoomOptions = {duration: 0},
@@ -125,6 +136,28 @@ describe("src/core/maps/store/actions/actionsMapInteractionsZoomTo.js", () => {
             store.dispatch("Maps/zoomToFilteredFeatures", {ids: ids, layerId: "Darkwing", zoomOptions: zoomOptions});
 
             expect(Math.round(mapView.getZoom())).equals(2);
+        });
+    });
+
+    describe("zoomToProjExtent", () => {
+        it("Zoom to the extent with projection EPSG:25832", () => {
+            const data = {
+                extent: [565760.049, 5931747.185, 568940.626, 5935453.891],
+                projection: "EPSG:25832",
+                options: {duration: 0}
+            };
+
+            sinon.stub(crs, "transformToMapProjection").returns([1, 2]);
+
+            actions.zoomToProjExtent({dispatch}, {data});
+
+            expect(dispatch.calledOnce).to.be.true;
+            expect(dispatch.firstCall.args.length).to.equals(2);
+            expect(dispatch.firstCall.args[0]).to.equals("zoomToExtent");
+            expect(dispatch.firstCall.args[1]).to.deep.equals({
+                extent: [1, 2, 1, 2],
+                options: {duration: 0}
+            });
         });
     });
 });
