@@ -2,7 +2,7 @@
 import {mapActions, mapGetters, mapMutations} from "vuex";
 import getLayerInformation from "../utils/getLayerInformation";
 import ToolTemplate from "../../ToolTemplate.vue";
-import getComponent from "../../../../utils/getComponent";
+import {getComponent} from "../../../../utils/getComponent";
 import SimpleButton from "../../../../share-components/SimpleButton.vue";
 
 export default {

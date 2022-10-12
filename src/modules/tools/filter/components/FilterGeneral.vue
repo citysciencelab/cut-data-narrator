@@ -24,6 +24,9 @@ import FilterList from "./FilterList.vue";
 import isObject from "../../../../utils/isObject.js";
 import GeometryFilter from "./GeometryFilter.vue";
 import {getFeaturesOfAdditionalGeometries} from "../utils/getFeaturesOfAdditionalGeometries.js";
+import {rawLayerList} from "@masterportal/masterportalapi/src";
+import {getFeatureGET} from "../../../../api/wfs/getFeature";
+import {WFS} from "ol/format.js";
 
 export default {
     name: "FilterGeneral",
@@ -128,6 +131,24 @@ export default {
             }
         },
 
+        /**
+         * Gets the features of the additional geometries by the given layer id.
+         * @param {Object[]} additionalGeometries - The additional geometries.
+         * @param {String} additionalGeometries[].layerId - The id of the layer.
+         * @returns {void}
+         */
+        async getFeaturesOfAdditionalGeometries (additionalGeometries) {
+            if (additionalGeometries) {
+                const wfsReader = new WFS();
+
+                for (const additionalGeometry of additionalGeometries) {
+                    const rawLayer = rawLayerList.getLayerWhere({id: additionalGeometry.layerId}),
+                        features = await getFeatureGET(rawLayer.url, {version: rawLayer.version, featureType: rawLayer.featureType});
+
+                    additionalGeometry.features = wfsReader.readFeatures(features);
+                }
+            }
+        },
 
         /**
          * Update selected layer group.

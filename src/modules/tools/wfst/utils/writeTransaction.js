@@ -16,7 +16,7 @@ const transactionPosition = {
  * @param {String} srsName EPSG code currently used by the map.
  * @returns {String} WFS Transaction as an XML String.
  */
-export default function (feature, layerInformation, transactionMethod, srsName) {
+function writeTransaction (feature, layerInformation, transactionMethod, srsName) {
     const {featureNS, featurePrefix, featureType, version} = layerInformation,
         transaction = [[], [], []];
 
@@ -33,3 +33,5 @@ export default function (feature, layerInformation, transactionMethod, srsName) 
                 })
         );
 }
+
+module.exports = {writeTransaction};

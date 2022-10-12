@@ -1,4 +1,4 @@
-import getComponent from "../../../../utils/getComponent";
+import {getComponent} from "../../../../utils/getComponent";
 
 /**
  * Receives relevant information about the layers with the given ids.
@@ -6,7 +6,7 @@ import getComponent from "../../../../utils/getComponent";
  * @param {String[]} layerIds Ids of layers to retrieve information for.
  * @returns {TransactionLayer[]} Information for each respective layer wrapped in an array.
  */
-export default function (layerIds) {
+function getLayerInformation (layerIds) {
     return layerIds.map(id => {
         const layer = getComponent(id);
 
@@ -19,3 +19,5 @@ export default function (layerIds) {
             );
     });
 }
+
+module.exports = {getLayerInformation};

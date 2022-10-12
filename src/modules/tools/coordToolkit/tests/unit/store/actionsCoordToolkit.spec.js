@@ -5,7 +5,8 @@ import {expect} from "chai";
 import * as proj4 from "proj4";
 
 describe("src/modules/tools/coord/store/actionsCoordToolkit.js", () => {
-    let commit, dispatch, getters, proj4Spy = null;
+    let commit, dispatch, getters,
+        proj4Spy = null;
 
     beforeEach(() => {
         const map = {

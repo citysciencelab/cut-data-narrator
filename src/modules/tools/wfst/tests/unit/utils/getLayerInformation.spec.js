@@ -1,6 +1,6 @@
 import {expect} from "chai";
 import sinon from "sinon";
-import getLayerInformation from "../../../utils/getLayerInformation";
+import {getLayerInformation} from "../../../utils/getLayerInformation";
 
 const relevantKeys = ["featureNS", "featurePrefix", "featureType", "gfiAttributes", "id", "style", "isSelected", "isSecured", "name", "url", "version"],
     exampleLayer = {

@@ -4,7 +4,7 @@ import {expect} from "chai";
 import sinon from "sinon";
 import WfsTransaction from "../../../components/WfsTransaction.vue";
 import WfstModule from "../../../store/indexWfst";
-import * as prepareFeatureProperties from "../../../utils/prepareFeatureProperties";
+import prepareFeaturePropertiesModule from "../../../utils/prepareFeatureProperties";
 
 const localVue = createLocalVue();
 
@@ -41,7 +41,7 @@ describe("src/modules/tools/wfst/components/WfsTransaction.vue", () => {
         wrapper;
 
     beforeEach(() => {
-        sinon.stub(prepareFeatureProperties, "default").resolves([
+        sinon.stub(prepareFeaturePropertiesModule, "prepareFeatureProperties").resolves([
             {
                 label: "stringAtt",
                 key: "stringAtt",

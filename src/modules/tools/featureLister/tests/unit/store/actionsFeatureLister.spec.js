@@ -1,7 +1,7 @@
 import {expect} from "chai";
 import sinon from "sinon";
 import actions from "../../../store/actionsFeatureLister";
-import * as clatt from "../../../../../../utils/createLayerAddToTree";
+import createLayerAddToTreeModule from "../../../../../../utils/createLayerAddToTree";
 
 describe("tools/featureLister/store/actionsFeatureLister", () => {
     let commit, dispatch, rootGetters;
@@ -53,7 +53,7 @@ describe("tools/featureLister/store/actionsFeatureLister", () => {
                     },
                     layerId: "layerId"
                 },
-                createLayerAddToTreeStub = sinon.spy(clatt, "createLayerAddToTree");
+                createLayerAddToTreeStub = sinon.spy(createLayerAddToTreeModule, "createLayerAddToTree");
 
             rootGetters = {"Maps/getView": {fit: () => true}, treeHighlightedFeatures: {active: true}, treeType: "light"};
 
