@@ -67,7 +67,7 @@
     }
   ],
   "dependencies": {
-    "@masterportal/masterportalapi": "^2.8.0",
+    "@masterportal/masterportalapi": "git+https://bitbucket.org/geowerkstatt-hamburg/masterportalapi.git#BG-3340",
     "@panter/vue-i18next": "^0.15.2",
     "@popperjs/core": "^2.11.6",
     "axios": "^0.27.2",
