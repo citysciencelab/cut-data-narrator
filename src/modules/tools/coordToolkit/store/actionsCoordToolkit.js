@@ -4,7 +4,7 @@ import isMobile from "../../../../utils/isMobile";
 import {convertSexagesimalFromString, convertSexagesimalToDecimal, convertSexagesimalFromDecimal} from "../../../../utils/convertSexagesimalCoordinates";
 import getProxyUrl from "../../../../utils/getProxyUrl";
 import {requestGfi} from "../../../../api/wmsGetFeatureInfo";
-import {getLayerWhere} from "@masterportal/masterportalapi/src/rawLayerList";
+import {rawLayerList} from "@masterportal/masterportalapi/src";
 
 export default {
     /**
@@ -74,7 +74,7 @@ export default {
      * @returns {void}
      */
     initHeightLayer ({commit, state}) {
-        const rawLayer = getLayerWhere({id: state.heightLayerId});
+        const rawLayer = rawLayerList.getLayerWhere({id: state.heightLayerId});
         let layer = null;
 
         if (rawLayer) {

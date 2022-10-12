@@ -1,4 +1,4 @@
-import {initializeLayerList} from "@masterportal/masterportalapi/src/rawLayerList";
+import {rawLayerList} from "@masterportal/masterportalapi/src";
 import {loadApp} from "./app";
 
 /**
@@ -7,7 +7,7 @@ import {loadApp} from "./app";
  * @returns {void}
  */
 export function fetch (layerConfUrl) {
-    initializeLayerList(layerConfUrl,
+    rawLayerList.initializeLayerList(layerConfUrl,
         (layerList, error) => {
             if (error) {
                 Radio.trigger("Alert", "alert", {
@@ -52,7 +52,7 @@ function modifyLayerList (layerList) {
     }
 
     // Update layer list
-    initializeLayerList(rawLayerArray,
+    rawLayerList.initializeLayerList(rawLayerArray,
         () => {
             // Abwarten bis die layer list geladen ist, dann die app laden
             loadApp();

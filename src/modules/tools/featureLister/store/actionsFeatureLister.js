@@ -1,4 +1,4 @@
-import {getLayerWhere} from "@masterportal/masterportalapi/src/rawLayerList";
+import {rawLayerList} from "@masterportal/masterportalapi/src";
 import {getCenter} from "ol/extent";
 import {createLayerAddToTree} from "../../../../utils/createLayerAddToTree";
 
@@ -87,7 +87,7 @@ export default {
                 featureGeometryType = feat.getGeometry().getType();
                 return feat.getId().toString() === featureId;
             }),
-            rawLayer = getLayerWhere({id: state.layer.id}),
+            rawLayer = rawLayerList.getLayerWhere({id: state.layer.id}),
             styleObj = state.layer.geometryType.toLowerCase().indexOf("polygon") > -1 ? state.highlightVectorRulesPolygon : state.highlightVectorRulesPointLine,
             highlightObject = {
                 type: featureGeometryType === "Point" || featureGeometryType === "MultiPoint" ? "increase" : "highlightPolygon",

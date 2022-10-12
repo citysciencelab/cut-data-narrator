@@ -1,7 +1,7 @@
 import sinon from "sinon";
 import axios from "axios";
 
-import httpClient from "../../../utils/httpClient";
+import {httpClient} from "../../../utils/httpClient";
 
 describe("tools/contact/utils/httpClient", function () {
     describe("httpClient", function () {

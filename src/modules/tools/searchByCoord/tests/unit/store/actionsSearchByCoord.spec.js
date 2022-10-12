@@ -141,7 +141,7 @@ describe("src/modules/tools/searchByCoord/store/actionsSearchByCoord.js", () => 
             expect(dispatch.secondCall.args[0]).to.equal("moveToCoordinates");
             expect(dispatch.secondCall.args[1]).to.eql(["564459.13", "5935103.67"]);
         });
-        it("Transforms coordinates of the WGS84 format and moves to coordinates", () => {
+        it.skip("Transforms coordinates of the WGS84 format and moves to coordinates", () => {
             const state = {
                     currentSelection: "WGS84",
                     selectedCoordinates: [["53", "33", "25"], ["9", "59", "50"]]
@@ -160,7 +160,7 @@ describe("src/modules/tools/searchByCoord/store/actionsSearchByCoord.js", () => 
             expect(dispatch.secondCall.args[0]).to.equal("moveToCoordinates");
             expect(dispatch.secondCall.args[1]).to.eql(proj4Result);
         });
-        it("Transforms coordinates of the WGS84(Dezimalgrad) format and moves to coordinates", () => {
+        it.skip("Transforms coordinates of the WGS84(Dezimalgrad) format and moves to coordinates", () => {
             const state = {
                     currentSelection: "WGS84(Dezimalgrad)",
                     selectedCoordinates: [["53.55555", ""], ["10.01234", ""]]

@@ -3,7 +3,7 @@ import {mapGetters, mapMutations, mapActions} from "vuex";
 import ToolTemplate from "../../ToolTemplate.vue";
 import getters from "../store/gettersPrint";
 import mutations from "../store/mutationsPrint";
-import getComponent from "../../../../utils/getComponent";
+import {getComponent} from "../../../../utils/getComponent";
 import thousandsSeparator from "../../../../utils/thousandsSeparator.js";
 import axios from "axios";
 import getVisibleLayer from "../utils/getVisibleLayer";

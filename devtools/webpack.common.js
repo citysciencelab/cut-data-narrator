@@ -76,10 +76,17 @@ module.exports = function () {
             all: false,
             colors: true,
             errors: true,
-            errorDetails: true
+            errorDetails: true,
+            warnings: true,
+            logging: "verbose",
+            modules: true,
+            moduleTrace: true,
+            reasons: true,
+            performance:true,
+            timings: true,
             // assets: true
             // chunkModules: true
-            // entrypoints: true
+            entrypoints: true
             // modules: true
             // outputPath: true
         },
@@ -130,7 +137,11 @@ module.exports = function () {
                     test: /\.js$/,
                     exclude: /\bcore-js\b|\.(test|spec)\.js$/,
                     use: {
-                        loader: "babel-loader"
+                        loader: 'esbuild-loader',
+                        options: {
+                            sourcemap: true,
+                            target: 'chrome79'
+                        }
                     }
                 },
                 {

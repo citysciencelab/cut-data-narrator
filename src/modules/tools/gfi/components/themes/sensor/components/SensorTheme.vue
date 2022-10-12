@@ -2,7 +2,7 @@
 import moment from "moment";
 import axios from "axios";
 
-import getComponent from "../../../../../../../utils/getComponent";
+import {getComponent} from "../../../../../../../utils/getComponent";
 import SensorThemeChartsData from "./SensorThemeData.vue";
 import SensorThemeChartsBarChart from "./SensorThemeBarChart.vue";
 import {processHistoricalDataByWeekdays} from "../utils/processHistoricalDataByWeekdays";

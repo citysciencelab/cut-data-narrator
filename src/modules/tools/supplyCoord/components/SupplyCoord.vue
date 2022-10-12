@@ -1,6 +1,6 @@
 <script>
 import ToolTemplate from "../../ToolTemplate.vue";
-import getComponent from "../../../../utils/getComponent";
+import {getComponent} from "../../../../utils/getComponent";
 import {Pointer} from "ol/interaction.js";
 import {getProjections} from "@masterportal/masterportalapi/src/crs";
 import {mapActions, mapGetters, mapMutations} from "vuex";

@@ -1,4 +1,4 @@
-import {getLayerWhere} from "@masterportal/masterportalapi/src/rawLayerList";
+import {rawLayerList} from "@masterportal/masterportalapi/src";
 import {convert, convertToStringArray, convertTransparency, parseQuery} from "./converter";
 import {setValueToState} from "./stateModifier";
 import store from "../../app-store";
@@ -212,7 +212,7 @@ function parseLayerParams (layerIdString, visibilityString = "", transparencyStr
     }
     layerIdList.forEach((id, index) => {
         const layerConfigured = Radio.request("Parser", "getItemByAttributes", {id: id}),
-            layerExisting = getLayerWhere({id: id}),
+            layerExisting = rawLayerList.getLayerWhere({id: id}),
             optionsOfLayer = {
                 id: id,
                 visibility: visibilityList[index]

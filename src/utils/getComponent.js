@@ -7,4 +7,5 @@ function getComponent (componentId) {
     return Radio.request("ModelList", "getModelByAttributes", {id: componentId});
 }
 
-export default getComponent;
+module.exports = {getComponent};
+ 

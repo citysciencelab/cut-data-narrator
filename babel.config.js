@@ -23,6 +23,7 @@ module.exports = function (api) {
     api.cache(false);
 
     return {
+        exclude: /vuetify/,
         presets,
         plugins
     };

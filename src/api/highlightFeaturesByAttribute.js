@@ -5,8 +5,8 @@ import {Style} from "ol/style.js";
 import Point from "ol/geom/Point.js";
 import Feature from "ol/Feature.js";
 import axios from "axios";
-import {getLayerList} from "@masterportal/masterportalapi/src/rawLayerList";
 import {createLayerAddToTree} from "../utils/createLayerAddToTree";
+import {rawLayerList} from "@masterportal/masterportalapi/src";
 
 export default {
     /**
@@ -308,8 +308,8 @@ export default {
      * @param {String} queryType the query type
      * @returns {void}
     */
-    highlightFeaturesByAttribute: function (dispatch, rootGetters, wfsId, propName, propValue, queryType) {
-        const layerList = getLayerList(),
+    highlightFeaturesByAttribute: function (dispatch, wfsId, propName, propValue, queryType) {
+        const layerList = rawLayerList.getLayerList(),
             layer = layerList.find(layerConf => layerConf.id === wfsId),
             isEqual = queryType && queryType.toLowerCase() === "isequal",
             isIn = queryType && queryType.toLowerCase() === "isin",

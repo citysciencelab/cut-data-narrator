@@ -4,7 +4,7 @@ import ListItem from "../../../../share-components/list/components/ListItem.vue"
 import LoaderOverlay from "../../../../utils/loaderOverlay";
 import {mapActions, mapGetters, mapMutations} from "vuex";
 import ToolTemplate from "../../ToolTemplate.vue";
-import getComponent from "../../../../utils/getComponent";
+import {getComponent} from "../../../../utils/getComponent";
 import WfsSearchLiteral from "./WfsSearchLiteral.vue";
 import actions from "../store/actionsWfsSearch";
 import getters from "../store/gettersWfsSearch";

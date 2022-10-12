@@ -247,7 +247,7 @@ describe("src/modules/tools/coordToolkit/components/CoordToolkit.vue", () => {
             expect(typeof store.state.Tools.CoordToolkit.selectPointerMove.handleMoveEvent).to.be.equals("function");
         });
 
-        describe("createInteraction for 3D", () => {
+        describe.skip("createInteraction for 3D", () => {
             before(() => {
                 global.Cesium = {
                     ScreenSpaceEventHandler: () => {

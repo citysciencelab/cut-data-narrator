@@ -1,6 +1,6 @@
 import Backbone from "backbone";
 import ModelList from "../modelList/list";
-import {getLayerList} from "@masterportal/masterportalapi/src/rawLayerList";
+import {rawLayerList} from "@masterportal/masterportalapi/src";
 import store from "../../../src/app-store/index";
 
 const Parser = Backbone.Model.extend(/** @lends Parser.prototype */{
@@ -122,7 +122,7 @@ const Parser = Backbone.Model.extend(/** @lends Parser.prototype */{
             "change:category": function () {
                 this.setItemList([]);
                 this.addTreeMenuItems();
-                this.parseTree(getLayerList());
+                this.parseTree(rawLayerList.getLayerList());
                 Radio.trigger("ModelList", "removeModelsByParentId", "tree");
                 Radio.trigger("ModelList", "renderTree");
                 Radio.trigger("ModelList", "setModelAttributesById", "Overlayer", {isExpanded: true});
@@ -159,7 +159,7 @@ const Parser = Backbone.Model.extend(/** @lends Parser.prototype */{
         }
         else {
             this.addTreeMenuItems();
-            this.parseTree(getLayerList(), this.get("overlayer_3d"), this.get("overlayer_time"));
+            this.parseTree(rawLayerList.getLayerList(), this.get("overlayer_3d"), this.get("overlayer_time"));
         }
         this.createModelList();
     },

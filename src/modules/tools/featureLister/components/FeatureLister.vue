@@ -4,7 +4,7 @@ import getters from "../store/gettersFeatureLister";
 import actions from "../store/actionsFeatureLister";
 import mutations from "../store/mutationsFeatureLister";
 import ToolTemplate from "../../ToolTemplate.vue";
-import getComponent from "../../../../utils/getComponent";
+import {getComponent} from "../../../../utils/getComponent";
 import VectorLayer from "ol/layer/Vector.js";
 import {isPhoneNumber, getPhoneNumberAsWebLink} from "../../../../utils/isPhoneNumber.js";
 import beautifyKey from "../../../../utils/beautifyKey";

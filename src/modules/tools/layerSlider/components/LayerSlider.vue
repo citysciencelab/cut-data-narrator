@@ -1,7 +1,7 @@
 <script>
 import {mapGetters, mapMutations, mapActions} from "vuex";
 import ToolTemplate from "../../ToolTemplate.vue";
-import getComponent from "../../../../utils/getComponent";
+import {getComponent} from "../../../../utils/getComponent";
 import getters from "../store/gettersLayerSlider";
 import mutations from "../store/mutationsLayerSlider";
 import LayerSliderHandle from "./LayerSliderHandle.vue";
