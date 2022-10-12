@@ -82,7 +82,7 @@ module.exports = function () {
             modules: true,
             moduleTrace: true,
             reasons: true,
-            performance:true,
+            performance: true,
             timings: true,
             // assets: true
             // chunkModules: true
@@ -137,10 +137,10 @@ module.exports = function () {
                     test: /\.js$/,
                     exclude: /\bcore-js\b|\.(test|spec)\.js$/,
                     use: {
-                        loader: 'esbuild-loader',
+                        loader: "esbuild-loader",
                         options: {
                             sourcemap: true,
-                            target: 'chrome79'
+                            target: "chrome79"
                         }
                     }
                 },

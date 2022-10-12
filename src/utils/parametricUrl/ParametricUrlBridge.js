@@ -262,7 +262,7 @@ function setLayersVisible (layerParams) {
     if (layerParams) {
         layerParams.layerIdList.forEach((val, index) => {
             const id = String(val),
-                rawLayer = getLayerWhere({id: id}),
+                rawLayer = rawLayerList.getLayerWhere({id: id}),
                 optionsOfLayer = {
                     id: id,
                     visibility: layerParams.visibilityList[index]

@@ -308,7 +308,7 @@ export default {
      * @param {String} queryType the query type
      * @returns {void}
     */
-    highlightFeaturesByAttribute: function (dispatch, wfsId, propName, propValue, queryType) {
+    highlightFeaturesByAttribute: function (dispatch, rootGetters, wfsId, propName, propValue, queryType) {
         const layerList = rawLayerList.getLayerList(),
             layer = layerList.find(layerConf => layerConf.id === wfsId),
             isEqual = queryType && queryType.toLowerCase() === "isequal",

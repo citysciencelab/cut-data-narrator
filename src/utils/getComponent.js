@@ -8,4 +8,4 @@ function getComponent (componentId) {
 }
 
 module.exports = {getComponent};
- 
+

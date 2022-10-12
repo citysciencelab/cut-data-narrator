@@ -1,4 +1,5 @@
 import {rawLayerList} from "@masterportal/masterportalapi/src";
+import {createLayerAddToTree} from "../../../../utils/createLayerAddToTree";
 import {getCenter} from "ol/extent";
 
 export default {

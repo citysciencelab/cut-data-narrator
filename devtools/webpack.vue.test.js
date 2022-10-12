@@ -36,7 +36,7 @@ module.exports = {
         modules: true,
         moduleTrace: true,
         reasons: true,
-        performance:true,
+        performance: true,
         timings: true,
         entrypoints: true
     },
@@ -51,11 +51,11 @@ module.exports = {
                 test: /\.js$/,
                 exclude: /\bcore-js\b|\bvideo.js\b|\bsinon\b|\bturf\b|\bjsts\b/,
                 use: {
-                    loader: 'esbuild-loader',
+                    loader: "esbuild-loader",
                     options: {
                         sourcemap: true,
-                        target: 'chrome79',
-                        format:"cjs",
+                        target: "chrome79",
+                        format: "cjs",
                         platform: "node"
                     }
                 }
