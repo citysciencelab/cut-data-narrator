@@ -35,6 +35,7 @@
 - Issue #837: search and layerTree work on mobile again.
 - Issue #840: The URL parameter `zoomToExtent` now works again.
 - Fix some vulnerabilities in dependencies.
+- Tool "Select features": on close of tool the list with features is emptied.
 
 ---
 

@@ -96,6 +96,7 @@ export default {
         removeInteractions: function () {
             this.removeInteractionFromMap(this.selectInteraction);
             this.removeInteractionFromMap(this.dragBoxInteraction);
+            this.selectedFeaturesWithRenderInformation.length = 0;
         },
 
         /**
