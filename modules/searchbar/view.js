@@ -622,6 +622,7 @@ const SearchbarView = Backbone.View.extend(/** @lends SearchbarView.prototype */
             hit.coordinate = this.sanitizePoint(hit.coordinate);
             store.dispatch("MapMarker/placingPointMarker", hit.coordinate);
             Radio.trigger("MapView", "setCenter", hit.coordinate, zoomLevel);
+            store.commit("Maps/setClickCoordinate", hit.coordinate);
         }
         else {
             store.dispatch("MapMarker/removePolygonMarker");
