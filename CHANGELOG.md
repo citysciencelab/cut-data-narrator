@@ -3,22 +3,24 @@
 
 [Semantic versioning](https://semver.org/spec/v2.0.0.html) is used.
 
-## Known Issues
-
----
 
 ## Unreleased - in development
-### __Breaking Changes__
-
 ### Added
 - highlightFeaturesByAttribute: new isIn filter, offering the possibility to search for multiple values
 
 ### Changed
-- Search results of the Gazetteer were extended by properties.
 
 ### Deprecated
 
 ### Removed
+
+### Fixed
+
+---
+
+## v2.26.1 - 2022-10-14
+### Changed
+- Search results of the Gazetteer were extended by properties.
 
 ### Fixed
 - Issue #837: search and layerTree work on mobile again.
@@ -27,8 +29,6 @@
 ---
 
 ## v2.26.0 - 2022-10-05
-### __Breaking Changes__
-
 ### Added
 - Draw-Tool:
     - if there are attributes set on the feature of drawn layer, after clicking on the feature, the attributes will be shown in standard gfi theme.
@@ -60,8 +60,6 @@
         - @geoblocks/print: 0.7.2 to 0.7.3
 - HighlightFeature is working with AD-Secure services now.
 - Refactored tool wfst.
-
-### Deprecated
 
 ### Removed
 - The image of the default MapMarker was removed from img folder.
@@ -162,11 +160,10 @@
 - The GeoJson-Layer subTyp: `OpenSenseMap` is deprecated. It will be removed in the next Major-Release!
 
 ### Removed
-The following NPM package is removed:
+- The following NPM package is removed:
     - @intlify/vue-i18n-loader
     - bootstrap-colorpicker
-
-The Tool StyleWMS was removed.
+- The Tool StyleWMS was removed.
 
 ### Fixed
 - Issue #808: Fix geometry polygon-with-hole for searchBar/specialWfs.
@@ -181,9 +178,7 @@ The Tool StyleWMS was removed.
 ## v2.24.1 - 2022-08-19
 ### Added
 - The following NPM packages are added:
-
     - dependencies:
-
         - "vue2-datepicker"
 
 ### Changed
