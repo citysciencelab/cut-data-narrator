@@ -10,9 +10,11 @@
 - related filters can be displayed together with new attribute layerGroups in config.json.
 
 ### Changed
-- The version of node was updated, must be >= 16.13.2 <= 16.17.1 and the version of npm was updated, must be >= 8.1.2 <=8.15.0.
+- The version of node was updated, must be >= 16.13.2 <= 16.18.0 and the version of npm was updated, must be >= 8.1.2 <=8.19.2.
 - The following NPM packages have been updated:
     - dependencies:
+        - @popperjs/core: 2.11.5 to 2.11.6
+        - bootstrap: 5.2.0 to 5.2.2
         - moment-timezone: 0.5.34 to 0.5.37
     - devDependencies
         - @masterportal/mpconfigparser: 1.3.0 to 1.3.1
