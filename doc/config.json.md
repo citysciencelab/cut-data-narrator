@@ -5187,7 +5187,7 @@ List of typical WFS query attributes for highlightFeaturesByAttribute.
 |wildCard|yes|String||The wildcard character for the WFS query -e.g. %|true|
 |singleChar|yes|String||The single character for the WFS query - e.g. #|true|
 |escapeChar|yes|String||The escape character for the WFS query - e.g. \||true|
-|valueDelimiter|no|String|;|The value delimiter for isIn queries attributeValue|true|
+|valueDelimiter|no|String||The value delimiter for isIn queries attributeValue, defaulting to semicolon|true|
 
 **Example**
 
