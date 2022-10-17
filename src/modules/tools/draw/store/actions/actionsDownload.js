@@ -2,6 +2,8 @@ import {Circle} from "ol/geom.js";
 import {fromCircle} from "ol/geom/Polygon.js";
 import {GeoJSON, GPX} from "ol/format.js";
 import convertFeaturesToKml from "../../../../../../src/utils/convertFeaturesToKml.js";
+import {convertJsonToCsv} from "../../../../../utils/convertJsonToCsv";
+import {setGeometriesToWkt} from "../../utils/setGeometriesToWkt.js";
 
 import {transform, transformPoint, transformGeometry} from "../../utils/download/transformGeometry";
 
@@ -55,6 +57,11 @@ async function prepareData ({state, commit, dispatch}) {
             break;
         case "KML":
             features = await convertFeaturesToKml(state.download.features);
+            break;
+        case "CSV":
+            features = setGeometriesToWkt(state.download.features);
+
+            features = Array.isArray(features) ? convertJsonToCsv(features.map(feature => feature.get("attributes"))) : "";
             break;
         case "none":
             commit("setDownloadSelectedFormat", "");

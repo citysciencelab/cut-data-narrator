@@ -1,12 +1,34 @@
 import DrawItemAttributes from "../../../components/DrawItemAttributes.vue";
-import {shallowMount} from "@vue/test-utils";
+import {shallowMount, createLocalVue} from "@vue/test-utils";
 import {expect} from "chai";
 import Feature from "ol/Feature";
 import sinon from "sinon";
+import Vuex from "vuex";
+
+const localVue = createLocalVue();
+
+localVue.use(Vuex);
 
 describe("src/tools/draw/components/DrawItemAttributes.vue", () => {
     let testFeature, testLayer;
-    const requiredProps = {
+
+    const store = new Vuex.Store({
+            namespaced: true,
+            modules: {
+                Tools: {
+                    namespaced: true,
+                    modules: {
+                        Draw: {
+                            namespaced: true,
+                            actions: {
+                                setDownloadFeatures: () => sinon.stub()
+                            }
+                        }
+                    }
+                }
+            }
+        }),
+        requiredProps = {
             selectedFeature: undefined,
             layer: undefined
         },
@@ -15,7 +37,8 @@ describe("src/tools/draw/components/DrawItemAttributes.vue", () => {
                 return shallowMount(DrawItemAttributes, {
                     propsData: {
                         ...props
-                    }
+                    },
+                    store
                 });
             }
         };

@@ -109,7 +109,7 @@ const symbol = {
             file: "",
             fileName: "",
             fileUrl: "",
-            formats: ["KML", "GEOJSON", "GPX"], // NOTE(roehlipa): If this can't be configured, then it may be moved out of the state IMO.
+            formats: ["KML", "GEOJSON", "GPX", "CSV"], // NOTE(roehlipa): If this can't be configured, then it may be moved out of the state IMO.
             preSelectedFormat: "",
             selectedFormat: ""
         },

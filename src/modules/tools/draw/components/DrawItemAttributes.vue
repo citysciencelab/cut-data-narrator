@@ -1,5 +1,6 @@
 <script>
 import isObject from "../../../../utils/isObject";
+import {mapActions} from "vuex";
 
 export default {
     name: "DrawItemAttributes",
@@ -45,6 +46,8 @@ export default {
         this.setAttributesFromFeature();
     },
     methods: {
+        ...mapActions("Tools/Draw", ["setDownloadFeatures"]),
+
         /**
          * Sets the local attributes by the attributes from the selected feature.
          * @returns {void}
@@ -60,7 +63,9 @@ export default {
                 Object.entries(attributes).forEach(([key, value]) => {
                     const attr = {key, value};
 
-                    this.attributes.push(attr);
+                    if (key !== "geometry") {
+                        this.attributes.push(attr);
+                    }
                 });
             }
             this.attributeKey = "";
@@ -100,6 +105,7 @@ export default {
             this.attributes.push(attr);
             this.attributeKey = "";
             this.attributeValue = "";
+            this.setDownloadFeatures();
         },
         /**
          * Removes attribute row from the local attributes array and removes the attribute from the feature.
@@ -115,6 +121,7 @@ export default {
             delete this.selectedFeature.get("attributes")[key];
             this.selectedFeature.unset(key);
             this.$delete(this.attributes, idx);
+            this.setDownloadFeatures();
         },
         /**
          * Save the current changes which were made on already existing attributes.

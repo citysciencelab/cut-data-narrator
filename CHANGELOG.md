@@ -8,7 +8,7 @@
 ### Added
 - highlightFeaturesByAttribute: new isIn filter, offering the possibility to search for multiple values
 - related filters can be displayed together with new attribute layerGroups in config.json.
-
+- Draw-Tool: Added csv as new download fromat. In the csv the geometry is set as wkt.
 ### Changed
 - The version of node was updated, must be >= 16.13.2 <= 16.18.0 and the version of npm was updated, must be >= 8.1.2 <=8.19.2.
 - The following NPM packages have been updated:
