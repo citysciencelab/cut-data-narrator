@@ -212,6 +212,7 @@ export default {
 
     /**
      * builds the filter snippet for isin property searching
+     * @param {String} valueDelimiter the configured value delimiter character
      * @param {String} wildCard the configured wildCard character
      * @param {String} singleChar the configured singleChar character
      * @param {String} escapeChar the configured escapeChar character
@@ -220,11 +221,15 @@ export default {
      * @param {String} propValue the value to search for (,-separated)
      * @returns {String} query snippet
     */
-    getOGCFilterSnippetIn: function (wildCard, singleChar, escapeChar, propPrefix, propName, propValue) {
+    getOGCFilterSnippetIn: function (valueDelimiter, wildCard, singleChar, escapeChar, propPrefix, propName, propValue) {
         let result = "",
-            value = "";
+            value = "",
+            delimiter = ";";
 
-        const valueItems = propValue.split(",");
+        if (valueDelimiter !== undefined && valueDelimiter.length === 1) {
+            delimiter = valueDelimiter;
+        }
+        const valueItems = propValue.split(delimiter);
 
         if (valueItems.length >= 2) {
             result += "<ogc:Or>";
@@ -318,7 +323,8 @@ export default {
         let requestBody = this.getWFSQuery(layer?.featureType, layer?.version, filterSnippet);
 
         if (isIn) {
-            const filterSnippetIn = this.getOGCFilterSnippetIn(layer?.wildCard,
+            const filterSnippetIn = this.getOGCFilterSnippetIn(layer?.valueDelimiter,
+                layer?.wildCard,
                 layer?.singleChar,
                 layer?.escapeChar,
                 layer?.featurePrefix,

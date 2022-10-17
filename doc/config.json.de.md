@@ -5123,6 +5123,7 @@ Attribute für die WFS Suche bei highlighFeaturesByAttribute
 |wildCard|ja|String||Das zu verwendende Zeichen für das Jokerzeichen - z.Bsp. %|true|
 |singleChar|ja|String||Das Zeichen für den singleChar WFS parameter - z.Bsp. #|true|
 |escapeChar|ja|String||Das Zeichen für den escapeChar WFS parameter - z.Bsp. \||true|
+|valueDelimiter|nein|String|;|Das Trennzeichen für die Werte in attributeValue bei der isIn Suche|true|
 
 **Example**
 
