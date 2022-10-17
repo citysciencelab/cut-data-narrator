@@ -97,6 +97,19 @@ export default {
                 });
             }
         }
+
+        if (Array.isArray(this.layerConfigs) && this.layerConfigs.length > 0) {
+            const selectedFilterIds = [];
+
+            this.layerConfigs.forEach(config => {
+                if (typeof config?.active === "boolean" && config.active && config?.filterId) {
+                    selectedFilterIds.push(config.filterId);
+                }
+            });
+            if (selectedFilterIds.length > 0) {
+                this.setSelectedAccordions(this.transformLayerConfig(this.layerConfigs, selectedFilterIds));
+            }
+        }
     },
     methods: {
         ...mapMutations("Tools/Filter", Object.keys(mutations)),
@@ -185,7 +198,7 @@ export default {
             const layers = [];
 
             configs.forEach(layerConfig => {
-                if (Array.isArray(filterIds) && filterIds.includes(layerConfig.filterId) || layerConfig.filterId === filterIds) {
+                if (Array.isArray(filterIds) && filterIds.includes(layerConfig.filterId)) {
                     layers.push({
                         layerId: layerConfig.layerId,
                         filterId: layerConfig.filterId
