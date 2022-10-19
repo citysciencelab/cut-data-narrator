@@ -139,7 +139,14 @@ module.exports = function () {
                     use: {
                         loader: "esbuild-loader",
                         options: {
-                            sourcemap: true,
+                            loader: 'js',
+                            //npm run start, test:
+                            // sourcemap: true,
+                            // target: "es2015",
+                            // format: "cjs",
+                            // platform: "node",
+                            
+                            //npm run build
                             target: "es2015",
                             format: "cjs",
                             platform: "node"
@@ -171,7 +178,7 @@ module.exports = function () {
                     loader: "vue-loader",
                     options: {
                         loaders: {
-                            js: "babel-loader?presets[]=env"
+                            js: "esbuild-loader?"
                         }
                     }
                 },

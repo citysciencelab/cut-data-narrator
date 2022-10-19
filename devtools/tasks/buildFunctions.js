@@ -71,7 +71,7 @@ module.exports = function buildWebpack (answers) {
 
     // Comment out following 4 lines if you want only copy without build (you must already have a build)
     fs.remove(buildTempPath).catch(error => console.error(error));
-    execute(cliExecCommand).then(function (result) {
+    execute(cliExecCommand, {maxBuffer: 5 * 1024 * 1024}).then(function (result) {
         console.warn(result.stdout);
         prependVersionNumber(path.resolve(buildTempPath, "js/masterportal.js"));
         // ^^^

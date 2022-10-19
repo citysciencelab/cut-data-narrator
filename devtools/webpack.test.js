@@ -33,7 +33,13 @@ module.exports = {
                 test: /\.js$/,
                 exclude: /\bcore-js\b|\bvideo.js\b|\bsinon\b|\bturf\b|\bjsts\b/,
                 use: {
-                    loader: "babel-loader"
+                    loader: "esbuild-loader",
+                    options: {
+                        sourcemap: true,
+                        target: "es2015",
+                        format: "cjs",
+                        platform: "node"
+                    }
                 }
             },
             {
@@ -41,7 +47,7 @@ module.exports = {
                 loader: "vue-loader",
                 options: {
                     loaders: {
-                        js: "babel-loader?presets[]=env"
+                        js: "esbuild-loader?"
                     }
                 }
             },
