@@ -50,6 +50,7 @@ The configuration options listed in the following table exist:
 |layersRemovable|no|Boolean|false|Defines whether layers may be removed from a portal during its run-time.|false|
 |quickHelp|no|**[quickHelp](#markdown-header-portalconfigquickHelp)**||Configuration of new and manipulation of existing QuickHelp windows.|false|
 |tree|no|**[tree](#markdown-header-portalconfigtree)**||Configuration of menu tree.|false|
+|layerInformation|no|**[layerInformation](#markdown-header-portalconfiglayerInformation)**||Decides if to show individual attribute in Meta data of layer information|false|
 
 ***
 
@@ -610,6 +611,24 @@ Configuration in addition to highlighting features. If features are highlighted 
 },
 ```
 ***
+
+
+#### Portalconfig.layerInformation
+Configuration of layerInformation.
+
+|Name|Required|Type|Default|Description|Expert|
+|----|--------|----|-------|-----------|------|
+|showMetaDataRevision|no|boolean|true|Decides if to show "Letzte Änderung" in Meta data of layer information|false|
+
+**Example**
+```
+#!json
+"layerInformation":{
+    "showMetaDataRevision": true
+},
+```
+***
+
 ### Portalconfig.controls
 
 |Name|Required|Type|Default|Description|Expert|

@@ -45,6 +45,7 @@ Es existieren die im Folgenden aufgelisteten Konfigurationen:
 |layersRemovable|nein|Boolean|false|Gibt an, ob der Layer gelöscht werden darf.|false|
 |quickHelp|nein|**[quickHelp](#markdown-header-portalconfigquickHelp)**||Konfiguration neuer und Manipulation bestehender QuickHelp-Fenster.|false|
 |tree|nein|**[tree](#markdown-header-portalconfigtree)**||Konfiguration des Menü-Baums.|false|
+|layerInformation|nein|**[layerInformation](#markdown-header-portalconfiglayerInformation)**||Legt fest, ob individuelle Attribute in Metadaten von layerinformation angezeigt werden soll.|false|
 
 ***
 
@@ -582,6 +583,22 @@ Konfiguration zusätzlich zum Highlighting von Features. Wenn mit dem Werkzeug "
 "highlightedFeatures": {
     "active": false,
     "layerName": "common:tree.selectedFeatures"
+},
+```
+***
+
+#### Portalconfig.layerInformation
+Konfiguration der layerInformation.
+
+|Name|Verpflichtend|Typ|Default|Beschreibung|Expert|
+|----|-------------|---|-------|------------|------|
+|showMetaDataRevision|nein|Boolean|true|Legt fest, ob "Letzte Änderung" in Metadaten von layerinformation angezeigt werden soll.|false|
+
+**Beispiel**
+```
+#!json
+"layerInformation":{
+    "showMetaDataRevision": true
 },
 ```
 ***

@@ -1,6 +1,7 @@
 import {getRecordById} from "../../../api/csw/getRecordById";
 import getProxyUrl from "../../../utils/getProxyUrl";
 import sortBy from "../../../utils/sortBy";
+import store from "../../../app-store";
 
 const actions = {
 
@@ -99,6 +100,7 @@ const actions = {
      * @returns {void}
      */
     getAbstractInfo: async function ({commit, state, rootGetters}, metaInfo) {
+        const layerInfoConfig = store.state.configJson?.Portalconfig?.layerInformation;
         let metadata;
 
         /**
@@ -141,7 +143,9 @@ const actions = {
             commit("setTitle", metadata?.getTitle());
             commit("setAbstractText", metadata?.getAbstract());
             commit("setPeriodicityKey", metadata?.getFrequenzy());
-            commit("setDateRevision", metadata?.getRevisionDate());
+            if (typeof layerInfoConfig?.showMetaDataRevision !== "boolean" || layerInfoConfig?.showMetaDataRevision) {
+                commit("setDateRevision", metadata?.getRevisionDate());
+            }
             commit("setDownloadLinks", metadata?.getDownloadLinks());
             commit("setDatePublication", metadata?.getPublicationDate() || metadata?.getCreationDate());
         }
