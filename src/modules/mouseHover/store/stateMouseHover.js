@@ -17,7 +17,7 @@ export default {
     overlay: new Overlay({
         id: "mousehover-overlay",
         element: document.createElement("DIV"),
-        offset: [0, -2],
+        offset: [1, -2],
         positioning: "bottom-left"
     }),
     numFeaturesToShow: 2,
