@@ -1,7 +1,6 @@
 /* eslint-disable no-process-env */
 const webpack = require("webpack"),
     MiniCssExtractPlugin = require("mini-css-extract-plugin"),
-    CssMinimizerPlugin = require("css-minimizer-webpack-plugin"),
     path = require("path"),
     fse = require("fs-extra"),
     VueLoaderPlugin = require("vue-loader/lib/plugin"),
@@ -77,6 +76,7 @@ module.exports = function () {
             colors: true,
             errors: true,
             errorDetails: true,
+            //
             warnings: true,
             logging: "verbose",
             modules: true,
@@ -84,33 +84,7 @@ module.exports = function () {
             reasons: true,
             performance: true,
             timings: true,
-            // assets: true
-            // chunkModules: true
             entrypoints: true
-            // modules: true
-            // outputPath: true
-        },
-        /*
-        optimization: {
-            splitChunks: {
-                minSize: 0,
-                maxInitialRequests: Infinity,
-                cacheGroups: {
-                    vendor: {
-                        test: /node_modules/,
-                        chunks: "all",
-                        name: "vendor"
-                        enforce: true
-                    }
-                }
-            }
-        },
-        */
-        optimization: {
-            // add minimize: true after the array to enable the minimization in development as well
-            minimizer: [
-                new CssMinimizerPlugin()
-            ]
         },
         output: {
             path: path.resolve(__dirname, "../build/"),
@@ -125,6 +99,21 @@ module.exports = function () {
         },
         module: {
             rules: [
+                // replace untransformable code in olcs-package
+                {
+                    test: /\.js$/,
+                    include: [
+                        path.resolve(__dirname, "../node_modules/olcs/util"),
+                        path.resolve(__dirname, "../node_modules/olcs/core")
+                    ],
+                    use: {
+                        loader: "string-replace-loader",
+                        options: {
+                            search: "const exports = {};",
+                            replace: "var exports = {};"
+                        }
+                    }
+                },
                 // ignore all files ending with ".test.js".
                 {
                     test: /\.(test|spec)\.js$/,
@@ -135,18 +124,12 @@ module.exports = function () {
                 // take all files ending with ".js" but not with ".test.js".
                 {
                     test: /\.js$/,
-                    exclude: /\bcore-js\b|\.(test|spec)\.js$/,
+                    exclude: /\.(test|spec)\.js$/,
                     use: {
                         loader: "esbuild-loader",
                         options: {
-                            loader: 'js',
-                            //npm run start, test:
-                            // sourcemap: true,
-                            // target: "es2015",
-                            // format: "cjs",
-                            // platform: "node",
-                            
-                            //npm run build
+                            loader: "js",
+                            sourcemap: true,
                             target: "es2015",
                             format: "cjs",
                             platform: "node"

@@ -5,8 +5,7 @@ import {expect} from "chai";
 import * as proj4 from "proj4";
 
 describe("src/modules/tools/coord/store/actionsCoordToolkit.js", () => {
-    let commit, dispatch, getters,
-        proj4Spy = null;
+    let commit, dispatch, getters;
 
     beforeEach(() => {
         const map = {
@@ -809,11 +808,11 @@ describe("src/modules/tools/coord/store/actionsCoordToolkit.js", () => {
                 mapCollection.clear();
                 mapCollection.addMap(map, "2D");
 
-                // sinon.stub(proj4, "default").callsFake(proj4Spy);
+                sinon.stub(proj4, "default").callsFake(proj4Spy);
                 actions.transformCoordinates({state, dispatch});
 
-                // expect(proj4Spy.firstCall.args[0]).to.equal("EPSG:8395");
-                // expect(proj4Spy.secondCall.args[0]).to.equal("EPSG:25833");
+                expect(proj4Spy.firstCall.args[0]).to.equal("EPSG:8395");
+                expect(proj4Spy.secondCall.args[0]).to.equal("EPSG:25833");
                 expect(dispatch.firstCall.args[0]).to.equal("setZoom");
                 expect(dispatch.secondCall.args[0]).to.equal("moveToCoordinates");
                 expect(dispatch.secondCall.args[1]).to.eql(proj4Result);

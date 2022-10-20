@@ -23,7 +23,6 @@
         "vuejs-accessibility"
     ],
     "parserOptions": {
-        "parser": "@babel/eslint-parser",
         "ecmaVersion": 2022,
         "sourceType": "module",
         "allowImportExportEverywhere": true

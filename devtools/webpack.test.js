@@ -31,10 +31,11 @@ module.exports = {
         rules: [
             {
                 test: /\.js$/,
-                exclude: /\bcore-js\b|\bvideo.js\b|\bsinon\b|\bturf\b|\bjsts\b/,
+                exclude: /\bvideo.js\b|\bsinon\b|\bturf\b|\bjsts\b/,
                 use: {
                     loader: "esbuild-loader",
                     options: {
+                        loader: "js",
                         sourcemap: true,
                         target: "es2015",
                         format: "cjs",

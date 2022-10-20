@@ -58,7 +58,7 @@ export default {
 
             // "useConfigName" is set in the preparser, should be removed, with the refactoring of the core
             if (header?.useConfigName) {
-                delete this.header.useConfigName;
+                delete header.useConfigName;
             }
 
             return header;

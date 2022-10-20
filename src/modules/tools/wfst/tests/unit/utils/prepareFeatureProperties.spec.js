@@ -56,7 +56,7 @@ const exampleLayerInformation = {
 
 describe.skip("src/modules/tools/wfst/utils/prepareFeatureProperties.js", () => {
     beforeEach(() => {
-        sinon.stub(receivePossiblePropertiesModule, parseDescribeFeatureTypeResponse).callsFake(() => exampleProperties);
+        sinon.stub(receivePossiblePropertiesModule, "parseDescribeFeatureTypeResponse").callsFake(() => exampleProperties);
     });
     afterEach(sinon.restore);
 
