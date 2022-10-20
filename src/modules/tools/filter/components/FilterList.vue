@@ -16,27 +16,10 @@ export default {
             required: true,
             default: () => []
         },
-        changedSelectedLayers: {
+        selectedLayers: {
             type: Array,
             required: false,
             default: () => []
-        }
-    },
-    data () {
-        return {
-            selectedLayers: []
-        };
-    },
-    watch: {
-        selectedLayers () {
-            this.$emit("selectedaccordions", this.selectedLayers);
-        }
-    },
-    mounted () {
-        if (this.changedSelectedLayers.length) {
-            this.changedSelectedLayers.forEach(layer => {
-                this.updateSelectedLayers(layer.filterId);
-            });
         }
     },
     methods: {
@@ -50,20 +33,7 @@ export default {
             if (typeof filterId !== "number") {
                 return;
             }
-
-            if (!this.multiLayerSelector) {
-                this.selectedLayers = this.selectedLayers.includes(filterId) ? [] : [filterId];
-                return;
-            }
-
-            const index = this.selectedLayers.indexOf(filterId);
-
-            if (index >= 0) {
-                this.selectedLayers.splice(index, 1);
-            }
-            else {
-                this.selectedLayers.push(filterId);
-            }
+            this.$emit("selectedaccordions", filterId);
         },
         /**
          * Check if Selector should be disabled.
@@ -112,7 +82,7 @@ export default {
                 >
                     {{ filter.title ? filter.title : filter.layerId }}
                     <span
-                        v-if="!selectedLayers.includes(filter.filterId)"
+                        v-if="!selectedLayers.some(layers => layers.filterId === filter.filterId)"
                         class="bi bi-chevron-down float-end"
                     />
                     <span

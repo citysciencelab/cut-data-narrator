@@ -60,7 +60,7 @@ export default {
         ...mapGetters("Tools/Filter", Object.keys(getters)),
         console: () => console,
         filters () {
-            return this.layerConfigs.filter(layer => {
+            return this.layerConfigs.layers.filter(layer => {
                 return isObject(layer);
             });
         }
@@ -74,7 +74,7 @@ export default {
             snippetInfos: getSnippetInfos()
         });
 
-        this.layerConfigs = compileLayers(this.layers);
+        this.layerConfigs = compileLayers(this.layerGroups, this.layers);
 
         this.$nextTick(() => {
             if (isUiStyleTable()) {
@@ -83,31 +83,31 @@ export default {
             }
         });
 
-        if (Array.isArray(this.layerGroups) && this.layerGroups.length > 0) {
-            this.layerGroups.forEach(layerGroup => {
+        if (Array.isArray(this.layerConfigs.groups) && this.layerConfigs.groups.length > 0) {
+            this.layerConfigs.groups.forEach(layerGroup => {
                 if (isObject(layerGroup)) {
-                    this.preparedLayerGroups.push(compileLayers(layerGroup.layers));
+                    this.preparedLayerGroups.push(layerGroup);
                 }
             });
             if (Array.isArray(this.preparedLayerGroups) && this.preparedLayerGroups.length > 0) {
                 this.preparedLayerGroups.forEach(group => {
-                    group.forEach(layer => {
+                    group.layers.forEach(layer => {
                         this.flattenPreparedLayerGroups.push(layer);
                     });
                 });
             }
         }
 
-        if (Array.isArray(this.layerConfigs) && this.layerConfigs.length > 0) {
+        if (Array.isArray(this.layerConfigs?.layers) && this.layerConfigs.layers.length > 0) {
             const selectedFilterIds = [];
 
-            this.layerConfigs.forEach(config => {
+            this.layerConfigs.layers.forEach(config => {
                 if (typeof config?.active === "boolean" && config.active && config?.filterId) {
                     selectedFilterIds.push(config.filterId);
                 }
             });
             if (selectedFilterIds.length > 0) {
-                this.setSelectedAccordions(this.transformLayerConfig(this.layerConfigs, selectedFilterIds));
+                this.setSelectedAccordions(this.transformLayerConfig(this.layerConfigs.layers, selectedFilterIds));
             }
         }
     },
@@ -166,27 +166,56 @@ export default {
         },
         /**
          * Update selectedAccordions array.
-         * @param {String[]} filterIds ids which should be added or removed
+         * @param {Number} filterId id which should be added or removed
          * @returns {void|undefined} returns undefinied, if filterIds is not an array and not a number.
          */
-        updateSelectedAccordions (filterIds) {
-            if (!Array.isArray(filterIds)) {
+        updateSelectedAccordions (filterId) {
+            let selectedFilterIds = [];
+
+            if (!this.multiLayerSelector) {
+                selectedFilterIds = this.selectedLayers.includes(filterId) ? [] : [filterId];
+                this.setSelectedAccordions(this.transformLayerConfig(this.layerConfigs.layers, selectedFilterIds));
                 return;
             }
+            const copy = [],
+                index = this.selectedAccordions.findIndex(accordion => accordion.filterId === filterId);
 
-            this.setSelectedAccordions(this.transformLayerConfig(this.layerConfigs, filterIds));
+            this.selectedAccordions.forEach(accordion => copy.push(accordion.filterId));
+            if (index >= 0) {
+                copy.splice(index, 1);
+            }
+            else {
+                copy.push(filterId);
+            }
+            this.setSelectedAccordions(this.transformLayerConfig([...this.layerConfigs.layers, ...this.flattenPreparedLayerGroups], copy));
         },
         /**
          * Update selectedAccordions array in groups.
-         * @param {String[]} filterIds ids which should be added or removed
+         * @param {Number} filterId id which should be added or removed
          * @returns {void|undefined} returns undefinied, if filterIds is not an array and not a number.
          */
-        updateSelectedAccordionsInGroups (filterIds) {
-            if (!Array.isArray(filterIds)) {
+        updateSelectedAccordionsInGroups (filterId) {
+            let selectedFilterIds = [];
+
+            if (!this.multiLayerSelector) {
+                selectedFilterIds = this.selectedLayers.includes(filterId) ? [] : [filterId];
+                this.setSelectedAccordions(this.transformLayerConfig(this.flattenPreparedLayerGroups, selectedFilterIds));
                 return;
             }
 
-            this.setSelectedAccordions(this.transformLayerConfig(this.flattenPreparedLayerGroups, filterIds));
+            const copy = [],
+                index = this.selectedAccordions.findIndex(accordion => accordion.filterId === filterId);
+
+            this.selectedAccordions.forEach(accordion => copy.push(accordion.filterId));
+
+            if (index >= 0) {
+                copy.splice(index, 1);
+            }
+            else {
+                copy.push(filterId);
+            }
+
+            this.setSelectedAccordions(this.transformLayerConfig([...this.layerConfigs.layers, ...this.flattenPreparedLayerGroups], copy));
         },
         /**
          * Transform given layer config to an lightweight array of layerIds and filterIds.
@@ -356,7 +385,7 @@ export default {
                                     <FilterList
                                         v-if="Array.isArray(preparedLayerGroups) && preparedLayerGroups.length && layerSelectorVisible"
                                         class="layerSelector"
-                                        :filters="preparedLayerGroups[layerGroups.indexOf(layerGroup)]"
+                                        :filters="preparedLayerGroups[layerGroups.indexOf(layerGroup)].layers"
                                         :changed-selected-layers="selectedAccordions"
                                         :multi-layer-selector="multiLayerSelector"
                                         @selectedaccordions="updateSelectedAccordionsInGroups"
@@ -393,10 +422,10 @@ export default {
                     </div>
                 </div>
                 <FilterList
-                    v-if="Array.isArray(layerConfigs) && layerConfigs.length && layerSelectorVisible"
+                    v-if="(Array.isArray(layerConfigs.layers) && layerConfigs.layers.length) || (Array.isArray(layerConfigs.groups) && layerConfigs.groups.length) && layerSelectorVisible"
                     class="layerSelector"
                     :filters="filters"
-                    :changed-selected-layers="selectedAccordions"
+                    :selected-layers="selectedAccordions"
                     :multi-layer-selector="multiLayerSelector"
                     @selectedaccordions="updateSelectedAccordions"
                     @setLayerLoaded="setLayerLoaded"
@@ -426,7 +455,7 @@ export default {
                         </div>
                     </template>
                 </FilterList>
-                <div v-else-if="Array.isArray(layerConfigs) && layerConfigs.length">
+                <div v-else-if="(Array.isArray(layerConfigs.layers) && layerConfigs.layers.length) || (Array.isArray(layerConfigs.groups) && layerConfigs.groups.length)">
                     <LayerFilterSnippet
                         v-for="(layerConfig, indexLayer) in filters"
                         :key="'layer-' + indexLayer + layerFilterSnippetPostKey"

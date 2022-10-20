@@ -3,18 +3,35 @@ import FilterApi from "../interfaces/filter.api.js";
 
 /**
  * Clones, checks and modifies the given original layers to match the needs of Filter.
+ * @param {Object[]} originalLayerGroups the configured groups
  * @param {Object[]|String[]} originalLayers the configured layers
  * @returns {Object[]} resulting layers to use in Filter
  */
-function compileLayers (originalLayers) {
-    const layers = removeInvalidLayers(JSON.parse(JSON.stringify(originalLayers)));
+function compileLayers (originalLayerGroups, originalLayers) {
+    let nextFilterId = 0;
+    const groups = [],
+        layers = removeInvalidLayers(JSON.parse(JSON.stringify(originalLayers)));
+
+    originalLayerGroups.forEach(group => {
+        const layersOfGroup = removeInvalidLayers(JSON.parse(JSON.stringify(group.layers)));
+
+        convertStringLayersIntoObjects(layersOfGroup);
+        addFilterIds(layersOfGroup, {id: nextFilterId, get: () => nextFilterId, inc: () => nextFilterId++});
+        addSnippetArrayIfMissing(layersOfGroup);
+        addApi(layersOfGroup);
+        groups.push({
+            title: group.title,
+            layers: layersOfGroup
+        });
+        nextFilterId = layersOfGroup[layersOfGroup.length - 1].filterId + 1;
+    });
 
     convertStringLayersIntoObjects(layers);
-    addFilterIds(layers);
+    addFilterIds(layers, {id: nextFilterId, get: () => nextFilterId, inc: () => nextFilterId++});
     addSnippetArrayIfMissing(layers);
     addApi(layers);
 
-    return layers;
+    return {groups, layers};
 }
 
 /**
@@ -61,7 +78,7 @@ function convertStringLayersIntoObjects (layers) {
  */
 function addFilterIds (layers, nextFilterId = {}) {
     if (typeof nextFilterId.id !== "number") {
-        nextFilterId.id = Math.floor(Math.random() * 1000);
+        nextFilterId.id = 0;
         nextFilterId.inc = () => {
             nextFilterId.id++;
         };
