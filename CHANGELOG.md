@@ -19,6 +19,8 @@
         - moment-timezone: 0.5.34 to 0.5.37
     - devDependencies
         - @masterportal/mpconfigparser: 1.3.0 to 1.3.1
+- Draw
+  - The attributes' keys can be set once for all the drawn features so that all the drawn features have the same attributes' keys.
 
 ### Deprecated
 

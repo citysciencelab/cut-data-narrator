@@ -92,6 +92,7 @@ const symbol = {
      * @property {Number} writeTextSettings.opacity The opacity of the color of the drawn features. NOTE: The values of the transparencySettings are opacity values.
      * @property {Number} initialWidth Size of the sidebar when opening.
      * @property {Number} initialWidthMobile Mobile size of the sidebar when opening.
+     * @property {String[]} attributesKeyList the attributes' key list
      */
     state = {
         active: false,
@@ -217,7 +218,8 @@ const symbol = {
             opacity: 1
         },
         initialWidth: 500,
-        initialWidthMobile: 300
+        initialWidthMobile: 300,
+        attributesKeyList: []
     };
 
 export default state;

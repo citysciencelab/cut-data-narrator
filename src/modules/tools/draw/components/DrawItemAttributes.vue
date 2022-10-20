@@ -14,6 +14,11 @@ export default {
             type: Object,
             requried: false,
             default: undefined
+        },
+        attributesKeyList: {
+            type: Array,
+            required: false,
+            default: undefined
         }
     },
     data () {
@@ -30,6 +35,7 @@ export default {
             if (newVal === oldVal) {
                 return;
             }
+            this.unifyAttributeToFeature(newVal, this.attributesKeyList);
             this.setAttributesFromFeature();
         },
         attributes: {
@@ -38,16 +44,75 @@ export default {
                     return;
                 }
                 this.saveChanges(this.attributes, this.selectedFeature, this.layer);
+                this.updateAttributesKeyList(this.attributes);
             },
             deep: true
+        },
+        attributesKeyList (val) {
+            if (this.layer && this.layer.getSource().getFeatures().length) {
+                this.layer.getSource().getFeatures().forEach(feature => {
+                    this.unifyAttributeToFeature(feature, val);
+                });
+            }
         }
     },
     mounted () {
         this.setAttributesFromFeature();
+        this.initAttributesKeyList();
     },
     methods: {
         ...mapActions("Tools/Draw", ["setDownloadFeatures"]),
 
+        /**
+         * Unifying the attributes to each feature so that all the features have the same attributes list
+         * @param {ol/Feature} feature The drawn feature
+         * @param {String[]} keyList The attributes' key list
+         * @returns {void}
+         */
+        unifyAttributeToFeature (feature, keyList) {
+            const attributes = feature.get("attributes"),
+                newAttr = {},
+                gfiAttributes = {};
+
+            if (isObject(attributes)) {
+                keyList.forEach(key => {
+                    if (Object.prototype.hasOwnProperty.call(attributes, key)) {
+                        newAttr[key] = attributes[key];
+                    }
+                    else {
+                        newAttr[key] = "";
+                    }
+                    gfiAttributes[key] = key;
+                });
+            }
+            else {
+                keyList.forEach(key => {
+                    newAttr[key] = "";
+                    gfiAttributes[key] = key;
+                });
+            }
+
+            feature.set("attributes", newAttr);
+
+            if (Object.keys(newAttr).length) {
+                feature.setProperties(newAttr);
+                this.layer.set("gfiAttributes", gfiAttributes);
+            }
+        },
+        /**
+         * Initializes the attributes' key list.
+         * @returns {void}
+         */
+        initAttributesKeyList () {
+            if (this.layer && this.layer.getSource().getFeatures().length) {
+                for (const feature of this.layer.getSource().getFeatures().reverse()) {
+                    if (typeof feature.get("attributes") !== "undefined" && Object.keys(feature.get("attributes")).length) {
+                        this.$emit("updateAttributesKeyList", Object.keys(feature.get("attributes")));
+                        break;
+                    }
+                }
+            }
+        },
         /**
          * Sets the local attributes by the attributes from the selected feature.
          * @returns {void}
@@ -127,15 +192,13 @@ export default {
          * Save the current changes which were made on already existing attributes.
          * @param {String[]} addedAttributes the added feature attributes
          * @param {ol/Feature} selectedFeature the selected feature to add attributes
-         * @param {module:ol/layer/Vector} layer The drawn layer
          * @returns {void}
          */
-        saveChanges (addedAttributes, selectedFeature, layer) {
+        saveChanges (addedAttributes, selectedFeature) {
             if (!Array.isArray(addedAttributes)) {
                 return;
             }
-            const attributes = {},
-                gfiAttributes = isObject(layer?.get("gfiAttributes")) ? layer?.get("gfiAttributes") : {};
+            const attributes = {};
 
             addedAttributes.forEach(attributeRow => {
                 if (!isObject(attributeRow)) {
@@ -145,14 +208,25 @@ export default {
                     value = attributeRow.value;
 
                 attributes[key] = value;
-                gfiAttributes[key] = key;
             });
 
             if (Object.keys(attributes).length) {
                 selectedFeature.set("attributes", attributes);
-                selectedFeature.setProperties(attributes);
-                layer.set("gfiAttributes", gfiAttributes);
             }
+        },
+        /**
+         * Generates the attributes' key list and emits the updateAttributesKeyList function
+         * @param {Object[]} attributes The attributes array.
+         * @returns {void}
+         */
+        updateAttributesKeyList (attributes) {
+            const keyList = [];
+
+            attributes.forEach(attr => {
+                keyList.push(attr.key);
+            });
+
+            this.$emit("updateAttributesKeyList", keyList);
         },
         /**
          * Checks if the selectedFeature is a feature.

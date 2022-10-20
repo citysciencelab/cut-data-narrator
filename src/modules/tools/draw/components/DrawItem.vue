@@ -432,6 +432,14 @@ export default {
                 return option.id;
             }
             return "noName";
+        },
+        /**
+         * Updates the attributes' key list.
+         * @param {String[]} keyList The attributes' key list
+         * @returns {void}
+         */
+        updateAttributesKeyList (keyList) {
+            this.setAttributesKeyList(keyList);
         }
     }
 };
@@ -517,6 +525,8 @@ export default {
                 <DrawItemAttributes
                     :selected-feature="selectedFeature"
                     :layer="layer"
+                    :attributes-key-list="attributesKeyList"
+                    @updateAttributesKeyList="updateAttributesKeyList"
                 />
             </template>
             <form
