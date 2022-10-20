@@ -10,28 +10,34 @@ import FilterApi from "../interfaces/filter.api.js";
 function compileLayers (originalLayerGroups, originalLayers) {
     let nextFilterId = 0;
     const groups = [],
+        nextFilter = {id: nextFilterId, get: () => nextFilterId, inc: () => nextFilterId++},
         layers = removeInvalidLayers(JSON.parse(JSON.stringify(originalLayers)));
 
     originalLayerGroups.forEach(group => {
         const layersOfGroup = removeInvalidLayers(JSON.parse(JSON.stringify(group.layers)));
 
-        convertStringLayersIntoObjects(layersOfGroup);
-        addFilterIds(layersOfGroup, {id: nextFilterId, get: () => nextFilterId, inc: () => nextFilterId++});
-        addSnippetArrayIfMissing(layersOfGroup);
-        addApi(layersOfGroup);
+        prepareLayers(layersOfGroup, nextFilter);
         groups.push({
             title: group.title,
             layers: layersOfGroup
         });
         nextFilterId = layersOfGroup[layersOfGroup.length - 1].filterId + 1;
     });
+    prepareLayers(layers, nextFilter);
+    return {groups, layers};
+}
 
+/**
+ * Prepares the given layer.
+ * @param {Object[]} layers The layers to prepare.
+ * @param {Object} nextFilterId The object which holds the next id for the filter.
+ * @returns {void}
+ */
+function prepareLayers (layers, nextFilterId) {
     convertStringLayersIntoObjects(layers);
-    addFilterIds(layers, {id: nextFilterId, get: () => nextFilterId, inc: () => nextFilterId++});
+    addFilterIds(layers, nextFilterId);
     addSnippetArrayIfMissing(layers);
     addApi(layers);
-
-    return {groups, layers};
 }
 
 /**

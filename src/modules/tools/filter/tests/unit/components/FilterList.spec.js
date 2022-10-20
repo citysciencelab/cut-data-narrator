@@ -67,11 +67,10 @@ describe("src/modules/tools/filter/components/FilterList.vue", () => {
         });
 
         it("should update selected layers", () => {
-            const expected = [1234],
-                filterId = 1234;
+            const filterId = 1234;
 
             wrapper.vm.updateSelectedLayers(filterId);
-            expect(wrapper.vm.selectedLayers).to.deep.equal(expected);
+            expect(wrapper.emitted()).to.have.property("selectedaccordions");
         });
     });
 

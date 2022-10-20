@@ -100,7 +100,9 @@ export default {
             }
         },
         isActive (val) {
-            this.draw.setActive(val);
+            if (this.getSelectedGeometry(this.selectedGeometryIndex)?.type !== "additional") {
+                this.draw.setActive(val);
+            }
             this.setGfiActive(!val);
         },
         buffer (val) {
@@ -168,7 +170,9 @@ export default {
             this.setLayer();
 
             // sets the interaction to draw the filter geometry
-            this.setDrawInteraction(this.getSelectedGeometry(this.selectedGeometryIndex).type);
+            if (this.getSelectedGeometry(this.selectedGeometryIndex).type !== "additional") {
+                this.setDrawInteraction(this.getSelectedGeometry(this.selectedGeometryIndex).type);
+            }
         },
 
         /**
@@ -276,7 +280,13 @@ export default {
                 return result;
             }
             additionalGeometries.forEach(additionalGeometry => {
+                if (!Array.isArray(additionalGeometry?.features)) {
+                    return;
+                }
                 additionalGeometry.features.forEach(feature => {
+                    if (typeof feature.get !== "function") {
+                        return;
+                    }
                     result.push({
                         type: "additional",
                         feature: feature,
@@ -332,7 +342,7 @@ export default {
             this.feature = feature;
             this.isGeometryVisible = true;
             this.isBufferInputVisible = type === "LineString";
-            this.setGeometryAtFeature(this.feature, geometry, this.invertGeometry);
+            this.setGeometryAtFeature(this.feature, geometry, true);
             this.$emit("updateFilterGeometry", geometry);
             this.$emit("updateGeometryFeature", this.feature);
             this.$emit("updateGeometrySelectorOptions", {

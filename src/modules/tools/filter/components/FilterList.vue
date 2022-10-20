@@ -33,7 +33,7 @@ export default {
             if (typeof filterId !== "number") {
                 return;
             }
-            this.$emit("selectedaccordions", filterId);
+            this.$emit("selectedaccordions", filterId, true);
         },
         /**
          * Check if Selector should be disabled.

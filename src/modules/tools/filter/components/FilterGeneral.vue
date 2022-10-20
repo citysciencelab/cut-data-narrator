@@ -23,9 +23,7 @@ import {
 import FilterList from "./FilterList.vue";
 import isObject from "../../../../utils/isObject.js";
 import GeometryFilter from "./GeometryFilter.vue";
-import {getLayerWhere} from "@masterportal/masterportalapi/src/rawLayerList";
-import {getFeatureGET} from "../../../../api/wfs/getFeature";
-import {WFS} from "ol/format.js";
+import {getFeaturesOfAdditionalGeometries} from "../utils/getFeaturesOfAdditionalGeometries.js";
 
 export default {
     name: "FilterGeneral",
@@ -67,7 +65,7 @@ export default {
     },
     created () {
         this.$on("close", this.close);
-        this.getFeaturesOfAdditionalGeometries(this.geometrySelectorOptions.additionalGeometries);
+        getFeaturesOfAdditionalGeometries(this.geometrySelectorOptions.additionalGeometries);
     },
     mounted () {
         this.convertConfig({
@@ -130,24 +128,6 @@ export default {
             }
         },
 
-        /**
-         * Gets the features of the additional geometries by the given layer id.
-         * @param {Object[]} additionalGeometries - The additional geometries.
-         * @param {String} additionalGeometries[].layerId - The id of the layer.
-         * @returns {void}
-         */
-        async getFeaturesOfAdditionalGeometries (additionalGeometries) {
-            if (additionalGeometries) {
-                const wfsReader = new WFS();
-
-                for (const additionalGeometry of additionalGeometries) {
-                    const rawLayer = getLayerWhere({id: additionalGeometry.layerId}),
-                        features = await getFeatureGET(rawLayer.url, {version: rawLayer.version, featureType: rawLayer.featureType});
-
-                    additionalGeometry.features = wfsReader.readFeatures(features);
-                }
-            }
-        },
 
         /**
          * Update selected layer group.
@@ -165,57 +145,31 @@ export default {
             }
         },
         /**
-         * Update selectedAccordions array.
-         * @param {Number} filterId id which should be added or removed
-         * @returns {void|undefined} returns undefinied, if filterIds is not an array and not a number.
-         */
-        updateSelectedAccordions (filterId) {
-            let selectedFilterIds = [];
-
-            if (!this.multiLayerSelector) {
-                selectedFilterIds = this.selectedLayers.includes(filterId) ? [] : [filterId];
-                this.setSelectedAccordions(this.transformLayerConfig(this.layerConfigs.layers, selectedFilterIds));
-                return;
-            }
-            const copy = [],
-                index = this.selectedAccordions.findIndex(accordion => accordion.filterId === filterId);
-
-            this.selectedAccordions.forEach(accordion => copy.push(accordion.filterId));
-            if (index >= 0) {
-                copy.splice(index, 1);
-            }
-            else {
-                copy.push(filterId);
-            }
-            this.setSelectedAccordions(this.transformLayerConfig([...this.layerConfigs.layers, ...this.flattenPreparedLayerGroups], copy));
-        },
-        /**
          * Update selectedAccordions array in groups.
          * @param {Number} filterId id which should be added or removed
+         * @param {Boolean} [isFromGroup=true] true if accordion is in a group, false if not
          * @returns {void|undefined} returns undefinied, if filterIds is not an array and not a number.
          */
-        updateSelectedAccordionsInGroups (filterId) {
+        updateSelectedAccordions (filterId, isFromGroup = false) {
             let selectedFilterIds = [];
 
             if (!this.multiLayerSelector) {
                 selectedFilterIds = this.selectedLayers.includes(filterId) ? [] : [filterId];
-                this.setSelectedAccordions(this.transformLayerConfig(this.flattenPreparedLayerGroups, selectedFilterIds));
+                this.setSelectedAccordions(this.transformLayerConfig(isFromGroup ? this.flattenPreparedLayerGroups : this.layerConfigs.layers, selectedFilterIds));
                 return;
             }
 
-            const copy = [],
+            const filterIdsOfAccordions = [],
                 index = this.selectedAccordions.findIndex(accordion => accordion.filterId === filterId);
 
-            this.selectedAccordions.forEach(accordion => copy.push(accordion.filterId));
-
+            this.selectedAccordions.forEach(accordion => filterIdsOfAccordions.push(accordion.filterId));
             if (index >= 0) {
-                copy.splice(index, 1);
+                filterIdsOfAccordions.splice(index, 1);
             }
             else {
-                copy.push(filterId);
+                filterIdsOfAccordions.push(filterId);
             }
-
-            this.setSelectedAccordions(this.transformLayerConfig([...this.layerConfigs.layers, ...this.flattenPreparedLayerGroups], copy));
+            this.setSelectedAccordions(this.transformLayerConfig([...this.layerConfigs.layers, ...this.flattenPreparedLayerGroups], filterIdsOfAccordions));
         },
         /**
          * Transform given layer config to an lightweight array of layerIds and filterIds.
@@ -386,9 +340,9 @@ export default {
                                         v-if="Array.isArray(preparedLayerGroups) && preparedLayerGroups.length && layerSelectorVisible"
                                         class="layerSelector"
                                         :filters="preparedLayerGroups[layerGroups.indexOf(layerGroup)].layers"
-                                        :changed-selected-layers="selectedAccordions"
+                                        :selected-layers="selectedAccordions"
                                         :multi-layer-selector="multiLayerSelector"
-                                        @selectedaccordions="updateSelectedAccordionsInGroups"
+                                        @selectedaccordions="updateSelectedAccordions"
                                         @setLayerLoaded="setLayerLoaded"
                                     >
                                         <template
