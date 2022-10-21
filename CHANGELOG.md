@@ -9,6 +9,10 @@
 - related filters can be displayed together with new attribute layerGroups in config.json.
 - Draw-Tool: Added csv as new download fromat. In the csv the geometry is set as wkt.
 - highlightFeaturesByAttribute: new isIn filter, offering the possibility to search for multiple values with semicolon as delimiter (configurable)
+- The following NPM package have been added:
+    - devDependencies:
+        - esbuild-loader: 2.20.0
+        - string-replace-loader: 2.3.0
 
 ### Changed
 - The version of node was updated, must be >= 16.13.2 <= 16.18.0 and the version of npm was updated, must be >= 8.1.2 <=8.19.2.
@@ -21,11 +25,23 @@
         - @masterportal/mpconfigparser: 1.3.0 to 1.3.1
 - Draw
   - The attributes' keys can be set once for all the drawn features so that all the drawn features have the same attributes' keys.
+- The babel-loader and dependent libraries have been removed from the webpack-bundlers and replaced with esbuild.
 
 ### Deprecated
 
 ### Removed
 - The property 'centerMapMarkerPolygon' of the tool GFI is no longer supported.
+- The following NPM package have been removed:
+    - dependencies:
+      - core-js
+    - devDependencies:
+        - @babel/core
+        - @babel/eslint-parser
+        - @babel/plugin-transform-modules-commonjs
+        - @babel/preset-env
+        - babel-loader
+        - css-minimizer-webpack-plugin
+        - uglifyjs-webpack-plugin
 
 ### Fixed
 
