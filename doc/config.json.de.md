@@ -1460,7 +1460,6 @@ Zeigt Informationen zu einem abgefragten Feature ab, indem GetFeatureInfo-Reques
 |icon|nein|String|"bi-info-circle-fill"|CSS Klasse des Icons, das vor dem GFI im Menu angezeigt wird.|false|
 |active|nein|Boolean|true|Gibt an, ob das GFI per default aktiviert ist.|false|
 |desktopType|nein|String|"detached"|Gibt an welches Template für die GetFeatureInfo im Desktopmodus verwendet wird. Bei Attached wird das GFI direkt auf dem Punkt positioniert. Bei Detached wird ein Marker auf den geklickten Punkt gesetzt und das GFI wird rechts auf der Karte platziert.|false|
-|centerMapMarkerPolygon|nein|Boolean|false|Angabe, ob für ein angeklicktes Feature die Koordinaten des Zentrums ermittelt werden sollen oder ob die Koordinaten der tatsächlich angeklickten Koordinate bestimmt werden.|false|
 |highlightVectorRules|nein|**[highlightVectorRules](#markdown-header-portalconfigmenutoolgfihighlightvectorrules)**||Regeldefinitionen zum Überschreiben des Stylings von abgefragten Vektordaten.[highlightVectorRules](#markdown-header-portalconfigmenutoolgfihighlightvectorrules)|false|
 
 **Beispiel einer GFI Konfiguration**
@@ -1470,7 +1469,6 @@ Zeigt Informationen zu einem abgefragten Feature ab, indem GetFeatureInfo-Reques
     "name":"Informationen abfragen",
     "icon":"bi-info-circle-fill",
     "active":true,
-    "centerMapMarkerPolygon":true,
     "highlightVectorRules": {
         "fill": {
             "color": [215, 102, 41, 0.9]
@@ -1494,8 +1492,7 @@ Zeigt Informationen zu einem abgefragten Feature ab, indem GetFeatureInfo-Reques
 "gfi":{
     "name":"Informationen abfragen",
     "icon":"bi-info-circle-fill",
-    "active":true,
-    "centerMapMarkerPolygon":true
+    "active":true
 }
 ```
 

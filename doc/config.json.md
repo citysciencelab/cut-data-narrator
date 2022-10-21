@@ -1516,7 +1516,6 @@ Displays information to a clicked feature by firing a *GetFeatureInfo* or *GetFe
 |icon|no|String|"bi-info-circle-fill"|CSS icon class. Icon is shown before the tool name.|false|
 |active|no|Boolean|true|Whether GFI is active initially.|false|
 |desktopType|no|String|"detached"|Used to choose a GFI template in desktop mode. If using "attached", the GFI will be positioned next to the feature. Using "detached" will place a marker on the feature and create the GFI window to the right of the map.|false|
-|centerMapMarkerPolygon|no|Boolean|false|Specification of whether the clicked feature is used to get the center coordinate or the actually clicked coordinate is used.|false|
 |highlightVectorRules|no|**[highlightVectorRules](#markdown-header-portalconfigmenutoolgfihighlightvectorrules)**||Rule definition to override the styling of clicked vector data.|false|
 
 **Examples**
@@ -1527,7 +1526,6 @@ Displays information to a clicked feature by firing a *GetFeatureInfo* or *GetFe
         "name": "Request information",
         "icon": "bi-info-circle-fill",
         "active": true,
-        "centerMapMarkerPolygon": true,
         "highlightVectorRules": {
             "fill": {
                 "color": [215, 102, 41, 0.9]
@@ -1551,8 +1549,7 @@ Displays information to a clicked feature by firing a *GetFeatureInfo* or *GetFe
     "gfi": {
         "name": "Request information",
         "icon": "bi-info-circle-fill",
-        "active": true,
-        "centerMapMarkerPolygon": true
+        "active": true
     }
 }
 ```
