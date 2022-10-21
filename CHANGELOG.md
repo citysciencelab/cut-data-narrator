@@ -30,6 +30,10 @@
 - Draw
   - The attributes' keys can be set once for all the drawn features so that all the drawn features have the same attributes' keys.
 - The babel-loader and dependent libraries have been removed from the webpack-bundlers and replaced with esbuild.
+- defaultTree: wmsTimeLayer can now be displayed also in the `Fachdaten` section.
+- wmsTime:
+    - wmsTime tool can be activated by elastic search topic selection.
+    - toggle of selected topics can now also de-/ activate wmsTime tool.
 
 ### Deprecated
 
