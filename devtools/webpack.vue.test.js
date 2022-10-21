@@ -29,17 +29,17 @@ module.exports = {
     stats: {
         all: false,
         colors: true,
-        errors: true,
-        errorDetails: true,
-        //
         warnings: true,
-        logging: "verbose",
-        modules: true,
-        moduleTrace: true,
-        reasons: true,
-        performance: true,
-        timings: true,
-        entrypoints: true
+        errors: true,
+        errorDetails: true
+        // comment in for detailed logging in console
+        // logging: "verbose",
+        // modules: true,
+        // moduleTrace: true,
+        // reasons: true,
+        // performance: true,
+        // timings: true,
+        // entrypoints: true
     },
     resolve: {
         alias: {

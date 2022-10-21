@@ -16,7 +16,7 @@ module.exports = function () {
         },
         module: {
             rules: [
-                // alle Schriftarten (auch die Bootstrap-Icons) kommen in lokalen Ordner
+                // all fonts (including Bootstrap-Icons) to local folders
                 {
                     test: /\.(eot|svg|ttf|woff|woff2)$/,
                     loader: "file-loader",
@@ -26,7 +26,7 @@ module.exports = function () {
                         publicPath: "./woffs/"
                     }
                 },
-                // take all files ending with ".js" but not with ".test.js" or ".spec.js".
+                // take all files ending with ".js" but not with ".test.js" or ".spec.js"
                 {
                     test: /\.js$/,
                     exclude: /\.(test|spec)\.js$/,
@@ -47,10 +47,6 @@ module.exports = function () {
             minimizer: [new ESBuildMinifyPlugin({
                 css: true // Apply minification to CSS assets additional to minify js-code
             })]
-        },
-        stats: {
-            "children": false,
-            "errorDetails": true
         }
     });
 };

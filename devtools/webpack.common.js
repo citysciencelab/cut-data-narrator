@@ -74,17 +74,17 @@ module.exports = function () {
         stats: {
             all: false,
             colors: true,
-            errors: true,
-            errorDetails: true,
-            //
             warnings: true,
-            logging: "verbose",
-            modules: true,
-            moduleTrace: true,
-            reasons: true,
-            performance: true,
-            timings: true,
-            entrypoints: true
+            errors: true,
+            errorDetails: true
+            // comment in for detailed logging in console
+            // logging: "verbose",
+            // modules: true,
+            // moduleTrace: true,
+            // reasons: true,
+            // performance: true,
+            // timings: true,
+            // entrypoints: true
         },
         output: {
             path: path.resolve(__dirname, "../build/"),
@@ -121,7 +121,7 @@ module.exports = function () {
                         loader: "null-loader"
                     }
                 },
-                // take all files ending with ".js" but not with ".test.js".
+                // take all files ending with ".js" but not with ".test.js" or ".spec.js"
                 {
                     test: /\.js$/,
                     exclude: /\.(test|spec)\.js$/,
