@@ -4020,6 +4020,20 @@ Dynamic filtering of WFS(❗) features. This requires an **[ `extendedFilter`](#
 
 Import "*.kml", "*.geojson" and "*.gpx" files with this tool.
 
+|Name|Required|Type|Default|Description|Expert|
+|----|--------|----|-------|-----------|------|
+|enableZoomToExtend|no|Boolean|false|To decide if the file name is shown as a button and it is able to zoom the imported features by clicking the file name|false|
+
+
+**Example**
+```
+#!json
+"fileImport": {
+    "name": "translate#common:menu.tools.fileImport",
+    "icon":"bi-box-arrow-in-down-right",
+    "enableZoomToExtend": true
+}
+```
 
 ***
 

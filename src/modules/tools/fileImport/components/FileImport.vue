@@ -54,7 +54,7 @@ export default {
             "importGeoJSON",
             "setSelectedFiletype"
         ]),
-        ...mapActions("Maps", ["addNewLayerIfNotExists"]),
+        ...mapActions("Maps", ["addNewLayerIfNotExists", "zoomToExtent"]),
         ...mapMutations("Tools/FileImport", Object.keys(mutations)),
 
         /**
@@ -142,6 +142,13 @@ export default {
             this.close();
             this.$store.dispatch("Tools/Draw/toggleInteraction", "modify");
             this.$store.dispatch("Tools/setToolActive", {id: "draw", active: true});
+        },
+        zoomTo (index) {
+            if (!Array.isArray(this.featureExtents) || !this.featureExtents.length) {
+                return;
+            }
+
+            this.zoomToExtent({extent: this.featureExtents[index]});
         }
     }
 };
@@ -232,7 +239,18 @@ export default {
                                 v-for="(filename, index) in importedFileNames"
                                 :key="index"
                             >
-                                {{ filename }}
+                                <span
+                                    v-if="enableZoomToExtend"
+                                    class="upload-button-wrapper"
+                                    :title="$t(`common:modules.tools.fileImport.zoom`, {filename: filename})"
+                                    @click="zoomTo(index)"
+                                    @keydown.enter="zoomTo(index)"
+                                >
+                                    {{ filename }}
+                                </span>
+                                <span v-else>
+                                    {{ filename }}
+                                </span>
                             </li>
                         </ul>
                     </p>

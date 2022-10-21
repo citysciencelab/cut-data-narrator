@@ -567,7 +567,8 @@
                     "featureError": "Ein Feature in dieser Datei konnte nicht gelesen werden."
                 },
                 "successfullyImportedLabel": "Erfolgreich importiert:",
-                "title": "Datei importieren"
+                "title": "Datei importieren",
+                "zoom": "Auf Features dieser Datei \"{{filename}}\" zoomen"
             },
             "parcelSearch": {
                 "wrongConfig": "Ungültige oder unvollständige Konfiguration",

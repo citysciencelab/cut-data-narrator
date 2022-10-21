@@ -3965,6 +3965,21 @@ Ermöglicht die Suche von Koordinaten mithilfe einer Eingabemaske sowie die Abfr
 
 Über dieses Werkzeug können Dateien der Formate "*.kml", "*.geojson" und "*.gpx" importiert werden.
 
+|Name|Required|Type|Default|Description|Expert|
+|----|--------|----|-------|-----------|------|
+|enableZoomToExtend|nein|Boolean|false|Legt fest, ob der Dateiname als Knopf angezeigt wird, welcher die Möglichkeit bietet, in die importierten Features hineinzuzoomen.|false|
+
+
+**Beispiel**
+```
+#!json
+"fileImport": {
+    "name": "translate#common:menu.tools.fileImport",
+    "icon":"bi-box-arrow-in-down-right",
+    "enableZoomToExtend": true
+}
+```
+
 ***
 
 #### Portalconfig.menu.tool.kmlimport

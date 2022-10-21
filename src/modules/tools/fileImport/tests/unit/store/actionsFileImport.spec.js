@@ -6,9 +6,10 @@ import rawSources from "../../resources/rawSources.js";
 import VectorLayer from "ol/layer/Vector.js";
 import VectorSource from "ol/source/Vector.js";
 import * as crs from "@masterportal/masterportalapi/src/crs";
+import sinon from "sinon/pkg/sinon-esm";
 
 const
-    {importKML} = actions,
+    {importKML, setFeatureExtents} = actions,
     namedProjections = [
         ["EPSG:31467", "+title=Bessel/Gauß-Krüger 3 +proj=tmerc +lat_0=0 +lon_0=9 +k=1 +x_0=3500000 +y_0=0 +ellps=bessel +datum=potsdam +units=m +no_defs"],
         ["EPSG:25832", "+title=ETRS89/UTM 32N +proj=utm +zone=32 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs"],
@@ -121,6 +122,30 @@ describe("src/modules/tools/fileImport/store/actionsFileImport.js", () => {
                     category: i18next.t("common:modules.alerting.categories.error"),
                     content: i18next.t("common:modules.tools.fileImport.alertingMessages.missingFileContent")},
                 dispatch: true
+            }], {}, done);
+        });
+
+        it("Sets empty feature extent", done => {
+            const payload = {},
+                tmpState = {...importedState};
+
+            testAction(setFeatureExtents, payload, tmpState, {}, [{
+                type: "setFeatureExtents",
+                payload: [[Infinity, Infinity, -Infinity, -Infinity]]
+            }], {}, done);
+        });
+
+        it("Sets feature extent", done => {
+            const payload = [{
+                    getGeometry: () => sinon.spy({
+                        getExtent: () => [10, 10, 10, 10]
+                    })
+                }],
+                tmpState = {...importedState, ...{featureExtents: [[100, 100, 100, 100]]}};
+
+            testAction(setFeatureExtents, payload, tmpState, {}, [{
+                type: "setFeatureExtents",
+                payload: [[100, 100, 100, 100], [10, 10, 10, 10]]
             }], {}, done);
         });
     });

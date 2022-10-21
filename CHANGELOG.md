@@ -13,6 +13,7 @@
     - devDependencies:
         - esbuild-loader: 2.20.0
         - string-replace-loader: 2.3.0
+- FileImport Tool: Adding a new parameter "enableZoomToExtend" in config to decide if the imported file name is shown as button and it is able to zoom into the imported features by clicking the file name.
 
 ### Changed
 - The version of node was updated, must be >= 16.13.2 <= 16.18.0 and the version of npm was updated, must be >= 8.1.2 <=8.19.2.
