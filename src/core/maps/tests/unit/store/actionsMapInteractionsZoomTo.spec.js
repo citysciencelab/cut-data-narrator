@@ -1,4 +1,4 @@
-import * as crs from "@masterportal/masterportalapi/src/crs";
+import crs from "@masterportal/masterportalapi/src/crs";
 import {expect} from "chai";
 import Feature from "ol/Feature";
 import LayerGroup from "ol/layer/Group";
@@ -139,7 +139,7 @@ describe("src/core/maps/store/actions/actionsMapInteractionsZoomTo.js", () => {
         });
     });
 
-    describe.skip("zoomToProjExtent", () => {
+    describe("zoomToProjExtent", () => {
         it("Zoom to the extent with projection EPSG:25832", () => {
             const data = {
                 extent: [565760.049, 5931747.185, 568940.626, 5935453.891],

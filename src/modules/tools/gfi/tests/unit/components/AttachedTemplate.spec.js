@@ -52,6 +52,7 @@ describe.skip("src/modules/tools/gfi/components/templates/AttachedTemplate.vue",
         if (wrapper) {
             wrapper.destroy();
         }
+        sinon.restore();
     });
     /**
          * Is needed to run the tests.

@@ -247,19 +247,18 @@ describe("src/modules/tools/coordToolkit/components/CoordToolkit.vue", () => {
             expect(typeof store.state.Tools.CoordToolkit.selectPointerMove.handleMoveEvent).to.be.equals("function");
         });
 
-        describe.skip("createInteraction for 3D", () => {
+        describe("createInteraction for 3D", () => {
             before(() => {
-                global.Cesium = {
-                    ScreenSpaceEventHandler: () => {
-                        return {
-                            setInputAction: () => sinon.stub(),
-                            destroy: () => sinon.stub()
-                        };
-                    },
-                    ScreenSpaceEventType: {
-                        MOUSE_MOVE: sinon.stub(),
-                        LEFT_CLICK: sinon.stub()
-                    }
+                global.Cesium = {};
+                global.Cesium.ScreenSpaceEventHandler = function () {
+                    return {
+                        setInputAction: () => sinon.stub(),
+                        destroy: () => sinon.stub()
+                    };
+                };
+                global.Cesium.ScreenSpaceEventType = {
+                    MOUSE_MOVE: sinon.stub(),
+                    LEFT_CLICK: sinon.stub()
                 };
             });
 
