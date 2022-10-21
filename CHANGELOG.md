@@ -25,6 +25,7 @@
 ### Deprecated
 
 ### Removed
+- The property 'centerMapMarkerPolygon' of the tool GFI is no longer supported.
 
 ### Fixed
 
