@@ -17,7 +17,6 @@ import "./RadioBridge.js";
 import store from "../../src/app-store/index";
 import {getWKTGeom} from "../../src/utils/getWKTGeom";
 import Collapse from "bootstrap/js/dist/collapse";
-import {handleSingleTimeLayer} from "../../src/core/layers/layer";
 
 /**
  * @member SearchbarTemplate
@@ -490,14 +489,11 @@ const SearchbarView = Backbone.View.extend(/** @lends SearchbarView.prototype */
 
             // if time layer has time attribute then open time tool
             if (hit.source.time && hit.source.time !== false) {
-              /*   store.commit("WmsTime/setTimeSliderActive", {
+                store.commit("WmsTime/setTimeSliderActive", {
                     active: true,
                     currentLayerId: hit.id,
-                    playbackDelay: hit.id?.get("time")?.playbackDelay || 1
-                }); */
-                handleSingleTimeLayer(true, hit);
-                console.log(store.getters["Maps/getLayerById"]({layerId: hit.id}));
-                console.log(hit);
+                    playbackDelay: hit.source.time.playbackDelay || 1
+                });
             }
 
             if (hit?.coordinate) {

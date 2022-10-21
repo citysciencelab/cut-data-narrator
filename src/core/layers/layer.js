@@ -213,6 +213,13 @@ Layer.prototype.setIsOutOfRange = function (value) {
  * @returns {void}
  */
 Layer.prototype.setIsVisibleInMap = function (newValue) {
+    if (this.attributes.time) {
+        store.commit("WmsTime/setTimeSliderActive", {
+            active: newValue,
+            currentLayerId: this.attributes.id,
+            playbackDelay: this.attributes.time.playbackDelay || 1
+        });
+    }
     const lastValue = this.get("isVisibleInMap");
 
     this.set("isVisibleInMap", newValue);
