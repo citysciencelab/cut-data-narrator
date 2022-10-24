@@ -5,6 +5,7 @@ import {
 } from "ol/geom";
 import FilterConfigConverter from "../utils/filterConfigConverter.js";
 import isObject from "../../../../utils/isObject.js";
+import {getFeaturesOfAdditionalGeometries} from "../utils/getFeaturesOfAdditionalGeometries.js";
 
 export default {
     /**
@@ -137,7 +138,7 @@ export default {
     serializeState: (context) => {
         const rulesOfFilters = context.state.rulesOfFilters,
             selectedAccordions = context.state.selectedAccordions,
-            geometrySelectorOptions = context.state.geometrySelectorOptions,
+            geometrySelectorOptions = JSON.parse(JSON.stringify(context.state.geometrySelectorOptions)),
             geometryFeature = getGeometryFeature(context.state.geometryFeature, geometrySelectorOptions.invertGeometry),
             result = {
                 rulesOfFilters,
@@ -147,6 +148,9 @@ export default {
             };
         let resultString = "";
 
+        if (Array.isArray(result.geometrySelectorOptions?.additionalGeometries)) {
+            result.geometrySelectorOptions.additionalGeometries.forEach(additionalGeometry => delete additionalGeometry.features);
+        }
         try {
             resultString = JSON.stringify(result);
         }
@@ -165,7 +169,7 @@ export default {
      * @param {Object[]} payload.selectedAccordions The selected accordions
      * @return {void}
      */
-    deserializeState: (context, payload) => {
+    deserializeState: async (context, payload) => {
         const rulesOfFilters = payload?.rulesOfFilters,
             selectedAccordions = payload?.selectedAccordions;
         let rulesOfFiltersCopy;
@@ -182,6 +186,7 @@ export default {
             context.commit("setSelectedAccordions", selectedAccordions);
             context.dispatch("setGeometryFilterByFeature", {jsonFeature: payload?.geometryFeature, invert: payload?.geometrySelectorOptions?.invertGeometry});
             context.commit("setGeometrySelectorOptions", payload?.geometrySelectorOptions);
+            await getFeaturesOfAdditionalGeometries(payload.geometrySelectorOptions.additionalGeometries);
             context.commit("setActive", true);
         }
     },

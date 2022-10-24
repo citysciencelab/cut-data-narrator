@@ -23,9 +23,7 @@ import {
 import FilterList from "./FilterList.vue";
 import isObject from "../../../../utils/isObject.js";
 import GeometryFilter from "./GeometryFilter.vue";
-import {getLayerWhere} from "@masterportal/masterportalapi/src/rawLayerList";
-import {getFeatureGET} from "../../../../api/wfs/getFeature";
-import {WFS} from "ol/format.js";
+import {getFeaturesOfAdditionalGeometries} from "../utils/getFeaturesOfAdditionalGeometries.js";
 
 export default {
     name: "FilterGeneral",
@@ -60,21 +58,21 @@ export default {
         ...mapGetters("Tools/Filter", Object.keys(getters)),
         console: () => console,
         filters () {
-            return this.layerConfigs.filter(layer => {
+            return this.layerConfigs.layers.filter(layer => {
                 return isObject(layer);
             });
         }
     },
     created () {
         this.$on("close", this.close);
-        this.getFeaturesOfAdditionalGeometries(this.geometrySelectorOptions.additionalGeometries);
+        getFeaturesOfAdditionalGeometries(this.geometrySelectorOptions.additionalGeometries);
     },
     mounted () {
         this.convertConfig({
             snippetInfos: getSnippetInfos()
         });
 
-        this.layerConfigs = compileLayers(this.layers);
+        this.layerConfigs = compileLayers(this.layerGroups, this.layers);
 
         this.$nextTick(() => {
             if (isUiStyleTable()) {
@@ -83,31 +81,31 @@ export default {
             }
         });
 
-        if (Array.isArray(this.layerGroups) && this.layerGroups.length > 0) {
-            this.layerGroups.forEach(layerGroup => {
+        if (Array.isArray(this.layerConfigs.groups) && this.layerConfigs.groups.length > 0) {
+            this.layerConfigs.groups.forEach(layerGroup => {
                 if (isObject(layerGroup)) {
-                    this.preparedLayerGroups.push(compileLayers(layerGroup.layers));
+                    this.preparedLayerGroups.push(layerGroup);
                 }
             });
             if (Array.isArray(this.preparedLayerGroups) && this.preparedLayerGroups.length > 0) {
                 this.preparedLayerGroups.forEach(group => {
-                    group.forEach(layer => {
+                    group.layers.forEach(layer => {
                         this.flattenPreparedLayerGroups.push(layer);
                     });
                 });
             }
         }
 
-        if (Array.isArray(this.layerConfigs) && this.layerConfigs.length > 0) {
+        if (Array.isArray(this.layerConfigs?.layers) && this.layerConfigs.layers.length > 0) {
             const selectedFilterIds = [];
 
-            this.layerConfigs.forEach(config => {
+            this.layerConfigs.layers.forEach(config => {
                 if (typeof config?.active === "boolean" && config.active && config?.filterId) {
                     selectedFilterIds.push(config.filterId);
                 }
             });
             if (selectedFilterIds.length > 0) {
-                this.setSelectedAccordions(this.transformLayerConfig(this.layerConfigs, selectedFilterIds));
+                this.setSelectedAccordions(this.transformLayerConfig(this.layerConfigs.layers, selectedFilterIds));
             }
         }
     },
@@ -130,24 +128,6 @@ export default {
             }
         },
 
-        /**
-         * Gets the features of the additional geometries by the given layer id.
-         * @param {Object[]} additionalGeometries - The additional geometries.
-         * @param {String} additionalGeometries[].layerId - The id of the layer.
-         * @returns {void}
-         */
-        async getFeaturesOfAdditionalGeometries (additionalGeometries) {
-            if (additionalGeometries) {
-                const wfsReader = new WFS();
-
-                for (const additionalGeometry of additionalGeometries) {
-                    const rawLayer = getLayerWhere({id: additionalGeometry.layerId}),
-                        features = await getFeatureGET(rawLayer.url, {version: rawLayer.version, featureType: rawLayer.featureType});
-
-                    additionalGeometry.features = wfsReader.readFeatures(features);
-                }
-            }
-        },
 
         /**
          * Update selected layer group.
@@ -165,28 +145,31 @@ export default {
             }
         },
         /**
-         * Update selectedAccordions array.
-         * @param {String[]} filterIds ids which should be added or removed
-         * @returns {void|undefined} returns undefinied, if filterIds is not an array and not a number.
-         */
-        updateSelectedAccordions (filterIds) {
-            if (!Array.isArray(filterIds)) {
-                return;
-            }
-
-            this.setSelectedAccordions(this.transformLayerConfig(this.layerConfigs, filterIds));
-        },
-        /**
          * Update selectedAccordions array in groups.
-         * @param {String[]} filterIds ids which should be added or removed
+         * @param {Number} filterId id which should be added or removed
+         * @param {Boolean} [isFromGroup=true] true if accordion is in a group, false if not
          * @returns {void|undefined} returns undefinied, if filterIds is not an array and not a number.
          */
-        updateSelectedAccordionsInGroups (filterIds) {
-            if (!Array.isArray(filterIds)) {
+        updateSelectedAccordions (filterId, isFromGroup = false) {
+            let selectedFilterIds = [];
+
+            if (!this.multiLayerSelector) {
+                selectedFilterIds = this.selectedLayers.includes(filterId) ? [] : [filterId];
+                this.setSelectedAccordions(this.transformLayerConfig(isFromGroup ? this.flattenPreparedLayerGroups : this.layerConfigs.layers, selectedFilterIds));
                 return;
             }
 
-            this.setSelectedAccordions(this.transformLayerConfig(this.flattenPreparedLayerGroups, filterIds));
+            const filterIdsOfAccordions = [],
+                index = this.selectedAccordions.findIndex(accordion => accordion.filterId === filterId);
+
+            this.selectedAccordions.forEach(accordion => filterIdsOfAccordions.push(accordion.filterId));
+            if (index >= 0) {
+                filterIdsOfAccordions.splice(index, 1);
+            }
+            else {
+                filterIdsOfAccordions.push(filterId);
+            }
+            this.setSelectedAccordions(this.transformLayerConfig([...this.layerConfigs.layers, ...this.flattenPreparedLayerGroups], filterIdsOfAccordions));
         },
         /**
          * Transform given layer config to an lightweight array of layerIds and filterIds.
@@ -356,10 +339,10 @@ export default {
                                     <FilterList
                                         v-if="Array.isArray(preparedLayerGroups) && preparedLayerGroups.length && layerSelectorVisible"
                                         class="layerSelector"
-                                        :filters="preparedLayerGroups[layerGroups.indexOf(layerGroup)]"
-                                        :changed-selected-layers="selectedAccordions"
+                                        :filters="preparedLayerGroups[layerGroups.indexOf(layerGroup)].layers"
+                                        :selected-layers="selectedAccordions"
                                         :multi-layer-selector="multiLayerSelector"
-                                        @selectedaccordions="updateSelectedAccordionsInGroups"
+                                        @selectedaccordions="updateSelectedAccordions"
                                         @setLayerLoaded="setLayerLoaded"
                                     >
                                         <template
@@ -393,10 +376,10 @@ export default {
                     </div>
                 </div>
                 <FilterList
-                    v-if="Array.isArray(layerConfigs) && layerConfigs.length && layerSelectorVisible"
+                    v-if="(Array.isArray(layerConfigs.layers) && layerConfigs.layers.length) || (Array.isArray(layerConfigs.groups) && layerConfigs.groups.length) && layerSelectorVisible"
                     class="layerSelector"
                     :filters="filters"
-                    :changed-selected-layers="selectedAccordions"
+                    :selected-layers="selectedAccordions"
                     :multi-layer-selector="multiLayerSelector"
                     @selectedaccordions="updateSelectedAccordions"
                     @setLayerLoaded="setLayerLoaded"
@@ -426,7 +409,7 @@ export default {
                         </div>
                     </template>
                 </FilterList>
-                <div v-else-if="Array.isArray(layerConfigs) && layerConfigs.length">
+                <div v-else-if="(Array.isArray(layerConfigs.layers) && layerConfigs.layers.length) || (Array.isArray(layerConfigs.groups) && layerConfigs.groups.length)">
                     <LayerFilterSnippet
                         v-for="(layerConfig, indexLayer) in filters"
                         :key="'layer-' + indexLayer + layerFilterSnippetPostKey"
