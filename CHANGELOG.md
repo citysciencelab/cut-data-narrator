@@ -9,6 +9,7 @@
 - related filters can be displayed together with new attribute layerGroups in config.json.
 - Draw-Tool: Added csv as new download fromat. In the csv the geometry is set as wkt.
 - highlightFeaturesByAttribute: new isIn filter, offering the possibility to search for multiple values with semicolon as delimiter (configurable)
+- crossOrigin settings can now be passed to WMSLayers via config.json or services.json
 
 ### Changed
 - The version of node was updated, must be >= 16.13.2 <= 16.18.0 and the version of npm was updated, must be >= 8.1.2 <=8.19.2.
