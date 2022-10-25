@@ -37,7 +37,21 @@ async function convertFeatures ({state, dispatch}, format) {
  * @returns {void}
  */
 function fileDownloaded ({state, commit}) {
+    if (state.selectedFeature && state.oldStyle && typeof state.selectedFeature.getStyle() !== "function") {
+        resetStyle(state.selectedFeature, state.oldStyle);
+    }
     commit("setDownloadSelectedFormat", state.download.selectedFormat);
+}
+
+/**
+ *
+ * Resets the style of given feature to old style
+ * @param {ol/feature} feature the last selected feature whose style must be restored from oldStyle
+ * @param {ol/style} style the style of last selected feature
+ * @returns {void}
+ */
+function resetStyle (feature, style) {
+    feature.setStyle(style);
 }
 
 /**
