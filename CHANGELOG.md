@@ -21,6 +21,7 @@
         - @popperjs/core: 2.11.5 to 2.11.6
         - bootstrap: 5.2.0 to 5.2.2
         - moment-timezone: 0.5.34 to 0.5.37
+        - "@masterportal/masterportalapi": 2.8.0 to 2.9.0
     - devDependencies
         - @masterportal/mpconfigparser: 1.3.0 to 1.3.1
 - Draw
