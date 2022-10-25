@@ -5106,6 +5106,7 @@ Layer definition. Multiple ways to define layers exist. Most attributes are defi
 |autoRefresh|no|Integer||Automatically reload layer every `autoRefresh` ms. Minimum value is 500.|false|
 |isNeverVisibleInTree|no|Boolean|false|If `true`, the layer is never visible in the topic selection tree.|false|
 |urlIsVisible|no|Boolean|true|Whether the service URL should be shown in the layer information window.|false|
+|filterRefId|no|Integer||Referencing to a configured filter. It is the order (index) of Layer in filter. Starting with 0.|false|
 
 **Example with one ID**
 

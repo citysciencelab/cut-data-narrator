@@ -16,6 +16,8 @@
 - FileImport Tool: Adding a new parameter "enableZoomToExtend" in config to decide if the imported file name is shown as button and it is able to zoom into the imported features by clicking the file name.
 - layerInformation: Adds a new parameter with object format in portalconfig to decide if to show individual attributes in Meta data of layer information.
   - showMetaDataRevision: Adds a new parameter with boolean format in layerInformation to decide if to show "Letzte Änderung" in Meta data of layer information.
+- Theme Tree: added a new parameter `filterRefId` in layer as an Index of a configured filter Layer
+
 
 ### Changed
 - The version of node was updated, must be >= 16.13.2 <= 16.18.0 and the version of npm was updated, must be >= 8.1.2 <=8.19.2.

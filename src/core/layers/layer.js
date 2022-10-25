@@ -41,9 +41,11 @@ export default function Layer (attrs, layer, initialize = true) {
         levelDownText: i18next.t("common:tree.levelDown"),
         settingsText: i18next.t("common:tree.settings"),
         infosAndLegendText: i18next.t("common:tree.infosAndLegend"),
+        filterIconText: i18next.t("common:tree.filterIconText"),
         isAutoRefreshing: false,
         intervalAutoRefresh: -1,
-        isClustered: false
+        isClustered: false,
+        filterRefId: undefined
     };
 
     this.layer = layer;
@@ -484,6 +486,7 @@ Layer.prototype.changeLang = function () {
     this.attributes.levelUpText = i18next.t("common:tree.levelUp");
     this.attributes.levelDownText = i18next.t("common:tree.levelDown");
     this.attributes.transparencyText = i18next.t("common:tree.transparency");
+    this.attributes.filterIconText = i18next.t("common:tree.filterIconText");
 };
 /**
  * Calls Collection function moveModelDown
@@ -648,6 +651,18 @@ Layer.prototype.getPointCoordinatesWithAltitude = function (coord) {
         }
     }
     return coord;
+};
+
+/**
+ * Toggles the matching filter. filterRefId is used as reference.
+ * @returns {void}
+ */
+Layer.prototype.toggleFilter = function () {
+    const id = this.get("filterRefId");
+
+    if (typeof id === "number") {
+        store.dispatch("Tools/Filter/jumpToFilter", {filterId: id}, {root: true});
+    }
 };
 
 /**

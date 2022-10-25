@@ -180,6 +180,12 @@ export default {
                 return;
             }
 
+            this.preparedLayerGroups.forEach((layerGroup, groupIdx) => {
+                if (layerGroup.layers.some(layer => layer.filterId === filterId) && !this.selectedLayerGroups.includes(groupIdx)) {
+                    this.selectedLayerGroups.push(groupIdx);
+                }
+            });
+
             const filterIdsOfAccordions = [],
                 index = this.selectedAccordions.findIndex(accordion => accordion.filterId === filterId);
 
@@ -286,6 +292,13 @@ export default {
                 return;
             }
             this.$store.commit("Tools/Gfi/setActive", active);
+        },
+        /**
+         * Resets the jumpToId state property.
+         * @returns {void}
+         */
+        resetJumpToId () {
+            this.setJumpToId(undefined);
         }
     }
 };
@@ -363,6 +376,8 @@ export default {
                                         :filters="preparedLayerGroups[layerGroups.indexOf(layerGroup)].layers"
                                         :selected-layers="selectedAccordions"
                                         :multi-layer-selector="multiLayerSelector"
+                                        :jump-to-id="jumpToId"
+                                        @resetJumpToId="resetJumpToId"
                                         @selectedaccordions="updateSelectedAccordions"
                                         @setLayerLoaded="setLayerLoaded"
                                     >
@@ -402,6 +417,8 @@ export default {
                     :filters="filters"
                     :selected-layers="selectedAccordions"
                     :multi-layer-selector="multiLayerSelector"
+                    :jump-to-id="jumpToId"
+                    @resetJumpToId="resetJumpToId"
                     @selectedaccordions="updateSelectedAccordions"
                     @setLayerLoaded="setLayerLoaded"
                 >

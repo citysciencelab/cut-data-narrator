@@ -105,7 +105,8 @@
         "levelUp": "Ebene nach oben",
         "levelDown": "Ebene nach unten",
         "externalTechnicalData": "Externe Fachdaten",
-        "selectedFeatures": "Auswahl:"
+        "selectedFeatures": "Auswahl:",
+        "filterIconText": "Filter öffnen"
     },
     "date": "Datum",
     "time": "Zeit",
@@ -411,6 +412,9 @@
                 "serviceFour": "Dienst 4"
             },
             "filter": {
+                "alertingMessages": {
+                    "noMatchingFilterId": "Die konfigurierte Filter Id ist nicht vorhanden."
+                },
                 "filterButton": "Filtern",
                 "searchInMapExtent": "Suche im aktuellen Kartenausschnitt",
                 "snippetTags": {

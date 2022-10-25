@@ -33,5 +33,6 @@ export default {
     selectedAccordions: [],
     filtersHits: [],
     filterGeometry: false,
-    geometryFeature: undefined
+    geometryFeature: undefined,
+    jumpToId: undefined
 };
