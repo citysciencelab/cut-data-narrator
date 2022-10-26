@@ -28,6 +28,7 @@
 const state = {
     layerAppendix: "_secondLayer",
     windowWidth: 1280,
+    visibility: true,
     layerSwiper: {
         active: false,
         isMoving: false,

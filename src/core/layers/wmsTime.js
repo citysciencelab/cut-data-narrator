@@ -321,15 +321,9 @@ WMSTimeLayer.prototype.createTimeRange = function (min, max, increment) {
  * @returns {void}
  */
 WMSTimeLayer.prototype.setIsVisibleInMap = function (newValue) {
-    if (this.attributes.time) {
-        store.commit("WmsTime/setTimeSliderActive", {
-            active: newValue,
-            currentLayerId: this.attributes.id,
-            playbackDelay: this.attributes.time.playbackDelay || 1
-        });
-    }
     const lastValue = this.get("isVisibleInMap");
 
+    store.commit("WmsTime/setVisibility", newValue);
     this.set("isVisibleInMap", newValue);
     this.layer.setVisible(newValue);
     if (this.get("typ") === "GROUP" && this.get("layers")) {
