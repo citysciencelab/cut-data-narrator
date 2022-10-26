@@ -1,7 +1,6 @@
 import sinon from "sinon";
 import {expect} from "chai";
 import actions from "../../../store/actionsSearchByCoord";
-import * as proj4 from "proj4";
 
 describe("src/modules/tools/searchByCoord/store/actionsSearchByCoord.js", () => {
     let commit, dispatch, getters;
@@ -141,43 +140,27 @@ describe("src/modules/tools/searchByCoord/store/actionsSearchByCoord.js", () => 
             expect(dispatch.secondCall.args[0]).to.equal("moveToCoordinates");
             expect(dispatch.secondCall.args[1]).to.eql(["564459.13", "5935103.67"]);
         });
-        it.skip("Transforms coordinates of the WGS84 format and moves to coordinates", () => {
+        it("Transforms coordinates of the WGS84 format and moves to coordinates", () => {
             const state = {
-                    currentSelection: "WGS84",
-                    selectedCoordinates: [["53", "33", "25"], ["9", "59", "50"]]
-                },
-                proj4Result = Symbol(),
-                proj4Spy = sinon.spy(() => {
-                    return proj4Result;
-                });
+                currentSelection: "WGS84",
+                selectedCoordinates: [["53", "33", "25"], ["9", "59", "50"]]
+            };
 
-            sinon.stub(proj4, "default").callsFake(proj4Spy);
             actions.transformCoordinates({state, dispatch});
 
-            expect(proj4Spy.firstCall.args[0]).to.equal("EPSG:4326");
-            expect(proj4Spy.secondCall.args[0]).to.equal("EPSG:25832");
             expect(dispatch.firstCall.args[0]).to.equal("setZoom");
             expect(dispatch.secondCall.args[0]).to.equal("moveToCoordinates");
-            expect(dispatch.secondCall.args[1]).to.eql(proj4Result);
         });
-        it.skip("Transforms coordinates of the WGS84(Dezimalgrad) format and moves to coordinates", () => {
+        it("Transforms coordinates of the WGS84(Dezimalgrad) format and moves to coordinates", () => {
             const state = {
-                    currentSelection: "WGS84(Dezimalgrad)",
-                    selectedCoordinates: [["53.55555", ""], ["10.01234", ""]]
-                },
-                proj4Result = Symbol(),
-                proj4Spy = sinon.spy(() => {
-                    return proj4Result;
-                });
+                currentSelection: "WGS84(Dezimalgrad)",
+                selectedCoordinates: [["53.55555", ""], ["10.01234", ""]]
+            };
 
-            sinon.stub(proj4, "default").callsFake(proj4Spy);
             actions.transformCoordinates({state, dispatch});
 
-            expect(proj4Spy.firstCall.args[0]).to.equal("EPSG:4326");
-            expect(proj4Spy.secondCall.args[0]).to.equal("EPSG:25832");
             expect(dispatch.firstCall.args[0]).to.equal("setZoom");
             expect(dispatch.secondCall.args[0]).to.equal("moveToCoordinates");
-            expect(dispatch.secondCall.args[1]).to.eql(proj4Result);
         });
     });
 });

@@ -9,7 +9,7 @@ const localVue = createLocalVue();
 config.mocks.$t = key => key;
 localVue.use(Vuex);
 
-describe.skip("src/modules/tools/gfi/components/templates/AttachedTemplate.vue", () => {
+describe("src/modules/tools/gfi/components/templates/AttachedTemplate.vue", () => {
     const mountOptions = {
         propsData: {
             feature: {
@@ -34,7 +34,7 @@ describe.skip("src/modules/tools/gfi/components/templates/AttachedTemplate.vue",
         localVue
     };
 
-    let wrapper;
+    let wrapper, attachShadow;
 
     beforeEach(() => {
         const map = {
@@ -61,7 +61,12 @@ describe.skip("src/modules/tools/gfi/components/templates/AttachedTemplate.vue",
          * @returns {void}
          */
     before(() => {
-        global.ShadowRoot = () => "";
+        attachShadow = document.documentElement.attachShadow;
+        document.documentElement.attachShadow = false;
+    });
+
+    after(() => {
+        document.documentElement.attachShadow = attachShadow;
     });
 
     it("should have a title", () => {
