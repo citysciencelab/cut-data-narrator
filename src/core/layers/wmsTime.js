@@ -3,6 +3,7 @@ import moment from "moment";
 
 import handleAxiosResponse from "../../utils/handleAxiosResponse";
 import store from "../../app-store";
+import * as bridge from "./RadioBridge.js";
 import detectIso8601Precision from "../../utils/detectIso8601Precision";
 import WMSLayer from "./wms";
 
@@ -312,6 +313,35 @@ WMSTimeLayer.prototype.createTimeRange = function (min, max, increment) {
     }
 
     return timeRange;
+};
+
+/**
+ * Setter for isVisibleInMap and setter for layer.setVisible
+ * @param {Boolean} newValue Flag if layer is visible in map
+ * @returns {void}
+ */
+WMSTimeLayer.prototype.setIsVisibleInMap = function (newValue) {
+    if (this.attributes.time) {
+        store.commit("WmsTime/setTimeSliderActive", {
+            active: newValue,
+            currentLayerId: this.attributes.id,
+            playbackDelay: this.attributes.time.playbackDelay || 1
+        });
+    }
+    const lastValue = this.get("isVisibleInMap");
+
+    this.set("isVisibleInMap", newValue);
+    this.layer.setVisible(newValue);
+    if (this.get("typ") === "GROUP" && this.get("layers")) {
+        this.get("layers").forEach(layer => {
+            layer.setVisible(newValue);
+        });
+    }
+    if (lastValue !== newValue) {
+        // here it is possible to change the layer visibility-info in state and listen to it e.g. in LegendWindow
+        // e.g. store.dispatch("Map/toggleLayerVisibility", {layerId: this.get("id")});
+        bridge.layerVisibilityChanged(this, this.get("isVisibleInMap"));
+    }
 };
 
 /**
