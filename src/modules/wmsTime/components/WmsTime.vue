@@ -25,7 +25,10 @@ export default {
 </script>
 
 <template>
-    <div v-if="visibility" id="wmsTime">
+    <div
+        v-if="visibility"
+        id="wmsTime"
+    >
         <TimeSlider
             v-if="timeSlider.active"
             :class="{'moveLeft': layerSwiper.active && minWidth}"
