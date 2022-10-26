@@ -3,9 +3,9 @@ import moment from "moment";
 
 import handleAxiosResponse from "../../utils/handleAxiosResponse";
 import store from "../../app-store";
-import * as bridge from "./RadioBridge.js";
 import detectIso8601Precision from "../../utils/detectIso8601Precision";
 import WMSLayer from "./wms";
+import Layer from "./layer";
 
 /**
  * Creates a layer of type WMSTime.
@@ -321,21 +321,8 @@ WMSTimeLayer.prototype.createTimeRange = function (min, max, increment) {
  * @returns {void}
  */
 WMSTimeLayer.prototype.setIsVisibleInMap = function (newValue) {
-    const lastValue = this.get("isVisibleInMap");
-
     store.commit("WmsTime/setVisibility", newValue);
-    this.set("isVisibleInMap", newValue);
-    this.layer.setVisible(newValue);
-    if (this.get("typ") === "GROUP" && this.get("layers")) {
-        this.get("layers").forEach(layer => {
-            layer.setVisible(newValue);
-        });
-    }
-    if (lastValue !== newValue) {
-        // here it is possible to change the layer visibility-info in state and listen to it e.g. in LegendWindow
-        // e.g. store.dispatch("Map/toggleLayerVisibility", {layerId: this.get("id")});
-        bridge.layerVisibilityChanged(this, this.get("isVisibleInMap"));
-    }
+    Layer.prototype.setIsVisibleInMap.call(this, newValue);
 };
 
 /**
