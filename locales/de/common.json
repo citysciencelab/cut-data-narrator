@@ -109,7 +109,8 @@
         "levelDown": "Ebene nach unten",
         "externalTechnicalData": "Externe Fachdaten",
         "selectedFeatures": "Auswahl:",
-        "filterIconText": "Filter öffnen"
+        "filterIconText": "Filter öffnen",
+        "scaleText": "Wird im folgenden Maßstabsbereich angezeigt: "
     },
     "date": "Datum",
     "time": "Zeit",

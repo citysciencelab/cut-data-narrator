@@ -582,6 +582,7 @@ Configuration of the menu tree.
 |Name|Required|Type|Default|Description|Expert|
 |----|--------|----|-------|-----------|------|
 |highlightedFeatures|no|**[highlightedFeatures](#markdown-header-portalconfigtreehighlightedfeatures)**||Configuration in addition to feature highlighting.|false|
+|showScaleTooltip|nein|Boolean|false|Flag whether the scale range is displayed in the layer tooltip in addition to the name of the corresponding layer.|false|
 
 **Example**
 ```
@@ -590,7 +591,8 @@ Configuration of the menu tree.
     "highlightedFeatures": {
         "active": true,
         "layerName": "common:tree.selectedFeatures"
-    }
+    },
+    "showScaleTooltip": true
 },
 ```
 ***

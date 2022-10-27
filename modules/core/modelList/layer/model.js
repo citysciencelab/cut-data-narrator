@@ -35,7 +35,8 @@ const Layer = Item.extend(/** @lends Layer.prototype */{
         removeLayerText: "",
         levelUpText: "",
         levelDownText: "",
-        isSecured: false
+        isSecured: false,
+        scaleText: ""
     },
     /**
      * @class Layer

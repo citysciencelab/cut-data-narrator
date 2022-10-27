@@ -556,6 +556,7 @@ Konfiguration des Menü-Baums.
 |Name|Verpflichtend|Typ|Default|Beschreibung|Expert|
 |----|-------------|---|-------|------------|------|
 |highlightedFeatures|nein|**[highlightedFeatures](#markdown-header-portalconfigtreehighlightedfeatures)**||Konfiguration zusätzlich zum Highlighting von Features.|false|
+|showScaleTooltip|nein|Boolean|false|Flag ob im Layer Tooltip zusätzlich zum Namen des entsprechenden Layers auch der Maßstabsbereich angezeigt wird.|false|
 
 **Beispiel**
 ```
@@ -564,7 +565,8 @@ Konfiguration des Menü-Baums.
     "highlightedFeatures": {
         "active": true,
         "layerName": "common:tree.selectedFeatures"
-    }
+    },
+    "showScaleTooltip": true
 },
 ```
 ***

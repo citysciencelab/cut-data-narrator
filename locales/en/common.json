@@ -108,7 +108,8 @@
         "levelDown": "Level down",
         "externalTechnicalData": "External technical data",
         "selectedFeatures": "Selection:",
-        "filterIconText": "Open filter"
+        "filterIconText": "Open filter",
+        "scaleText": "Displayed in the following scale range: "
     },
     "date": "Date",
     "time": "Time",
