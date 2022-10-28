@@ -365,6 +365,8 @@
                 "formatLabel": "Format",
                 "dpiLabel": "DPI",
                 "scaleLabel": "Printing scale",
+                "outputfileTitleLabel": "Filename",
+                "validationWarning": "The file name may only contain letters and the special characters '-' and '_'.",
                 "withLegendLabel": "With legend",
                 "autoAdjustScale": "Adjust printing scale automatically",
                 "printLabel": "Create file",

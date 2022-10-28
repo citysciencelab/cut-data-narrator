@@ -289,7 +289,7 @@ export default {
             dpi: String(decodePayload.attributes.map.dpi),
             mapTitle: decodePayload.attributes.title
         }];
-        plotservicePayload.outputFilename = state.filename;
+        plotservicePayload.outputFilename = state.filename + "_";
         plotservicePayload.outputFormat = state.outputFormat;
 
         return JSON.stringify(plotservicePayload);

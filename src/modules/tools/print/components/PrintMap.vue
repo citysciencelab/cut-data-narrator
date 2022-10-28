@@ -112,6 +112,15 @@ export default {
             set (value) {
                 this.setFormatList(value);
             }
+        },
+        outputTitle: {
+            get () {
+                return this.filename;
+            },
+            set (value) {
+                this.setFilename(value);
+                this.isValid(value);
+            }
         }
     },
     watch: {
@@ -280,7 +289,8 @@ export default {
                     title: this.title,
                     finishState: false,
                     downloadUrl: null,
-                    filename: this.filename
+                    filename: this.filename,
+                    outputFormat: this.outputFormat
                 });
 
                 this.setPrintStarted(true);
@@ -323,6 +333,28 @@ export default {
             if (button.classList.contains("btn-primary")) {
                 button.classList.remove("btn-primary");
                 button.classList.add("btn-secondary");
+            }
+        },
+
+        /**
+         * validates the value of the outputFileTitle input field
+         * @param {String} value - input value
+         * @returns {void}
+         */
+        isValid (value) {
+            const regex = /^[a-zA-Z\-_]+$/,
+                valid = regex.test(value);
+
+            if (!valid) {
+                document.getElementById("outputFileTitleWarning").classList.remove("active");
+                document.getElementById("outputFileTitle").classList.add("danger");
+
+                document.getElementById("printBtn").disabled = true;
+            }
+            else {
+                document.getElementById("outputFileTitleWarning").classList.add("active");
+                document.getElementById("outputFileTitle").classList.remove("danger");
+                document.getElementById("printBtn").disabled = false;
             }
         },
 
@@ -494,6 +526,30 @@ export default {
                     </div>
                 </div>
                 <div
+                    v-if="printService === 'plotservice'"
+                    class="form-group form-group-sm row"
+                >
+                    <label
+                        class="col-md-5 col-form-label"
+                        for="outputFileTitle"
+                    >{{ $t("common:modules.tools.print.outputfileTitleLabel") }}</label>
+                    <div class="col-md-7">
+                        <input
+                            id="outputFileTitle"
+                            v-model="outputTitle"
+                            type="text"
+                            class="form-control form-control-sm"
+                            maxLength="45"
+                        >
+                    </div>
+                    <small
+                        id="outputFileTitleWarning"
+                        class="offset-md-5 col-md-7 active"
+                    >
+                        {{ $t("common:modules.tools.print.validationWarning") }}
+                    </small>
+                </div>
+                <div
                     class="form-group form-group-sm row"
                 >
                     <label
@@ -562,6 +618,7 @@ export default {
                 <div class="form-group form-group-sm row">
                     <div class="col-md-12 d-grid gap-2">
                         <button
+                            id="printBtn"
                             type="button"
                             class="btn btn-primary"
                             @click="print"
@@ -580,6 +637,13 @@ export default {
                 >
                     <div class="col-md-4 tool-print-download-title-container">
                         <span
+                            v-if="printService === 'plotservice'"
+                            class="tool-print-download-title"
+                        >
+                            {{ file.filename + "." + file.outputFormat }}
+                        </span>
+                        <span
+                            v-else
                             class="tool-print-download-title"
                         >
                             {{ file.title }}
@@ -651,6 +715,15 @@ export default {
         }
     }
 
+    #outputFileTitle.danger {
+        border-color: red
+    }
+    #outputFileTitleWarning {
+        color: red;
+    }
+    #outputFileTitleWarning.active {
+        display: none;
+    }
     #tool-print-downloads-container {
         margin-top: 30px;
 
