@@ -87,8 +87,6 @@ const actions = {
      * @return {void}
      */
     resetModule ({commit, dispatch, getters: {selectedSourceLayer, selectedTargetLayer}}) {
-        commit("setBufferRadius", 0);
-
         if (selectedSourceLayer) {
             selectedSourceLayer.get("layer").setOpacity(1);
             selectedSourceLayer.setIsSelected(false);
@@ -212,7 +210,7 @@ const actions = {
      * @return {void}
      */
     addNewFeaturesToMap ({commit,
-        rootGetters,
+        dispatch,
         getters: {
             resultFeatures,
             selectedTargetLayer,
@@ -233,7 +231,7 @@ const actions = {
 
             vectorSource.addFeatures(resultFeatures);
             resultLayer.set("gfiAttributes", gfiAttributes);
-            mapCollection.getMap(rootGetters["Maps/mode"]).addLayer(resultLayer);
+            dispatch("Maps/addLayerOnTop", resultLayer, {root: true});
         }
         const targetOlLayer = selectedTargetLayer.get("layer"),
             sourceOlLayer = selectedSourceLayer.get("layer");
