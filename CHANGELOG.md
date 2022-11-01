@@ -52,6 +52,7 @@
         - uglifyjs-webpack-plugin
 
 ### Fixed
+- Issue #845: The buffer analysis tool now shows results correctly again
 
 ---
 
