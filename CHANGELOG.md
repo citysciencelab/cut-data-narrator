@@ -54,6 +54,7 @@
         - uglifyjs-webpack-plugin
 
 ### Fixed
+- Issue #821: Sorting the table in featureLister tool now works again
 
 ---
 

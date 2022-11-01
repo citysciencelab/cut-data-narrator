@@ -106,8 +106,8 @@ export default {
             const tableHeaders = await document.getElementsByClassName("feature-lister-list-table-th");
 
             try {
-                if (tableHeaders && typeof tableHeaders.forEach === "function") {
-                    tableHeaders.forEach(th_elem => {
+                if (tableHeaders?.length) {
+                    for (const th_elem of tableHeaders) {
                         let asc = true;
                         const index = Array.from(th_elem.parentNode.children).indexOf(th_elem);
 
@@ -129,7 +129,7 @@ export default {
                             });
                             asc = !asc;
                         });
-                    });
+                    }
                 }
             }
             catch (error) {
@@ -235,7 +235,7 @@ export default {
                         class="panel panel-default feature-lister-list"
                     >
                         <div
-                            class="table-responsive  feature-lister-list-table-container"
+                            class="table-responsive feature-lister-list-table-container"
                         >
                             <table
                                 id="feature-lister-list-table"
