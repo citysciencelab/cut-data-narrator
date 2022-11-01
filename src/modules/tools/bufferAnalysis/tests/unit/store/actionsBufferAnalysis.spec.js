@@ -16,6 +16,8 @@ import {
 describe("src/modules/tools/bufferAnalysis/store/actionsBufferAnalysis.js", () => {
     let commit, dispatch, rootGetters, rootState, state, tick;
 
+    const defaultState = {...stateBufferAnalysis};
+
     before(() => {
         mapCollection.clear();
         const map = {
@@ -53,7 +55,7 @@ describe("src/modules/tools/bufferAnalysis/store/actionsBufferAnalysis.js", () =
                 ]
             }
         };
-        state = {...stateBufferAnalysis};
+        state = Object.assign({}, defaultState);
     });
 
     afterEach(() => {
@@ -181,11 +183,10 @@ describe("src/modules/tools/bufferAnalysis/store/actionsBufferAnalysis.js", () =
         });
     });
     describe("resetModule", () => {
-        it("calls dispatch three times and commit once", async () => {
+        it("calls dispatch three times", async () => {
             actions.resetModule({commit, getters: state, dispatch});
 
             expect(dispatch.callCount).to.equal(3);
-            expect(commit.calledTwice).to.be.true;
         });
     });
     describe("applyValuesFromSavedUrlBuffer", () => {
