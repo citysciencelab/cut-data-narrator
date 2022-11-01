@@ -84,6 +84,7 @@ describe("src/modules/tools/bufferAnalysis/components/BufferAnalysis.vue", () =>
         BufferAnalysis.actions.applyValuesFromSavedUrlBuffer = originalApplyValuesFromSavedUrlBuffer;
         store.commit("Tools/BufferAnalysis/setActive", false);
         store.commit("Tools/BufferAnalysis/setSelectOptions", []);
+        store.commit("Tools/BufferAnalysis/setBufferRadius", 0);
         store.dispatch("Tools/BufferAnalysis/resetModule");
         if (wrapper) {
             wrapper.destroy();
