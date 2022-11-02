@@ -26,6 +26,7 @@
 * @property {Number} scale Current scale value of the map.
 * @property {Number} size Current size in pixels of the map in the DOM.
 * @property {Number} zoom Current zoom level of the map view.
+* @property {Boolean} twoFingerPanStart Indicator if the 2-Fingers-Pan is active.
 */
 
 const state = {
@@ -58,7 +59,8 @@ const state = {
     rotation: null,
     scale: null,
     size: null,
-    zoom: null
+    zoom: null,
+    twoFingerPanStart: false
 };
 
 export default state;

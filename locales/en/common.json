@@ -35,6 +35,9 @@
     "mouseHover": {
         "infoText": "(more objects. Please zoom.)"
     },
+    "mapRegion": {
+      "twoFingerPanAlert": "Please use two fingers to pan and zoom in the map."
+   },
     "menu": {
         "topics": "Issues & Topics",
         "name": "Menu",

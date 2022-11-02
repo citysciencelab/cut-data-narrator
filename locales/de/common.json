@@ -35,6 +35,9 @@
     "mouseHover": {
         "infoText": "(weitere Objekte. Bitte zoomen.)"
     },
+    "mapRegion": {
+       "twoFingerPanAlert": "Bitte nutzen Sie zum Navigieren und Zoomen in der Karte zwei Finger."
+    },
     "menu": {
         "topics": "Themen",
         "name": "Menü",
