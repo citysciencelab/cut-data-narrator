@@ -1,5 +1,5 @@
 import Cluster from "ol/source/Cluster.js";
-import {transformToMapProjection} from "@masterportal/masterportalapi/src/crs";
+import crs from "@masterportal/masterportalapi/src/crs";
 import calculateExtent from "../../../../utils/calculateExtent";
 
 export default {
@@ -64,8 +64,8 @@ export default {
         if (Object.values(data).every(val => val !== undefined)) {
             const leftBottom = data.extent.slice(0, 2),
                 topRight = data.extent.slice(2, 4),
-                transformedLeftBottom = transformToMapProjection(mapCollection.getMap("2D"), data.projection, leftBottom),
-                transformedTopRight = transformToMapProjection(mapCollection.getMap("2D"), data.projection, topRight),
+                transformedLeftBottom = crs.transformToMapProjection(mapCollection.getMap("2D"), data.projection, leftBottom),
+                transformedTopRight = crs.transformToMapProjection(mapCollection.getMap("2D"), data.projection, topRight),
                 extentToZoom = transformedLeftBottom.concat(transformedTopRight);
 
             dispatch("zoomToExtent", {extent: extentToZoom, options: data.options});

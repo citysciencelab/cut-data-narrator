@@ -3,7 +3,7 @@ import {
     fetchRoutingNominatimGeosearch,
     fetchRoutingNominatimGeosearchReverse
 } from "../utils/geosearch/routing-nominatim-geosearch";
-import {getMapProjection, transform} from "@masterportal/masterportalapi/src/crs";
+import crs from "@masterportal/masterportalapi/src/crs";
 import {fetchRoutingBkgGeosearch, fetchRoutingBkgGeosearchReverse} from "../utils/geosearch/routing-bkg-geosearch";
 import * as constantsRouting from "./constantsRouting";
 
@@ -137,8 +137,8 @@ export default {
      * @returns {[Number, Number]} projected wgs84 coordinates
      */
     transformCoordinatesLocalToWgs84Projection ({rootState}, coordinates) {
-        return transform(
-            getMapProjection(mapCollection.getMap(rootState.Maps.mode)),
+        return crs.transform(
+            crs.getMapProjection(mapCollection.getMap(rootState.Maps.mode)),
             "EPSG:4326",
             coordinates
         );
@@ -150,9 +150,9 @@ export default {
      * @returns {[Number, Number]} projected local coordinates
      */
     transformCoordinatesWgs84ToLocalProjection ({rootState}, coordinates) {
-        return transform(
+        return crs.transform(
             "EPSG:4326",
-            getMapProjection(mapCollection.getMap(rootState.Maps.mode)),
+            crs.getMapProjection(mapCollection.getMap(rootState.Maps.mode)),
             coordinates
         );
     }

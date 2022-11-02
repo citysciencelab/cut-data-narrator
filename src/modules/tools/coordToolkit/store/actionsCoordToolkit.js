@@ -4,7 +4,7 @@ import isMobile from "../../../../utils/isMobile";
 import {convertSexagesimalFromString, convertSexagesimalToDecimal, convertSexagesimalFromDecimal} from "../../../../utils/convertSexagesimalCoordinates";
 import getProxyUrl from "../../../../utils/getProxyUrl";
 import {requestGfi} from "../../../../api/wmsGetFeatureInfo";
-import {rawLayerList} from "@masterportal/masterportalapi/src";
+import rawLayerList from "@masterportal/masterportalapi/src/rawLayerList";
 
 export default {
     /**

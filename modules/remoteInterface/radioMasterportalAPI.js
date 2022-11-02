@@ -1,5 +1,5 @@
-import {getProjection, getProjections, transformToMapProjection, transformFromMapProjection, transform} from "@masterportal/masterportalapi/src/crs";
-import {rawLayerList} from "@masterportal/masterportalapi/src";
+import crs from "@masterportal/masterportalapi/src/crs";
+import rawLayerList from "@masterportal/masterportalapi/src/rawLayerList";
 
 const RadioMasterportalAPI = Backbone.Model.extend(/** @lends RadioMasterportalAPI */{
     defaults: {},
@@ -46,7 +46,7 @@ const RadioMasterportalAPI = Backbone.Model.extend(/** @lends RadioMasterportalA
      * @returns {(object|undefined)} proj4 projection object or undefined
      */
     getProjection: function (name) {
-        return getProjection(name);
+        return crs.getProjection(name);
     },
 
     /**
@@ -54,7 +54,7 @@ const RadioMasterportalAPI = Backbone.Model.extend(/** @lends RadioMasterportalA
      * @returns {object[]} array of projection objects with their name added
      */
     getProjections: function () {
-        return getProjections();
+        return crs.getProjections();
     },
 
     /**
@@ -65,7 +65,7 @@ const RadioMasterportalAPI = Backbone.Model.extend(/** @lends RadioMasterportalA
      * @returns {number[]|undefined} new point or undefined
      */
     transformToMapProjection: function (map, sourceProjection, point) {
-        return transformToMapProjection(map, sourceProjection, point);
+        return crs.transformToMapProjection(map, sourceProjection, point);
     },
 
     /**
@@ -76,7 +76,7 @@ const RadioMasterportalAPI = Backbone.Model.extend(/** @lends RadioMasterportalA
      * @returns {(number[]|undefined)} new point or undefined
      */
     transformFromMapProjection: function (map, targetProjection, point) {
-        return transformFromMapProjection(map, targetProjection, point);
+        return crs.transformFromMapProjection(map, targetProjection, point);
     },
 
     /**
@@ -87,7 +87,7 @@ const RadioMasterportalAPI = Backbone.Model.extend(/** @lends RadioMasterportalA
      * @returns {number[]|undefined} transformed point
      */
     transform: function (sourceProjection, targetProjection, point) {
-        return transform(sourceProjection, targetProjection, point);
+        return crs.transform(sourceProjection, targetProjection, point);
     },
 
     /**

@@ -1,6 +1,6 @@
 import {expect} from "chai";
 import sinon from "sinon";
-import {getLayerInformation} from "../../../utils/getLayerInformation";
+import getLayerInformationModule from "../../../utils/getLayerInformation";
 
 const relevantKeys = ["featureNS", "featurePrefix", "featureType", "gfiAttributes", "id", "style", "isSelected", "isSecured", "name", "url", "version"],
     exampleLayer = {
@@ -86,7 +86,7 @@ describe("src/modules/tools/wfst/utils/getLayerInformation.js", () => {
     afterEach(sinon.restore);
 
     it("should return an object only including the for the module necessary values of the layer", () => {
-        const layerInformation = getLayerInformation(["wfst-layer"]),
+        const layerInformation = getLayerInformationModule.getLayerInformation(["wfst-layer"]),
             layerKeys = Object.keys(layerInformation[0]);
 
         expect(Array.isArray(layerInformation)).to.be.true;

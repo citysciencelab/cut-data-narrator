@@ -1,7 +1,7 @@
 import {fromCircle} from "ol/geom/Polygon.js";
 import {createStyle} from "../../utils/style/createStyle";
 import Feature from "ol/Feature";
-import {getMapProjection} from "@masterportal/masterportalapi/src/crs";
+import crs from "@masterportal/masterportalapi/src/crs";
 import {GeoJSON} from "ol/format.js";
 import MultiLine from "ol/geom/MultiLineString.js";
 import MultiPoint from "ol/geom/MultiPoint.js";
@@ -51,7 +51,7 @@ function downloadFeaturesWithoutGUI ({state, rootState}, payload) {
         targetProjection = null;
     const featureArray = [],
         format = new GeoJSON(),
-        mapProjection = getMapProjection(mapCollection.getMap(rootState.Maps.mode)),
+        mapProjection = crs.getMapProjection(mapCollection.getMap(rootState.Maps.mode)),
         multiLine = new MultiLine([]),
         multiPoint = new MultiPoint([]),
         multiPolygon = new MultiPolygon([]);
@@ -238,7 +238,7 @@ async function initializeWithoutGUI ({state, commit, dispatch, getters, rootStat
         if (initialJSON) {
             try {
                 if (transformWGS) {
-                    const mapProjection = getMapProjection(mapCollection.getMap(rootState.Maps.mode));
+                    const mapProjection = crs.getMapProjection(mapCollection.getMap(rootState.Maps.mode));
 
                     format = new GeoJSON({
                         defaultDataProjection: "EPSG:4326"

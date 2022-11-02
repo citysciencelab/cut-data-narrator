@@ -1,6 +1,6 @@
-import {rawLayerList} from "@masterportal/masterportalapi/src";
+import rawLayerList from "@masterportal/masterportalapi/src/rawLayerList";
 import {getCenter} from "ol/extent";
-import {createLayerAddToTree} from "../../../../utils/createLayerAddToTree";
+import createLayerAddToTreeModule from "../../../../utils/createLayerAddToTree";
 
 export default {
     /**
@@ -53,7 +53,7 @@ export default {
                 }
             }
             if (rootGetters.treeHighlightedFeatures?.active) {
-                createLayerAddToTree(state.layerId, [state.layer.features[featureIndex]], rootGetters.treeType, rootGetters.treeHighlightedFeatures);
+                createLayerAddToTreeModule.createLayerAddToTree(state.layerId, [state.layer.features[featureIndex]], rootGetters.treeType, rootGetters.treeHighlightedFeatures);
             }
         }
     },

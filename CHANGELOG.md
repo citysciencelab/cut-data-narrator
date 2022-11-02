@@ -52,6 +52,7 @@
 - wmsTime:
     - wmsTime tool can be activated by elastic search topic selection.
     - toggle of selected topics can now also de-/ activate wmsTime tool.
+- Some exports changed from module.exports to export default {} to provide ES-Syntax.
 
 ### Removed
 - The property 'centerMapMarkerPolygon' of the tool GFI is no longer supported.

@@ -2,7 +2,7 @@ import ImageWMS from "ol/source/ImageWMS.js";
 import Image from "ol/layer/Image.js";
 import WMTSLayer from "../../../../core/layers/wmts";
 import View from "ol/View.js";
-import {rawLayerList} from "@masterportal/masterportalapi/src";
+import rawLayerList from "@masterportal/masterportalapi/src/rawLayerList";
 import store from "../../../../app-store/index";
 
 /**

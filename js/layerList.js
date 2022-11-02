@@ -1,4 +1,4 @@
-import {rawLayerList} from "@masterportal/masterportalapi/src";
+import rawLayerList from "@masterportal/masterportalapi/src/rawLayerList";
 import {loadApp} from "./app";
 
 /**

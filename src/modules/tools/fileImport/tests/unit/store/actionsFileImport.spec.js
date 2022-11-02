@@ -5,7 +5,7 @@ import importedState from "../../../store/stateFileImport";
 import rawSources from "../../resources/rawSources.js";
 import VectorLayer from "ol/layer/Vector.js";
 import VectorSource from "ol/source/Vector.js";
-import * as crs from "@masterportal/masterportalapi/src/crs";
+import crs from "@masterportal/masterportalapi/src/crs";
 import sinon from "sinon/pkg/sinon-esm";
 
 const

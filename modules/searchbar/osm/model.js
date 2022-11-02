@@ -1,5 +1,5 @@
 import "../model";
-import {transformToMapProjection} from "@masterportal/masterportalapi/src/crs";
+import crs from "@masterportal/masterportalapi/src/crs";
 import store from "../../../src/app-store";
 
 const OsmModel = Backbone.Model.extend(/** @lends OsmModel.prototype */{
@@ -148,17 +148,17 @@ const OsmModel = Backbone.Model.extend(/** @lends OsmModel.prototype */{
 
                     bbox = hit.boundingbox;
                     if (hit?.lon && hit?.lat) {
-                        center = transformToMapProjection(Radio.request("Map", "getMap"), "WGS84", [parseFloat(hit.lon), parseFloat(hit.lat)]);
+                        center = crs.transformToMapProjection(Radio.request("Map", "getMap"), "WGS84", [parseFloat(hit.lon), parseFloat(hit.lat)]);
                     }
                     else if (hit.address.house_number !== undefined) {
                         // Find the center of the BoundingBox and transform it from lat/lon to the target coordinate system...
                         north = (parseFloat(bbox[0]) + parseFloat(bbox[1])) / 2.0;
                         east = (parseFloat(bbox[2]) + parseFloat(bbox[3])) / 2.0;
-                        center = transformToMapProjection(Radio.request("Map", "getMap"), "WGS84", [east, north]);
+                        center = crs.transformToMapProjection(Radio.request("Map", "getMap"), "WGS84", [east, north]);
                     }
                     else {
-                        upper = transformToMapProjection(Radio.request("Map", "getMap"), "WGS84", [parseFloat(bbox[3]), parseFloat(bbox[1])]);
-                        lower = transformToMapProjection(Radio.request("Map", "getMap"), "WGS84", [parseFloat(bbox[2]), parseFloat(bbox[0])]);
+                        upper = crs.transformToMapProjection(Radio.request("Map", "getMap"), "WGS84", [parseFloat(bbox[3]), parseFloat(bbox[1])]);
+                        lower = crs.transformToMapProjection(Radio.request("Map", "getMap"), "WGS84", [parseFloat(bbox[2]), parseFloat(bbox[0])]);
                         center = [
                             lower[0],
                             lower[1],
