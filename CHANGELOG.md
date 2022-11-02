@@ -4,6 +4,21 @@
 [Semantic versioning](https://semver.org/spec/v2.0.0.html) is used.
 
 
+## Unreleased - in development
+### __Breaking Changes__
+
+### Added
+
+### Changed
+
+### Deprecated
+
+### Removed
+
+### Fixed
+
+---
+
 ## v2.27.0 - 2022-11-02
 ### Added
 - related filters can be displayed together with new attribute layerGroups in config.json.
