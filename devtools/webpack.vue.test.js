@@ -58,7 +58,6 @@ module.exports = {
                         sourcemap: true,
                         target: "es2015",
                         format: "cjs"
-                        // platform: "node"
                     }
                 }
             },
