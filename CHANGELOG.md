@@ -4,7 +4,7 @@
 [Semantic versioning](https://semver.org/spec/v2.0.0.html) is used.
 
 
-## Unreleased - in development
+## v2.27.0 - 2022-11-02
 ### Added
 - related filters can be displayed together with new attribute layerGroups in config.json.
 - Draw-Tool: Added csv as new download fromat. In the csv the geometry is set as wkt.
@@ -15,9 +15,8 @@
         - string-replace-loader: 2.3.0
 - FileImport Tool: Adding a new parameter "enableZoomToExtend" in config to decide if the imported file name is shown as button and it is able to zoom into the imported features by clicking the file name.
 - layerInformation: Adds a new parameter with object format in portalconfig to decide if to show individual attributes in Meta data of layer information.
-  - showMetaDataRevision: Adds a new parameter with boolean format in layerInformation to decide if to show "Letzte Änderung" in Meta data of layer information.
+    - showMetaDataRevision: Adds a new parameter with boolean format in layerInformation to decide if to show "Letzte Änderung" in Meta data of layer information.
 - Theme Tree: added a new parameter `filterRefId` in layer as an Index of a configured filter Layer
-
 
 ### Changed
 - The version of node was updated, must be >= 16.13.2 <= 16.18.0 and the version of npm was updated, must be >= 8.1.2 <=8.19.2.
@@ -30,20 +29,18 @@
     - devDependencies
         - @masterportal/mpconfigparser: 1.3.0 to 1.3.1
 - Draw
-  - The attributes' keys can be set once for all the drawn features so that all the drawn features have the same attributes' keys.
+    - The attributes' keys can be set once for all the drawn features so that all the drawn features have the same attributes' keys.
 - The babel-loader and dependent libraries have been removed from the webpack-bundlers and replaced with esbuild.
 - defaultTree: WMSTime layer can now be displayed also in the `Fachdaten` section.
 - wmsTime:
     - wmsTime tool can be activated by elastic search topic selection.
     - toggle of selected topics can now also de-/ activate wmsTime tool.
 
-### Deprecated
-
 ### Removed
 - The property 'centerMapMarkerPolygon' of the tool GFI is no longer supported.
 - The following NPM package have been removed:
     - dependencies:
-      - core-js
+        - core-js
     - devDependencies:
         - @babel/core
         - @babel/eslint-parser
@@ -52,8 +49,6 @@
         - babel-loader
         - css-minimizer-webpack-plugin
         - uglifyjs-webpack-plugin
-
-### Fixed
 
 ---
 
