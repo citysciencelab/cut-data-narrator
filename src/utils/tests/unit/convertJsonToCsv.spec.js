@@ -19,7 +19,7 @@ describe("src/utils/convertJsonToCsv.js", () => {
             expect(joinRecord(false)).to.be.a("string").and.to.be.empty;
             expect(joinRecord({})).to.be.a("string").and.to.be.empty;
         });
-        it("should return a delimitor seperated string of the given array", () => {
+        it("should return a delimiter seperated string of the given array", () => {
             expect(joinRecord([1, 2, 3, 4], ",", 4)).to.equal("1,2,3,4");
         });
         it("should limit the values to the given maxNumberOfFields", () => {
@@ -67,7 +67,7 @@ describe("src/utils/convertJsonToCsv.js", () => {
         it("should set dquotes if a line feed was found", () => {
             expect(escapeField("str\ning")).to.equal("\"str\ning\"");
         });
-        it("should set dquotes if the given delimitor was found", () => {
+        it("should set dquotes if the given delimiter was found", () => {
             expect(escapeField("string", "r")).to.equal("\"string\"");
         });
         it("should set dquotes and escape dquotes with dquotes (see rfc4180) in the string if a dquotes were found", () => {

@@ -2421,7 +2421,8 @@ Modul für das Zeichnen von Features auf der Karte. Dies beinhaltet Punkte, welc
 |drawDoubleCircleSettings|nein|**[drawDoubleCircleSet](#markdown-header-portalconfigmenutooldrawdrawdoublecircleset)**|{"circleMethod": "defined", "unit": "m", "circleRadius": 0, "circleOuterRadius": 0, "strokeWidth": 1, "color": [55, 126, 184, 1], "opacity": 1, "colorContour": [0, 0, 0, 1], "outerColorContour": [0, 0, 0, 1], "opacityContour": 1}|Voreinstellung für das Zeichnen von Doppel-Kreisen.|false|
 |writeTextSettings|nein|**[writeTextSet](#markdown-header-portalconfigmenutooldrawwritetextset)**|{"text": "", "fontSize": 10, "font": "Arial", "color": [55, 126, 184, 1], "opacity": 1}|Voreinstellung für das Schreiben von Texten.|false|
 |download|nein|**[download](#markdown-header-portalconfigmenutooldrawdownload)**|{"preSelectedFormat": "KML"}|Einstellungen für das Herunterladen der Zeichnung.|false|
-|enableAttributesSelector|no|Boolean|false|Aktiviert einen Knopf zum Umschalten eines Bereiches zum Editieren von benutzerdefinierten Attributen an dem bereits ausgewählten Feature.|false|
+|enableAttributesSelector|nein|Boolean|false|Aktiviert einen Knopf zum Umschalten eines Bereiches zum Editieren von benutzerdefinierten Attributen an dem bereits ausgewählten Feature.|false|
+|semicolonCSVDelimiter|nein|Boolean|true|Legt fest, ob Semicolon als der Feldtrenner für exportierte CSV Datei ist.|false|
 
 **Beispiel**
 
@@ -2465,6 +2466,7 @@ Modul für das Zeichnen von Features auf der Karte. Dies beinhaltet Punkte, welc
             "backgroundColor": "rgba(255, 255, 255, .9)"
         }
     }
+    "semicolonCSVDelimiter": true
 }
 ```
 

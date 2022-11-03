@@ -61,7 +61,7 @@ async function prepareData ({state, commit, dispatch}) {
         case "CSV":
             features = setGeometriesToWkt(state.download.features);
 
-            features = Array.isArray(features) ? convertJsonToCsv(features.map(feature => feature.get("attributes"))) : "";
+            features = Array.isArray(features) ? convertJsonToCsv(features.map(feature => feature.get("attributes")), false, state.semicolonCSVDelimiter) : "";
             break;
         case "none":
             commit("setDownloadSelectedFormat", "");

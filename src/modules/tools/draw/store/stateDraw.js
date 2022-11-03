@@ -93,6 +93,7 @@ const symbol = {
      * @property {Number} initialWidth Size of the sidebar when opening.
      * @property {Number} initialWidthMobile Mobile size of the sidebar when opening.
      * @property {String[]} attributesKeyList the attributes' key list
+     * @property {Boolean} semicolonCSVDelimiter to decide if semicolon is used as downloaded csv delimiter.
      */
     state = {
         active: false,
@@ -219,7 +220,8 @@ const symbol = {
         },
         initialWidth: 500,
         initialWidthMobile: 300,
-        attributesKeyList: []
+        attributesKeyList: [],
+        semicolonCSVDelimiter: true
     };
 
 export default state;
