@@ -1,7 +1,8 @@
 import {createMessage, createSubject, createTicketId} from "../utils/createFunctions";
-import httpClient from "../utils/httpClient";
+import {getComponent} from "../../../../utils/getComponent";
+import {httpClient} from "../utils/httpClient";
 import getSystemInfo from "../utils/getSystemInfo";
-import getComponent from "../../../../utils/getComponent";
+
 
 const actions = {
     /**

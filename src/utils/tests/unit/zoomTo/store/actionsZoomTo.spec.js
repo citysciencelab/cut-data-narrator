@@ -1,7 +1,7 @@
 import axios from "axios";
 import {expect} from "chai";
 import sinon from "sinon";
-import {getLayerList} from "@masterportal/masterportalapi/src/rawLayerList";
+import {rawLayerList} from "@masterportal/masterportalapi/src";
 import VectorLayer from "ol/layer/Vector";
 import actions from "../../../../zoomTo/store/actionsZoomTo";
 
@@ -50,12 +50,12 @@ describe("src/utils/zoomTo/store/actionsZoomTo.js", () => {
                 deprecatedParameters: false
             };
             state = {};
-            getLayerList().push({id, url: "", version: "", featureType: ""});
-            getLayerList().push({id: idDistrictLayer, url: "", version: "", featureType: ""});
+            rawLayerList.getLayerList().push({id, url: "", version: "", featureType: ""});
+            rawLayerList.getLayerList().push({id: idDistrictLayer, url: "", version: "", featureType: ""});
         });
         afterEach(() => {
             sinon.restore();
-            getLayerList().length = 0;
+            rawLayerList.getLayerList().length = 0;
         });
         // NOTE: The following 5 tests should be removed in v3.0.0
         it("should log an error and return if a deprecated configuration parameter is used and a zoomToFeature url parameter is used without valid configuration", () => {

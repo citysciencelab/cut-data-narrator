@@ -249,17 +249,16 @@ describe("src/modules/tools/coordToolkit/components/CoordToolkit.vue", () => {
 
         describe("createInteraction for 3D", () => {
             before(() => {
-                global.Cesium = {
-                    ScreenSpaceEventHandler: () => {
-                        return {
-                            setInputAction: () => sinon.stub(),
-                            destroy: () => sinon.stub()
-                        };
-                    },
-                    ScreenSpaceEventType: {
-                        MOUSE_MOVE: sinon.stub(),
-                        LEFT_CLICK: sinon.stub()
-                    }
+                global.Cesium = {};
+                global.Cesium.ScreenSpaceEventHandler = function () {
+                    return {
+                        setInputAction: () => sinon.stub(),
+                        destroy: () => sinon.stub()
+                    };
+                };
+                global.Cesium.ScreenSpaceEventType = {
+                    MOUSE_MOVE: sinon.stub(),
+                    LEFT_CLICK: sinon.stub()
                 };
             });
 

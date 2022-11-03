@@ -4,7 +4,7 @@ import DownloadItem from "../components/DownloadItem.vue";
 import DrawItemFeaturesFilter from "./DrawItemFeaturesFilter.vue";
 import DrawItemAttributes from "./DrawItemAttributes.vue";
 
-import getComponent from "../../../../utils/getComponent";
+import {getComponent} from "../../../../utils/getComponent";
 import {listenToUpdatedSelectedLayerList} from "../utils/RadioBridge";
 
 import {mapActions, mapGetters, mapMutations} from "vuex";

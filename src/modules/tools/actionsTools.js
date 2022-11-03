@@ -1,5 +1,5 @@
 import {fetchFirstModuleConfig} from "../../utils/fetchFirstModuleConfig";
-import getComponent from "../../utils/getComponent";
+import {getComponent} from "../../utils/getComponent";
 import upperFirst from "../../utils/upperFirst";
 
 

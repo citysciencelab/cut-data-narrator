@@ -487,6 +487,15 @@ const SearchbarView = Backbone.View.extend(/** @lends SearchbarView.prototype */
             this.model.setHitIsClick(true);
             Radio.trigger(hit.triggerEvent.channel, hit.triggerEvent.event, hit, true, evt?.handleObj?.type);
 
+            // if time layer has time attribute then open time tool
+            if (hit.source.time && hit.source.time !== false) {
+                store.commit("WmsTime/setTimeSliderActive", {
+                    active: true,
+                    currentLayerId: hit.id,
+                    playbackDelay: hit.source.time.playbackDelay || 1
+                });
+            }
+
             if (hit?.coordinate) {
                 this.setMarkerZoom(hit);
             }

@@ -45,6 +45,7 @@ Es existieren die im Folgenden aufgelisteten Konfigurationen:
 |layersRemovable|nein|Boolean|false|Gibt an, ob der Layer gelöscht werden darf.|false|
 |quickHelp|nein|**[quickHelp](#markdown-header-portalconfigquickHelp)**||Konfiguration neuer und Manipulation bestehender QuickHelp-Fenster.|false|
 |tree|nein|**[tree](#markdown-header-portalconfigtree)**||Konfiguration des Menü-Baums.|false|
+|layerInformation|nein|**[layerInformation](#markdown-header-portalconfiglayerInformation)**||Legt fest, ob individuelle Attribute in Metadaten von layerinformation angezeigt werden soll.|false|
 
 ***
 
@@ -582,6 +583,22 @@ Konfiguration zusätzlich zum Highlighting von Features. Wenn mit dem Werkzeug "
 "highlightedFeatures": {
     "active": false,
     "layerName": "common:tree.selectedFeatures"
+},
+```
+***
+
+#### Portalconfig.layerInformation
+Konfiguration der layerInformation.
+
+|Name|Verpflichtend|Typ|Default|Beschreibung|Expert|
+|----|-------------|---|-------|------------|------|
+|showMetaDataRevision|nein|Boolean|true|Legt fest, ob "Letzte Änderung" in Metadaten von layerinformation angezeigt werden soll.|false|
+
+**Beispiel**
+```
+#!json
+"layerInformation":{
+    "showMetaDataRevision": true
 },
 ```
 ***
@@ -1460,7 +1477,6 @@ Zeigt Informationen zu einem abgefragten Feature ab, indem GetFeatureInfo-Reques
 |icon|nein|String|"bi-info-circle-fill"|CSS Klasse des Icons, das vor dem GFI im Menu angezeigt wird.|false|
 |active|nein|Boolean|true|Gibt an, ob das GFI per default aktiviert ist.|false|
 |desktopType|nein|String|"detached"|Gibt an welches Template für die GetFeatureInfo im Desktopmodus verwendet wird. Bei Attached wird das GFI direkt auf dem Punkt positioniert. Bei Detached wird ein Marker auf den geklickten Punkt gesetzt und das GFI wird rechts auf der Karte platziert.|false|
-|centerMapMarkerPolygon|nein|Boolean|false|Angabe, ob für ein angeklicktes Feature die Koordinaten des Zentrums ermittelt werden sollen oder ob die Koordinaten der tatsächlich angeklickten Koordinate bestimmt werden.|false|
 |highlightVectorRules|nein|**[highlightVectorRules](#markdown-header-portalconfigmenutoolgfihighlightvectorrules)**||Regeldefinitionen zum Überschreiben des Stylings von abgefragten Vektordaten.[highlightVectorRules](#markdown-header-portalconfigmenutoolgfihighlightvectorrules)|false|
 
 **Beispiel einer GFI Konfiguration**
@@ -1470,7 +1486,6 @@ Zeigt Informationen zu einem abgefragten Feature ab, indem GetFeatureInfo-Reques
     "name":"Informationen abfragen",
     "icon":"bi-info-circle-fill",
     "active":true,
-    "centerMapMarkerPolygon":true,
     "highlightVectorRules": {
         "fill": {
             "color": [215, 102, 41, 0.9]
@@ -1494,8 +1509,7 @@ Zeigt Informationen zu einem abgefragten Feature ab, indem GetFeatureInfo-Reques
 "gfi":{
     "name":"Informationen abfragen",
     "icon":"bi-info-circle-fill",
-    "active":true,
-    "centerMapMarkerPolygon":true
+    "active":true
 }
 ```
 
@@ -3968,6 +3982,21 @@ Ermöglicht die Suche von Koordinaten mithilfe einer Eingabemaske sowie die Abfr
 
 Über dieses Werkzeug können Dateien der Formate "*.kml", "*.geojson" und "*.gpx" importiert werden.
 
+|Name|Required|Type|Default|Description|Expert|
+|----|--------|----|-------|-----------|------|
+|enableZoomToExtend|nein|Boolean|false|Legt fest, ob der Dateiname als Knopf angezeigt wird, welcher die Möglichkeit bietet, in die importierten Features hineinzuzoomen.|false|
+
+
+**Beispiel**
+```
+#!json
+"fileImport": {
+    "name": "translate#common:menu.tools.fileImport",
+    "icon":"bi-box-arrow-in-down-right",
+    "enableZoomToExtend": true
+}
+```
+
 ***
 
 #### Portalconfig.menu.tool.kmlimport
@@ -5009,6 +5038,7 @@ Neben diesen Attributen gibt es auch Typ-spezifische Attribute für **[WMS](#mar
 |autoRefresh|nein|Integer||Automatischer Reload des Layers. Angabe in ms. Minimum ist 500.|false|
 |isNeverVisibleInTree|nein|Boolean|false|Anzeige, ob der Layer niemals im Themenbaum sichtbar ist.|false|
 |urlIsVisible|nein|Boolean|true|Anzeige, ob die URL in der Layerinformation angezeigt werden soll.|false|
+|filterRefId|nein|Integer||Referenzierung zu einem konfigurierten Filter. Dabei ist die Id entsprechend der Position der Layer im Filter. Angefangen bei 0.|false|
 
 **Beispiel mit einer Id**
 ```

@@ -1,5 +1,5 @@
 import axios from "axios";
-import {getLayerWhere} from "@masterportal/masterportalapi/src/rawLayerList";
+import {rawLayerList} from "@masterportal/masterportalapi/src";
 import {WFS} from "ol/format";
 import handleAxiosResponse from "../../handleAxiosResponse";
 
@@ -12,7 +12,7 @@ import handleAxiosResponse from "../../handleAxiosResponse";
  * @returns {Promise<Feature[]>} If resolved, returns an array of features.
  */
 export default function (layerId, property, values) {
-    const layer = getLayerWhere({id: layerId});
+    const layer = rawLayerList.getLayerWhere({id: layerId});
 
     if (layer === null) {
         return new Promise((_, reject) => reject(`The layer with the id ${layerId} could not be found.`));

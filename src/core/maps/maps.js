@@ -1,5 +1,5 @@
 import api from "@masterportal/masterportalapi/src/maps/api";
-import {getLayerList} from "@masterportal/masterportalapi/src/rawLayerList";
+import {rawLayerList} from "@masterportal/masterportalapi/src";
 
 import "./2DMapRadioBridge";
 import "./2DMapViewRadioBridge";
@@ -18,7 +18,7 @@ function create2DMap (mapViewSettings) {
         {
             ...Config,
             ...mapViewSettings,
-            layerConf: getLayerList()
+            layerConf: rawLayerList.getLayerList()
         }, "2D", {});
 
     mapCollection.addMap(map, "2D");

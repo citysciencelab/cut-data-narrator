@@ -1,6 +1,6 @@
 import sinon from "sinon";
 import {expect} from "chai";
-import * as clatt from "../../../../../../utils/createLayerAddToTree";
+import createLayerAddToTreeModule from "../../../../../../utils/createLayerAddToTree";
 import actions from "../../../store/actionsSelectFeatures";
 import stateSelectFeatures from "../../../store/stateSelectFeatures";
 
@@ -11,7 +11,7 @@ describe("src/modules/tools/selectFeatures/store/gettersSelectFeatures.js", () =
 
     beforeEach(() => {
         dispatch = sinon.spy();
-        createLayerAddToTreeStub = sinon.spy(clatt, "createLayerAddToTree");
+        createLayerAddToTreeStub = sinon.spy(createLayerAddToTreeModule, "createLayerAddToTree");
         rootGetters = {
             "Maps/getVisibleLayerList": visibleLayerList,
             "treeHighlightedFeatures": {active: true},

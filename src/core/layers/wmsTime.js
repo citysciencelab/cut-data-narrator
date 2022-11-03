@@ -5,6 +5,7 @@ import handleAxiosResponse from "../../utils/handleAxiosResponse";
 import store from "../../app-store";
 import detectIso8601Precision from "../../utils/detectIso8601Precision";
 import WMSLayer from "./wms";
+import Layer from "./layer";
 
 /**
  * Creates a layer of type WMSTime.
@@ -312,6 +313,16 @@ WMSTimeLayer.prototype.createTimeRange = function (min, max, increment) {
     }
 
     return timeRange;
+};
+
+/**
+ * Setter for isVisibleInMap and setter for layer.setVisible
+ * @param {Boolean} newValue Flag if layer is visible in map
+ * @returns {void}
+ */
+WMSTimeLayer.prototype.setIsVisibleInMap = function (newValue) {
+    store.commit("WmsTime/setVisibility", newValue);
+    Layer.prototype.setIsVisibleInMap.call(this, newValue);
 };
 
 /**

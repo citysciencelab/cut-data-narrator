@@ -50,6 +50,7 @@ The configuration options listed in the following table exist:
 |layersRemovable|no|Boolean|false|Defines whether layers may be removed from a portal during its run-time.|false|
 |quickHelp|no|**[quickHelp](#markdown-header-portalconfigquickHelp)**||Configuration of new and manipulation of existing QuickHelp windows.|false|
 |tree|no|**[tree](#markdown-header-portalconfigtree)**||Configuration of menu tree.|false|
+|layerInformation|no|**[layerInformation](#markdown-header-portalconfiglayerInformation)**||Decides if to show individual attribute in Meta data of layer information|false|
 
 ***
 
@@ -610,6 +611,24 @@ Configuration in addition to highlighting features. If features are highlighted 
 },
 ```
 ***
+
+
+#### Portalconfig.layerInformation
+Configuration of layerInformation.
+
+|Name|Required|Type|Default|Description|Expert|
+|----|--------|----|-------|-----------|------|
+|showMetaDataRevision|no|boolean|true|Decides if to show "Letzte Änderung" in Meta data of layer information|false|
+
+**Example**
+```
+#!json
+"layerInformation":{
+    "showMetaDataRevision": true
+},
+```
+***
+
 ### Portalconfig.controls
 
 |Name|Required|Type|Default|Description|Expert|
@@ -1516,7 +1535,6 @@ Displays information to a clicked feature by firing a *GetFeatureInfo* or *GetFe
 |icon|no|String|"bi-info-circle-fill"|CSS icon class. Icon is shown before the tool name.|false|
 |active|no|Boolean|true|Whether GFI is active initially.|false|
 |desktopType|no|String|"detached"|Used to choose a GFI template in desktop mode. If using "attached", the GFI will be positioned next to the feature. Using "detached" will place a marker on the feature and create the GFI window to the right of the map.|false|
-|centerMapMarkerPolygon|no|Boolean|false|Specification of whether the clicked feature is used to get the center coordinate or the actually clicked coordinate is used.|false|
 |highlightVectorRules|no|**[highlightVectorRules](#markdown-header-portalconfigmenutoolgfihighlightvectorrules)**||Rule definition to override the styling of clicked vector data.|false|
 
 **Examples**
@@ -1527,7 +1545,6 @@ Displays information to a clicked feature by firing a *GetFeatureInfo* or *GetFe
         "name": "Request information",
         "icon": "bi-info-circle-fill",
         "active": true,
-        "centerMapMarkerPolygon": true,
         "highlightVectorRules": {
             "fill": {
                 "color": [215, 102, 41, 0.9]
@@ -1551,8 +1568,7 @@ Displays information to a clicked feature by firing a *GetFeatureInfo* or *GetFe
     "gfi": {
         "name": "Request information",
         "icon": "bi-info-circle-fill",
-        "active": true,
-        "centerMapMarkerPolygon": true
+        "active": true
     }
 }
 ```
@@ -4023,6 +4039,20 @@ Dynamic filtering of WFS(❗) features. This requires an **[ `extendedFilter`](#
 
 Import "*.kml", "*.geojson" and "*.gpx" files with this tool.
 
+|Name|Required|Type|Default|Description|Expert|
+|----|--------|----|-------|-----------|------|
+|enableZoomToExtend|no|Boolean|false|To decide if the file name is shown as a button and it is able to zoom the imported features by clicking the file name|false|
+
+
+**Example**
+```
+#!json
+"fileImport": {
+    "name": "translate#common:menu.tools.fileImport",
+    "icon":"bi-box-arrow-in-down-right",
+    "enableZoomToExtend": true
+}
+```
 
 ***
 
@@ -5076,6 +5106,7 @@ Layer definition. Multiple ways to define layers exist. Most attributes are defi
 |autoRefresh|no|Integer||Automatically reload layer every `autoRefresh` ms. Minimum value is 500.|false|
 |isNeverVisibleInTree|no|Boolean|false|If `true`, the layer is never visible in the topic selection tree.|false|
 |urlIsVisible|no|Boolean|true|Whether the service URL should be shown in the layer information window.|false|
+|filterRefId|no|Integer||Referencing to a configured filter. It is the order (index) of Layer in filter. Starting with 0.|false|
 
 **Example with one ID**
 

@@ -1,6 +1,6 @@
 <script>
 import {mapMutations, mapGetters, mapActions} from "vuex";
-import getComponent from "../../../utils/getComponent";
+import {getComponent} from "../../../utils/getComponent";
 import getters from "../store/gettersQuickHelp";
 import mutations from "../store/mutationsQuickHelp";
 import ToolWindow from "../../../share-components/ToolWindow.vue";

@@ -1,4 +1,4 @@
-import * as crs from "@masterportal/masterportalapi/src/crs";
+import crs from "@masterportal/masterportalapi/src/crs";
 import {expect} from "chai";
 import Feature from "ol/Feature";
 import LayerGroup from "ol/layer/Group";

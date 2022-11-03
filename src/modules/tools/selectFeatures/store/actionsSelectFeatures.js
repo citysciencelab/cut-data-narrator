@@ -1,4 +1,4 @@
-import {getLayerWhere} from "@masterportal/masterportalapi/src/rawLayerList";
+import {rawLayerList} from "@masterportal/masterportalapi/src";
 import {createLayerAddToTree} from "../../../../utils/createLayerAddToTree";
 import {getCenter} from "ol/extent";
 
@@ -25,7 +25,7 @@ export default {
                 feature: feature,
                 scale: styleObj.image?.scale
             },
-            rawLayer = getLayerWhere({id: layerId});
+            rawLayer = rawLayerList.getLayerWhere({id: layerId});
 
         if (featureGeometryType === "LineString") {
             highlightObject.type = "highlightLine";

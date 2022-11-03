@@ -2,8 +2,8 @@ import testAction from "../../../../../../../test/unittests/VueTestUtils.js";
 import {expect} from "chai";
 import sinon from "sinon";
 
-import * as getComponent from "../../../../../../utils/getComponent";
-import * as httpClient from "../../../utils/httpClient";
+import getComponentModule from "../../../../../../utils/getComponent";
+import httpClientModule from "../../../utils/httpClient";
 import actions from "../../../store/actionsContact";
 
 const {onSendSuccess, send} = actions;
@@ -21,7 +21,7 @@ describe("src/modules/tools/contact/store/actionsContact.js", () => {
                 withTicketNo: true
             };
             sinon
-                .stub(getComponent, "default")
+                .stub(getComponentModule, "getComponent")
                 .callsFake(() => ({set: () => { /* noop */ }}));
         });
 
@@ -110,7 +110,7 @@ describe("src/modules/tools/contact/store/actionsContact.js", () => {
 
         it("creates httpClient call as expected", done => {
             sinon
-                .stub(httpClient, "default")
+                .stub(httpClientModule, "httpClient")
                 .callsFake((url, data) => {
                     const {from, to, subject, text} = data;
 

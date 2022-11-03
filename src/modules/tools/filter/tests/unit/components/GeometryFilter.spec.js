@@ -6,6 +6,7 @@ import sinon from "sinon";
 import Draw from "ol/interaction/Draw.js";
 import {Vector as VectorLayer} from "ol/layer";
 import Feature from "ol/Feature";
+import {Polygon} from "ol/geom";
 
 const localVue = createLocalVue();
 
@@ -149,7 +150,16 @@ describe("src/modules/tools/filter/components/GeometryFilter.vue", () => {
 
             it("should return the correct name and type of the additonal geometry", () => {
                 const feature = new Feature({
-                        bezirk: "Altona"
+                        bezirk: "Altona",
+                        geometry: new Polygon([
+                            [
+                                [0, 0],
+                                [0, 3],
+                                [3, 3],
+                                [3, 0],
+                                [0, 0]
+                            ]
+                        ])
                     }),
                     additionalGeometries = [{
                         attrNameForTitle: "bezirk",
@@ -157,11 +167,7 @@ describe("src/modules/tools/filter/components/GeometryFilter.vue", () => {
                     }],
                     results = wrapper.vm.prepareAdditionalGeometries(additionalGeometries);
 
-                expect(results[0]).to.deep.equal({
-                    type: "additional",
-                    feature: feature,
-                    name: "Altona"
-                });
+                expect(results[0]).to.have.all.keys("type", "feature", "name", "innerPolygon");
             });
         });
 

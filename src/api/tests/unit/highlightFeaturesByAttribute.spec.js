@@ -6,7 +6,7 @@ import VectorSource from "ol/source/Vector.js";
 import VectorLayer from "ol/layer/Vector.js";
 import {Style} from "ol/style.js";
 import handleAxiosError from "../../utils/handleAxiosError.js";
-import * as clatt from "../../../utils/createLayerAddToTree";
+import clatt from "../../../utils/createLayerAddToTree";
 
 describe("api/highlightFeaturesByAttribute", () => {
     const expectedEqualToOGC = `<ogc:PropertyIsEqualTo matchCase='false' wildCard='%' singleChar='#' escapeChar='!'>

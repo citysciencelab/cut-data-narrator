@@ -34,7 +34,7 @@ describe("src/modules/tools/gfi/components/templates/AttachedTemplate.vue", () =
         localVue
     };
 
-    let wrapper;
+    let wrapper, attachShadow;
 
     beforeEach(() => {
         const map = {
@@ -52,6 +52,7 @@ describe("src/modules/tools/gfi/components/templates/AttachedTemplate.vue", () =
         if (wrapper) {
             wrapper.destroy();
         }
+        sinon.restore();
     });
     /**
          * Is needed to run the tests.
@@ -60,7 +61,12 @@ describe("src/modules/tools/gfi/components/templates/AttachedTemplate.vue", () =
          * @returns {void}
          */
     before(() => {
-        global.ShadowRoot = () => "";
+        attachShadow = document.documentElement.attachShadow;
+        document.documentElement.attachShadow = false;
+    });
+
+    after(() => {
+        document.documentElement.attachShadow = attachShadow;
     });
 
     it("should have a title", () => {

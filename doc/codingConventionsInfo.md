@@ -5,11 +5,6 @@ Explanations and examples are given for some points mentioned in the [coding con
 ---
 
 ### Section A
-
-#### A.1.6
-
-Babel currently does not translate TPL files.
-
 ---
 
 #### A.4.3

@@ -10,7 +10,7 @@ export default {
         TimeSlider
     },
     computed: {
-        ...mapGetters("WmsTime", ["currentTimeSliderObject", "layerAppendix", "layerSwiper", "minWidth", "timeSlider"])
+        ...mapGetters("WmsTime", ["currentTimeSliderObject", "layerAppendix", "layerSwiper", "minWidth", "timeSlider", "visibility"])
     },
     created () {
         window.addEventListener("resize", this.windowWidthChanged);
@@ -25,7 +25,10 @@ export default {
 </script>
 
 <template>
-    <div id="wmsTime">
+    <div
+        v-if="visibility"
+        id="wmsTime"
+    >
         <TimeSlider
             v-if="timeSlider.active"
             :class="{'moveLeft': layerSwiper.active && minWidth}"

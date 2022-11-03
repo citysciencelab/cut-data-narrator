@@ -6,7 +6,7 @@ import mutations from "../store/mutationsLegend";
 import actions from "../store/actionsLegend";
 import LegendSingleLayer from "./LegendSingleLayer.vue";
 import {convertColor} from "../../../utils/convertColor";
-import getComponent from "../../../utils/getComponent";
+import {getComponent} from "../../../utils/getComponent";
 import BasicDragHandle from "../../../share-components/BasicDragHandle.vue";
 
 export default {

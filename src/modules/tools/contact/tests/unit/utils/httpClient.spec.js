@@ -1,7 +1,7 @@
 import sinon from "sinon";
 import axios from "axios";
 
-import httpClient from "../../../utils/httpClient";
+import httpClientModule from "../../../utils/httpClient";
 
 describe("tools/contact/utils/httpClient", function () {
     describe("httpClient", function () {
@@ -20,7 +20,7 @@ describe("tools/contact/utils/httpClient", function () {
             const onSuccess = sinon.spy(done),
                 onError = sinon.spy();
 
-            httpClient("url", {}, onSuccess, onError);
+            httpClientModule.httpClient("url", {}, onSuccess, onError);
         }).timeout(100);
 
         it("calls onError parameter on internal client error", function (done) {
@@ -31,7 +31,7 @@ describe("tools/contact/utils/httpClient", function () {
             const onSuccess = sinon.spy(),
                 onError = sinon.spy(done);
 
-            httpClient("url", {}, onSuccess, onError);
+            httpClientModule.httpClient("url", {}, onSuccess, onError);
         }).timeout(100);
 
         it("calls onError parameter if response status is not 200", function (done) {
@@ -42,7 +42,7 @@ describe("tools/contact/utils/httpClient", function () {
             const onSuccess = sinon.spy(),
                 onError = sinon.spy(done);
 
-            httpClient("url", {}, onSuccess, onError);
+            httpClientModule.httpClient("url", {}, onSuccess, onError);
         }).timeout(100);
 
         it("calls axios.post in expected fashion", function () {
@@ -50,7 +50,7 @@ describe("tools/contact/utils/httpClient", function () {
                 Promise.resolve({status: 200})
             );
 
-            httpClient("url", {
+            httpClientModule.httpClient("url", {
                 nested: {
                     elements: [
                         {

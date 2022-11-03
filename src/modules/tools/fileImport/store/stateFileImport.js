@@ -40,5 +40,7 @@ export default {
             caption: "common:modules.tools.fileImport.captions.supportedFiletypes.geojson",
             rgx: /\.(geo)?json$/i
         }
-    }
+    },
+    enableZoomToExtend: false,
+    featureExtents: []
 };

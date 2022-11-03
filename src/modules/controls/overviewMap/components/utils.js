@@ -2,7 +2,7 @@ import ImageWMS from "ol/source/ImageWMS.js";
 import Image from "ol/layer/Image.js";
 import WMTSLayer from "../../../../core/layers/wmts";
 import View from "ol/View.js";
-import {getLayerWhere} from "@masterportal/masterportalapi/src/rawLayerList";
+import {rawLayerList} from "@masterportal/masterportalapi/src";
 import store from "../../../../app-store/index";
 
 /**
@@ -54,7 +54,7 @@ function getInitialVisibleBaseLayerId () {
  * @returns {ol/BaseLayer} base layer to use for overviewMap
  */
 function getOvmLayer (id) {
-    const model = getLayerWhere({id});
+    const model = rawLayerList.getLayerWhere({id});
 
     if (model === null) {
         console.error(`No model for id ${id} found in OverviewMap.`);

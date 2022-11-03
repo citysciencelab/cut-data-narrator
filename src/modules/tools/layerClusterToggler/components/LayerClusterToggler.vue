@@ -1,6 +1,6 @@
 <script>
 import {mapGetters, mapMutations} from "vuex";
-import getComponent from "../../../../utils/getComponent";
+import {getComponent} from "../../../../utils/getComponent";
 import getters from "../store/gettersLayerClusterToggler";
 import mutations from "../store/mutationsLayerClusterToggler";
 import isObject from "../../../../utils/isObject";

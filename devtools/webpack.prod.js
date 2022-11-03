@@ -1,6 +1,6 @@
 const merge = require("webpack-merge"),
     Common = require("./webpack.common.js"),
-    UglifyJsPlugin = require("uglifyjs-webpack-plugin"),
+    {ESBuildMinifyPlugin} = require("esbuild-loader"),
     path = require("path"),
 
     rootPath = path.resolve(__dirname, "../"),
@@ -16,7 +16,7 @@ module.exports = function () {
         },
         module: {
             rules: [
-                // alle Schriftarten (auch die Bootstrap-Icons) kommen in lokalen Ordner
+                // all fonts (including Bootstrap-Icons) to local folders
                 {
                     test: /\.(eot|svg|ttf|woff|woff2)$/,
                     loader: "file-loader",
@@ -25,18 +25,28 @@ module.exports = function () {
                         outputPath: "css/woffs/",
                         publicPath: "./woffs/"
                     }
+                },
+                // take all files ending with ".js" but not with ".test.js" or ".spec.js"
+                {
+                    test: /\.js$/,
+                    exclude: /\.(test|spec)\.js$/,
+                    use: {
+                        loader: "esbuild-loader",
+                        options: {
+                            loader: "js",
+                            target: "es2015",
+                            format: "cjs", // commonjs
+                            platform: "node"
+                        }
+                    }
                 }
             ]
         },
         optimization: {
-            minimizer: [new UglifyJsPlugin({
-                // *** use this attribute to build masterportal.js without uglify ***
-                // include: /\.min\.js$/
+            minimize: true,
+            minimizer: [new ESBuildMinifyPlugin({
+                css: true // Apply minification to CSS assets additional to minify js-code
             })]
-        },
-        stats: {
-            "children": false,
-            "errorDetails": true
         }
     });
 };

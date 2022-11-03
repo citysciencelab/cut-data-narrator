@@ -150,14 +150,28 @@ const DefaultTreeParser = Parser.extend(/** @lends DefaultTreeParser.prototype *
                 }
                 return baseLayerIds.includes(layer.id) ? "baselayers" : "overlays";
             });
+        let overlayList;
+
+        if (typeGroup.overlays || typeGroup.timeLayer) {
+            overlayList = Object.assign(typeGroup.overlays, typeGroup.timeLayer);
+        }
+
 
         // Models für die Hintergrundkarten erzeugen
         this.createBaselayer(layerList);
+        // Models für die ZeitreihenLayer erzeugen
+        if (store.state.configJson?.Themenconfig) {
+            if ("Fachdaten_Zeit" in store.state.configJson.Themenconfig) {
+                this.createTimeLayer(typeGroup.timeLayer, timeLayerList);
+                overlayList = typeGroup.overlays;
+            }
+        }
+
         // Models für die Fachdaten erzeugen
-        this.groupDefaultTreeOverlays(typeGroup.overlays);
+        this.groupDefaultTreeOverlays(overlayList);
         // Models für 3D Daten erzeugen
         this.create3dLayer(typeGroup.layer3d, layer3dList);
-        this.createTimeLayer(typeGroup.timeLayer, timeLayerList);
+
         // Models für Oblique Daten erzeugen
         this.createObliqueLayer(typeGroup.oblique);
     },

@@ -92,7 +92,7 @@ export default {
             this.removeInteraction(this.draw);
             if (selectedGeometry.type === "additional") {
                 this.layer.getSource().clear();
-                this.update(selectedGeometry.feature, selectedGeometry.type, selectedGeometry.feature.getGeometry());
+                this.update(selectedGeometry.feature, selectedGeometry.type, selectedGeometry.innerPolygon);
                 this.layer.getSource().addFeature(this.feature);
             }
             else {
@@ -169,6 +169,9 @@ export default {
             // sets the layer representing the filter geometry
             this.setLayer();
 
+            // default geometries and possible additional geometries
+            this.allGeometries = this.getGeometries();
+
             // sets the interaction to draw the filter geometry
             if (this.getSelectedGeometry(this.selectedGeometryIndex).type !== "additional") {
                 this.setDrawInteraction(this.getSelectedGeometry(this.selectedGeometryIndex).type);
@@ -219,6 +222,7 @@ export default {
                     geometry = this.getGeometryOnDrawEnd(feature, drawType, this.buffer);
 
                 this.initFeatureGeometry = feature.getGeometry();
+                this.setGeometryAtFeature(feature, geometry, this.invertGeometry);
                 this.update(feature, drawType, geometry);
             });
 
@@ -237,9 +241,7 @@ export default {
          * @returns {Object} The currently selected geometry as object with type and name.
          */
         getSelectedGeometry (index) {
-            const geometries = this.getGeometries();
-
-            return geometries[index];
+            return this.allGeometries[index];
         },
 
         /**
@@ -287,15 +289,34 @@ export default {
                     if (typeof feature.get !== "function") {
                         return;
                     }
+
+                    if (feature.getGeometry() instanceof MultiPolygon) {
+                        this.setGeometryAtFeature(feature, feature.getGeometry(), this.invertGeometry);
+                    }
+
                     result.push({
                         type: "additional",
                         feature: feature,
+                        innerPolygon: this.getInnerPolygon(feature.getGeometry()),
                         name: feature.get(`${additionalGeometry.attrNameForTitle}`)
                     });
                 });
             });
 
             return result;
+        },
+
+        /**
+         * Checks the number of rings of the polygon and gets only the interior ring as a polygon.
+         * If there are more than two rings, the exterior linear ring is available at index 0 and the interior rings at index 1 and beyond
+         * @param {ol/Polygon} geometry - Polygon.
+         * @returns {ol/Polygon} The interior ring as a polygon.
+         */
+        getInnerPolygon (geometry) {
+            if (geometry.getLinearRingCount() > 1) {
+                return new Polygon([geometry.getLinearRings()[1].getCoordinates()]);
+            }
+            return new Polygon([geometry.getLinearRings()[0].getCoordinates()]);
         },
 
         /**
@@ -342,7 +363,6 @@ export default {
             this.feature = feature;
             this.isGeometryVisible = true;
             this.isBufferInputVisible = type === "LineString";
-            this.setGeometryAtFeature(this.feature, geometry, true);
             this.$emit("updateFilterGeometry", geometry);
             this.$emit("updateGeometryFeature", this.feature);
             this.$emit("updateGeometrySelectorOptions", {
@@ -487,7 +507,7 @@ export default {
                         class="form-select"
                     >
                         <option
-                            v-for="(geometry, index) in getGeometries()"
+                            v-for="(geometry, index) in allGeometries"
                             :key="index"
                             :value="index"
                         >

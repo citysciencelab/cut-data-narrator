@@ -1,5 +1,5 @@
 import Parser from "./parser";
-import {getLayerWhere, getLayerList} from "@masterportal/masterportalapi/src/rawLayerList";
+import {rawLayerList} from "@masterportal/masterportalapi/src";
 import store from "../../../src/app-store/index";
 
 const CustomTreeParser = Parser.extend(/** @lends CustomTreeParser.prototype */{
@@ -53,7 +53,7 @@ const CustomTreeParser = Parser.extend(/** @lends CustomTreeParser.prototype */{
                     layerExtended.id = layerId + "-" + suffix;
                     extendedLayerIdAssoc[layerExtended.id] = layerId;
 
-                    objFromRawList = getLayerWhere({id: layerId});
+                    objFromRawList = rawLayerList.getLayerWhere({id: layerId});
 
                     // DIPAS -> There is an object not in the ServicesJSON, but it has a url, the layer is still transferred without a services entry
                     // DIPAS -> if the layer type "StaticImage" is transferred, the system does not break off but continues to work with the new ImageURL.
@@ -72,7 +72,7 @@ const CustomTreeParser = Parser.extend(/** @lends CustomTreeParser.prototype */{
                 // For Single-Layer (ol.layer.Layer)
                 // For example: {id: "5181", visible: false}
                 else if (!layerExtended?.children && typeof layerExtended.id === "string") {
-                    objFromRawList = getLayerWhere({id: layerExtended.id});
+                    objFromRawList = rawLayerList.getLayerWhere({id: layerExtended.id});
 
                     // DIPAS -> There is an object not in the ServicesJSON, but it has a url, the layer is still transferred without a services entry
                     // DIPAS -> if the layer type "StaticImage" is transferred, the system does not break off but continues to work with the new ImageURL.
@@ -104,10 +104,10 @@ const CustomTreeParser = Parser.extend(/** @lends CustomTreeParser.prototype */{
                     layerExtended.children = layerExtended.children.map(childLayer => {
                         objFromRawList = null;
                         if (childLayer.styles && childLayer.styles[0]) {
-                            objFromRawList = getLayerWhere({id: childLayer.id + childLayer.styles[0]});
+                            objFromRawList = rawLayerList.getLayerWhere({id: childLayer.id + childLayer.styles[0]});
                         }
                         if (objFromRawList === null || objFromRawList === undefined) {
-                            objFromRawList = getLayerWhere({id: childLayer.id});
+                            objFromRawList = rawLayerList.getLayerWhere({id: childLayer.id});
                         }
                         if (objFromRawList !== null && objFromRawList !== undefined) {
                             return Object.assign(objFromRawList, childLayer, {"isChildLayer": true});
@@ -220,7 +220,7 @@ const CustomTreeParser = Parser.extend(/** @lends CustomTreeParser.prototype */{
     },
 
     getRawLayerList: function () {
-        return getLayerList();
+        return rawLayerList.getLayerList();
     },
 
     /**

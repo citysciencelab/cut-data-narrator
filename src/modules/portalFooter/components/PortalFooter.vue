@@ -6,7 +6,7 @@ import ScaleLine from "../../scaleLine/components/ScaleLine.vue";
 import LanguageItem from "../../language/components/LanguageItem.vue";
 import MousePosition from "../../controls/mousePosition/components/MousePosition.vue";
 import store from "../../../app-store/index";
-import getComponent from "../../../utils/getComponent";
+import {getComponent} from "../../../utils/getComponent";
 
 /**
  * Footer that is displayed below the map. The version of the masterportal and links can be displayed here.

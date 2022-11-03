@@ -3,7 +3,7 @@ import {mapActions, mapGetters} from "vuex";
 import ControlIcon from "../../ControlIcon.vue";
 import TableStyleControl from "../../TableStyleControl.vue";
 import store from "../../../../app-store/index";
-import getComponent from "../../../../utils/getComponent";
+import {getComponent} from "../../../../utils/getComponent";
 
 export default {
     name: "StartTool",

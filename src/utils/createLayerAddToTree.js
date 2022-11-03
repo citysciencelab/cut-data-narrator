@@ -1,4 +1,5 @@
-import {getLayerWhere} from "@masterportal/masterportalapi/src/rawLayerList";
+import {rawLayerList} from "@masterportal/masterportalapi/src";
+
 
 /**
  * Creates a layer containing the given features and shows it in menu tree.
@@ -47,7 +48,7 @@ function getLayer (id) {
     let layer = Radio.request("ModelList", "getModelByAttributes", {id: id});
 
     if (!layer) {
-        const rawLayer = getLayerWhere({id: id});
+        const rawLayer = rawLayerList.getLayerWhere({id: id});
 
         layer = addLayerModel(rawLayer, id);
     }
@@ -123,5 +124,7 @@ function setStyle (layer, styleId) {
     }
 }
 
-export {createLayerAddToTree};
+module.exports = {
+    createLayerAddToTree
+};
 

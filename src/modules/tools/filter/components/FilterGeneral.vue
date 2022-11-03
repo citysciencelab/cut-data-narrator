@@ -1,6 +1,6 @@
 <script>
 import ToolTemplate from "../../ToolTemplate.vue";
-import getComponent from "../../../../utils/getComponent";
+import {getComponent} from "../../../../utils/getComponent";
 import {mapActions, mapGetters, mapMutations} from "vuex";
 import getters from "../store/gettersFilter";
 import mutations from "../store/mutationsFilter";
@@ -24,6 +24,9 @@ import FilterList from "./FilterList.vue";
 import isObject from "../../../../utils/isObject.js";
 import GeometryFilter from "./GeometryFilter.vue";
 import {getFeaturesOfAdditionalGeometries} from "../utils/getFeaturesOfAdditionalGeometries.js";
+import {rawLayerList} from "@masterportal/masterportalapi/src";
+import {getFeatureGET} from "../../../../api/wfs/getFeature";
+import {WFS} from "ol/format.js";
 
 export default {
     name: "FilterGeneral",
@@ -128,6 +131,24 @@ export default {
             }
         },
 
+        /**
+         * Gets the features of the additional geometries by the given layer id.
+         * @param {Object[]} additionalGeometries - The additional geometries.
+         * @param {String} additionalGeometries[].layerId - The id of the layer.
+         * @returns {void}
+         */
+        async getFeaturesOfAdditionalGeometries (additionalGeometries) {
+            if (additionalGeometries) {
+                const wfsReader = new WFS();
+
+                for (const additionalGeometry of additionalGeometries) {
+                    const rawLayer = rawLayerList.getLayerWhere({id: additionalGeometry.layerId}),
+                        features = await getFeatureGET(rawLayer.url, {version: rawLayer.version, featureType: rawLayer.featureType});
+
+                    additionalGeometry.features = wfsReader.readFeatures(features);
+                }
+            }
+        },
 
         /**
          * Update selected layer group.
@@ -158,6 +179,12 @@ export default {
                 this.setSelectedAccordions(this.transformLayerConfig(isFromGroup ? this.flattenPreparedLayerGroups : this.layerConfigs.layers, selectedFilterIds));
                 return;
             }
+
+            this.preparedLayerGroups.forEach((layerGroup, groupIdx) => {
+                if (layerGroup.layers.some(layer => layer.filterId === filterId) && !this.selectedLayerGroups.includes(groupIdx)) {
+                    this.selectedLayerGroups.push(groupIdx);
+                }
+            });
 
             const filterIdsOfAccordions = [],
                 index = this.selectedAccordions.findIndex(accordion => accordion.filterId === filterId);
@@ -265,6 +292,13 @@ export default {
                 return;
             }
             this.$store.commit("Tools/Gfi/setActive", active);
+        },
+        /**
+         * Resets the jumpToId state property.
+         * @returns {void}
+         */
+        resetJumpToId () {
+            this.setJumpToId(undefined);
         }
     }
 };
@@ -342,6 +376,8 @@ export default {
                                         :filters="preparedLayerGroups[layerGroups.indexOf(layerGroup)].layers"
                                         :selected-layers="selectedAccordions"
                                         :multi-layer-selector="multiLayerSelector"
+                                        :jump-to-id="jumpToId"
+                                        @resetJumpToId="resetJumpToId"
                                         @selectedaccordions="updateSelectedAccordions"
                                         @setLayerLoaded="setLayerLoaded"
                                     >
@@ -381,6 +417,8 @@ export default {
                     :filters="filters"
                     :selected-layers="selectedAccordions"
                     :multi-layer-selector="multiLayerSelector"
+                    :jump-to-id="jumpToId"
+                    @resetJumpToId="resetJumpToId"
                     @selectedaccordions="updateSelectedAccordions"
                     @setLayerLoaded="setLayerLoaded"
                 >

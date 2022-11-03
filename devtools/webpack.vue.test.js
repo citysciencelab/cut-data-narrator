@@ -26,7 +26,21 @@ module.exports = {
     // output: {
     //     devtoolModuleFilenameTemplate: "[absolute-resource-path]"
     // },
-
+    stats: {
+        all: false,
+        colors: true,
+        warnings: true,
+        errors: true,
+        errorDetails: true
+        // comment in for detailed logging in console
+        // logging: "verbose",
+        // modules: true,
+        // moduleTrace: true,
+        // reasons: true,
+        // performance: true,
+        // timings: true,
+        // entrypoints: true
+    },
     resolve: {
         alias: {
             vue: "vue/dist/vue.js"
@@ -36,9 +50,16 @@ module.exports = {
         rules: [
             {
                 test: /\.js$/,
-                exclude: /\bcore-js\b|\bvideo.js\b|\bsinon\b|\bturf\b|\bjsts\b/,
+                exclude: /\bvideo.js\b|\bsinon\b|\bturf\b|\bjsts\b/,
                 use: {
-                    loader: "babel-loader"
+                    loader: "esbuild-loader",
+                    options: {
+                        loader: "js",
+                        sourcemap: true,
+                        target: "es2015",
+                        format: "cjs",
+                        platform: "node"
+                    }
                 }
             },
             {

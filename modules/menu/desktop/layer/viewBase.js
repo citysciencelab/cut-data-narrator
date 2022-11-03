@@ -95,6 +95,9 @@ const LayerBaseView = Backbone.View.extend(/** @lends LayerBaseView.prototype */
             this.$("div.collapse.navbar-collapse").removeClass("show");
         }
     },
+    toggleFilter: function () {
+        this.model.toggleFilter();
+    },
 
     /**
      * handles toggeling of secured and not-secured layers

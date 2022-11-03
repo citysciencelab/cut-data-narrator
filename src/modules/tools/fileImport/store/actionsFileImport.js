@@ -7,6 +7,7 @@ import Stroke from "ol/style/Stroke";
 import Icon from "ol/style/Icon";
 import {createDrawStyle} from "../../draw/utils/style/createDrawStyle";
 import isObject from "../../../../utils/isObject";
+import {createEmpty as createEmptyExtent, extend} from "ol/extent";
 
 const supportedFormats = {
     kml: new KML({extractStyles: true, iconUrlFunction: (url) => proxyGstaticUrl(url)}),
@@ -16,7 +17,6 @@ const supportedFormats = {
 
 /**
  * Change the URL for gstatic.com so that it request through a reverse proxy.
- *
  * Note: When exporting a kml from google-maps or -earth, references to the images are specified.
  * These currently do not allow CORS.
  * @param {String} url The image url.
@@ -141,9 +141,33 @@ function checkIsVisibleSetting (features) {
 }
 
 export default {
+    /**
+     * Sets the selected file type
+     * @param {Object} param.commit the commit
+     * @param {String} newFiletype the file type
+     * @returns {void}
+     */
     setSelectedFiletype: ({commit}, newFiletype) => {
         commit("setSelectedFiletype", newFiletype);
+    },
 
+    /**
+     * Sets the featureExtents
+     * @param {Object} param.state the state
+     * @param {Object} param.commit the commit
+     * @param {ol/Feature[]} features the parsed features
+     * @returns {void}
+     */
+    setFeatureExtents: ({state, commit}, features) => {
+        const extents = [... state.featureExtents],
+            extent = createEmptyExtent();
+
+        for (let i = 0; i < features.length; i++) {
+            extend(extent, features[i].getGeometry().getExtent());
+        }
+
+        extents.push(extent);
+        commit("setFeatureExtents", extents);
     },
 
     /**
@@ -298,6 +322,10 @@ export default {
 
         dispatch("Alerting/addSingleAlert", alertingMessage, {root: true});
         dispatch("addImportedFilename", datasrc.filename);
+
+        if (state.enableZoomToExtend && features.length) {
+            dispatch("setFeatureExtents", features);
+        }
     },
 
     /**
@@ -512,6 +540,10 @@ export default {
 
         dispatch("Alerting/addSingleAlert", alertingMessage, {root: true});
         dispatch("addImportedFilename", datasrc.filename);
+
+        if (state.enableZoomToExtend && features.length) {
+            dispatch("setFeatureExtents", features);
+        }
     },
     /**
      * Adds the name of a successfully imported file to list of imported filenames

@@ -11,6 +11,10 @@ const LayerView = LayerBaseView.extend(/** @lends LayerView.prototype */{
                 this.setFocus();
             }
         },
+        "click .filter-icon": "toggleFilter",
+        "keydown .filter-icon": function (event) {
+            this.handleKeyboardTriggeredAction(event, "toggleFilter");
+        },
         "click .info-icon": "toggleLayerInformation",
         "keydown .info-icon": function (event) {
             this.handleKeyboardTriggeredAction(event, "toggleLayerInformation");

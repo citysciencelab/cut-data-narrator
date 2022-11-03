@@ -29,7 +29,7 @@ export default function (layer, useProxy) {
  * @param {String} featureType Name of the feature type of the service.
  * @returns {FeatureProperty[]} If an <element> with a name of the featureType is present, an array of prepared feature properties; else an empty Array.
  */
-export function parseDescribeFeatureTypeResponse (responseData, featureType) {
+function parseDescribeFeatureTypeResponse (responseData, featureType) {
     const rootElement = Object.values(new DOMParser().parseFromString(responseData, "application/xml").getElementsByTagName("element"))
         .find(({attributes}) => Object.values(attributes).find(({localName}) => localName === "name").value === featureType);
 
@@ -55,3 +55,5 @@ export function parseDescribeFeatureTypeResponse (responseData, featureType) {
     }
     return [];
 }
+
+module.exports = {parseDescribeFeatureTypeResponse};

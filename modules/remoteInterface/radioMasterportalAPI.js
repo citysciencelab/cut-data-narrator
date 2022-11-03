@@ -1,5 +1,5 @@
 import {getProjection, getProjections, transformToMapProjection, transformFromMapProjection, transform} from "@masterportal/masterportalapi/src/crs";
-import {getLayerWhere, getLayerList, getDisplayNamesOfFeatureAttributes} from "@masterportal/masterportalapi/src/rawLayerList";
+import {rawLayerList} from "@masterportal/masterportalapi/src";
 
 const RadioMasterportalAPI = Backbone.Model.extend(/** @lends RadioMasterportalAPI */{
     defaults: {},
@@ -96,7 +96,7 @@ const RadioMasterportalAPI = Backbone.Model.extend(/** @lends RadioMasterportalA
      * @returns {?object} first layer matching the searchAttributes or null if none was found
      */
     getLayerWhere: function (searchAttributes) {
-        return getLayerWhere(searchAttributes);
+        return rawLayerList.getLayerWhere(searchAttributes);
     },
 
     /**
@@ -105,7 +105,7 @@ const RadioMasterportalAPI = Backbone.Model.extend(/** @lends RadioMasterportalA
      * @returns {?object} first layer matching the searchAttributes or null if none was found
      */
     getLayerAttributesWhere: function (searchAttributes) {
-        return getLayerWhere(searchAttributes) ? getLayerWhere(searchAttributes).toJSON() : null;
+        return rawLayerList.getLayerWhere(searchAttributes) ? rawLayerList.getLayerWhere(searchAttributes).toJSON() : null;
     },
 
     /**
@@ -114,12 +114,12 @@ const RadioMasterportalAPI = Backbone.Model.extend(/** @lends RadioMasterportalA
      * @return {Backbone.Model[]} - List of the models
      */
     getLayerListWhere: function (searchAttributes) {
-        return getLayerList().where(searchAttributes);
+        return rawLayerList.getLayerList().where(searchAttributes);
     },
 
     /** @returns {object[]} complete layerList as initialized */
     getLayerList: function () {
-        return getLayerList();
+        return rawLayerList.getLayerList();
     },
 
     /**
@@ -129,7 +129,7 @@ const RadioMasterportalAPI = Backbone.Model.extend(/** @lends RadioMasterportalA
      * @returns {?(object|string)} - map of originalName->displayName or name of featureAttribute if specified; if layer or featureAttribute not found, null
      */
     getDisplayNamesOfFeatureAttributes: function (layerId, featureAttribute = "gfiAttributes") {
-        return getDisplayNamesOfFeatureAttributes(layerId, featureAttribute);
+        return rawLayerList.getDisplayNamesOfFeatureAttributes(layerId, featureAttribute);
     }
 });
 

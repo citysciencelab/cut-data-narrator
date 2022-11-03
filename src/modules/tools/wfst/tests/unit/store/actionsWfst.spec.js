@@ -1,9 +1,9 @@
 import axios from "axios";
 import {expect} from "chai";
 import sinon from "sinon";
-import * as getLayerInformation from "../../../utils/getLayerInformation";
-import * as prepareFeatureProperties from "../../../utils/prepareFeatureProperties";
-import * as writeTransaction from "../../../utils/writeTransaction";
+import getLayerInformationModule from "../../../utils/getLayerInformation";
+import prepareFeaturePropertiesModule from "../../../utils/prepareFeatureProperties";
+import writeTransactionModule from "../../../utils/writeTransaction";
 import actionsWfst from "../../../store/actionsWfst";
 
 describe("src/modules/tools/wfst/store/actionsWfst.js", () => {
@@ -121,7 +121,7 @@ describe("src/modules/tools/wfst/store/actionsWfst.js", () => {
             axiosStub = sinon.stub(axios, "post").returns(new Promise(resolve => resolve(axiosResponse)));
             consoleSpy = sinon.spy();
             sinon.stub(console, "error").callsFake(consoleSpy);
-            sinon.stub(writeTransaction, "default").callsFake(() => writeTransactionSymbol);
+            sinon.stub(writeTransactionModule, "writeTransaction").callsFake(() => writeTransactionSymbol);
             refreshSpy = sinon.spy();
             sinon.stub(Radio, "request").withArgs("ModelList", "getModelByAttributes", {id: layer.id}).returns({
                 layer: {
@@ -396,7 +396,7 @@ describe("src/modules/tools/wfst/store/actionsWfst.js", () => {
                 layerIds,
                 layerInformation
             };
-            sinon.stub(getLayerInformation, "default").returns(layerInformation);
+            sinon.stub(getLayerInformationModule, "getLayerInformation").returns(layerInformation);
         });
 
         it("should add the relevant values to the store and dispatch setFeatureProperties if active is true", () => {
@@ -475,7 +475,7 @@ describe("src/modules/tools/wfst/store/actionsWfst.js", () => {
                 layerInformation: [{}]
             };
             prepareFeaturePropertiesSpy = sinon.spy();
-            sinon.stub(prepareFeatureProperties, "default").callsFake(prepareFeaturePropertiesSpy);
+            sinon.stub(prepareFeaturePropertiesModule, "prepareFeatureProperties").callsFake(prepareFeaturePropertiesSpy);
         });
 
         it("should commit featureProperties on basis of the layer if a layer is selected that has a featurePrefix configured and is selected in the layer tree", async () => {

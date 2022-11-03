@@ -13,6 +13,9 @@
         <span class="title" title="<%= name %>"><%= name.substr(0,35)%><%if(name.length >= 35) {%>... <% }  %></span>
     </a>
     <span class="last-item">
+        <% if (typeof filterRefId === "number") { %>
+            <span class="bootstrap-icon filter-icon tabable" tabindex="0" title="<%=filterIconText%>"><i class="bi-funnel-fill"></i></span>
+        <% } %>
         <% if (styleable === true) { %>
             <span class="bootstrap-icon style-icon tabable" tabindex="0" data-bs-toggle="tooltip" data-bs-placement="bottom" title="<%=changeClassDivisionText%>"><i class="bi-paint-bucket"></i></span>
         <% } %>

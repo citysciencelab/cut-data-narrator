@@ -1,4 +1,4 @@
-# This repository adheres to the publiccode.yml standard by including this 
+# This repository adheres to the publiccode.yml standard by including this
 # metadata file that makes public software easily discoverable.
 # More info at https://github.com/italia/publiccode.yml
 
@@ -80,8 +80,8 @@ maintenance:
 name: Masterportal
 platforms:
   - web
-releaseDate: '2022-09-07'
+releaseDate: '2022-11-02'
 roadmap: 'https://www.masterportal.org/features.html'
 softwareType: standalone/web
-softwareVersion: 2.25.0
+softwareVersion: 2.27.0
 url: 'https://bitbucket.org/geowerkstatt-hamburg/masterportal.git'

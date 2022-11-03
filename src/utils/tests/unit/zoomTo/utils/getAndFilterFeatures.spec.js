@@ -2,7 +2,7 @@ import axios from "axios";
 import sinon from "sinon";
 import {expect} from "chai";
 import getAndFilterFeatures from "../../../../zoomTo/utils/getAndFilterFeatures";
-import * as rawLayerList from "@masterportal/masterportalapi/src/rawLayerList";
+import rawLayerList from "@masterportal/masterportalapi/src/rawLayerList";
 
 const fs = require("fs"),
     exampleFeatureCollection = fs.readFileSync("./src/utils/tests/unit/zoomTo/resources/featureCollection.xml", "utf8");

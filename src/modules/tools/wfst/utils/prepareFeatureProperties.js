@@ -9,7 +9,7 @@ import receivePossibleProperties from "./receivePossibleProperties";
  * @param {Boolean} useProxy Whether a proxy should be used for requests. Deprecated in v3.0.0.
  * @returns {FeatureProperty[]} If layer.gfiAttributes !== "ignore", then an array of prepared feature properties; else and empty array.
  */
-export default async function (layer, useProxy) {
+async function prepareFeatureProperties (layer, useProxy) {
     if (layer.gfiAttributes === "ignore") {
         return [];
     }
@@ -23,3 +23,5 @@ export default async function (layer, useProxy) {
                 : array,
             [properties.find(({type}) => type === "geometry")]);
 }
+
+module.exports = {prepareFeatureProperties};

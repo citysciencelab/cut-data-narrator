@@ -2,7 +2,7 @@ import WMSGetFeatureInfo from "ol/format/WMSGetFeatureInfo.js";
 import Feature from "ol/Feature";
 import axios from "axios";
 import handleAxiosResponse from "../utils/handleAxiosResponse.js";
-import {getLayerWhere} from "@masterportal/masterportalapi/src/rawLayerList";
+import {rawLayerList} from "@masterportal/masterportalapi/src";
 
 /**
  * Handles the GetFeatureInfo request.
@@ -16,7 +16,7 @@ import {getLayerWhere} from "@masterportal/masterportalapi/src/rawLayerList";
  * @returns {Promise<module:ol/Feature[]>}  Promise object represents the GetFeatureInfo request
  */
 export function requestGfi (mimeType, url, layer) {
-    const layerSpecification = getLayerWhere({id: layer.get("id")}),
+    const layerSpecification = rawLayerList.getLayerWhere({id: layer.get("id")}),
         layerIsSecured = Boolean(layerSpecification?.isSecured);
 
     return axios({
