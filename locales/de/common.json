@@ -572,7 +572,8 @@
                 },
                 "successfullyImportedLabel": "Erfolgreich importiert:",
                 "title": "Datei importieren",
-                "zoom": "Auf Features dieser Datei \"{{filename}}\" zoomen"
+                "zoom": "Zoomen",
+                "fileZoom": "Auf Features dieser Datei \"{{filename}}\" zoomen"
             },
             "parcelSearch": {
                 "wrongConfig": "Ungültige oder unvollständige Konfiguration",

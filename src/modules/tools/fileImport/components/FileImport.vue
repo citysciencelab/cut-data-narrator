@@ -238,18 +238,19 @@ export default {
                             <li
                                 v-for="(filename, index) in importedFileNames"
                                 :key="index"
+                                :class="enableZoomToExtend ? 'hasZoom' : ''"
                             >
+                                <span>
+                                    {{ filename }}
+                                </span>
                                 <span
                                     v-if="enableZoomToExtend"
                                     class="upload-button-wrapper"
-                                    :title="$t(`common:modules.tools.fileImport.zoom`, {filename: filename})"
+                                    :title="$t(`common:modules.tools.fileImport.fileZoom`, {filename: filename})"
                                     @click="zoomTo(index)"
                                     @keydown.enter="zoomTo(index)"
                                 >
-                                    {{ filename }}
-                                </span>
-                                <span v-else>
-                                    {{ filename }}
+                                    {{ $t("modules.tools.fileImport.zoom") }}
                                 </span>
                             </li>
                         </ul>
@@ -371,5 +372,28 @@ export default {
     }
     .introDrawTool {
         font-style: italic;
+    }
+
+    li {
+        &.hasZoom {
+            display: inline-block;
+            width: 100%;
+            &:not(:last-child) {
+                margin-bottom: 5px;
+            }
+            span {
+                &:first-child {
+                    display: inline-block;
+                    float: left;
+                    margin-top: 5px;
+                    width: calc(100% - 80px);
+                }
+                &:last-child {
+                    display: inline-block;
+                    float: right;
+                    margin-top: 0;
+                }
+            }
+        }
     }
 </style>
