@@ -27,7 +27,9 @@
 ### __Breaking Changes__
 
 ### Added
-- Draw: Adds a new attribute semicolonCSVDelimiter to decide the semicolon is used as the delimiter for exported CSV file. The default value is true.
+- Draw:
+  - Adds a new attribute semicolonCSVDelimiter to decide the semicolon is used as the delimiter for exported CSV file. The default value is true.
+  - Adds a new column epsg for exported CSV file.
 
 ### Changed
 
