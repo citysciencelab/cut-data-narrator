@@ -1,6 +1,6 @@
 import {expect} from "chai";
 import sinon from "sinon";
-import {createLayerAddToTree} from "../../createLayerAddToTree.js";
+import createLayerAddToTreeModule from "../../createLayerAddToTree.js";
 
 describe("src/utils/createLayerAddToTree.js", () => {
     let styleSetAtNewLayer = false,
@@ -129,7 +129,7 @@ describe("src/utils/createLayerAddToTree.js", () => {
                 features = [{featureId: "featureId"}],
                 treeType = "light";
 
-            createLayerAddToTree(layerId, features, treeType);
+            createLayerAddToTreeModule.createLayerAddToTree(layerId, features, treeType);
 
             expect(addItemCalled).to.be.equals(0);
             expect(addedModelId).to.be.null;
@@ -145,7 +145,7 @@ describe("src/utils/createLayerAddToTree.js", () => {
                 features = [{featureId: "featureId"}],
                 treeType = "light";
 
-            createLayerAddToTree(layerId, features, treeType);
+            createLayerAddToTreeModule.createLayerAddToTree(layerId, features, treeType);
 
             expect(addItemCalled).to.be.equals(1);
             expect(addedModelId).to.be.equals("unknown");
@@ -161,7 +161,7 @@ describe("src/utils/createLayerAddToTree.js", () => {
                 features = [{featureId: "featureId"}],
                 treeType = "light";
 
-            createLayerAddToTree(layerId, features, treeType, treeHighlightedFeatures);
+            createLayerAddToTreeModule.createLayerAddToTree(layerId, features, treeType, treeHighlightedFeatures);
 
             expect(addItemCalled).to.be.equals(1);
             expect(addedModelId.indexOf("idOriginal_")).to.be.equals(0);
@@ -179,7 +179,7 @@ describe("src/utils/createLayerAddToTree.js", () => {
                 treeType = "light";
 
             layerInCollection = true;
-            createLayerAddToTree(layerId, features, treeType, treeHighlightedFeatures);
+            createLayerAddToTreeModule.createLayerAddToTree(layerId, features, treeType, treeHighlightedFeatures);
 
             expect(addItemCalled).to.be.equals(0);
             expect(setIsSelectedSpy.calledOnce).to.be.true;
@@ -194,7 +194,7 @@ describe("src/utils/createLayerAddToTree.js", () => {
                 features = [{featureId: "featureId"}],
                 treeType = "custom";
 
-            createLayerAddToTree(layerId, features, treeType, treeHighlightedFeatures);
+            createLayerAddToTreeModule.createLayerAddToTree(layerId, features, treeType, treeHighlightedFeatures);
 
             expect(addItemCalled).to.be.equals(1);
             expect(addedModelId.indexOf("idOriginal_")).to.be.equals(0);
@@ -212,7 +212,7 @@ describe("src/utils/createLayerAddToTree.js", () => {
                 treeType = "custom";
 
             layerInCollection = true;
-            createLayerAddToTree(layerId, features, treeType, treeHighlightedFeatures);
+            createLayerAddToTreeModule.createLayerAddToTree(layerId, features, treeType, treeHighlightedFeatures);
 
             expect(addItemCalled).to.be.equals(0);
             expect(setIsSelectedSpy.calledOnce).to.be.true;

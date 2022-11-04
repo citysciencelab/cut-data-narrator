@@ -54,4 +54,4 @@ function httpClient (url, data, onSuccess, onError) {
         .finally(onSendComplete);
 }
 
-module.exports = {httpClient};
+export default {httpClient};

@@ -1,7 +1,7 @@
 import axios from "axios";
 import {expect} from "chai";
 import sinon from "sinon";
-import {rawLayerList} from "@masterportal/masterportalapi/src";
+import rawLayerList from "@masterportal/masterportalapi/src/rawLayerList";
 import VectorLayer from "ol/layer/Vector";
 import actions from "../../../../zoomTo/store/actionsZoomTo";
 

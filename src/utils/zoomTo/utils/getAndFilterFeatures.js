@@ -1,5 +1,5 @@
 import axios from "axios";
-import {rawLayerList} from "@masterportal/masterportalapi/src";
+import rawLayerList from "@masterportal/masterportalapi/src/rawLayerList";
 import {WFS} from "ol/format";
 import handleAxiosResponse from "../../handleAxiosResponse";
 

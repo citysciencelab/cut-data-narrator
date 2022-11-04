@@ -2490,6 +2490,7 @@ Module used to draw features on the map. This includes points, which may also be
 |writeTextSettings|no|**[writeTextSet](#markdown-header-portalconfigmenutooldrawwritetextset)**|{"text": "", "fontSize": 10, "font": "Arial", "color": [55, 126, 184, 1], "opacity": 1}|Pre-configuration for text writing.|false|
 |download|no|**[download](#markdown-header-portalconfigmenutooldrawdownload)**|{"preSelectedFormat": "KML"}|Pre-configuration for download.|false|
 |enableAttributesSelector|no|Boolean|false|Enables an button which toggles an edit section for custom attributes on the selected feature.|false|
+|semicolonCSVDelimiter|no|Boolean|true|To decide if the semicolon is used as the delimiter for exported CSV file.|false|
 
 **Example**
 
@@ -2534,6 +2535,7 @@ Module used to draw features on the map. This includes points, which may also be
                 "backgroundColor": "rgba(255, 255, 255, .9)"
             }
         }
+        "semicolonCSVDelimiter": true
     }
 }
 ```

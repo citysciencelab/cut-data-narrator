@@ -5,8 +5,8 @@ import {Style} from "ol/style.js";
 import Point from "ol/geom/Point.js";
 import Feature from "ol/Feature.js";
 import axios from "axios";
-import {createLayerAddToTree} from "../utils/createLayerAddToTree";
-import {rawLayerList} from "@masterportal/masterportalapi/src";
+import createLayerAddToTreeModule from "../utils/createLayerAddToTree";
+import rawLayerList from "@masterportal/masterportalapi/src/rawLayerList";
 
 export default {
     /**
@@ -90,7 +90,7 @@ export default {
      */
     showLayer: function (rawLayer, highlightLayer, dispatch, rootGetters) {
         if (rootGetters.treeHighlightedFeatures?.active) {
-            createLayerAddToTree(rawLayer.id, highlightLayer.getSource().getFeatures(), rootGetters.treeType, rootGetters.treeHighlightedFeatures);
+            createLayerAddToTreeModule.createLayerAddToTree(rawLayer.id, highlightLayer.getSource().getFeatures(), rootGetters.treeType, rootGetters.treeHighlightedFeatures);
         }
         else {
             highlightLayer.setVisible(true);

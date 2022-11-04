@@ -3,9 +3,9 @@ import {Draw, Modify, Select, Translate} from "ol/interaction";
 import {platformModifierKeyOnly, primaryAction} from "ol/events/condition";
 import {exceptionCodes} from "../constantsWfst";
 import addFeaturePropertiesToFeature from "../utils/addFeaturePropertiesToFeature";
-import {getLayerInformation} from "../utils/getLayerInformation";
-import {prepareFeatureProperties} from "../utils/prepareFeatureProperties";
-import {writeTransaction} from "../utils/writeTransaction";
+import getLayerInformationModule from "../utils/getLayerInformation";
+import prepareFeaturePropertiesModule from "../utils/prepareFeatureProperties";
+import writeTransactionModule from "../utils/writeTransaction";
 import {getComponent} from "../../../../utils/getComponent";
 import loader from "../../../../utils/loaderOverlay";
 import handleAxiosResponse from "../../../../utils/handleAxiosResponse";
@@ -226,7 +226,7 @@ const actions = {
         let messageKey = `success.${transactionMethod}`;
 
         loader.show();
-        return axios.post(url, writeTransaction(
+        return axios.post(url, writeTransactionModule.writeTransaction(
             feature,
             layer,
             transactionMethod,
@@ -279,7 +279,7 @@ const actions = {
         commit("setActive", active);
 
         if (active) {
-            const layerInformation = getLayerInformation(layerIds);
+            const layerInformation = getLayerInformationModule.getLayerInformation(layerIds);
 
             commit("setLayerInformation", layerInformation);
             commit("setCurrentLayerIndex", layerInformation.findIndex(layer => layer.isSelected));
@@ -316,7 +316,7 @@ const actions = {
             commit("setFeatureProperties", i18next.t("common:modules.tools.wfsTransaction.error.layerNotSelected"));
             return;
         }
-        commit("setFeatureProperties", await prepareFeatureProperties(layer, useProxy));
+        commit("setFeatureProperties", await prepareFeaturePropertiesModule.prepareFeatureProperties(layer, useProxy));
     }
 };
 

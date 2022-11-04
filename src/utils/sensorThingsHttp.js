@@ -1,6 +1,6 @@
 import axios from "axios";
 import UrlParser from "url-parse";
-import {transform as transformProjectionToProjection} from "@masterportal/masterportalapi/src/crs";
+import crs from "@masterportal/masterportalapi/src/crs";
 
 /**
  * SensorThingsHttp is the software layer to handle the special needs of the SensorThingsAPI regarding http requests.
@@ -209,7 +209,7 @@ export class SensorThingsHttp {
         if (sourceProjection !== targetProjection) {
             for (i in points) {
                 try {
-                    points[i] = transformProjectionToProjection(sourceProjection, targetProjection, points[i]);
+                    points[i] = crs.transform(sourceProjection, targetProjection, points[i]);
                 }
                 catch (e) {
                     if (typeof onerror === "function") {

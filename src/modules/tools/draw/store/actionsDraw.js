@@ -1,5 +1,5 @@
 import {Draw} from "ol/interaction.js";
-import {getMapProjection, transform} from "@masterportal/masterportalapi/src/crs";
+import crs from "@masterportal/masterportalapi/src/crs";
 
 import * as actionsDownload from "./actions/actionsDownload";
 import {drawInteractionOnDrawEvent} from "./actions/drawInteractionOnDrawEvent";
@@ -113,7 +113,7 @@ const initialState = JSON.parse(JSON.stringify(stateDraw)),
 
             if (featureType === "LineString") {
                 if (targetProjection !== undefined) {
-                    centerPointCoords = transform(getMapProjection(map), targetProjection, feature.getGeometry().getCoordinateAt(0.5));
+                    centerPointCoords = crs.transform(crs.getMapProjection(map), targetProjection, feature.getGeometry().getCoordinateAt(0.5));
                 }
                 else {
                     centerPointCoords = feature.getGeometry().getCoordinateAt(0.5);
@@ -121,7 +121,7 @@ const initialState = JSON.parse(JSON.stringify(stateDraw)),
             }
             else if (featureType === "Point") {
                 if (targetProjection !== undefined) {
-                    centerPointCoords = transform(getMapProjection(map), targetProjection, feature.getGeometry().getCoordinates());
+                    centerPointCoords = crs.transform(crs.getMapProjection(map), targetProjection, feature.getGeometry().getCoordinates());
                 }
                 else {
                     centerPointCoords = feature.getGeometry().getCoordinates();
@@ -129,7 +129,7 @@ const initialState = JSON.parse(JSON.stringify(stateDraw)),
             }
             else if (featureType === "Polygon") {
                 if (targetProjection !== undefined) {
-                    centerPoint = transform(getMapProjection(map), targetProjection, feature.getGeometry().getInteriorPoint().getCoordinates());
+                    centerPoint = crs.transform(crs.getMapProjection(map), targetProjection, feature.getGeometry().getInteriorPoint().getCoordinates());
                 }
                 else {
                     centerPoint = feature.getGeometry().getInteriorPoint().getCoordinates();
@@ -138,7 +138,7 @@ const initialState = JSON.parse(JSON.stringify(stateDraw)),
             }
             else if (featureType === "Circle") {
                 if (targetProjection !== undefined) {
-                    centerPointCoords = transform(getMapProjection(map), targetProjection, feature.getGeometry().getCenter());
+                    centerPointCoords = crs.transform(crs.getMapProjection(map), targetProjection, feature.getGeometry().getCenter());
                 }
                 else {
                     centerPointCoords = feature.getGeometry().getCenter();

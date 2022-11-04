@@ -572,7 +572,8 @@
                 },
                 "successfullyImportedLabel": "Successfully imported:",
                 "title": "Import file",
-                "zoom": "Zoom to features of this file \"{{filename}}\""
+                "zoom": "Zoom",
+                "fileZoom": "Zoom to features of this file \"{{filename}}\""
             },
             "parcelSearch": {
                 "wrongConfig": "Invalid or incomplete configuration",

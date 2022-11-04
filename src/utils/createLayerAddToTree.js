@@ -1,4 +1,4 @@
-import {rawLayerList} from "@masterportal/masterportalapi/src";
+import rawLayerList from "@masterportal/masterportalapi/src/rawLayerList";
 
 
 /**
@@ -124,7 +124,7 @@ function setStyle (layer, styleId) {
     }
 }
 
-module.exports = {
+export default {
     createLayerAddToTree
 };
 

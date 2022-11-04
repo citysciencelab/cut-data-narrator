@@ -32,6 +32,6 @@ function handleAxiosError (error, functionName, onerror) {
     }
 }
 
-module.exports = {
+export default {
     handleAxiosError
 };

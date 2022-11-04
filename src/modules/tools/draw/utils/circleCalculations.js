@@ -1,4 +1,4 @@
-import {getMapProjection} from "@masterportal/masterportalapi/src/crs";
+import crs from "@masterportal/masterportalapi/src/crs";
 import {toLonLat, transform} from "ol/proj";
 
 const earthRadius = 6378137;
@@ -50,11 +50,11 @@ function calculateCircle (event, circleCenter, circleRadius, map) {
  */
 function getCircleExtentByDistanceLat (circleCenter, circleDiameter, map) {
     const offsetLat = circleDiameter / 2,
-        circleCenterWGS = toLonLat(circleCenter, getMapProjection(map)),
+        circleCenterWGS = toLonLat(circleCenter, crs.getMapProjection(map)),
         deltaLat = offsetLat / earthRadius,
         newPositionLat = circleCenterWGS[1] + deltaLat * 180 / Math.PI;
 
-    return transform([circleCenterWGS[0], newPositionLat], "EPSG:4326", getMapProjection(map));
+    return transform([circleCenterWGS[0], newPositionLat], "EPSG:4326", crs.getMapProjection(map));
 }
 
 /**
@@ -68,11 +68,11 @@ function getCircleExtentByDistanceLat (circleCenter, circleDiameter, map) {
  */
 function getCircleExtentByDistanceLon (circleCenter, circleDiameter, map) {
     const offsetLon = circleDiameter / 2,
-        circleCenterWGS = toLonLat(circleCenter, getMapProjection(map)),
+        circleCenterWGS = toLonLat(circleCenter, crs.getMapProjection(map)),
         deltaLon = offsetLon / (earthRadius * Math.cos(Math.PI * circleCenterWGS[1] / 180)),
         newPositionLon = circleCenterWGS[0] + deltaLon * 180 / Math.PI;
 
-    return transform([newPositionLon, circleCenterWGS[1]], "EPSG:4326", getMapProjection(map));
+    return transform([newPositionLon, circleCenterWGS[1]], "EPSG:4326", crs.getMapProjection(map));
 }
 
 export {

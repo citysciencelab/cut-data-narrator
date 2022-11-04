@@ -1,5 +1,5 @@
-import {rawLayerList} from "@masterportal/masterportalapi/src";
-import {createLayerAddToTree} from "../../../../utils/createLayerAddToTree";
+import rawLayerList from "@masterportal/masterportalapi/src/rawLayerList";
+import createLayerAddToTreeModule from "../../../../utils/createLayerAddToTree";
 import {getCenter} from "ol/extent";
 
 export default {
@@ -56,7 +56,7 @@ export default {
             dispatch("Maps/setZoomLevel", styleObj.zoomLevel, {root: true});
         }
         if (rootGetters.treeHighlightedFeatures?.active) {
-            createLayerAddToTree(layerId, [feature], rootGetters.treeType, rootGetters.treeHighlightedFeatures);
+            createLayerAddToTreeModule.createLayerAddToTree(layerId, [feature], rootGetters.treeType, rootGetters.treeHighlightedFeatures);
         }
     }
 };

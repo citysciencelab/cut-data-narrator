@@ -2,7 +2,7 @@
 import ToolTemplate from "../../ToolTemplate.vue";
 import {getComponent} from "../../../../utils/getComponent";
 import {Pointer} from "ol/interaction.js";
-import {getProjections} from "@masterportal/masterportalapi/src/crs";
+import crs from "@masterportal/masterportalapi/src/crs";
 import {mapGetters, mapActions, mapMutations} from "vuex";
 import getters from "../store/gettersCoordToolkit";
 import mutations from "../store/mutationsCoordToolkit";
@@ -138,7 +138,7 @@ export default {
          * @returns {void}
          */
         initProjections () {
-            const pr = getProjections(),
+            const pr = crs.getProjections(),
                 wgs84Proj = [];
 
             if (this.projections.length) {

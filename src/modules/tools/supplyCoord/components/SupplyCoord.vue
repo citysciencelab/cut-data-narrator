@@ -2,7 +2,7 @@
 import ToolTemplate from "../../ToolTemplate.vue";
 import {getComponent} from "../../../../utils/getComponent";
 import {Pointer} from "ol/interaction.js";
-import {getProjections} from "@masterportal/masterportalapi/src/crs";
+import crs from "@masterportal/masterportalapi/src/crs";
 import {mapActions, mapGetters, mapMutations} from "vuex";
 import getters from "../store/gettersSupplyCoord";
 import mutations from "../store/mutationsSupplyCoord";
@@ -101,7 +101,7 @@ export default {
          * @returns {void}
          */
         createInteraction () {
-            const pr = getProjections();
+            const pr = crs.getProjections();
             let pointerMove = null;
 
             this.setProjections(pr);

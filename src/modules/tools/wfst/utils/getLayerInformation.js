@@ -20,4 +20,4 @@ function getLayerInformation (layerIds) {
     });
 }
 
-module.exports = {getLayerInformation};
+export default {getLayerInformation};
