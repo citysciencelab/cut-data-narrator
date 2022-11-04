@@ -1,4 +1,4 @@
-import {getLayerWhere} from "@masterportal/masterportalapi/src/rawLayerList";
+import rawLayerList from "@masterportal/masterportalapi/src/rawLayerList";
 import {getFeatureGET} from "../../../../api/wfs/getFeature";
 import {WFS} from "ol/format.js";
 
@@ -13,7 +13,7 @@ export async function getFeaturesOfAdditionalGeometries (additionalGeometries) {
         const wfsReader = new WFS();
 
         for (const additionalGeometry of additionalGeometries) {
-            const rawLayer = getLayerWhere({id: additionalGeometry.layerId}),
+            const rawLayer = rawLayerList.getLayerWhere({id: additionalGeometry.layerId}),
                 features = await getFeatureGET(rawLayer.url, {version: rawLayer.version, featureType: rawLayer.featureType});
 
             additionalGeometry.features = wfsReader.readFeatures(features);
