@@ -17,9 +17,14 @@
 ### Removed
 
 ### Fixed
-- DefaultTree: Time tool opens again by changing WMS-Time layer
 - Issue #821: Sorting the table in featureLister tool now works again
 - Issue #845: The buffer analysis tool now shows results correctly again
+
+---
+
+## v2.27.1 - 2022-11-04
+### Fixed
+- DefaultTree: Time tool opens again by changing WMS-Time layer
 - Fixed a bug that caused some layers in the topic tree to disappear from the typ "default"
 
 ---
