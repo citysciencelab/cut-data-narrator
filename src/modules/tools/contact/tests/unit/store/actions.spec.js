@@ -2,7 +2,6 @@ import testAction from "../../../../../../../test/unittests/VueTestUtils.js";
 import {expect} from "chai";
 import sinon from "sinon";
 
-import getComponentModule from "../../../../../../utils/getComponent";
 import httpClientModule from "../../../utils/httpClient";
 import actions from "../../../store/actionsContact";
 
@@ -20,9 +19,6 @@ describe("src/modules/tools/contact/store/actionsContact.js", () => {
                 deleteAfterSend: true,
                 withTicketNo: true
             };
-            sinon
-                .stub(getComponentModule, "getComponent")
-                .callsFake(() => ({set: () => { /* noop */ }}));
         });
 
         afterEach(sinon.restore);

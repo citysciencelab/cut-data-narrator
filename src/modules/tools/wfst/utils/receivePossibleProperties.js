@@ -10,7 +10,7 @@ import getProxyUrl from "../../../../utils/getProxyUrl";
  * @param {Boolean} useProxy Whether a proxy should be used for requests. Deprecated in v3.0.0.
  * @returns {Promise<FeatureProperty[]>} If the request is successful, an array of prepared feature properties.
  */
-export default function (layer, useProxy) {
+function receivePossibleProperties (layer, useProxy) {
     const baseUrl = `${layer.url}?SERVICE=WFS&REQUEST=DescribeFeatureType&VERSION=${layer.version}&TYPENAME=${layer.featureType}`,
         url = useProxy ? getProxyUrl(baseUrl) : baseUrl;
 
@@ -56,4 +56,7 @@ function parseDescribeFeatureTypeResponse (responseData, featureType) {
     return [];
 }
 
-module.exports = {parseDescribeFeatureTypeResponse};
+export default {
+    parseDescribeFeatureTypeResponse,
+    receivePossibleProperties
+};

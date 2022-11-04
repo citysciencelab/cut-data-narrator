@@ -1,7 +1,7 @@
 import {generateSimpleGetters} from "../../../app-store/utils/generators";
 import initialState from "./stateMap";
 import thousandsSeparator from "../../../utils/thousandsSeparator.js";
-import {transformFromMapProjection} from "@masterportal/masterportalapi/src/crs";
+import crs from "@masterportal/masterportalapi/src/crs";
 import {Group as LayerGroup} from "ol/layer.js";
 
 const getters = {
@@ -55,8 +55,8 @@ const getters = {
     getProjectedBBox: () => (epsgCode) => {
         const map = mapCollection.getMap("2D"),
             bbox = getters.getView().calculateExtent(map.getSize),
-            firstCoordTransform = transformFromMapProjection(map, epsgCode, [bbox[0], bbox[1]]),
-            secondCoordTransform = transformFromMapProjection(map, epsgCode, [bbox[2], bbox[3]]);
+            firstCoordTransform = crs.transformFromMapProjection(map, epsgCode, [bbox[0], bbox[1]]),
+            secondCoordTransform = crs.transformFromMapProjection(map, epsgCode, [bbox[2], bbox[3]]);
 
         return [firstCoordTransform[0], firstCoordTransform[1], secondCoordTransform[0], secondCoordTransform[1]];
     },

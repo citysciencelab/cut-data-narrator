@@ -8,7 +8,8 @@ const {
     updateFilterHits,
     serializeState,
     setRulesArray,
-    deserializeState
+    deserializeState,
+    jumpToFilter
 } = actions;
 
 describe("tools/filter/store/actionsFilter", () => {
@@ -124,6 +125,16 @@ describe("tools/filter/store/actionsFilter", () => {
                 {type: "setGeometryFilterByFeature", payload: {jsonFeature: geometryFeature, invert: true}, dispatch: true},
                 {type: "setGeometrySelectorOptions", payload: geometrySelectorOptions, commit: true},
                 {type: "setActive", payload: true, commit: true}
+            ], {}, done);
+        });
+    });
+    describe("jumpToFilter", () => {
+        it("sets the jumpToId property", done => {
+            const payload = {filterId: 0};
+
+            testAction(jumpToFilter, payload, state, {}, [
+                {type: "setActive", payload: true, commit: true},
+                {type: "setJumpToId", payload: payload.filterId, commit: true}
             ], {}, done);
         });
     });

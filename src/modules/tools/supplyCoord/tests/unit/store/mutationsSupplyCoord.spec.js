@@ -1,6 +1,5 @@
 import {expect} from "chai";
-import * as crs from "@masterportal/masterportalapi/src/crs";
-import {getProjections} from "@masterportal/masterportalapi/src/crs";
+import crs from "@masterportal/masterportalapi/src/crs";
 import mutations from "../../../store/mutationsSupplyCoord";
 
 const {setProjections} = mutations,
@@ -25,7 +24,7 @@ describe("src/modules/tools/supplyCoord/store/mutationsSupplyCoord.js", () => {
                 currentSelection: ""
             };
 
-            setProjections(state, getProjections());
+            setProjections(state, crs.getProjections());
 
             expect(state.projections.length).to.equals(namedProjections.length);
             expect(state.currentProjectionName).to.equals("http://www.opengis.net/gml/srs/epsg.xml#25832");
@@ -37,7 +36,7 @@ describe("src/modules/tools/supplyCoord/store/mutationsSupplyCoord.js", () => {
                     currentProjectionName: "",
                     currentSelection: ""
                 },
-                projections = getProjections().filter(proj => proj.name !== "http://www.opengis.net/gml/srs/epsg.xml#25832");
+                projections = crs.getProjections().filter(proj => proj.name !== "http://www.opengis.net/gml/srs/epsg.xml#25832");
 
             setProjections(state, projections);
 

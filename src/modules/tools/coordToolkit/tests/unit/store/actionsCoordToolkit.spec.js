@@ -1,6 +1,6 @@
 import testAction from "../../../../../../../test/unittests/VueTestUtils";
 import actions from "../../../store/actionsCoordToolkit";
-import * as crs from "@masterportal/masterportalapi/src/crs";
+import crs from "@masterportal/masterportalapi/src/crs";
 import sinon from "sinon";
 import {expect} from "chai";
 

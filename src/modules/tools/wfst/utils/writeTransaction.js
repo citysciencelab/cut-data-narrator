@@ -34,4 +34,4 @@ function writeTransaction (feature, layerInformation, transactionMethod, srsName
         );
 }
 
-module.exports = {writeTransaction};
+export default {writeTransaction};

@@ -231,6 +231,20 @@ export default {
         }
         context.commit("setGeometryFeature", feature);
         context.commit("setFilterGeometry", cleanGeometryFromFeature);
+    },
+    /**
+     * Sets the jumpToId property.
+     * @param {Object} context the context Vue instance.
+     * @param {Number} payload.filterId The filterId to jump.
+     * @returns {void}
+     */
+    jumpToFilter (context, {filterId}) {
+        if (!context.state.active) {
+            context.commit("setActive", true);
+        }
+        if (typeof filterId === "number") {
+            context.commit("setJumpToId", filterId);
+        }
     }
 };
 /**

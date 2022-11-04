@@ -2,7 +2,7 @@ import {translate} from "./translator";
 import {deepAssignIgnoreCase} from "../deepAssign";
 import {doSpecialBackboneHandling, triggerParametricURLReady, translateToBackbone} from "./ParametricUrlBridge";
 import store from "../../app-store";
-import {transformToMapProjection} from "@masterportal/masterportalapi/src/crs";
+import crs from "@masterportal/masterportalapi/src/crs";
 import highlightFeaturesByAttribute from "../../api/highlightFeaturesByAttribute";
 
 /**
@@ -86,7 +86,7 @@ function callMutations (state) {
         let centerCoords = state.Maps.center;
 
         if (state.urlParams.projection !== undefined) {
-            centerCoords = transformToMapProjection(mapCollection.getMap(state.Maps.mode), state.urlParams.projection, centerCoords);
+            centerCoords = crs.transformToMapProjection(mapCollection.getMap(state.Maps.mode), state.urlParams.projection, centerCoords);
         }
         store.commit("Maps/setInitialCenter", centerCoords);
         store.dispatch("Maps/setCenter", centerCoords);
@@ -102,7 +102,7 @@ function callActions (state) {
         let coordinates = state.MapMarker.coordinates;
 
         if (state.urlParams.projection !== undefined) {
-            coordinates = transformToMapProjection(mapCollection.getMap(state.Maps.mode), state.urlParams.projection, coordinates);
+            coordinates = crs.transformToMapProjection(mapCollection.getMap(state.Maps.mode), state.urlParams.projection, coordinates);
         }
         setTimeout(() => {
             store.dispatch("MapMarker/placingPointMarker", coordinates);

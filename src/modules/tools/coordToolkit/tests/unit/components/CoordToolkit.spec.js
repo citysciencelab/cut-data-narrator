@@ -2,7 +2,7 @@ import Vuex from "vuex";
 import {expect} from "chai";
 import sinon from "sinon";
 import {config, shallowMount, createLocalVue} from "@vue/test-utils";
-import * as crs from "@masterportal/masterportalapi/src/crs";
+import crs from "@masterportal/masterportalapi/src/crs";
 import CoordToolkitComponent from "../../../components/CoordToolkit.vue";
 import CoordToolkit from "../../../store/indexCoordToolkit";
 

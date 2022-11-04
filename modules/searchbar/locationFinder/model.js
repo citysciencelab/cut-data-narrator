@@ -1,5 +1,5 @@
 import "../model";
-import {transformFromMapProjection as mpapiTransformToMapProjection, getProjection as mpapiGetProjection} from "@masterportal/masterportalapi/src/crs";
+import crs from "@masterportal/masterportalapi/src/crs";
 import getProxyUrl from "../../../src/utils/getProxyUrl";
 import store from "../../../src/app-store";
 
@@ -116,16 +116,16 @@ const LocationFinderModel = Backbone.Model.extend(/** @lends LocationFinderModel
      * @return {Array} transformed coordinate
      */
     transformToMapProjection: function (map, fromCRS, coordinate) {
-        return mpapiTransformToMapProjection(map, fromCRS, coordinate);
+        return crs.transformFromMapProjection(map, fromCRS, coordinate);
     },
 
     /**
      * Call MasterportalAPI for checking if crs is known. Introduced to make class testable.
-     * @param {String} crs - epsg-code for crs
+     * @param {String} crsCode - epsg-code for crs
      * @return {Boolean} true if CRS is known
      */
-    getProjection: function (crs) {
-        return mpapiGetProjection(crs);
+    getProjection: function (crsCode) {
+        return crs.getProjection(crsCode);
     },
 
     /**
@@ -138,7 +138,7 @@ const LocationFinderModel = Backbone.Model.extend(/** @lends LocationFinderModel
      */
     pushSuggestions: function (data) {
 
-        const crs = "EPSG:" + data.sref;
+        const crsCode = "EPSG:" + data.sref;
 
         // Test for sucess-status of service
         if (!data?.ok) {
@@ -155,9 +155,9 @@ const LocationFinderModel = Backbone.Model.extend(/** @lends LocationFinderModel
         }
 
         // Test for valid/usable crs
-        if (!this.getProjection(crs)) {
+        if (!this.getProjection(crsCode)) {
             this.showError({
-                statusText: i18next.t("common:modules.searchbar.locationFinder.unknownProjection") + " (" + crs + ")"
+                statusText: i18next.t("common:modules.searchbar.locationFinder.unknownProjection") + " (" + crsCode + ")"
             });
             Radio.trigger("Searchbar", "abortSearch", "locationFinder");
             return;
@@ -194,20 +194,20 @@ const LocationFinderModel = Backbone.Model.extend(/** @lends LocationFinderModel
                     }
 
                     if (classDefinition.zoom === "bbox") {
-                        const min = this.transformToMapProjection(Radio.request("Map", "getMap"), crs, [parseFloat(locationFinderResult.xmin), parseFloat(locationFinderResult.ymin)]),
-                            max = this.transformToMapProjection(Radio.request("Map", "getMap"), crs, [parseFloat(locationFinderResult.xmax), parseFloat(locationFinderResult.ymax)]);
+                        const min = this.transformToMapProjection(Radio.request("Map", "getMap"), crsCode, [parseFloat(locationFinderResult.xmin), parseFloat(locationFinderResult.ymin)]),
+                            max = this.transformToMapProjection(Radio.request("Map", "getMap"), crsCode, [parseFloat(locationFinderResult.xmax), parseFloat(locationFinderResult.ymax)]);
 
                         hit.coordinate = [
                             min[0], min[1], max[0], min[1], max[0], max[1], min[0], max[1], min[0], min[1]
                         ];
                     }
                     else {
-                        hit.coordinate = this.transformToMapProjection(Radio.request("Map", "getMap"), crs, [parseFloat(locationFinderResult.cx), parseFloat(locationFinderResult.cy)]);
+                        hit.coordinate = this.transformToMapProjection(Radio.request("Map", "getMap"), crsCode, [parseFloat(locationFinderResult.cx), parseFloat(locationFinderResult.cy)]);
                     }
                 }
                 else {
                     hit.icon = "bi-signpost-2-fill";
-                    hit.coordinate = this.transformToMapProjection(Radio.request("Map", "getMap"), crs, [parseFloat(locationFinderResult.cx), parseFloat(locationFinderResult.cy)]);
+                    hit.coordinate = this.transformToMapProjection(Radio.request("Map", "getMap"), crsCode, [parseFloat(locationFinderResult.cx), parseFloat(locationFinderResult.cy)]);
                 }
 
                 Radio.trigger("Searchbar", "pushHits", "hitList", hit);

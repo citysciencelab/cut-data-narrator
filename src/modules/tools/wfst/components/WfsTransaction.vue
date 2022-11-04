@@ -1,6 +1,6 @@
 <script>
 import {mapActions, mapGetters, mapMutations} from "vuex";
-import getLayerInformation from "../utils/getLayerInformation";
+import getLayerInformationModule from "../utils/getLayerInformation";
 import ToolTemplate from "../../ToolTemplate.vue";
 import {getComponent} from "../../../../utils/getComponent";
 import SimpleButton from "../../../../share-components/SimpleButton.vue";
@@ -20,7 +20,7 @@ export default {
         this.$on("close", this.close);
         Backbone.Events.listenTo(Radio.channel("ModelList"), {
             "updatedSelectedLayerList": async () => {
-                const newLayerInformation = await getLayerInformation(this.layerIds),
+                const newLayerInformation = await getLayerInformationModule.getLayerInformation(this.layerIds),
                     firstActiveLayer = newLayerInformation.findIndex(layer => layer.isSelected),
                     currentLayerDeactivated = this.currentLayerIndex > -1 && !newLayerInformation[this.currentLayerIndex].isSelected;
 

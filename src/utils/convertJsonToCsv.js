@@ -16,13 +16,13 @@ function convertJsonToCsv (jsonData, onerror = false, useSemicolon = false, useL
         }
         return false;
     }
-    const delimitor = useSemicolon ? ";" : ",",
+    const delimiter = useSemicolon ? ";" : ",",
         eol = useLineFeedOnly ? "\n" : "\r\n",
         organizedJsonData = organizeKeys(jsonData),
         headerRecord = findRecordWithMaxNumberOfFields(organizedJsonData),
         maxNumberOfFields = headerRecord ? Object.keys(headerRecord).length : 0,
         header = !Array.isArray(headerRecord) && typeof headerRecord === "object" && headerRecord !== null ? Object.keys(headerRecord) : false;
-    let result = header ? joinRecord(escapeFields(header, delimitor), delimitor, maxNumberOfFields) : "";
+    let result = header ? joinRecord(escapeFields(header, delimiter), delimiter, maxNumberOfFields) : "";
 
     organizedJsonData.forEach(fields => {
         if (typeof fields !== "object" || fields === null) {
@@ -34,7 +34,7 @@ function convertJsonToCsv (jsonData, onerror = false, useSemicolon = false, useL
         else if (result) {
             result += eol;
         }
-        result += joinRecord(escapeFields(Object.values(fields), delimitor), delimitor, maxNumberOfFields);
+        result += joinRecord(escapeFields(Object.values(fields), delimiter), delimiter, maxNumberOfFields);
     });
 
     return result;
@@ -80,17 +80,17 @@ function organizeKeys (jsonData) {
  * escapes the values of the given array according to rfc4180
  * rule: escaped = DQUOTE *(TEXTDATA / COMMA / CR / LF / 2DQUOTE) DQUOTE
  * @param {String[]|Number[]} fields an array of values representing one csv line
- * @param {String} delimitor the delimitor to escape as COMMA
+ * @param {String} delimiter the delimiter to escape as COMMA
  * @returns {String[]} an array of strings without dquotes or with dquotes if something to escape was found in the string
  */
-function escapeFields (fields, delimitor) {
+function escapeFields (fields, delimiter) {
     if (typeof fields !== "object" || fields === null) {
         return [];
     }
     const result = [];
 
     fields.forEach(field => {
-        result.push(escapeField(field, delimitor));
+        result.push(escapeField(field, delimiter));
     });
 
     return result;
@@ -100,10 +100,10 @@ function escapeFields (fields, delimitor) {
  * escapes the given value according to rfc4180
  * rule: escaped = DQUOTE *(TEXTDATA / COMMA / CR / LF / 2DQUOTE) DQUOTE
  * @param {*} field a value representing a field
- * @param {String} delimitor the delimitor to escape as COMMA
+ * @param {String} delimiter the delimiter to escape as COMMA
  * @returns {String} the string, may be escaped
  */
-function escapeField (field, delimitor) {
+function escapeField (field, delimiter) {
     let escaped = false,
         txt = "",
         letter = "";
@@ -113,7 +113,7 @@ function escapeField (field, delimitor) {
     for (let i = 0; i < len; i++) {
         letter = fieldText[i];
 
-        if (letter === delimitor || letter === "\r" || letter === "\n") {
+        if (letter === delimiter || letter === "\r" || letter === "\n") {
             escaped = true;
         }
         else if (letter === "\"") {
@@ -156,13 +156,13 @@ function findRecordWithMaxNumberOfFields (jsonData) {
 }
 
 /**
- * joins the given record to a string using the given delimitor, maxes out or down to the given maxNumberOfFields
+ * joins the given record to a string using the given delimiter, maxes out or down to the given maxNumberOfFields
  * @param {String[]} record the array to join
- * @param {String} delimitor the delimitor to use
+ * @param {String} delimiter the delimiter to use
  * @param {Number} maxNumberOfFields the number of joined fields
  * @returns {String} the result as joined string
  */
-function joinRecord (record, delimitor, maxNumberOfFields) {
+function joinRecord (record, delimiter, maxNumberOfFields) {
     if (!Array.isArray(record)) {
         return "";
     }
@@ -170,7 +170,7 @@ function joinRecord (record, delimitor, maxNumberOfFields) {
 
     for (let i = 0; i < maxNumberOfFields; i++) {
         if (i > 0) {
-            result += delimitor;
+            result += delimiter;
         }
         result += record[i] ? String(record[i]) : "";
     }

@@ -15,6 +15,9 @@
 
     <% if (typeof treeType === "undefined") { %>
         <div class="layer-info-item last-item">
+        <% if (typeof filterRefId === "number") { %>
+            <span class="bootstrap-icon filter-icon tabable" tabindex="0" title="<%=filterIconText%>"><i class="bi-funnel-fill"></i></span>
+        <% } %>
         <% if (typeof datasets !== "undefined" && datasets !== false) { %>
             <span class="bootstrap-icon info-icon tabable" tabindex="0" title="<%=infosAndLegendText%>"><i class="bi-info-circle-fill"></i></span>
         <% } %>

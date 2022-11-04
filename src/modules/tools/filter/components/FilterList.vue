@@ -20,7 +20,20 @@ export default {
             type: Array,
             required: false,
             default: () => []
+        },
+        jumpToId: {
+            type: Number,
+            required: false,
+            default: undefined
         }
+    },
+    watch: {
+        jumpToId (newFilterId) {
+            this.scrollToView(newFilterId);
+        }
+    },
+    mounted () {
+        this.scrollToView(this.jumpToId);
     },
     methods: {
         translateKeyWithPlausibilityCheck,
@@ -50,6 +63,30 @@ export default {
          */
         setLayerLoaded (filterId) {
             this.$emit("setLayerLoaded", filterId);
+        },
+        /**
+         * Scrolls to given filterId.
+         * @param {Number} filterId The filterId to jump to.
+         * @returns {void}
+         */
+        scrollToView (filterId) {
+            if (typeof filterId !== "number" || !this.filters.some(filter => filter.filterId === filterId)) {
+                return;
+            }
+            const filter = Array.isArray(this.$refs[filterId]) ? this.$refs[filterId][0] : this.$refs[filterId];
+
+            if (filter && typeof filter.scrollIntoView === "function") {
+                this.$nextTick(() => {
+                    filter.scrollIntoView({behavior: "smooth"});
+                });
+            }
+            else {
+                this.$store.dispatch("Alerting/addSingleAlert", i18next.t("common:modules.tools.filter.alertingMessages.noMatchingFilterId"), {root: true});
+            }
+            this.$emit("resetJumpToId");
+            if (!this.selectedLayers.some(selectedLayer => selectedLayer.filterId === filterId)) {
+                this.updateSelectedLayers(filterId);
+            }
         }
     }
 };
@@ -63,6 +100,8 @@ export default {
     >
         <div
             v-for="filter in filters"
+            :id="'filter-' + filter.filterId"
+            :ref="filter.filterId"
             :key="filter.filterId"
             class="panel panel-default"
             @click="setLayerLoaded(filter.filterId)"

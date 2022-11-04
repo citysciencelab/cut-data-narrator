@@ -24,4 +24,4 @@ async function prepareFeatureProperties (layer, useProxy) {
             [properties.find(({type}) => type === "geometry")]);
 }
 
-module.exports = {prepareFeatureProperties};
+export default {prepareFeatureProperties};

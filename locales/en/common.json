@@ -104,7 +104,8 @@
         "levelUp": "Level up",
         "levelDown": "Level down",
         "externalTechnicalData": "External technical data",
-        "selectedFeatures": "Selection:"
+        "selectedFeatures": "Selection:",
+        "filterIconText": "Open filter"
     },
     "date": "Date",
     "time": "Time",
@@ -411,6 +412,9 @@
                 "serviceFour": "Service 4"
             },
             "filter": {
+                "alertingMessages": {
+                    "noMatchingFilterId": "The configured filter id does not exist."
+                },
                 "filterButton": "Filter",
                 "searchInMapExtent": "Search in current map extent",
                 "snippetTags": {
@@ -568,7 +572,8 @@
                 },
                 "successfullyImportedLabel": "Successfully imported:",
                 "title": "Import file",
-                "zoom": "Zoom to features of this file \"{{filename}}\""
+                "zoom": "Zoom",
+                "fileZoom": "Zoom to features of this file \"{{filename}}\""
             },
             "parcelSearch": {
                 "wrongConfig": "Invalid or incomplete configuration",
