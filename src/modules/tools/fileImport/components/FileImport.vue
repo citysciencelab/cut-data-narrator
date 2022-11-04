@@ -4,6 +4,7 @@ import {getComponent} from "../../../../utils/getComponent";
 import {mapActions, mapGetters, mapMutations} from "vuex";
 import getters from "../store/gettersFileImport";
 import mutations from "../store/mutationsFileImport";
+import isObject from "../../../../utils/isObject";
 
 export default {
     name: "FileImport",
@@ -42,6 +43,8 @@ export default {
         active (isActive) {
             if (isActive) {
                 this.setFocusToFirstControl();
+                this.modifyImportedFileNames(this.importedFileNames);
+                this.modifyImportedFileExtent(this.featureExtents, this.importedFileNames);
             }
         }
     },
@@ -93,6 +96,9 @@ export default {
         },
         addFile (files) {
             Array.from(files).forEach(file => {
+                if (this.importedFileNames.includes(file)) {
+                    return;
+                }
                 const reader = new FileReader();
 
                 reader.onload = async f => {
@@ -106,6 +112,8 @@ export default {
                     else {
                         this.importKML({raw: f.target.result, layer: vectorLayer, filename: file.name});
                     }
+
+                    this.setLayer(vectorLayer);
                 };
 
                 reader.readAsText(file);
@@ -143,12 +151,54 @@ export default {
             this.$store.dispatch("Tools/Draw/toggleInteraction", "modify");
             this.$store.dispatch("Tools/setToolActive", {id: "draw", active: true});
         },
-        zoomTo (index) {
-            if (!Array.isArray(this.featureExtents) || !this.featureExtents.length) {
+        /**
+         * Zoom to the feature of imported file
+         * @param {String} fileName the file name
+         * @returns {void}
+         */
+        zoomTo (fileName) {
+            if (!isObject(this.featureExtents) || !Object.prototype.hasOwnProperty.call(this.featureExtents, fileName)) {
                 return;
             }
 
-            this.zoomToExtent({extent: this.featureExtents[index]});
+            this.zoomToExtent({extent: this.featureExtents[fileName]});
+        },
+        /**
+         * Check if there are still features from the imported file.
+         * If there are no features existed from the same imported file, the file name will be removed.
+         * @param {String[]} fileNames the imported file name lists
+         * @returns {void}
+         */
+        modifyImportedFileNames (fileNames) {
+            const modifiedFileNames = [];
+
+            if (typeof this.layer !== "undefined" && Array.isArray(fileNames) && fileNames.length) {
+                fileNames.forEach(name => {
+                    this.layer.getSource().getFeatures().forEach(feature => {
+                        if (feature.get("source") && feature.get("source") === name && !modifiedFileNames.includes(name)) {
+                            modifiedFileNames.push(name);
+                        }
+                    });
+                });
+
+                this.setImportedFileNames(modifiedFileNames);
+            }
+        },
+        /**
+         * Check if there are still features from the imported file.
+         * If there are no features existed from the same imported file, the file name will be removed.
+         * @param {Object} featureExtents the feature extent object, key is the file name and value is the feature extent
+         * @param {String[]} fileNames the imported file name lists
+         * @returns {void}
+         */
+        modifyImportedFileExtent (featureExtents, fileNames) {
+            const modifiedFeatureExtents = {};
+
+            fileNames.forEach(name => {
+                modifiedFeatureExtents[name] = featureExtents[name];
+            });
+
+            this.setFeatureExtents(modifiedFeatureExtents);
         }
     }
 };
@@ -247,8 +297,8 @@ export default {
                                     v-if="enableZoomToExtend"
                                     class="upload-button-wrapper"
                                     :title="$t(`common:modules.tools.fileImport.fileZoom`, {filename: filename})"
-                                    @click="zoomTo(index)"
-                                    @keydown.enter="zoomTo(index)"
+                                    @click="zoomTo(filename)"
+                                    @keydown.enter="zoomTo(filename)"
                                 >
                                     {{ $t("modules.tools.fileImport.zoom") }}
                                 </span>

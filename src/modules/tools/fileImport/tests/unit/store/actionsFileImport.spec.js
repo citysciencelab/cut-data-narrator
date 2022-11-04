@@ -126,26 +126,26 @@ describe("src/modules/tools/fileImport/store/actionsFileImport.js", () => {
         });
 
         it("Sets empty feature extent", done => {
-            const payload = {},
+            const payload = {features: [], fileName: "file1"},
                 tmpState = {...importedState};
 
             testAction(setFeatureExtents, payload, tmpState, {}, [{
                 type: "setFeatureExtents",
-                payload: [[Infinity, Infinity, -Infinity, -Infinity]]
+                payload: {file1: [Infinity, Infinity, -Infinity, -Infinity]}
             }], {}, done);
         });
 
         it("Sets feature extent", done => {
-            const payload = [{
+            const payload = {features: [{
                     getGeometry: () => sinon.spy({
                         getExtent: () => [10, 10, 10, 10]
                     })
-                }],
-                tmpState = {...importedState, ...{featureExtents: [[100, 100, 100, 100]]}};
+                }], fileName: "file2"},
+                tmpState = {...importedState, ...{featureExtents: {"file1": [100, 100, 100, 100]}}};
 
             testAction(setFeatureExtents, payload, tmpState, {}, [{
                 type: "setFeatureExtents",
-                payload: [[100, 100, 100, 100], [10, 10, 10, 10]]
+                payload: {"file1": [100, 100, 100, 100], "file2": [10, 10, 10, 10]}
             }], {}, done);
         });
     });
