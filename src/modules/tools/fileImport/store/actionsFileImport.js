@@ -140,6 +140,31 @@ function checkIsVisibleSetting (features) {
     return resFeatures;
 }
 
+/**
+ * Gets custom attributes from feature by parsing given feature keys.
+ * @param {ol/Feature} feature The feature.
+ * @returns {Object} The parsed attributes.
+ */
+function getParsedCustomAttributes (feature) {
+    if (typeof feature.getKeys !== "function" || !Array.isArray(feature.getKeys())) {
+        return {};
+    }
+
+    let attributes = feature.get("attributes");
+
+    if (!isObject(attributes)) {
+        attributes = {};
+    }
+    feature.getKeys().forEach(key => {
+        if (typeof key.split === "function" && key.split("custom-attribute____").length > 1) {
+            const parsedKey = key.split("custom-attribute____")[1];
+
+            attributes[parsedKey] = feature.get(key);
+        }
+    });
+    return attributes;
+}
+
 export default {
     /**
      * Sets the selected file type
@@ -184,7 +209,8 @@ export default {
             vectorLayer = datasrc.layer,
             fileName = datasrc.filename,
             format = getFormat(fileName, state.selectedFiletype, state.supportedFiletypes, supportedFormats),
-            crsPropName = getCrsPropertyName(datasrc.raw);
+            crsPropName = getCrsPropertyName(datasrc.raw),
+            customAttributes = {};
 
         let
             featureError = false,
@@ -259,7 +285,16 @@ export default {
         }
 
         features.forEach(feature => {
+            const featureAttributes = getParsedCustomAttributes(feature);
             let geometries;
+
+            feature.set("attributes", featureAttributes);
+            feature.setProperties(featureAttributes);
+            Object.keys(featureAttributes).forEach(key => {
+                if (!Object.prototype.hasOwnProperty.call(customAttributes, key)) {
+                    customAttributes[key] = key;
+                }
+            });
 
             if (feature.get("isGeoCircle")) {
                 const circleCenter = feature.get("geoCircleCenter").split(",").map(parseFloat),
@@ -309,6 +344,7 @@ export default {
         features = checkIsVisibleSetting(features);
 
         vectorLayer.getSource().addFeatures(features);
+        vectorLayer.set("gfiAttributes", customAttributes);
 
         if (featureError) {
             alertingMessage = {
