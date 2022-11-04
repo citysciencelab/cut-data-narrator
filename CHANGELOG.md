@@ -3,6 +3,23 @@
 
 [Semantic versioning](https://semver.org/spec/v2.0.0.html) is used.
 
+## Unreleased - in development
+### __Breaking Changes__
+
+### Added
+- Draw: Adds a new attribute semicolonCSVDelimiter to decide the semicolon is used as the delimiter for exported CSV file. The default value is true.
+
+### Changed
+
+### Deprecated
+
+### Removed
+
+### Fixed
+- Issue #821: Sorting the table in featureLister tool now works again
+- Issue #845: The buffer analysis tool now shows results correctly again
+
+---
 
 ## Unreleased - in development
 ### __Breaking Changes__
