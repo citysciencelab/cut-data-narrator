@@ -21,31 +21,13 @@ export default {
         return {
             defaultTabClass: "",
             activeTabClass: "active",
-            disabledTabClass: "disabled"
+            disabledTabClass: "disabled",
+            visibleVectorLayers: []
         };
     },
     computed: {
         ...mapGetters("Tools/FeatureLister", Object.keys(getters)),
         ...mapGetters("Maps", ["getVisibleLayerList"]),
-        visibleVectorLayers: function () {
-            const vectorLayers = [];
-
-            this.getVisibleLayerList.forEach(layer => {
-                if (layer instanceof VectorLayer && layer.get("typ") === "WFS") {
-                    const layerSource = layer.getSource();
-
-                    vectorLayers.push(
-                        {
-                            name: layer.get("name"),
-                            id: layer.get("id"),
-                            features: layerSource.getFeatures(),
-                            geometryType: layerSource.getFeatures()[0] ? layerSource.getFeatures()[0].getGeometry().getType() : null
-                        }
-                    );
-                }
-            });
-            return vectorLayers;
-        },
         themeTabClasses: function () {
             return this.layerListView ? this.activeTabClass : this.defaultTabClass;
         },
@@ -69,11 +51,30 @@ export default {
             return this.disabledTabClass;
         }
     },
+    mounted () {
+        this.getVisibleLayerList.forEach(async layer => {
+            if (layer instanceof VectorLayer && layer.get("typ") === "WFS") {
+                const layerSource = layer.getSource();
+
+                await this.areLayerFeaturesLoaded(layer.get("id"));
+
+                this.visibleVectorLayers.push(
+                    {
+                        name: layer.get("name"),
+                        id: layer.get("id"),
+                        features: layerSource.getFeatures(),
+                        geometryType: layerSource.getFeatures()[0] ? layerSource.getFeatures()[0].getGeometry().getType() : null
+                    }
+                );
+            }
+        });
+    },
     created () {
         this.$on("close", this.close);
     },
     methods: {
         ...mapActions("Tools/FeatureLister", Object.keys(actions)),
+        ...mapActions("Maps", ["areLayerFeaturesLoaded"]),
         ...mapMutations("Tools/FeatureLister", Object.keys(mutations)),
         beautifyKey,
         isWebLink,

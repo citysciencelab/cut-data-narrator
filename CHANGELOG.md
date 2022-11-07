@@ -19,6 +19,7 @@
 ### Fixed
 - Issue #821: Sorting the table in featureLister tool now works again
 - Issue #845: The buffer analysis tool now shows results correctly again
+- Issue #846: The featureLister now shows features of initial visible WFS again
 
 ---
 

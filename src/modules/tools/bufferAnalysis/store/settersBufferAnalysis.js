@@ -35,7 +35,7 @@ function applySelectedSourceLayer ({getters, commit, dispatch}, selectedSourceLa
     commit("setSelectedSourceLayer", selectedLayer);
     // remove previously generated layers and show buffer
     if (getters.bufferRadius && selectedLayer) {
-        dispatch("areLayerFeaturesLoaded", selectedLayer.get("id")).then(() => {
+        dispatch("Maps/areLayerFeaturesLoaded", selectedLayer.get("id"), {root: true}).then(() => {
             dispatch("removeGeneratedLayers");
             dispatch("showBuffer");
         });

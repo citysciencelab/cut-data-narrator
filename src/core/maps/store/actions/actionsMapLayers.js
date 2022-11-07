@@ -86,5 +86,28 @@ export default {
         }
 
         return resultLayer;
+    },
+    /**
+     * Verifies if all features of a given layerId are loaded
+     * and waits if the layer has not been loaded previously
+     *
+     * @param {String} layerId - the layer ID to check loaded status
+     *
+     * @return {void}
+     */
+    async areLayerFeaturesLoaded ({commit, state}, layerId) {
+        await new Promise(resolve => {
+            if (state.loadedLayers.find(id => id === layerId)) {
+                resolve();
+            }
+            const channel = Radio.channel("VectorLayer");
+
+            channel.on({"featuresLoaded": id => {
+                commit("addLoadedLayerId", id);
+                if (id === layerId) {
+                    resolve();
+                }
+            }});
+        });
     }
 };

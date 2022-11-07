@@ -27,7 +27,7 @@ const actions = {
      * @return {void}
      */
     checkIntersection ({dispatch, getters: {selectedTargetLayer, bufferLayer}}) {
-        dispatch("areLayerFeaturesLoaded", selectedTargetLayer.get("id")).then(() => {
+        dispatch("Maps/areLayerFeaturesLoaded", selectedTargetLayer.get("id"), {root: true}).then(() => {
             const bufferFeatures = bufferLayer.getSource().getFeatures();
 
             dispatch("checkIntersectionWithBuffers", bufferFeatures)
@@ -259,29 +259,6 @@ const actions = {
             id +
             "&initvalues=" +
             JSON.stringify(toolState));
-    },
-    /**
-     * Verifies if all features of a given layerId are loaded
-     * and waits if the layer has not been loaded previously
-     *
-     * @param {String} layerId - the layer ID to check loaded status
-     *
-     * @return {void}
-     */
-    async areLayerFeaturesLoaded ({commit, rootGetters}, layerId) {
-        await new Promise(resolve => {
-            if (rootGetters["Maps/loadedLayers"].find(id => id === layerId)) {
-                resolve();
-            }
-            const channel = Radio.channel("VectorLayer");
-
-            channel.on({"featuresLoaded": id => {
-                commit("Maps/addLoadedLayerId", id, {root: true});
-                if (id === layerId) {
-                    resolve();
-                }
-            }});
-        });
     },
     /**
      * Applies values from previous saved buffer analysis
