@@ -219,11 +219,14 @@ const LayerBaseView = Backbone.View.extend(/** @lends LayerBaseView.prototype */
      * @returns {void}
      */
     disableComponent: function (text) {
-        const statusCheckbox = this.$el.find("span.bootstrap-icon > .bi-square").length;
+        const statusCheckbox = this.$el.find("span.bootstrap-icon > .bi-square").length,
+            showScaleTooltip = store?.getters?.portalConfig?.tree?.showScaleTooltip;
 
         this.$el.addClass("disabled");
         this.$el.find("*").css("cursor", "not-allowed");
-        this.$el.find("*").css("pointer-events", "none");
+        if (!showScaleTooltip) {
+            this.$el.find("*").css("pointer-events", "none");
+        }
         if (statusCheckbox === 0) {
             this.$el.find("span.float-start").css({"pointer-events": "auto", "cursor": "pointer"});
         }

@@ -364,7 +364,8 @@ const Parser = Backbone.Model.extend(/** @lends Parser.prototype */{
      * @returns {void}
      */
     addLayer: function (name, id, parentId, level, layers, url, version, {transparent = true, isSelected = false, time = false,
-        styles = "", legendURL = "", gfiAttributes = "showAll", featureCount = 3}) {
+        styles = "", legendURL = "", gfiAttributes = "showAll", featureCount = 3, maxScale = "2500000",
+        minScale = "0"}) {
         const layer = {
             id,
             name,
@@ -386,8 +387,8 @@ const Parser = Backbone.Model.extend(/** @lends Parser.prototype */{
             gutter: "0",
             isBaseLayer: false,
             layerAttribution: "nicht vorhanden",
-            maxScale: "2500000",
-            minScale: "0",
+            maxScale,
+            minScale,
             singleTile: false,
             supported: ["2D", "3D"],
             tilesize: "512",
