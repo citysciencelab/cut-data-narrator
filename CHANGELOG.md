@@ -8,6 +8,7 @@
 
 ### Added
 - Draw: Adds a new attribute semicolonCSVDelimiter to decide the semicolon is used as the delimiter for exported CSV file. The default value is true.
+- layerTree: Adds a new parameter in portalconfig.tree to decide whether the scale is displayed in the layer tooltip in addition to the name of the corresponding layer
 
 ### Changed
 
@@ -61,7 +62,6 @@
     - showMetaDataRevision: Adds a new parameter with boolean format in layerInformation to decide if to show "Letzte Änderung" in Meta data of layer information.
 - Theme Tree: added a new parameter `filterRefId` in layer as an Index of a configured filter Layer
 - DPS-1313: Add alert message if 2-Finger-Pan is configured and 1-Finger-Pan is used on mobile devices
-- layerTree: Adds a new parameter in portalconfig.tree to decide whether the scale is displayed in the layer tooltip in addition to the name of the corresponding layer
 ### Changed
 - The version of node was updated, must be >= 16.13.2 <= 16.18.0 and the version of npm was updated, must be >= 8.1.2 <=8.19.2.
 - The following NPM packages have been updated:
