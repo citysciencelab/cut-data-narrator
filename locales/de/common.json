@@ -365,6 +365,8 @@
                 "formatLabel": "Format",
                 "dpiLabel": "DPI",
                 "scaleLabel": "Druckmaßstab",
+                "outputfileTitleLabel": "Dateiname",
+                "validationWarning": "Der Dateiname darf nur Buchstaben und die Sonderzeichen '-' und '_' enthalten.",
                 "withLegendLabel": "Mit Legende",
                 "autoAdjustScale": "Druckmaßstab automatisch anpassen",
                 "printLabel": "Datei erstellen",
