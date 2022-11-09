@@ -336,7 +336,7 @@ export default {
                     @updateGeometryFeature="updateGeometryFeature"
                     @updateGeometrySelectorOptions="updateGeometrySelectorOptions"
                 />
-                <div v-if="Array.isArray(layerGroups) && layerGroups.length">
+                <div v-if="Array.isArray(layerGroups) && layerGroups.length && layerSelectorVisible">
                     <div
                         v-for="(layerGroup, key) in layerGroups"
                         :key="key"
@@ -411,8 +411,35 @@ export default {
                         </div>
                     </div>
                 </div>
+                <div v-else-if="Array.isArray(layerGroups) && layerGroups.length">
+                    <div
+                        v-for="(layerGroup, key) in layerGroups"
+                        :key="key"
+                    >
+                        <template v-for="(layerConfig, indexLayer) in preparedLayerGroups[layerGroups.indexOf(layerGroup)].layers">
+                            <h2 :key="'layer-title' + key + indexLayer + layerFilterSnippetPostKey">
+                                <u>{{ layerConfig.title }}</u>
+                            </h2>
+                            <LayerFilterSnippet
+                                :key="'layer-' + key + indexLayer + layerFilterSnippetPostKey"
+                                :api="layerConfig.api"
+                                :layer-config="layerConfig"
+                                :map-handler="mapHandler"
+                                :min-scale="minScale"
+                                :live-zoom-to-features="liveZoomToFeatures"
+                                :filter-rules="rulesOfFilters[layerConfig.filterId]"
+                                :filter-hits="filtersHits[layerConfig.filterId]"
+                                :filter-geometry="filterGeometry"
+                                :is-layer-filter-selected="true"
+                                @updateRules="updateRules"
+                                @deleteAllRules="deleteAllRules"
+                                @updateFilterHits="updateFilterHits"
+                            />
+                        </template>
+                    </div>
+                </div>
                 <FilterList
-                    v-if="(Array.isArray(layerConfigs.layers) && layerConfigs.layers.length) || (Array.isArray(layerConfigs.groups) && layerConfigs.groups.length) && layerSelectorVisible"
+                    v-if="(Array.isArray(layerConfigs.layers) && layerConfigs.layers.length) && layerSelectorVisible || (Array.isArray(layerConfigs.groups) && layerConfigs.groups.length) && layerSelectorVisible"
                     class="layerSelector"
                     :filters="filters"
                     :selected-layers="selectedAccordions"
@@ -448,22 +475,26 @@ export default {
                     </template>
                 </FilterList>
                 <div v-else-if="(Array.isArray(layerConfigs.layers) && layerConfigs.layers.length) || (Array.isArray(layerConfigs.groups) && layerConfigs.groups.length)">
-                    <LayerFilterSnippet
-                        v-for="(layerConfig, indexLayer) in filters"
-                        :key="'layer-' + indexLayer + layerFilterSnippetPostKey"
-                        :api="layerConfig.api"
-                        :layer-config="layerConfig"
-                        :map-handler="mapHandler"
-                        :min-scale="minScale"
-                        :live-zoom-to-features="liveZoomToFeatures"
-                        :filter-rules="rulesOfFilters[layerConfig.filterId]"
-                        :filter-hits="filtersHits[layerConfig.filterId]"
-                        :filter-geometry="filterGeometry"
-                        :is-layer-filter-selected="true"
-                        @updateRules="updateRules"
-                        @deleteAllRules="deleteAllRules"
-                        @updateFilterHits="updateFilterHits"
-                    />
+                    <template v-for="(layerConfig, indexLayer) in filters">
+                        <h2 :key="'layer-title' + indexLayer + layerFilterSnippetPostKey">
+                            <u>{{ layerConfig.title }}</u>
+                        </h2>
+                        <LayerFilterSnippet
+                            :key="'layer-' + indexLayer + layerFilterSnippetPostKey"
+                            :api="layerConfig.api"
+                            :layer-config="layerConfig"
+                            :map-handler="mapHandler"
+                            :min-scale="minScale"
+                            :live-zoom-to-features="liveZoomToFeatures"
+                            :filter-rules="rulesOfFilters[layerConfig.filterId]"
+                            :filter-hits="filtersHits[layerConfig.filterId]"
+                            :filter-geometry="filterGeometry"
+                            :is-layer-filter-selected="true"
+                            @updateRules="updateRules"
+                            @deleteAllRules="deleteAllRules"
+                            @updateFilterHits="updateFilterHits"
+                        />
+                    </template>
                 </div>
             </div>
         </template>

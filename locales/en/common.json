@@ -35,6 +35,9 @@
     "mouseHover": {
         "infoText": "(more objects. Please zoom.)"
     },
+    "mapRegion": {
+      "twoFingerPanAlert": "Please use two fingers to pan and zoom in the map."
+   },
     "menu": {
         "topics": "Issues & Topics",
         "name": "Menu",
@@ -105,7 +108,8 @@
         "levelDown": "Level down",
         "externalTechnicalData": "External technical data",
         "selectedFeatures": "Selection:",
-        "filterIconText": "Open filter"
+        "filterIconText": "Open filter",
+        "scaleText": "Displayed in the following scale range: "
     },
     "date": "Date",
     "time": "Time",
@@ -361,6 +365,8 @@
                 "formatLabel": "Format",
                 "dpiLabel": "DPI",
                 "scaleLabel": "Printing scale",
+                "outputfileTitleLabel": "Filename",
+                "validationWarning": "The file name may only contain letters and the special characters '-' and '_'.",
                 "withLegendLabel": "With legend",
                 "autoAdjustScale": "Adjust printing scale automatically",
                 "printLabel": "Create file",

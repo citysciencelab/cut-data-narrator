@@ -582,6 +582,7 @@ Configuration of the menu tree.
 |Name|Required|Type|Default|Description|Expert|
 |----|--------|----|-------|-----------|------|
 |highlightedFeatures|no|**[highlightedFeatures](#markdown-header-portalconfigtreehighlightedfeatures)**||Configuration in addition to feature highlighting.|false|
+|showScaleTooltip|nein|Boolean|false|Flag whether the scale range is displayed in the layer tooltip in addition to the name of the corresponding layer.|false|
 
 **Example**
 ```
@@ -590,7 +591,8 @@ Configuration of the menu tree.
     "highlightedFeatures": {
         "active": true,
         "layerName": "common:tree.selectedFeatures"
-    }
+    },
+    "showScaleTooltip": true
 },
 ```
 ***
@@ -867,6 +869,7 @@ The menu bar allows showing a portal name and portal image if sufficient horizon
 |zoomLevel|no|Integer||Deprecated in 3.0.0 Please use "startZoomLevel".|false|
 |epsg|no|String|"EPSG:25832"|Coordinate reference system EPSG code. The code must be defined as a `namedProjection`.|false|
 |options|no|[option](#markdown-header-portalconfigmapviewoption)[]|[{"resolution":66.14579761460263,"scale":250000,"zoomLevel":0}, {"resolution":26.458319045841044,"scale":100000,"zoomLevel":1}, {"resolution":15.874991427504629,"scale":60000,"zoomLevel":2}, {"resolution": 10.583327618336419,"scale":40000,"zoomLevel":3}, {"resolution":5.2916638091682096,"scale":20000,"zoomLevel":4}, {"resolution":2.6458319045841048,"scale":10000,"zoomLevel":5}, {"resolution":1.3229159522920524,"scale":5000,"zoomLevel":6}, {"resolution":0.6614579761460262,"scale":2500,"zoomLevel":7}, {"resolution":0.2645831904584105,"scale": 1000,"zoomLevel":8}, {"resolution":0.13229159522920521,"scale":500,"zoomLevel":9}]|Available scale levels and their resolutions.|false|
+|twoFingerPan|no|Boolean|false|Should a 2-Finger-Pan be set on mobile devices instead of a 1-Finger-Pan?|false
 
 **Example**
 

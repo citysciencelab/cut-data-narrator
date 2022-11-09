@@ -129,6 +129,15 @@ const mutations = {
      */
     setSize (state, evt) {
         state.size = evt.target.getSize();
+    },
+    /**
+     * Set status of the two fingers pan event.
+     * @param {Object} state The state.
+     * @param {Boolean} value Value indicating if the 2-Finger-Pan is active.
+     * @returns {void}
+     */
+    setTwoFingerPanStart (state, value) {
+        state.twoFingerPanStart = value;
     }
 };
 

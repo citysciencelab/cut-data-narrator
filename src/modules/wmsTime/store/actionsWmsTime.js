@@ -88,8 +88,8 @@ const actions = {
         if (!state.timeSlider.playing) {
             mapCollection.getMap(rootGetters["Maps/mode"]).render();
         }
-        state.layerSwiper.targetLayer.once("prerender", renderEvent => drawLayer(mapCollection.getMap(rootGetters["Maps/mode"]).getSize(), renderEvent, state.layerSwiper.valueX));
-        state.layerSwiper.targetLayer.once("postrender", ({context}) => {
+        state.layerSwiper.targetLayer?.once("prerender", renderEvent => drawLayer(mapCollection.getMap(rootGetters["Maps/mode"]).getSize(), renderEvent, state.layerSwiper.valueX));
+        state.layerSwiper.targetLayer?.once("postrender", ({context}) => {
             context.restore();
         });
     }

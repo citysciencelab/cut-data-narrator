@@ -3,12 +3,13 @@
 
 [Semantic versioning](https://semver.org/spec/v2.0.0.html) is used.
 
-
 ## Unreleased - in development
 ### __Breaking Changes__
 
 ### Added
 - Draw: Adds a new attribute semicolonCSVDelimiter to decide the semicolon is used as the delimiter for exported CSV file. The default value is true.
+- layerTree: Adds a new parameter in portalconfig.tree to decide whether the scale is displayed in the layer tooltip in addition to the name of the corresponding layer
+- print: possibility to edit the output file name in print mode 'plotservice'.
 
 ### Changed
 
@@ -20,6 +21,33 @@
 - Issue #821: Sorting the table in featureLister tool now works again
 - Issue #845: The buffer analysis tool now shows results correctly again
 - Issue #846: The featureLister now shows features of initial visible WFS again
+
+---
+
+## Unreleased - in development
+### __Breaking Changes__
+
+### Added
+- Draw:
+  - Adds a new attribute semicolonCSVDelimiter to decide the semicolon is used as the delimiter for exported CSV file. The default value is true.
+  - Adds a new column epsg for exported CSV file.
+
+### Changed
+
+### Deprecated
+
+### Removed
+
+### Fixed
+- Issue #821: Sorting the table in featureLister tool now works again
+- Issue #845: The buffer analysis tool now shows results correctly again
+
+---
+
+## v2.27.1 - 2022-11-04
+### Fixed
+- DefaultTree: Time tool opens again by changing WMS-Time layer
+- Fixed a bug that caused some layers in the topic tree to disappear from the typ "default"
 
 ---
 
@@ -37,7 +65,7 @@
 - layerInformation: Adds a new parameter with object format in portalconfig to decide if to show individual attributes in Meta data of layer information.
     - showMetaDataRevision: Adds a new parameter with boolean format in layerInformation to decide if to show "Letzte Änderung" in Meta data of layer information.
 - Theme Tree: added a new parameter `filterRefId` in layer as an Index of a configured filter Layer
-
+- DPS-1313: Add alert message if 2-Finger-Pan is configured and 1-Finger-Pan is used on mobile devices
 ### Changed
 - The version of node was updated, must be >= 16.13.2 <= 16.18.0 and the version of npm was updated, must be >= 8.1.2 <=8.19.2.
 - The following NPM packages have been updated:

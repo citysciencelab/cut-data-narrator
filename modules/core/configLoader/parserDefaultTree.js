@@ -150,12 +150,14 @@ const DefaultTreeParser = Parser.extend(/** @lends DefaultTreeParser.prototype *
                 }
                 return baseLayerIds.includes(layer.id) ? "baselayers" : "overlays";
             });
-        let overlayList;
+        let overlayList = [];
 
-        if (typeGroup.overlays || typeGroup.timeLayer) {
-            overlayList = Object.assign(typeGroup.overlays, typeGroup.timeLayer);
+        if (typeGroup.overlays) {
+            overlayList = typeGroup.overlays;
         }
-
+        if (typeGroup.timeLayer) {
+            overlayList = overlayList.concat(typeGroup.timeLayer);
+        }
 
         // Models für die Hintergrundkarten erzeugen
         this.createBaselayer(layerList);

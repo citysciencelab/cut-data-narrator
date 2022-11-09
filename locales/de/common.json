@@ -35,6 +35,9 @@
     "mouseHover": {
         "infoText": "(weitere Objekte. Bitte zoomen.)"
     },
+    "mapRegion": {
+       "twoFingerPanAlert": "Bitte nutzen Sie zum Navigieren und Zoomen in der Karte zwei Finger."
+    },
     "menu": {
         "topics": "Themen",
         "name": "Menü",
@@ -106,7 +109,8 @@
         "levelDown": "Ebene nach unten",
         "externalTechnicalData": "Externe Fachdaten",
         "selectedFeatures": "Auswahl:",
-        "filterIconText": "Filter öffnen"
+        "filterIconText": "Filter öffnen",
+        "scaleText": "Wird im folgenden Maßstabsbereich angezeigt: "
     },
     "date": "Datum",
     "time": "Zeit",
@@ -361,6 +365,8 @@
                 "formatLabel": "Format",
                 "dpiLabel": "DPI",
                 "scaleLabel": "Druckmaßstab",
+                "outputfileTitleLabel": "Dateiname",
+                "validationWarning": "Der Dateiname darf nur Buchstaben und die Sonderzeichen '-' und '_' enthalten.",
                 "withLegendLabel": "Mit Legende",
                 "autoAdjustScale": "Druckmaßstab automatisch anpassen",
                 "printLabel": "Datei erstellen",

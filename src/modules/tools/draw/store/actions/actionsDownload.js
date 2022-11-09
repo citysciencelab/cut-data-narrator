@@ -3,7 +3,7 @@ import {fromCircle} from "ol/geom/Polygon.js";
 import {GeoJSON, GPX} from "ol/format.js";
 import convertFeaturesToKml from "../../../../../../src/utils/convertFeaturesToKml.js";
 import {convertJsonToCsv} from "../../../../../utils/convertJsonToCsv";
-import {setGeometriesToWkt} from "../../utils/setGeometriesToWkt.js";
+import {setCsvAttributes} from "../../utils/setCsvAttributes.js";
 
 import {transform, transformPoint, transformGeometry} from "../../utils/download/transformGeometry";
 
@@ -37,7 +37,21 @@ async function convertFeatures ({state, dispatch}, format) {
  * @returns {void}
  */
 function fileDownloaded ({state, commit}) {
+    if (state.selectedFeature && state.oldStyle && typeof state.selectedFeature.getStyle() !== "function") {
+        resetStyle(state.selectedFeature, state.oldStyle);
+    }
     commit("setDownloadSelectedFormat", state.download.selectedFormat);
+}
+
+/**
+ *
+ * Resets the style of given feature to old style
+ * @param {ol/feature} feature the last selected feature whose style must be restored from oldStyle
+ * @param {ol/style} style the style of last selected feature
+ * @returns {void}
+ */
+function resetStyle (feature, style) {
+    feature.setStyle(style);
 }
 
 /**
@@ -45,7 +59,7 @@ function fileDownloaded ({state, commit}) {
  *
  * @returns {void}
  */
-async function prepareData ({state, commit, dispatch}) {
+async function prepareData ({state, commit, dispatch, rootGetters}) {
     let features = "";
 
     switch (state.download.selectedFormat) {
@@ -59,7 +73,7 @@ async function prepareData ({state, commit, dispatch}) {
             features = await convertFeaturesToKml(state.download.features);
             break;
         case "CSV":
-            features = setGeometriesToWkt(state.download.features);
+            features = setCsvAttributes(state.download.features, rootGetters["Maps/projection"].getCode());
 
             features = Array.isArray(features) ? convertJsonToCsv(features.map(feature => feature.get("attributes")), false, state.semicolonCSVDelimiter) : "";
             break;

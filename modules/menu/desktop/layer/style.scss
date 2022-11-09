@@ -40,6 +40,10 @@ ul#tree {
             color: $white;
         }
     }
+    .title {
+        pointer-events: auto;
+    }
+
     
 }
 .rotate {

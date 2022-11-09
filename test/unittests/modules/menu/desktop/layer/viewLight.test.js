@@ -21,6 +21,7 @@ describe("menu/desktop/layer/viewLight", function () {
             isRemovable: false,
             isSecured: false,
             domId: 0,
+            scaleText: "",
 
             setIsSettingVisible: function (value) {
                 this.isSettingVisible = value;
@@ -86,7 +87,8 @@ describe("menu/desktop/layer/viewLight", function () {
                     levelUpText: "levelUpText",
                     levelDownText: "levelDownText",
                     showTopicText: "showTopicText",
-                    domId: 0
+                    domId: 0,
+                    scaleText: ""
                 };
             }
         };

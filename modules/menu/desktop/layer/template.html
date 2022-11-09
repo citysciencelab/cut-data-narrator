@@ -10,7 +10,7 @@
         <% if (isSecured) { %>
             <span class="bootstrap-icon" title="<%=securedTopicText%>"><i class="bi-lock-fill"></i></span>
         <% } %>
-        <span class="title" title="<%= name %>"><%= name %></span>
+        <span class="title" title="<%= name + '\n' + scaleText%>"><%= name %></span>
     </a>
 
     <% if (typeof treeType === "undefined") { %>
