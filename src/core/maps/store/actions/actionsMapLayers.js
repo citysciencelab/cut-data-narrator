@@ -93,7 +93,7 @@ export default {
      *
      * @param {String} layerId - the layer ID to check loaded status
      *
-     * @return {void}
+     * @return {Promise} Resolves if the given Layer is fully loaded
      */
     async areLayerFeaturesLoaded ({commit, state}, layerId) {
         await new Promise(resolve => {
