@@ -1,7 +1,7 @@
 import {KML} from "ol/format.js";
 import getProjections from "./getProjections";
 import proj4 from "proj4";
-import uniqueId from "./uniqueId";
+import isObject from "./isObject";
 
 const projections = getProjections("EPSG:25832", "EPSG:4326", "32"),
     colorOptions = [
@@ -14,19 +14,6 @@ const projections = getProjections("EPSG:25832", "EPSG:4326", "32"),
         {color: "white", value: [255, 255, 255]},
         {color: "yellow", value: [255, 255, 51]}
     ];
-
-/**
- * Adds a unique styleId to each ExtendedData Element of the converted Features.
- * NOTE: The features can not be printed, if no unique id is present.
- *
- * @param {Document} convertedFeatures The features converted to KML.
- * @returns {void}
- */
-function addUniqueStyleId (convertedFeatures) {
-    Array.from(convertedFeatures.getElementsByTagName("ExtendedData")).forEach(extendedData => {
-        extendedData.getElementsByTagName("value")[0].textContent = uniqueId("");
-    });
-}
 
 /**
  * Checks whether bots arrays are of length 3 and whether their values are equal at the same positions.
@@ -155,6 +142,7 @@ function transformCoordinates (geometry) {
  */
 function convertFeatures (features, format) {
     const convertedFeatures = [];
+    let kml = null;
 
     for (const feature of features) {
         const cloned = feature.clone(),
@@ -167,7 +155,54 @@ function convertFeatures (features, format) {
         cloned.getGeometry().setCoordinates(transCoords, "XY");
         convertedFeatures.push(cloned);
     }
-    return format.writeFeatures(convertedFeatures);
+
+    kml = getKMLWithCustomAttributes(convertedFeatures, format);
+    if (kml === null) {
+        return format.writeFeatures(convertedFeatures);
+    }
+    return new XMLSerializer().serializeToString(kml);
+}
+
+/**
+ * Gets a kml document which has custom attributes from given features added.
+ * @param {ol.Feature[]} features The features.
+ * @param {object} format The format of the features.
+ * @returns {Document|null} The KML Document
+ */
+function getKMLWithCustomAttributes (features, format) {
+    if (!Array.isArray(features) || !isObject(format) || !features.some(feature => typeof feature.get === "function" && feature.get("attributes"))) {
+        return null;
+    }
+    const kml = new DOMParser().parseFromString(format.writeFeatures(features), "text/xml"),
+        placemarks = kml.getElementsByTagName("Placemark");
+
+    if (!placemarks.length) {
+        return null;
+    }
+    features.forEach((feature, idx) => {
+        const attributes = feature.get("attributes"),
+            attributeKeys = isObject(attributes) ? Object.keys(attributes) : [];
+
+        if (!attributeKeys.length) {
+            return;
+        }
+        attributeKeys.forEach(attrKey => {
+            if (placemarks[idx]) {
+                const extendedData = placemarks[idx].querySelector("ExtendedData"),
+                    data = typeof extendedData.querySelector === "function" ? extendedData.querySelector(`Data[name='${attrKey}']`) : undefined,
+                    existingDataNode = typeof extendedData.querySelector === "function" ? extendedData.querySelector(`Data[name='custom-attribute____${attrKey}']`) : undefined;
+
+                if (existingDataNode instanceof Element) {
+                    existingDataNode.remove();
+                }
+
+                if (typeof data.setAttribute === "function") {
+                    data.setAttribute("name", `custom-attribute____${attrKey}`);
+                }
+            }
+        });
+    });
+    return kml;
 }
 
 /**
@@ -228,8 +263,6 @@ export default async function convertFeaturesToKml (features) {
         }
     });
 
-    addUniqueStyleId(convertedFeatures);
-
     Array.from(convertedFeatures.getElementsByTagName("Placemark")).forEach((placemark, i) => {
         if (placemark.getElementsByTagName("Point").length > 0 && skip[i] === false) {
             const style = placemark.getElementsByTagName("Style")[0];
@@ -265,5 +298,6 @@ export default async function convertFeaturesToKml (features) {
 
 export {
     convertFeatures,
-    transformCoordinates
+    transformCoordinates,
+    getKMLWithCustomAttributes
 };

@@ -115,6 +115,12 @@ export default {
             feature.set("attributes", newAttr);
 
             if (Object.keys(newAttr).length) {
+                if (Object.prototype.hasOwnProperty.call(newAttr, "geometry")) {
+                    delete newAttr.geometry;
+                }
+                if (Object.prototype.hasOwnProperty.call(newAttr, "epsg")) {
+                    delete newAttr.epsg;
+                }
                 feature.setProperties(newAttr);
                 this.layer.set("gfiAttributes", gfiAttributes);
             }

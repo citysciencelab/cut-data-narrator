@@ -12,6 +12,7 @@
 - print: possibility to edit the output file name in print mode 'plotservice'.
 
 ### Changed
+- fileImport: If the features of the imported file are removed from MP, the imported file name will be removed from the "Successfully imported" list
 
 ### Deprecated
 

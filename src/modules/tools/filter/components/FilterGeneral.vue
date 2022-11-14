@@ -168,15 +168,14 @@ export default {
         /**
          * Update selectedAccordions array in groups.
          * @param {Number} filterId id which should be added or removed
-         * @param {Boolean} [isFromGroup=true] true if accordion is in a group, false if not
          * @returns {void|undefined} returns undefinied, if filterIds is not an array and not a number.
          */
-        updateSelectedAccordions (filterId, isFromGroup = false) {
+        updateSelectedAccordions (filterId) {
             let selectedFilterIds = [];
 
             if (!this.multiLayerSelector) {
-                selectedFilterIds = this.selectedLayers.includes(filterId) ? [] : [filterId];
-                this.setSelectedAccordions(this.transformLayerConfig(isFromGroup ? this.flattenPreparedLayerGroups : this.layerConfigs.layers, selectedFilterIds));
+                selectedFilterIds = this.selectedAccordions.some(accordion => accordion.filterId === filterId) ? [] : [filterId];
+                this.setSelectedAccordions(this.transformLayerConfig([...this.layerConfigs.layers, ...this.flattenPreparedLayerGroups], selectedFilterIds));
                 return;
             }
 
