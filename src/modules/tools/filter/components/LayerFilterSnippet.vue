@@ -591,6 +591,7 @@ export default {
                         this.mapHandler.toggleWFSLayerInTree(filterId, this.hasUnfixedRules(filterQuestion.rules) || filterQuestion.commands.filterGeometry);
                     }
                     this.api.filter(filterQuestion, filterAnswer => {
+                        this.paging = filterAnswer.paging;
                         if (typeof onsuccess === "function" && !alterLayer) {
                             this.amountOfFilteredItems = false;
                             if (adjustment) {
@@ -599,7 +600,6 @@ export default {
                             return;
                         }
 
-                        this.paging = filterAnswer.paging;
                         if (this.paging?.page === 1) {
                             this.filteredItems = [];
                             this.mapHandler.clearLayer(filterId, this.isExtern());
