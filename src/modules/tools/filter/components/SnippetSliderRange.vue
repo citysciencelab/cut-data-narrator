@@ -116,6 +116,7 @@ export default {
             }
 
             if (adjusting.start) {
+                this.setCurrentSource("adjust");
                 this.setIsAdjusting(true);
                 this.resetMemoryAdjustMinMax();
             }
@@ -134,6 +135,13 @@ export default {
                     }
                     if (typeof this.getMemoryAdjustMax() !== "undefined") {
                         this.currentSliderMax = this.getMemoryAdjustMax();
+                    }
+
+                    if (this.sliderFrom !== this.currentSliderMin) {
+                        this.sliderFrom = this.currentSliderMin;
+                    }
+                    if (this.sliderUntil !== this.currentSliderMax) {
+                        this.sliderUntil = this.currentSliderMax;
                     }
 
                     if (!this.hasRuleSet || this.currentSliderMin > this.sliderFrom) {
@@ -160,11 +168,13 @@ export default {
             if (value > this.sliderUntil) {
                 this.sliderUntil = value;
             }
-            else if (!this.isInitializing && !this.isAdjusting) {
+            else if (!this.isInitializing && !this.isAdjusting && !this.isCurrentSource("adjust")) {
                 this.emitCurrentRule([value, this.sliderUntil]);
             }
-            this.setInputFrom(value);
-            this.setInputUntil(this.sliderUntil);
+            if (!this.isCurrentSource("input")) {
+                this.setInputFrom(value);
+                this.setInputUntil(this.sliderUntil);
+            }
         },
         sliderUntil (val) {
             const value = parseFloat(val);
@@ -172,11 +182,13 @@ export default {
             if (value < this.sliderFrom) {
                 this.sliderFrom = value;
             }
-            else if (!this.isInitializing && !this.isAdjusting) {
+            else if (!this.isInitializing && !this.isAdjusting && !this.isCurrentSource("adjust")) {
                 this.emitCurrentRule([this.sliderFrom, value]);
             }
-            this.setInputFrom(this.sliderFrom);
-            this.setInputUntil(value);
+            if (!this.isCurrentSource("input")) {
+                this.setInputFrom(this.sliderFrom);
+                this.setInputUntil(value);
+            }
         },
         inputFrom (val) {
             if (this.isCurrentSource("slider") || this.isCurrentSource("init")) {
@@ -492,6 +504,7 @@ export default {
          */
         resetSnippet (onsuccess) {
             this.setIsAdjusting(true);
+            this.setCurrentSource("init");
             if (this.visible) {
                 this.setHasRuleSet(false);
                 this.sliderFrom = this.currentSliderMin;
@@ -518,7 +531,7 @@ export default {
          * @returns {void}
          */
         setInputFrom (value) {
-            if (this.isCurrentSource("slider") || this.isCurrentSource("init")) {
+            if (this.isCurrentSource("slider") || this.isCurrentSource("init") || this.isCurrentSource("adjust")) {
                 this.inputFrom = value;
                 return;
             }
@@ -533,7 +546,7 @@ export default {
          * @returns {void}
          */
         setInputUntil (value) {
-            if (this.isCurrentSource("slider") || this.isCurrentSource("init")) {
+            if (this.isCurrentSource("slider") || this.isCurrentSource("init") || this.isCurrentSource("adjust")) {
                 this.inputUntil = value;
                 return;
             }
