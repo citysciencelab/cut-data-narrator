@@ -196,7 +196,7 @@ function getKMLWithCustomAttributes (features, format) {
                     existingDataNode.remove();
                 }
 
-                if (typeof data.setAttribute === "function") {
+                if (typeof data?.setAttribute === "function") {
                     data.setAttribute("name", `custom-attribute____${attrKey}`);
                 }
             }
