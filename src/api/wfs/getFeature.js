@@ -11,8 +11,9 @@ import isObject from "../../utils/isObject";
  * @param {Object} payload - The URL parameters(KVP) to be sent with the request.
  * @param {String} payload.version - The version of the WFS.
  * @param {String|String[]} payload.featureType - Name(s) of the feature type(s).
- * @param {String} [payload.propertyNames] - A comma separated list of feature properties to restrict the request.
- * @param {String} [payload.bbox] - A extent to restrict the request.
+ * @param {String|undefined} [payload.propertyNames] - A comma separated list of feature properties to restrict the request.
+ * @param {String|undefined} [payload.bbox] - A extent to restrict the request.
+ * @param {String|undefined} [payload.srsName] - The SRS to be used for returned features.
  * @param {Function} onerror - A function(error) with error of type Error called in case of an error - if set no console output is triggert.
  * @returns {Promise<Object|String|undefined>} Promise object represents the GetFeature request.
  */
@@ -40,7 +41,7 @@ function getFeatureGET (url, payload, onerror) {
         throw error;
     }
 
-    const {featureType, version, propertyNames, bbox} = payload,
+    const {featureType, version, propertyNames, bbox, srsName} = payload,
         options = {
             url,
             method: "GET",
@@ -54,7 +55,8 @@ function getFeatureGET (url, payload, onerror) {
                 // optional parameters
                 propertyName: propertyNames, // WFS 1.x.x
                 propertyNames, // WFS 2.x.x
-                bbox
+                bbox,
+                srsName
             }
         };
 
@@ -138,7 +140,7 @@ function handleWfsResponse (response, onerror) {
     return response.data;
 }
 
-export {
+module.exports = {
     getFeatureGET,
     getFeaturePOST
 };

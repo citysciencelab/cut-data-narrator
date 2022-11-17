@@ -587,10 +587,11 @@ export default {
             if (this.api instanceof FilterApi && this.mapHandler instanceof MapHandler) {
                 this.mapHandler.activateLayer(filterId, () => {
                     if (Object.prototype.hasOwnProperty.call(this.layerConfig, "wmsRefId")) {
-                        this.mapHandler.toggleWMSLayer(this.layerConfig.wmsRefId, !this.hasUnfixedRules(filterQuestion.rules) && !filterQuestion.commands.searchInMapExtent && !filterQuestion.commands.filterGeometry);
-                        this.mapHandler.toggleWFSLayerInTree(filterId, this.hasUnfixedRules(filterQuestion.rules) || filterQuestion.commands.searchInMapExtent || filterQuestion.commands.filterGeometry);
+                        this.mapHandler.toggleWMSLayer(this.layerConfig.wmsRefId, !this.hasUnfixedRules(filterQuestion.rules) && !filterQuestion.commands.filterGeometry);
+                        this.mapHandler.toggleWFSLayerInTree(filterId, this.hasUnfixedRules(filterQuestion.rules) || filterQuestion.commands.filterGeometry);
                     }
                     this.api.filter(filterQuestion, filterAnswer => {
+                        this.paging = filterAnswer.paging;
                         if (typeof onsuccess === "function" && !alterLayer) {
                             this.amountOfFilteredItems = false;
                             if (adjustment) {
@@ -599,7 +600,6 @@ export default {
                             return;
                         }
 
-                        this.paging = filterAnswer.paging;
                         if (this.paging?.page === 1) {
                             this.filteredItems = [];
                             this.mapHandler.clearLayer(filterId, this.isExtern());
@@ -611,7 +611,6 @@ export default {
                                 && (
                                     this.layerConfig.clearAll || Object.prototype.hasOwnProperty.call(this.layerConfig, "wmsRefId")
                                 )
-                                && !filterQuestion.commands.searchInMapExtent
                                 && !filterQuestion.commands.filterGeometry
                             ) {
                                 if (this.layerConfig.clearAll && Object.prototype.hasOwnProperty.call(this.layerConfig, "wmsRefId")) {

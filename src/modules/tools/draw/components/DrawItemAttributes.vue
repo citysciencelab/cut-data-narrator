@@ -1,6 +1,6 @@
 <script>
 import isObject from "../../../../utils/isObject";
-import {mapActions} from "vuex";
+import {mapGetters, mapActions} from "vuex";
 
 export default {
     name: "DrawItemAttributes",
@@ -30,6 +30,9 @@ export default {
             addKey: {valid: true, message: ""}
         };
     },
+    computed: {
+        ...mapGetters("Tools/Draw", ["oldStyle"])
+    },
     watch: {
         selectedFeature (newVal, oldVal) {
             if (newVal === oldVal) {
@@ -37,6 +40,9 @@ export default {
             }
             this.unifyAttributeToFeature(newVal, this.attributesKeyList);
             this.setAttributesFromFeature();
+            if (isObject(oldVal)) {
+                this.resetStyle(oldVal);
+            }
         },
         attributes: {
             handler () {
@@ -60,9 +66,23 @@ export default {
         this.setAttributesFromFeature();
         this.initAttributesKeyList();
     },
+    beforeDestroy () {
+        this.resetStyle(this.selectedFeature);
+    },
     methods: {
         ...mapActions("Tools/Draw", ["setDownloadFeatures"]),
 
+        /**
+         * Resets the style of selected feature to old style
+         * @param {ol/feature} oldFeature the last selected feature whose style must be restored from oldStyle
+         * @returns {void}
+         */
+        resetStyle (oldFeature) {
+            if (isObject(oldFeature) && typeof oldFeature.getStyle() !== "function") {
+                oldFeature?.getStyle()?.setText();
+                oldFeature.setStyle(this.oldStyle);
+            }
+        },
         /**
          * Unifying the attributes to each feature so that all the features have the same attributes list
          * @param {ol/Feature} feature The drawn feature
@@ -95,6 +115,12 @@ export default {
             feature.set("attributes", newAttr);
 
             if (Object.keys(newAttr).length) {
+                if (Object.prototype.hasOwnProperty.call(newAttr, "geometry")) {
+                    delete newAttr.geometry;
+                }
+                if (Object.prototype.hasOwnProperty.call(newAttr, "epsg")) {
+                    delete newAttr.epsg;
+                }
                 feature.setProperties(newAttr);
                 this.layer.set("gfiAttributes", gfiAttributes);
             }

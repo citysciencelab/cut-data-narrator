@@ -9,6 +9,7 @@ import * as withoutGUI from "./actions/withoutGUIDraw";
 import {calculateCircle} from "../utils/circleCalculations";
 import {createDrawInteraction, createModifyInteraction, createModifyAttributesInteraction, createSelectInteraction} from "../utils/createInteractions";
 import {createStyle} from "../utils/style/createStyle";
+import {createSelectedFeatureTextStyle} from "../utils/style/createSelectedFeatureTextStyle";
 import createTooltipOverlay from "../utils/style/createTooltipOverlay";
 import drawTypeOptions from "./drawTypeOptions";
 import getDrawTypeByGeometryType from "../utils/getDrawTypeByGeometryType";
@@ -406,6 +407,27 @@ const initialState = JSON.parse(JSON.stringify(stateDraw)),
                 // ui reason: this is the short period of time the ol default mark of select interaction is seen at mouse click event of a feature
                 setTimeout(() => {
                     state.selectInteractionModifyAttributes.getFeatures().clear();
+                    const textStyle = createSelectedFeatureTextStyle(state.selectedFeature);
+
+                    commit("setOldStyle", state.selectedFeature.getStyle());
+                    if (typeof state.selectedFeature?.getStyle() === "function") {
+                        let style = state.selectedFeature.getStyle()(state.selectedFeature);
+
+                        if (Array.isArray(style) && style.length > 0) {
+                            style = style[0];
+                        }
+
+                        if (!style?.getText()?.getText()) {
+                            style.setText(textStyle);
+                            state.selectedFeature.setStyle(style);
+                        }
+                    }
+                    else if (typeof state.selectedFeature.getStyle() === "object") {
+                        const style = state.selectedFeature.getStyle();
+
+                        style.setText(textStyle);
+                        state.selectedFeature.setStyle(style);
+                    }
                 }, 300);
             });
         },

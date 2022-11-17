@@ -221,7 +221,8 @@ const symbol = {
         initialWidth: 500,
         initialWidthMobile: 300,
         attributesKeyList: [],
-        semicolonCSVDelimiter: true
+        semicolonCSVDelimiter: true,
+        oldStyle: undefined
     };
 
 export default state;

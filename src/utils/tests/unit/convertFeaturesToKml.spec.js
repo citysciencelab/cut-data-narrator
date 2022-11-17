@@ -107,4 +107,35 @@ describe("src/utils/convertFeaturesToKml.js", () => {
             expect(actions.transformCoordinates(geometry)).to.eql([]);
         });
     });
+
+    describe("getKMLWithCustomAttributes", () => {
+        it("should return null if anything but an array is given as first param", () => {
+            expect(actions.getKMLWithCustomAttributes({})).to.be.null;
+            expect(actions.getKMLWithCustomAttributes(null)).to.be.null;
+            expect(actions.getKMLWithCustomAttributes(undefined)).to.be.null;
+            expect(actions.getKMLWithCustomAttributes(false)).to.be.null;
+            expect(actions.getKMLWithCustomAttributes(true)).to.be.null;
+            expect(actions.getKMLWithCustomAttributes("string")).to.be.null;
+            expect(actions.getKMLWithCustomAttributes(1234)).to.be.null;
+        });
+        it("should return null if no object is given as second param", () => {
+            expect(actions.getKMLWithCustomAttributes([], undefined)).to.be.null;
+            expect(actions.getKMLWithCustomAttributes([], null)).to.be.null;
+            expect(actions.getKMLWithCustomAttributes([], false)).to.be.null;
+            expect(actions.getKMLWithCustomAttributes([], true)).to.be.null;
+            expect(actions.getKMLWithCustomAttributes([], "string")).to.be.null;
+            expect(actions.getKMLWithCustomAttributes([], 1234)).to.be.null;
+        });
+        it("should return null if no entry in array has get('attributes') as function", () => {
+            const arr = [{}];
+
+            expect(actions.getKMLWithCustomAttributes(arr, {})).to.be.null;
+        });
+        it("should return an HTMLDocument if array of features is given and format is set", () => {
+            const arr = [new Feature()];
+
+            arr[0].set("attributes", {});
+            expect(actions.getKMLWithCustomAttributes(arr, new KML())).to.be.an.instanceof(Document);
+        });
+    });
 });
