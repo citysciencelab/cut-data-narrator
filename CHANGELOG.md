@@ -14,7 +14,7 @@
 ### Changed
 - fileImport: If the features of the imported file are removed from MP, the imported file name will be removed from the "Successfully imported" list
 - package.json test:vue: excluded /cosi/node_modules from test paths (now matching masterportal root packages that are not tested)
-- layerSelector: update function calls and bootstrap usage 
+- layerSelector: update function calls and bootstrap usage
 ### Deprecated
 
 ### Removed
@@ -23,10 +23,11 @@
 - Fix some vulnerabilities in dependencies
 - Issue #821: Sorting the table in featureLister tool now works again
 - Issue #845: The buffer analysis tool now shows results correctly again
-- DPS-1355: Fix the position of the unfreeze button which should be over the menu on the touch table view
-- DPS-1355: After a layer is selected from the search results it is now getting added to the layer tree again
+- Fix the position of the unfreeze button which should be over the menu on the touch table view
+- After a layer is selected from the search results it is now getting added to the layer tree again
 - Issue #851: Filter - When the multiLayerSelector attribute is set to false, it no longer prevents the accordions from opening.
 - Issue #853: The quickHelp tool is now configurable for the layer tree
+- Do not show alert message to use 2 Fingers on GFI Window or any other div apart from map if twoFingerPan is configured to true
 ---
 
 ## Unreleased - in development
