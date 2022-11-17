@@ -16,6 +16,10 @@ function compileLayers (originalLayerGroups, originalLayers) {
     originalLayerGroups.forEach(group => {
         const layersOfGroup = removeInvalidLayers(JSON.parse(JSON.stringify(group.layers)));
 
+        if (layersOfGroup.length === 0) {
+            return;
+        }
+
         prepareLayers(layersOfGroup, nextFilter);
         groups.push({
             title: group.title,

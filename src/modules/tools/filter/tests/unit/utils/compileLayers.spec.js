@@ -3,10 +3,25 @@ import {
     removeInvalidLayers,
     convertStringLayersIntoObjects,
     addSnippetArrayIfMissing,
-    createLayerConfigsAssoc
+    createLayerConfigsAssoc,
+    compileLayers
 } from "../../../utils/compileLayers.js";
 
 describe("src/modules/tools/filter/utils/compileLayers.js", () => {
+    describe("compileLayers", () => {
+        it("should skip empty layer groups", () => {
+            const
+                layerGroups = [
+                    {title: "Bevölkerung und Gesellschaft", layers: []},
+                    {
+                        title: "Bildung, Kultur und Sport",
+                        layers: [{layerId: "12868", title: "Sportstätten"}]
+                    }
+                ];
+
+            expect(compileLayers(layerGroups, []).groups).to.have.lengthOf(1);
+        });
+    });
     describe("createLayerConfigsAssoc", () => {
         it("should create a associative list of layers", () => {
             const layers = [
