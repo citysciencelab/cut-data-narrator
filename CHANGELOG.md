@@ -19,6 +19,7 @@
 ### Removed
 
 ### Fixed
+- Filter throws error when a layerGroup has an empty layers list
 - Issue #821: Sorting the table in featureLister tool now works again
 - Issue #845: The buffer analysis tool now shows results correctly again
 
