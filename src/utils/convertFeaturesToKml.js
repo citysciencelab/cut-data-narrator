@@ -160,6 +160,7 @@ function convertFeatures (features, format) {
     if (kml === null) {
         return format.writeFeatures(convertedFeatures);
     }
+
     return new XMLSerializer().serializeToString(kml);
 }
 
@@ -173,6 +174,21 @@ function getKMLWithCustomAttributes (features, format) {
     if (!Array.isArray(features) || !isObject(format) || !features.some(feature => typeof feature.get === "function" && feature.get("attributes"))) {
         return null;
     }
+
+    features.forEach(feature => {
+        if (typeof feature.getStyle() === "function") {
+            const styles = feature.getStyle()(feature);
+
+            if (Array.isArray(styles) && styles.length > 0) {
+                const style = styles[styles.length - 1];
+
+                if (style?.getText()?.getText() === "*") {
+                    style.setText();
+                }
+            }
+        }
+    });
+
     const kml = new DOMParser().parseFromString(format.writeFeatures(features), "text/xml"),
         placemarks = kml.getElementsByTagName("Placemark");
 
@@ -196,7 +212,7 @@ function getKMLWithCustomAttributes (features, format) {
                     existingDataNode.remove();
                 }
 
-                if (typeof data.setAttribute === "function") {
+                if (typeof data?.setAttribute === "function") {
                     data.setAttribute("name", `custom-attribute____${attrKey}`);
                 }
             }

@@ -37,21 +37,7 @@ async function convertFeatures ({state, dispatch}, format) {
  * @returns {void}
  */
 function fileDownloaded ({state, commit}) {
-    if (state.selectedFeature && state.oldStyle && typeof state.selectedFeature.getStyle() !== "function") {
-        resetStyle(state.selectedFeature, state.oldStyle);
-    }
     commit("setDownloadSelectedFormat", state.download.selectedFormat);
-}
-
-/**
- *
- * Resets the style of given feature to old style
- * @param {ol/feature} feature the last selected feature whose style must be restored from oldStyle
- * @param {ol/style} style the style of last selected feature
- * @returns {void}
- */
-function resetStyle (feature, style) {
-    feature.setStyle(style);
 }
 
 /**
@@ -133,6 +119,13 @@ function setDownloadFeatures ({state, commit, dispatch, rootGetters}) {
         // If the feature is invisible from filter, the style will be reset by printing.
         if (!feature.get("isVisible") && feature.get("invisibleStyle")) {
             feature.setStyle(feature.get("invisibleStyle"));
+        }
+
+        if (state.oldStyle && typeof state.selectedFeature?.get === "function"
+            && drawnFeature.get("styleId") === state.selectedFeature.get("styleId")
+            && (typeof drawnFeature.get("styleId") === "number" || typeof drawnFeature.get("styleId") === "string")
+        ) {
+            feature.setStyle(state.oldStyle);
         }
 
         if (geometry instanceof Circle) {
