@@ -83,7 +83,6 @@ export default {
                 this.$el.remove();
             }
         });
-
         if (Array.isArray(this.layerConfigs.groups) && this.layerConfigs.groups.length > 0) {
             this.layerConfigs.groups.forEach(layerGroup => {
                 if (isObject(layerGroup)) {

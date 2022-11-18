@@ -16,16 +16,14 @@ function compileLayers (originalLayerGroups, originalLayers) {
     originalLayerGroups.forEach(group => {
         const layersOfGroup = removeInvalidLayers(JSON.parse(JSON.stringify(group.layers)));
 
-        if (layersOfGroup.length === 0) {
-            return;
-        }
-
         prepareLayers(layersOfGroup, nextFilter);
         groups.push({
             title: group.title,
             layers: layersOfGroup
         });
-        nextFilterId = layersOfGroup[layersOfGroup.length - 1].filterId + 1;
+        nextFilterId = layersOfGroup.length > 0 ?
+            layersOfGroup[layersOfGroup.length - 1].filterId + 1 :
+            nextFilterId + 1;
     });
     prepareLayers(layers, nextFilter);
     return {groups, layers};

@@ -9,7 +9,7 @@ import {
 
 describe("src/modules/tools/filter/utils/compileLayers.js", () => {
     describe("compileLayers", () => {
-        it("should skip empty layer groups", () => {
+        it("should compile empty layer groups", () => {
             const
                 layerGroups = [
                     {title: "Bevölkerung und Gesellschaft", layers: []},
@@ -19,7 +19,8 @@ describe("src/modules/tools/filter/utils/compileLayers.js", () => {
                     }
                 ];
 
-            expect(compileLayers(layerGroups, []).groups).to.have.lengthOf(1);
+            expect(compileLayers(layerGroups, []).groups).to.have.lengthOf(2);
+            expect(compileLayers(layerGroups, []).groups[0].layers).to.have.lengthOf(0);
         });
     });
     describe("createLayerConfigsAssoc", () => {
