@@ -26,6 +26,7 @@
 - DPS-1355: Fix the position of the unfreeze button which should be over the menu on the touch table view
 - DPS-1355: After a layer is selected from the search results it is now getting added to the layer tree again
 - Issue #851: Filter - When the multiLayerSelector attribute is set to false, it no longer prevents the accordions from opening.
+- Issue #853: The quickHelp tool is now configurable for the layer tree
 ---
 
 ## Unreleased - in development
