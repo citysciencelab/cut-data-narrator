@@ -3712,14 +3712,15 @@ Informationen über den WFS-Dienst, welcher angefragt werden soll.
 Es muss entweder `layerId` oder `restLayerId` definiert sein. Wenn `layerId` verwendet wird, dann muss zusätzlich der Layer in der **[config.json](config.json.de.md)** konfiguriert werden.
 Falls beide Parameter gesetzt wurden, dann wird `restLayerId` verwendet.
 
-|Name|Verpflichtend|Typ|Default|Beschreibung|Expert|
-|----|-------------|---|-------|------------|------|
-|gazetteer|nein|**[gazetteer](#markdown-header-portalconfigmenutoolwfssearchsearchinstancerequestconfiggazetteer)**||Legt fest, ob der verwendete WFS-Dienst ein WFS-G ist, welcher anders geparsed werden muss.|false|
-|layerId|nein|String||Id des WFS Dienstes, welcher angefragt werden soll. Informationen werden aus der **[services.json](services.json.de.md)** bezogen.|false|
-|likeFilter|nein|**[likeFilter](#markdown-header-portalconfigmenutoolwfssearchsearchinstancerequestconfiglikefilter)**|{"wildCard": "*", "singleChar": "#", "escape": "!"}|Die Konfiguration des Services hinsichtlich des like Filters.|true|
-|maxFeatures|nein|Number/String|8|Maximale Anzahl an Features, welche der Dienst zurückgeben soll. Alternativ kann auch der String `showAll` übergeben werden, um alle Ergebnisse anzuzeigen.|false|
-|restLayerId|nein|String||Id des WFS Dienstes, welcher angefragt werden soll. Informationen werden aus der **[rest-services.json](rest-services.json.de.md)** bezogen.|false|
-|storedQueryId|nein|String||Die Id der gespeicherten Anfrage (Stored Query) des WFS Dienstes, welche für die Anfrage verwendet werden soll. Es wird angenommen, dass ein WFS@2.0.0 verwendet wird, falls dieses Feld gesetzt wurde.|false|
+|Name|Verpflichtend|Typ| Default                                                                                                                                                                                                 |Beschreibung|Expert|
+|----|-------------|---|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------|------|
+|gazetteer|nein|**[gazetteer](#markdown-header-portalconfigmenutoolwfssearchsearchinstancerequestconfiggazetteer)**|| Legt fest, ob der verwendete WFS-Dienst ein WFS-G ist, welcher anders geparsed werden muss.                                                                                                             |false|
+|layerId|nein|String|| Id des WFS Dienstes, welcher angefragt werden soll. Informationen werden aus der **[services.json](services.json.de.md)** bezogen.                                                                      |false|
+|likeFilter|nein|**[likeFilter](#markdown-header-portalconfigmenutoolwfssearchsearchinstancerequestconfiglikefilter)**| {"wildCard": "*", "singleChar": "#", "escape": "!"}                                                                                                                                                     |Die Konfiguration des Services hinsichtlich des like Filters.|true|
+|maxFeatures|nein|Number/String| 8                                                                                                                                                                                                       |Maximale Anzahl an Features, welche der Dienst zurückgeben soll. Alternativ kann auch der String `showAll` übergeben werden, um alle Ergebnisse anzuzeigen.|false|
+|restLayerId|nein|String|| Id des WFS Dienstes, welcher angefragt werden soll. Informationen werden aus der **[rest-services.json](rest-services.json.de.md)** bezogen.                                                            |false|
+|responseProjection|no|String|| Die erwartete Projektion der Koordinaten in der Antwort des angefragten Diensts. Sobald sich dieser von der Kartenprojektion unterscheidet, findet eine Konvertierung statt.                            |false|
+|storedQueryId|nein|String|| Die Id der gespeicherten Anfrage (Stored Query) des WFS Dienstes, welche für die Anfrage verwendet werden soll. Es wird angenommen, dass ein WFS@2.0.0 verwendet wird, falls dieses Feld gesetzt wurde. |false|
 
 **Beispiel**
 
@@ -3727,7 +3728,8 @@ Falls beide Parameter gesetzt wurden, dann wird `restLayerId` verwendet.
 {
     "requestConfig": {
         "restLayerId": "1234",
-        "storedQueryId": "Flurstuecke"
+        "storedQueryId": "Flurstuecke",
+        "responseProjection": "EPSG:4326"
     }
 }
 ```

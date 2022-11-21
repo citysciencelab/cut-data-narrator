@@ -10,6 +10,7 @@
 - Draw: Adds a new attribute semicolonCSVDelimiter to decide the semicolon is used as the delimiter for exported CSV file. The default value is true.
 - layerTree: Adds a new parameter in portalconfig.tree to decide whether the scale is displayed in the layer tooltip in addition to the name of the corresponding layer
 - print: possibility to edit the output file name in print mode 'plotservice'.
+- wfsSearch: config parameter 'responseProjection' to make it possible to convert the projection of the coordinates in the requested service response.
 
 ### Changed
 - fileImport: If the features of the imported file are removed from MP, the imported file name will be removed from the "Successfully imported" list
