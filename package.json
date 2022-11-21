@@ -19,7 +19,7 @@
     "start:ssl": "webpack-dev-server --config devtools/webpack.dev.js --https --cert devtools/certificate/localhost.pem --key devtools/certificate/localhost.key",
     "test": "mochapack --webpack-config devtools/webpack.test.js --bail --recursive --timeout 15000 ./test/unittests/**/*.test.js ./addons/**/unittests/*.test.js",
     "test:watch": "npm run test -- --watch",
-    "test:vue": "mochapack --recursive --webpack-config devtools/webpack.vue.test.js './addons/!(cosi)/**/*.spec.js' './addons/cosi/!(node_modules)/**/*.spec.js'",
+    "test:vue": "mochapack --recursive --webpack-config devtools/webpack.vue.test.js './src/**/*.spec.js' './addons/!(cosi)/**/*.spec.js' './addons/cosi/!(node_modules)/**/*.spec.js'",
     "test:vue:watch": "npm run test:vue -- --watch",
     "test:all": "npm run test && npm run test:vue",
     "test:all:watch": "npm-run-all --parallel test:watch test:vue:watch",
