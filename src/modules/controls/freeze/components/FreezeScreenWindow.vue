@@ -9,7 +9,6 @@ export default {
     name: "FreezeScreenWindow",
     data: function () {
         return {
-            isTable: this.uiStyle === "TABLE",
             posValues: ""
         };
     },
@@ -19,11 +18,13 @@ export default {
         cssVars () {
             const rotationValue = document.getElementById("table-navigation").className.match(/\d+/g)[0];
             let xVal,
-                yVal;
+                yVal,
+                xDif = 0;
 
             if (rotationValue === "0") {
-                xVal = 50;
+                xVal = 45;
                 yVal = 50;
+                xDif = 10;
             }
             else if (rotationValue === "90") {
                 xVal = 5;
@@ -40,11 +41,14 @@ export default {
 
             return {
                 "--topValue": Math.round(document.getElementById("table-navigation").getBoundingClientRect().top) + "px",
-                "--leftValue": Math.round(document.getElementById("table-navigation").getBoundingClientRect().left) + "px",
+                "--leftValue": Math.round(document.getElementById("table-navigation").getBoundingClientRect().left - xDif) + "px",
                 "--rotationValue": rotationValue + "deg",
                 "--xOrigin": xVal + "%",
                 "--yOrigin": yVal + "%"
             };
+        },
+        isTable () {
+            return this.uiStyle === "TABLE";
         }
     },
     mounted () {

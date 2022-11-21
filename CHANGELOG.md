@@ -22,7 +22,7 @@
 - Fix some vulnerabilities in dependencies
 - Issue #821: Sorting the table in featureLister tool now works again
 - Issue #845: The buffer analysis tool now shows results correctly again
-
+- DPS-1355: Fix the position of the unfreeze button which should be over the menu on the touch table view
 ---
 
 ## Unreleased - in development
