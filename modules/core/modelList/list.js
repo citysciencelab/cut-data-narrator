@@ -1001,11 +1001,12 @@ const ModelList = Backbone.Collection.extend(/** @lends ModelList.prototype */{
     showModelInTree: function (modelId) {
         const mode = Radio.request("Map", "getMapMode"),
             lightModel = Radio.request("Parser", "getItemByAttributes", {id: modelId}),
-            isMobile = Radio.request("Util", "isViewMobile");
+            isMobile = Radio.request("Util", "isViewMobile"),
+            isTable = Radio.request("Util", "getUiStyle") === "TABLE";
 
         let dropdown;
 
-        if (!isMobile) {
+        if (!isMobile && !isTable) {
             dropdown = Dropdown.getInstance("#root li:first-child > .dropdown-toggle");
             // open the layerTree
             dropdown.show();
@@ -1023,7 +1024,7 @@ const ModelList = Backbone.Collection.extend(/** @lends ModelList.prototype */{
         }
 
         // für DIPAS Table Ansicht
-        if (Radio.request("Util", "getUiStyle") === "TABLE") {
+        if (isTable) {
             Radio.request("ModelList", "getModelByAttributes", {id: modelId}).setIsJustAdded(true);
 
             const collapseElement = document.querySelector("#table-nav-layers-panel"),

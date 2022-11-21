@@ -23,6 +23,7 @@
 - Issue #821: Sorting the table in featureLister tool now works again
 - Issue #845: The buffer analysis tool now shows results correctly again
 - DPS-1355: Fix the position of the unfreeze button which should be over the menu on the touch table view
+- DPS-1355: After a layer is selected from the search results it is now getting added to the layer tree again
 ---
 
 ## Unreleased - in development
