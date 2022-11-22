@@ -31,6 +31,10 @@ export default {
                 this.sliderValue = 0;
             }
 
+            if (this.sliderOptionCount === this.sliderValue) {
+                this.playing = false;
+            }
+
             const layer = Radio.request(
                     "ModelList",
                     "getModelByAttributes",
