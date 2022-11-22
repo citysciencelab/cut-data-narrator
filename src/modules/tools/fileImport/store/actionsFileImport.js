@@ -399,7 +399,10 @@ export default {
         }
 
         try {
-            features = format.readFeatures(datasrc.raw);
+            features = format.readFeatures(datasrc.raw, {
+                dataProjection: getCrsPropertyName(datasrc.raw),
+                featureProjection: rootGetters["Maps/projectionCode"]
+            });
         }
         catch (ex) {
             console.warn(ex);
@@ -536,8 +539,6 @@ export default {
         features = checkIsVisibleSetting(features);
 
         features.forEach(feature => {
-            let geometries;
-
             if (isObject(feature.get("attributes"))) {
                 Object.keys(feature.get("attributes")).forEach(key => {
                     gfiAttributes[key] = key;
@@ -554,17 +555,6 @@ export default {
 
                 feature.setGeometry(new Circle(circleCenter, circleRadius));
             }
-
-            if (feature.getGeometry().getType() === "GeometryCollection") {
-                geometries = feature.getGeometry().getGeometries();
-            }
-            else {
-                geometries = [feature.getGeometry()];
-            }
-
-            geometries.forEach(geometry => {
-                geometry.transform("EPSG:4326", rootGetters["Maps/projectionCode"]);
-            });
 
             feature.set("source", fileName);
             vectorLayer.getSource().addFeature(feature);
