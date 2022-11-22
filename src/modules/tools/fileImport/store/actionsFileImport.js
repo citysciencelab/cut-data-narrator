@@ -8,6 +8,7 @@ import Icon from "ol/style/Icon";
 import {createDrawStyle} from "../../draw/utils/style/createDrawStyle";
 import isObject from "../../../../utils/isObject";
 import {createEmpty as createEmptyExtent, extend} from "ol/extent";
+import uniqueId from "../../../../utils/uniqueId";
 
 const supportedFormats = {
     kml: new KML({extractStyles: true, iconUrlFunction: (url) => proxyGstaticUrl(url)}),
@@ -340,7 +341,11 @@ export default {
                     feature.set("source", fileName);
                 });
             }
+            if (typeof feature.get === "function" && typeof feature.get("styleId") === "undefined") {
+                feature.set("styleId", uniqueId(""));
+            }
         });
+
         features = checkIsVisibleSetting(features);
 
         vectorLayer.getSource().addFeatures(features);
