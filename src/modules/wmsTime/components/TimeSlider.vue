@@ -58,12 +58,16 @@ export default {
         animate () {
             const index = this.nextIndex();
 
-            if (index === this.timeRange.length) {
+            if (index === this.sliderOptionCount) {
                 this.playing = false;
-                this.clearPlayback();
-                return;
             }
-            this.sliderValue = index;
+
+            if (index === this.timeRange.length) {
+                this.clearPlayback();
+            }
+            else {
+                this.sliderValue = index;
+            }
         },
         clearPlayback () {
             clearInterval(this.playbackHandle);
