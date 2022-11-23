@@ -13,12 +13,13 @@
 
 ### Changed
 - fileImport: If the features of the imported file are removed from MP, the imported file name will be removed from the "Successfully imported" list
-- package.json test:vue: excluded /cosi/node_modules from test paths (now matching masterportal root packages that are not tested) 
+- package.json test:vue: excluded /cosi/node_modules from test paths (now matching masterportal root packages that are not tested)
 ### Deprecated
 
 ### Removed
 
 ### Fixed
+- Fix some vulnerabilities in dependencies
 - Issue #821: Sorting the table in featureLister tool now works again
 - Issue #845: The buffer analysis tool now shows results correctly again
 
