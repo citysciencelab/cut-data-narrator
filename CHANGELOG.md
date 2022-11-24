@@ -18,6 +18,18 @@
 - package.json test:vue: excluded /cosi/node_modules from test paths (now matching masterportal root packages that are not tested)
 - layerSelector: update function calls and bootstrap usage
 - The version of node was updated, must be >= 16.13.2 <= 16.18.1
+- The following NPM packages have been updated:
+    - dependencies:
+        - @masterportal/masterportalapi: 2.9.0 to 2.11.0
+        - bootstrap: 5.2.2 to 5.2.3
+        - bootstrap-icons: 1.9.1 to 1.10.2
+        - vue: 2.7.8 to 2.7.14
+        - vue-template-compiler: 2.7.8 to 2.7.14
+    - devDependencies
+        - chai: 4.3.6 to 4.3.7
+        - husky: 8.0.1 to 8.0.2
+        - mocha: 10.0.0 to 10.1.0,
+        - sinon: 14.0.0 to 14.0.2
 
 ### Deprecated
 
