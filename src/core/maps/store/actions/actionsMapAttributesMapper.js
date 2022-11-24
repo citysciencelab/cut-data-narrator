@@ -20,8 +20,10 @@ export default {
         dispatch("registerListener", {type: "click", listener: "updateClick", listenerType: "dispatch"});
 
         if (rootState.configJson.Portalconfig.mapView?.twoFingerPan) {
-            window.addEventListener("touchmove", (event) => dispatch("oneFingerDragMessage", event));
-            window.addEventListener("touchend", (event) => dispatch("oneFingerDragMessageEnd", event));
+            const mapDiv = document.getElementById("map");
+
+            mapDiv.addEventListener("touchmove", (event) => dispatch("oneFingerDragMessage", event));
+            mapDiv.addEventListener("touchend", (event) => dispatch("oneFingerDragMessageEnd", event));
         }
 
         dispatch("setViewAttributes", map.getView());
@@ -219,6 +221,7 @@ export default {
      * Removes the touchmove and touchend event listeners added for the two finger pan alert message
      * @param {Object} param.dispatch the dispatch
      * @param {Object} param.commit the commit
+     * @param {Element} mapDiv html element of the map
      * @param {Event} event touchend
      * @returns {void}
      */
@@ -229,7 +232,10 @@ export default {
         if (event.targetTouches?.length === 0) {
             commit("setTwoFingerPanStart", false);
         }
-        window.removeEventListener("touchmove", dispatch("oneFingerDragMessage"));
-        window.removeEventListener("touchend", dispatch("oneFingerDragMessageEnd"));
+
+        const mapDiv = document.getElementById("map");
+
+        mapDiv.removeEventListener("touchmove", dispatch("oneFingerDragMessage"));
+        mapDiv.removeEventListener("touchend", dispatch("oneFingerDragMessageEnd"));
     }
 };

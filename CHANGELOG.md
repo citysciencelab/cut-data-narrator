@@ -8,40 +8,30 @@
 
 ### Added
 - Draw: Adds a new attribute semicolonCSVDelimiter to decide the semicolon is used as the delimiter for exported CSV file. The default value is true.
+- Adds a new column epsg for exported CSV file.
 - layerTree: Adds a new parameter in portalconfig.tree to decide whether the scale is displayed in the layer tooltip in addition to the name of the corresponding layer
 - print: possibility to edit the output file name in print mode 'plotservice'.
 - wfsSearch: config parameter 'responseProjection' to make it possible to convert the projection of the coordinates in the requested service response.
 
 ### Changed
 - fileImport: If the features of the imported file are removed from MP, the imported file name will be removed from the "Successfully imported" list
+- package.json test:vue: excluded /cosi/node_modules from test paths (now matching masterportal root packages that are not tested)
+- layerSelector: update function calls and bootstrap usage
 
 ### Deprecated
 
 ### Removed
 
 ### Fixed
+- Fix some vulnerabilities in dependencies
 - Issue #821: Sorting the table in featureLister tool now works again
+- Issue #844: fileImport now converts the projection of geoJSON if necessary
 - Issue #845: The buffer analysis tool now shows results correctly again
-
----
-
-## Unreleased - in development
-### __Breaking Changes__
-
-### Added
-- Draw:
-  - Adds a new attribute semicolonCSVDelimiter to decide the semicolon is used as the delimiter for exported CSV file. The default value is true.
-  - Adds a new column epsg for exported CSV file.
-
-### Changed
-
-### Deprecated
-
-### Removed
-
-### Fixed
-- Issue #821: Sorting the table in featureLister tool now works again
-- Issue #845: The buffer analysis tool now shows results correctly again
+- Issue #851: Filter - When the multiLayerSelector attribute is set to false, it no longer prevents the accordions from opening.
+- Issue #853: The quickHelp tool is now configurable for the layer tree
+- Fix the position of the unfreeze button which should be over the menu on the touch table view
+- After a layer is selected from the search results it is now getting added to the layer tree again
+- Do not show alert message to use 2 Fingers on GFI Window or any other div apart from map if twoFingerPan is configured to true
 
 ---
 
@@ -67,6 +57,7 @@
     - showMetaDataRevision: Adds a new parameter with boolean format in layerInformation to decide if to show "Letzte Änderung" in Meta data of layer information.
 - Theme Tree: added a new parameter `filterRefId` in layer as an Index of a configured filter Layer
 - DPS-1313: Add alert message if 2-Finger-Pan is configured and 1-Finger-Pan is used on mobile devices
+
 ### Changed
 - The version of node was updated, must be >= 16.13.2 <= 16.18.0 and the version of npm was updated, must be >= 8.1.2 <=8.19.2.
 - The following NPM packages have been updated:
