@@ -14,7 +14,7 @@
     <div class="col-5 px-0">
     <% if (id === "Baselayer") { %>
         <span class="catalog_buttons d-flex gap-1 justify-content-end">
-            <% if (this.model.get("quickHelp") === true) { %>
+            <% if (this.model.get("quickHelp") === true || typeof this.model.get("quickHelp") === "object") { %>
                 <span class="bootstrap-icon question-icon tabable" tabindex="0" data-bs-toggle="tooltip" data-bs-placement="bottom" title="<%= topicsHelpText%>"><i class="bi-question-circle-fill"></i></span>
             <% } %>
             <% if (backgroundImage) { %>
