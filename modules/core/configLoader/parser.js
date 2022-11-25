@@ -14,13 +14,11 @@ const Parser = Backbone.Model.extend(/** @lends Parser.prototype */{
         category: "Opendata",
         selectionIDX: -1,
         onlyDesktopTools: [
-            "measure",
             "print",
             "kmlimport",
             "fileImport",
             "draw",
             "featureLister",
-            "addWMS",
             "shadow"
         ],
         extendedLayerIdAssoc: {}
