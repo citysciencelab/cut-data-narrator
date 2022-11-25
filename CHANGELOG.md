@@ -15,6 +15,7 @@
 - Bootstrap grid-breakpoints are now configurable in `variables.scss`. For switching between mobile and desktop the grid-breakpoint `md` is used.
 - The attribute `onlyDesktop` can now be used to display tools mobile by setting it to `false` for a tool.
 - Filter: New parameter 'searchInMapExtentPreselected' was added. It will preselect the checkbox searchInMapExtent if configured.
+- Missing changelog details to v2.26.0 considering oblique viewer possibilities.
 
 ### Changed
 - fileImport: If the features of the imported file are removed from MP, the imported file name will be removed from the "Successfully imported" list
@@ -155,6 +156,8 @@
 ---
 
 ## v2.26.0 - 2022-10-05
+### __Breaking Changes__
+The control `buttonOblique` was removed. From now, the new addon [obliqueViewer](https://bitbucket.org/geowerkstatt-hamburg/addons/src/dev/obliqueViewer/) allows to configure oblique viewer. Further details: [obliqueViewer documentation](https://bitbucket.org/geowerkstatt-hamburg/addons/src/dev/obliqueViewer/doc/config.json.md)
 ### Added
 - Draw-Tool:
     - if there are attributes set on the feature of drawn layer, after clicking on the feature, the attributes will be shown in standard gfi theme.
@@ -189,6 +192,7 @@
 
 ### Removed
 - The image of the default MapMarker was removed from img folder.
+- The control `buttonOblique` was removed.
 
 ### Fixed
 - Issue #765: mobile: order of menu entries at first level does no longer change after selected an entry and went back to menu.
