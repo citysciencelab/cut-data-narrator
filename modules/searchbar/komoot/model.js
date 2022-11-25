@@ -1,5 +1,5 @@
 import "../model";
-import {transformToMapProjection} from "@masterportal/masterportalapi/src/crs";
+import crs from "@masterportal/masterportalapi/src/crs";
 import store from "../../../src/app-store";
 
 const KomootModel = Backbone.Model.extend(/** @lends KomootModel.prototype */{
@@ -206,7 +206,7 @@ const KomootModel = Backbone.Model.extend(/** @lends KomootModel.prototype */{
             metaName = this.getMetadataString(hit, display);
 
             coordinates = hit.geometry.coordinates;
-            center = transformToMapProjection(Radio.request("Map", "getMap"), "WGS84", [parseFloat(coordinates[0]), parseFloat(coordinates[1])]);
+            center = crs.transformToMapProjection(Radio.request("Map", "getMap"), "WGS84", [parseFloat(coordinates[0]), parseFloat(coordinates[1])]);
 
             Radio.trigger("Searchbar", "pushHits", "hitList", {
                 name: display,
