@@ -29,8 +29,8 @@
 - Issue #845: The buffer analysis tool now shows results correctly again
 - Issue #846: The featureLister now shows features of initial visible WFS again
 - Issue #851: Filter - When the multiLayerSelector attribute is set to false, it no longer prevents the accordions from opening.
-- Issue #854: MouseoverHover: Change mouseover text information color from light to dark grey.
 - Issue #853: The quickHelp tool is now configurable for the layer tree
+- Issue #854: MouseoverHover: change mouseover text information color from light to dark grey.
 - Fix the position of the unfreeze button which should be over the menu on the touch table view
 - After a layer is selected from the search results it is now getting added to the layer tree again
 - Do not show alert message to use 2 Fingers on GFI Window or any other div apart from map if twoFingerPan is configured to true
