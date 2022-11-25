@@ -3774,6 +3774,7 @@ If both are defined `restLayerId` is used.
 |likeFilter|no|**[likeFilter](#markdown-header-portalconfigmenutoolwfssearchsearchinstancerequestconfiglikefilter)**|{"wildCard": "*", "singleChar": "#", "escape": "!"}|The configuration of the service for the like filter.|true|
 |maxFeatures|no|Number/String|8|Maximum amount of features that are supposed to be returned from the service. Alternatively, the String `showAll` can be assigned to `maxFeatures` to load all features.|false|
 |restLayerId|no|String||Id of the WFS service that should be queried. Information is fetched from **[rest-services.json](rest-services.json.md)**.|false|
+|responseProjection|no|String||The expected projection of the coordinates in the response of the requested service. If it doesn't match the map projection a conversion will happen. |false|
 |storedQueryId|no|String||The id of the Stored Query of the WFS that should be used to query the service. If this field is set, it is assumed that a WFS@2.0.0 is used.|false|
 
 **Example**
@@ -3782,7 +3783,8 @@ If both are defined `restLayerId` is used.
 {
     "requestConfig": {
         "restLayerId": "1234",
-        "storedQueryId": "Flurstuecke"
+        "storedQueryId": "Flurstuecke",
+        "responseProjection": "EPSG:4326"
     }
 }
 ```

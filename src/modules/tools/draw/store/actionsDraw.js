@@ -403,7 +403,6 @@ const initialState = JSON.parse(JSON.stringify(stateDraw)),
                 const feature = event.selected[event.selected.length - 1];
 
                 dispatch("setAsCurrentFeatureAndApplyStyleSettings", feature);
-
                 // ui reason: this is the short period of time the ol default mark of select interaction is seen at mouse click event of a feature
                 setTimeout(() => {
                     state.selectInteractionModifyAttributes.getFeatures().clear();

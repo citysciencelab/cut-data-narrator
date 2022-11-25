@@ -104,7 +104,7 @@ export default {
         async search () {
             this.setSearched(true);
             LoaderOverlay.show();
-            const features = await searchFeatures(this.$store, this.currentInstance, this.service);
+            const features = await searchFeatures(this.currentInstance, this.service);
 
             LoaderOverlay.hide();
 

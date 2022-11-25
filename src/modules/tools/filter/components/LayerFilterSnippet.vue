@@ -591,6 +591,7 @@ export default {
                         this.mapHandler.toggleWFSLayerInTree(filterId, this.hasUnfixedRules(filterQuestion.rules) || filterQuestion.commands.filterGeometry);
                     }
                     this.api.filter(filterQuestion, filterAnswer => {
+                        this.paging = filterAnswer.paging;
                         if (typeof onsuccess === "function" && !alterLayer) {
                             this.amountOfFilteredItems = false;
                             if (adjustment) {
@@ -599,7 +600,6 @@ export default {
                             return;
                         }
 
-                        this.paging = filterAnswer.paging;
                         if (this.paging?.page === 1) {
                             this.filteredItems = [];
                             this.mapHandler.clearLayer(filterId, this.isExtern());
@@ -1033,14 +1033,13 @@ export default {
                     :is-parent="isParentSnippet(snippet.snippetId)"
                     :title="getTitle(snippet, layerConfig.layerId)"
                     :min-value="snippet.minValue"
-                    :max-value="snippet.maxValue"
-                    :operator="snippet.operator"
                     :prechecked="snippet.prechecked"
                     :fixed-rules="fixedRules"
                     :snippet-id="snippet.snippetId"
                     :timeout-slider="getTimeoutSlider(snippet)"
                     :timeout-input="getTimeoutInput(snippet)"
                     :visible="snippet.visible"
+                    :value="snippet.value"
                     @changeRule="changeRule"
                     @deleteRule="deleteRule"
                     @setSnippetPrechecked="setSnippetPrechecked"

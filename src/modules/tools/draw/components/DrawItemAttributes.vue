@@ -196,7 +196,9 @@ export default {
             this.attributes.push(attr);
             this.attributeKey = "";
             this.attributeValue = "";
-            this.setDownloadFeatures();
+            this.$nextTick(() => {
+                this.setDownloadFeatures();
+            });
         },
         /**
          * Removes attribute row from the local attributes array and removes the attribute from the feature.
