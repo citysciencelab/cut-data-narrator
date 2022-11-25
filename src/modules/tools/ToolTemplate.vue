@@ -372,11 +372,11 @@ export default {
         min-width: 280px;
         width: var(--initialToolWidth);
 
-        @media (max-width: 400px) {
+        @include media-breakpoint-down(sm) {
             right: 20px;
         }
 
-        @media (max-width: 767px) {
+        @include media-breakpoint-down(md) {
             width: var(--initialToolWidthMobile);
         }
 
@@ -455,7 +455,7 @@ export default {
         height: 100%;
         width: var(--initialToolWidth);
 
-        @media (max-width: 767px) {
+        @include media-breakpoint-down(md) {
             width: var(--initialToolWidthMobile);
         }
 
@@ -481,7 +481,7 @@ export default {
     }
 
 
-    @media (max-width: 767px) {
+    @include media-breakpoint-down(md) {
         .tool-window { right: 0; }
         #tool-sidebar-vue {
             position: fixed;

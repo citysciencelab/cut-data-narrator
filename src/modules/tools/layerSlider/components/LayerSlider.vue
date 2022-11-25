@@ -85,10 +85,12 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-#tool-layer-slider {
-    @media (min-width: 768px) {
-        min-width: 350px;
+    @import "~variables";
+
+    #tool-layer-slider {
+        @include media-breakpoint-up(sm) {
+            min-width: 350px;
+        }
     }
-}
 
 </style>

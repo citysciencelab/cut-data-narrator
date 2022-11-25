@@ -44,6 +44,8 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+    @import "~variables";
+
     @mixin transform($value) {
         transform: translateX($value);
         transition: ease transform 250ms;
@@ -58,7 +60,7 @@ export default {
         @include transform(10%);
     }
 
-    @media (min-width: 1075px) {
+    @include media-breakpoint-up(lg) {
         .moveLeft {
             @include transform(-150%);
         }

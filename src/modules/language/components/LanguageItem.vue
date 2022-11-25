@@ -144,7 +144,7 @@ export default {
         }
     }
 
-    @media (max-width: 767px) {
+    @include media-breakpoint-down(md) {
         #language-bar {
             .current-language {
                 text-align: right;

@@ -34,7 +34,7 @@
         margin: 6px 0;
     }
 }
-@media (max-width: 767px) {
+@include media-breakpoint-down(md) {
     .dropdown-menu {
         border-right: 0;
         border-left: 0;

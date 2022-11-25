@@ -207,3 +207,37 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
 
 @import "../node_modules/bootstrap/scss/maps";
 @import "../node_modules/bootstrap/scss/mixins";
+
+
+/*
+ * Grid breakpoints
+ *
+ * Define the minimum dimensions at which your layout will change,
+ * adapting to different screen sizes, for use in media queries.
+ */
+ $xs: 0;
+ $sm: 576px;
+ $md: 768px;
+ $lg: 992px;
+ $xl: 1200px;
+ $xxl: 1400p;
+
+$grid-breakpoints: (
+  xs: $xs,
+  sm: $sm,
+  md: $md,
+  lg: $lg,
+  xl: $xl,
+  xxl: $xxl
+);
+
+:export {
+    gridBreakpoints: {
+        xs: $xs;
+        sm: $sm;
+        md: $md;
+        lg: $lg;
+        xl: $xl;
+        xxl: $xxl;
+    }
+}

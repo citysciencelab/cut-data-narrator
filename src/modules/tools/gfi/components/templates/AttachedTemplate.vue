@@ -208,7 +208,7 @@ export default {
             margin-bottom: 0;
         }
     }
-   @media (min-width: 768px) {
+    @include media-breakpoint-up(sm) {
     .gfi-content {
         max-height: 40vh;
         width: 100%;

@@ -210,8 +210,9 @@ export default {
 
 <style lang="scss" scoped>
     @import "~variables";
+
     #search-by-coord {
-        @media (min-width: 768px) {
+        @include media-breakpoint-up(md) {
             width: 350px;
         }
     }

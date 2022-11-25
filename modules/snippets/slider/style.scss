@@ -82,7 +82,7 @@
     font-size: $font-size-base;
     height: 24px;
 }
-@media (max-width: 767px) {
+@include media-breakpoint-down(md) {
     .slider-container {
         .slider-handle {
             width: 24px;

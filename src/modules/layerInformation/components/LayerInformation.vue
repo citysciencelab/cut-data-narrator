@@ -396,7 +396,7 @@ export default {
         box-shadow: 8px 8px 12px rgba(0, 0, 0, 0.176);
         border: 1px solid $light_grey;
 
-        @media (max-width: 768px) {
+        @include media-breakpoint-down(sm) {
             inset: 12px auto auto 0;
             max-width:750px;
             width: 95vw;
