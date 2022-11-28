@@ -21,14 +21,32 @@
 - The following NPM packages have been updated:
     - dependencies:
         - @masterportal/masterportalapi: 2.9.0 to 2.11.0
+        - axios: 0.27.2 to 1.2.0
         - bootstrap: 5.2.2 to 5.2.3
         - bootstrap-icons: 1.9.1 to 1.10.2
+        - i18next: 21.8.16 to 22.0.6
+        - i18next-browser-languagedetector: 6.1.4 to 7.0.1
+        - i18next-http-backend: 1.4.1 to 2.0.2
+        - jquery: 3.6.0 to 3.6.1
+        - jsts: 2.9.1 to 2.9.2
+        - moment-timezone: 0.5.37 to 0.5.39
         - vue: 2.7.8 to 2.7.14
         - vue-template-compiler: 2.7.8 to 2.7.14
     - devDependencies
+        - @sinonjs/fake-timers: 9.1.2 to 10.0.0
+        - canvas: 2.9.3 to 2.10.2
         - chai: 4.3.6 to 4.3.7
+        - dotenv: 16.0.1 to 16.0.3
+        - eslint: 8.21.0 to 8.28.0
+        - eslint-plugin-vue: 9.3.0 to 9.8.0
+        - eslint-plugin-vuejs-accessibility: 1.2.0 to 2.0.0
         - husky: 8.0.1 to 8.0.2
-        - mocha: 10.0.0 to 10.1.0,
+        - jsdoc: 3.6.11 to 4.0.0
+        - mocha: 10.0.0 to 10.1.0
+        - node-fetch: 3.2.10 to 3.3.0
+        - regenerator-runtime: 0.13.9 to 0.13.11
+        - sass: 1.54.0 to 1.56.1
+        - selenium-webdriver: 4.3.1 to 4.6.1
         - sinon: 14.0.0 to 14.0.2
 
 ### Deprecated

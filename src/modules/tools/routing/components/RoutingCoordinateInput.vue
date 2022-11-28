@@ -11,8 +11,7 @@ export default {
         },
         countWaypoints: {
             type: Number,
-            required: true,
-            default: 0
+            required: true
         }
     },
     data () {
