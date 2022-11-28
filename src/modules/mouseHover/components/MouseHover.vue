@@ -13,7 +13,7 @@ export default {
         })
     },
     mounted () {
-        if (!this.isMobile && Config.mouseHover) {
+        if (Config.mouseHover) {
             this.$nextTick(() => {
                 this.initialize();
             });
