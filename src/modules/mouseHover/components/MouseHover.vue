@@ -18,6 +18,9 @@ export default {
                 this.initialize();
             });
         }
+        Backbone.Events.listenTo(Radio.channel("MouseHover"), {
+            "toggle": () => this.setIsActive(!this.isActive)
+        });
     },
     methods: {
         ...mapActions("MouseHover", Object.keys(actions)),

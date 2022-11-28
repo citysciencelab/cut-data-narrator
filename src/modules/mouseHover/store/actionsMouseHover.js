@@ -22,36 +22,37 @@ export default {
             commit("setInfoText", infoText);
         }
         map.on("pointermove", (evt) => {
-            if (evt.originalEvent.pointerType !== "touch") {
-                featuresAtPixel = [];
-                commit("setHoverPosition", evt.coordinate);
-                map.forEachFeatureAtPixel(evt.pixel, (feature, layer) => {
-                    if (layer?.getVisible()) {
-                        if (feature.getProperties().features) {
-                            feature.get("features").forEach(clusteredFeature => {
-                                featuresAtPixel.push(createGfiFeature(
-                                    layer,
-                                    "",
-                                    clusteredFeature
-                                ));
-                            });
-                        }
-                        else {
+            if (!state.isActive || evt.originalEvent.pointerType === "touch") {
+                return;
+            }
+            featuresAtPixel = [];
+            commit("setHoverPosition", evt.coordinate);
+            map.forEachFeatureAtPixel(evt.pixel, (feature, layer) => {
+                if (layer?.getVisible()) {
+                    if (feature.getProperties().features) {
+                        feature.get("features").forEach(clusteredFeature => {
                             featuresAtPixel.push(createGfiFeature(
                                 layer,
                                 "",
-                                feature
+                                clusteredFeature
                             ));
-                        }
+                        });
                     }
-                });
-                state.overlay.setPosition(evt.coordinate);
-                state.overlay.setElement(document.querySelector("#mousehover-overlay"));
-                commit("setInfoBox", null);
-
-                if (featuresAtPixel.length > 0) {
-                    dispatch("filterInfos", featuresAtPixel);
+                    else {
+                        featuresAtPixel.push(createGfiFeature(
+                            layer,
+                            "",
+                            feature
+                        ));
+                    }
                 }
+            });
+            state.overlay.setPosition(evt.coordinate);
+            state.overlay.setElement(document.querySelector("#mousehover-overlay"));
+            commit("setInfoBox", null);
+
+            if (featuresAtPixel.length > 0) {
+                dispatch("filterInfos", featuresAtPixel);
             }
         });
     },

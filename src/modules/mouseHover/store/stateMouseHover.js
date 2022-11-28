@@ -27,5 +27,6 @@ export default {
     mouseHoverInfos: [],
     infoBox: null,
     hoverPosition: null,
-    pleaseZoom: false
+    pleaseZoom: false,
+    isActive: true
 };
