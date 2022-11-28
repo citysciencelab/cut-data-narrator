@@ -33,6 +33,7 @@
 - Fix the position of the unfreeze button which should be over the menu on the touch table view
 - After a layer is selected from the search results it is now getting added to the layer tree again
 - Do not show alert message to use 2 Fingers on GFI Window or any other div apart from map if twoFingerPan is configured to true
+- Issue #820: CoordToolkit - Space inserted between 84 and (Dezimalgrad)
 
 ---
 
