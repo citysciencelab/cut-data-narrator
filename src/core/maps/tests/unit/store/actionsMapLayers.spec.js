@@ -4,7 +4,10 @@ import VectorLayer from "ol/layer/Vector";
 import VectorSource from "ol/source/Vector";
 import LayerGroup from "ol/layer/Group";
 import store from "../../../../../app-store";
+import actions from "../../../store/actions/actionsMapLayers";
+import mutations from "../../../store/mutationsMap";
 import {expect} from "chai";
+import sinon from "sinon";
 
 describe("src/core/maps/actions/actionsMapLayers.js", () => {
     const layer1 = new VectorLayer({
@@ -147,4 +150,50 @@ describe("src/core/maps/actions/actionsMapLayers.js", () => {
         });
     });
 
+    describe("areLayerFeaturesLoaded", () => {
+        let state, commit, isResolved;
+
+        beforeEach(()=> {
+            state = {loadedLayers: []};
+            commit = sinon.spy();
+            isResolved = false;
+        });
+
+        afterEach(()=> {
+            sinon.restore();
+        });
+
+        it("Resolves immediately if layer is already fully loaded", () => {
+            mutations.addLoadedLayerId(state, layer1.get("id"));
+
+            actions.areLayerFeaturesLoaded({commit, state}, layer1.get("id"))
+                .then(()=> {
+                    isResolved = true;
+                })
+                .then(()=>{
+                    expect(isResolved).to.be.true;
+                });
+        });
+        it("Does not resolve if the layer is not loaded and it ", () => {
+            const onSpy = sinon.spy(),
+                channel = sinon.stub(Radio, "channel").callsFake((...args) => {
+                    if (args.length === 1 && args[0] === "VectorLayer") {
+                        return {on: onSpy};
+                    }
+                    throw new Error();
+                });
+
+            actions.areLayerFeaturesLoaded({commit, state}, layer2.get("id")).then(()=> {
+                isResolved = true;
+            });
+
+            expect(isResolved).to.be.false;
+            expect(channel.calledOnce).to.be.true;
+            expect(channel.args[0][0]).to.equal("VectorLayer");
+            expect(onSpy.calledOnce).to.be.true;
+            expect(onSpy.args[0][0]).to.be.a("object");
+            expect(onSpy.args[0][0]).to.have.property("featuresLoaded");
+            expect(onSpy.args[0][0].featuresLoaded).be.a("function");
+        });
+    });
 });

@@ -8,6 +8,7 @@ import Icon from "ol/style/Icon";
 import {createDrawStyle} from "../../draw/utils/style/createDrawStyle";
 import isObject from "../../../../utils/isObject";
 import {createEmpty as createEmptyExtent, extend} from "ol/extent";
+import uniqueId from "../../../../utils/uniqueId";
 
 const supportedFormats = {
     kml: new KML({extractStyles: true, iconUrlFunction: (url) => proxyGstaticUrl(url)}),
@@ -340,7 +341,11 @@ export default {
                     feature.set("source", fileName);
                 });
             }
+            if (typeof feature.get === "function" && typeof feature.get("styleId") === "undefined") {
+                feature.set("styleId", uniqueId(""));
+            }
         });
+
         features = checkIsVisibleSetting(features);
 
         vectorLayer.getSource().addFeatures(features);
@@ -399,7 +404,10 @@ export default {
         }
 
         try {
-            features = format.readFeatures(datasrc.raw);
+            features = format.readFeatures(datasrc.raw, {
+                dataProjection: getCrsPropertyName(datasrc.raw),
+                featureProjection: rootGetters["Maps/projectionCode"]
+            });
         }
         catch (ex) {
             console.warn(ex);
@@ -536,8 +544,6 @@ export default {
         features = checkIsVisibleSetting(features);
 
         features.forEach(feature => {
-            let geometries;
-
             if (isObject(feature.get("attributes"))) {
                 Object.keys(feature.get("attributes")).forEach(key => {
                     gfiAttributes[key] = key;
@@ -554,17 +560,6 @@ export default {
 
                 feature.setGeometry(new Circle(circleCenter, circleRadius));
             }
-
-            if (feature.getGeometry().getType() === "GeometryCollection") {
-                geometries = feature.getGeometry().getGeometries();
-            }
-            else {
-                geometries = [feature.getGeometry()];
-            }
-
-            geometries.forEach(geometry => {
-                geometry.transform("EPSG:4326", rootGetters["Maps/projectionCode"]);
-            });
 
             feature.set("source", fileName);
             vectorLayer.getSource().addFeature(feature);

@@ -14,7 +14,7 @@ function setStyleSettings ({getters, commit}, styleSettings) {
 
 /**
  * Sets the active property of the state to the given value.
- * Also starts processes if the tool is be activated (active === true).
+ * Also starts processes if the tool is activated (active === true).
  *
  * @param {Object} context actions context object.
  * @param {Boolean} active Value deciding whether the tool gets activated or deactivated.
@@ -25,7 +25,7 @@ async function setActive ({state, commit, dispatch, rootState}, active) {
 
     if (active) {
         commit("setSymbol", state.iconList[0]);
-        commit("setLayer", await dispatch("Maps/addNewLayerIfNotExists", "importDrawLayer", {root: true}));
+        commit("setLayer", await dispatch("Maps/addNewLayerIfNotExists", {layerName: "importDrawLayer"}, {root: true}));
         commit("setImgPath", rootState?.configJs?.wfsImgPath);
         dispatch("createDrawInteractionAndAddToMap", {active: state.currentInteraction === "draw"});
         dispatch("createSelectInteractionAndAddToMap", state.currentInteraction === "delete");

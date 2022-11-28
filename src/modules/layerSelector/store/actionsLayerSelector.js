@@ -1,7 +1,5 @@
 import {fetchFirstModuleConfig} from "../../../utils/fetchFirstModuleConfig";
 import store from "../../../app-store";
-import globalGetters from "../../../app-store/getters";
-import globalState from "../../../app-store/state";
 import isMobile from "../../../utils/isMobile";
 
 /**
@@ -60,14 +58,13 @@ const configPaths = [
          * @returns {void}
          */
         receiveEvents: function ({state, dispatch}) {
-            const events = state.events,
-                treeType = globalGetters.treeType(globalState);
+            const events = state.events;
 
             for (const evt of events) {
                 const event = state.eventMap[evt.event];
 
-                store.watch((mainState, mainGetters) => mainGetters[event], newVal => {
-                    dispatch("handleEvent", {cfg: evt, treeType: treeType, input: newVal});
+                store.watch((mainState, mainGetters) => mainGetters[event], () => {
+                    dispatch("handleEvent", {cfg: evt});
                 });
             }
         },
@@ -98,13 +95,14 @@ const configPaths = [
          * @param {Object} param.cfg the configured object for this case
          * @returns {void}
          */
-        handleEvent: async function ({dispatch}, {cfg, treeType}) {
+        handleEvent: async function ({dispatch, rootGetters}, {cfg}) {
             const layerIds = cfg.layerIds,
                 showLayerId = cfg.showLayerId,
                 deselectPreviousLayers = cfg.deselectPreviousLayers,
                 openFolderForLayerIds = cfg.openFolderForLayerIds,
                 extent = cfg.extent,
-                minResolution = cfg.minResolution;
+                minResolution = cfg.minResolution,
+                treeType = rootGetters.treeType;
 
             // remove current selected
             if (deselectPreviousLayers === "always") {
@@ -188,12 +186,12 @@ const configPaths = [
          * @param {Number} param.minResolution the minimal resolution to zoom to
          * @returns{void}
          */
-        handleEventExtend: function (context, {extent, minResolution}) {
+        handleEventExtend: function ({dispatch}, {extent, minResolution}) {
             if (typeof minResolution === "number") {
-                Radio.trigger("Map", "zoomToExtent", {extent: extent, options: {minResolution: minResolution}});
+                dispatch("zoomToExtent", {extent: extent, options: {minResolution: minResolution}}, {root: true});
             }
             else {
-                Radio.trigger("Map", "zoomToExtent", {extent: extent});
+                dispatch("zoomToExtent", {extent: extent}, {root: true});
             }
         }
     };
