@@ -34,6 +34,7 @@ const state = {
         isMoving: false,
         swiper: null,
         targetLayer: null,
+        sourceLayer: null,
         valueX: null
     },
     timeSlider: {

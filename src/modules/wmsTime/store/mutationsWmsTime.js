@@ -48,6 +48,9 @@ const mutations = {
     },
     setLayerSwiperTargetLayer (state, layer) {
         state.layerSwiper.targetLayer = layer;
+    },
+    setLayerSwiperSourceLayer (state, layer) {
+        state.layerSwiper.sourceLayer = layer;
     }
 };
 
