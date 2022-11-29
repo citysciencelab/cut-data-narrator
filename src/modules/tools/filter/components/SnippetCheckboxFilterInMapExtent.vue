@@ -15,6 +15,11 @@ export default {
             type: [String, Boolean],
             required: false,
             default: true
+        },
+        preselected: {
+            type: Boolean,
+            required: false,
+            default: false
         }
     },
     data () {
@@ -29,6 +34,9 @@ export default {
                 this.emitCurrentCommand(value);
             }
         }
+    },
+    mounted () {
+        this.checked = this.preselected;
     },
     methods: {
         /**
