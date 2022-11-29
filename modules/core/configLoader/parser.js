@@ -14,11 +14,13 @@ const Parser = Backbone.Model.extend(/** @lends Parser.prototype */{
         category: "Opendata",
         selectionIDX: -1,
         onlyDesktopTools: [
+            "measure",
             "print",
             "kmlimport",
             "fileImport",
             "draw",
             "featureLister",
+            "addWMS",
             "shadow"
         ],
         extendedLayerIdAssoc: {}
@@ -205,9 +207,9 @@ const Parser = Backbone.Model.extend(/** @lends Parser.prototype */{
             else {
                 toolitem = Object.assign(value, {type: "tool", parentId: parentId, id: key});
 
-                // wenn tool noch kein "onlyDesktop" aus der Config bekommen hat
-                if (!toolitem?.onlyDesktop) {
-                    // wenn tool in onlyDesktopTools enthalten ist, setze onlyDesktop auf true
+                // if tool did not get "onlyDesktop" from the config yet
+                if (typeof toolitem?.onlyDesktop === "undefined") {
+                    // if tool is included in onlyDesktopTools, set onlyDesktop to true
                     if (this.get("onlyDesktopTools").indexOf(toolitem.id) !== -1) {
                         toolitem = Object.assign(toolitem, {onlyDesktop: true});
                     }

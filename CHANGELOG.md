@@ -13,6 +13,7 @@
 - print: possibility to edit the output file name in print mode 'plotservice'.
 - wfsSearch: config parameter 'responseProjection' to make it possible to convert the projection of the coordinates in the requested service response.
 - Bootstrap grid-breakpoints are now configurable in `variables.scss`. For switching between mobile and desktop the grid-breakpoint `md` is used.
+- The attribute `onlyDesktop` can now be used to display tools mobile by setting it to `false` for a tool.
 
 ### Changed
 - fileImport: If the features of the imported file are removed from MP, the imported file name will be removed from the "Successfully imported" list

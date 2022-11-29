@@ -48,6 +48,8 @@ const state = {
     isVisibleInMenu: true,
     deactivateGFI: true,
 
+    onlyDesktop: true,
+
     // tool-specific config.json parameters
     earthRadius: 6378137,
     measurementAccuracy: "meter",
