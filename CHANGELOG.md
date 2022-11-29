@@ -18,7 +18,6 @@
 - package.json test:vue: excluded /cosi/node_modules from test paths (now matching masterportal root packages that are not tested)
 - layerSelector: update function calls and bootstrap usage
 - The version of node was updated, must be >= 16.13.2 <= 16.18.1
-<<<<<<< HEAD
 - The following NPM packages have been updated:
     - dependencies:
         - @masterportal/masterportalapi: 2.9.0 to 2.11.0
@@ -49,9 +48,7 @@
         - sass: 1.54.0 to 1.56.1
         - selenium-webdriver: 4.3.1 to 4.6.1
         - sinon: 14.0.0 to 14.0.2
-=======
-- drawTool: replaced the google yellow pushpin with bootstrap geo-fill in yellow
->>>>>>> 9ce0b40e6d (BG-3330: added changelog entry)
+- drawTool: removed default config for yellow pin and replaced the google yellow pushpin with bootstrap geo-fill in yellow
 
 ### Deprecated
 
