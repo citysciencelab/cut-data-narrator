@@ -64,6 +64,7 @@ export default {
 
             if (index === this.sliderOptionCount) {
                 this.playing = false;
+                this.setTimeSliderPlaying(this.playing);
             }
 
             if (index === this.timeRange.length) {
