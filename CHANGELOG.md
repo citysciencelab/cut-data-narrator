@@ -12,6 +12,7 @@
 - layerTree: Adds a new parameter in portalconfig.tree to decide whether the scale is displayed in the layer tooltip in addition to the name of the corresponding layer
 - print: possibility to edit the output file name in print mode 'plotservice'.
 - wfsSearch: config parameter 'responseProjection' to make it possible to convert the projection of the coordinates in the requested service response.
+- Bootstrap grid-breakpoints are now configurable in `variables.scss`. For switching between mobile and desktop the grid-breakpoint `md` is used.
 
 ### Changed
 - fileImport: If the features of the imported file are removed from MP, the imported file name will be removed from the "Successfully imported" list
