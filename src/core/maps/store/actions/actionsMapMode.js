@@ -63,7 +63,7 @@ export default {
             });
             allLayerModels.forEach(layerWrapper => {
                 if (layerWrapper.get("isSelected") === false && Radio.request("Parser", "getTreeType") === "light") {
-                    layerWrapper.removeLayer();
+                    layerWrapper.get("layer").setVisible(false);
                 }
             });
 
