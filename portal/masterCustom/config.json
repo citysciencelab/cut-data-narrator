@@ -297,6 +297,12 @@
                 "type": "image",
                 "scale": 0.8,
                 "value": "wiese.png"
+              },
+              {
+                "id": "gelber Pin",
+                "type": "image",
+                "scale": 2,
+                "value": "geo-fill-ylw.svg"
               }
             ]
           },
