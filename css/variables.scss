@@ -216,8 +216,8 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
  * adapting to different screen sizes, for use in media queries.
  */
  $xs: 0;
- $sm: 300px;
- $md: 500px;
+ $sm: 576px;
+ $md: 768px;
  $lg: 992px;
  $xl: 1200px;
  $xxl: 1400px;
