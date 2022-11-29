@@ -160,7 +160,8 @@ export default {
                 "IN",
                 "STARTSWITH",
                 "ENDSWITH"
-            ]
+            ],
+            source: ""
         };
     },
     computed: {
@@ -251,7 +252,7 @@ export default {
                 if (typeof value === "string" && value || Array.isArray(value) && value.length) {
                     this.emitCurrentRule(value, this.isInitializing);
                 }
-                else {
+                else if (Array.isArray(value) && !value.length && this.source !== "adjust") {
                     this.deleteCurrentRule();
                 }
             }
@@ -273,6 +274,7 @@ export default {
 
             if (adjusting?.finish) {
                 this.setDropdownSelectedAfterAdjustment(this.dropdownValue, this.dropdownSelected, selected => {
+                    this.setCurrentSource("adjust");
                     this.dropdownSelected = selected;
                 });
 
@@ -596,6 +598,17 @@ export default {
             });
 
             setDropdownSelected(result);
+        },
+        /**
+         * Sets the current source for input data.
+         * @param {String} source The type of source 'adjust' and 'dropdown'.
+         * @returns {void}
+         */
+        setCurrentSource (source) {
+            if (typeof source !== "string") {
+                return;
+            }
+            this.source = source;
         }
     }
 };
@@ -651,6 +664,7 @@ export default {
                     :group-select="multiselect && addSelectAll"
                     :group-values="(multiselect && addSelectAll) ? 'list' : ''"
                     :group-label="(multiselect && addSelectAll) ? 'selectAllTitle' : ''"
+                    @remove="setCurrentSource('dropdown')"
                 >
                     <span slot="noOptions">{{ emptyList }}</span>
                     <span slot="noResult">{{ noElements }}</span>

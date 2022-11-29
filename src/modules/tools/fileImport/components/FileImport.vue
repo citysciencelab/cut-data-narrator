@@ -5,6 +5,7 @@ import {mapActions, mapGetters, mapMutations} from "vuex";
 import getters from "../store/gettersFileImport";
 import mutations from "../store/mutationsFileImport";
 import isObject from "../../../../utils/isObject";
+import store from "../../../../app-store";
 
 export default {
     name: "FileImport",
@@ -102,7 +103,7 @@ export default {
                 const reader = new FileReader();
 
                 reader.onload = async f => {
-                    const vectorLayer = await this.addNewLayerIfNotExists("importDrawLayer"),
+                    const vectorLayer = await store.dispatch("Maps/addNewLayerIfNotExists", {layerName: "importDrawLayer"}, {root: true}),
                         fileNameSplit = file.name.split("."),
                         fileExtension = fileNameSplit.length > 0 ? fileNameSplit[fileNameSplit.length - 1].toLowerCase() : "";
 

@@ -107,7 +107,7 @@ describe("src/modules/tools/bufferAnalysis/store/actionsBufferAnalysis.js", () =
             expect(commit.args[0][0]).to.equal("setSelectedSourceLayer");
             expect(commit.args[0][1]).to.equal(layer);
             expect(dispatch.calledOnce).to.be.true;
-            expect(dispatch.args[0][0]).to.equal("areLayerFeaturesLoaded");
+            expect(dispatch.args[0][0]).to.equal("Maps/areLayerFeaturesLoaded");
         });
     });
     describe("applySelectedSourceLayer", () => {
@@ -156,7 +156,7 @@ describe("src/modules/tools/bufferAnalysis/store/actionsBufferAnalysis.js", () =
             await tick();
             expect(dispatch.callCount).to.equal(5);
             expect(state.selectedTargetLayer.get.calledOnce).to.be.true;
-            expect(dispatch.args[0][0]).to.equal("areLayerFeaturesLoaded");
+            expect(dispatch.args[0][0]).to.equal("Maps/areLayerFeaturesLoaded");
             expect(dispatch.args[1][0]).to.equal("checkIntersectionWithBuffers");
             expect(dispatch.args[2][0]).to.equal("checkIntersectionsWithIntersections");
             expect(dispatch.args[3][0]).to.equal("convertIntersectionsToPolygons");

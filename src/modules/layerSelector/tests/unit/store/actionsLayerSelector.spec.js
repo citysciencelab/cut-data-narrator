@@ -10,6 +10,15 @@ chai.use(sinonChai);
 const {fillConfig, deselectSelectedLayers, handleEventAddLayers, handleEventShowLayers, handleEventOpenFolder, handleEventExtend} = actions;
 
 describe("src/modules/layerSelector/store/actionsLayerSelector.js", () => {
+    let dispatch;
+
+    beforeEach(()=> {
+        dispatch = sinon.spy();
+    });
+
+    afterEach(() => {
+        sinon.restore();
+    });
 
     describe("fillConfig", () => {
         it("should fill the config if source is not set and channel or event do not exist", done => {
@@ -161,22 +170,21 @@ describe("src/modules/layerSelector/store/actionsLayerSelector.js", () => {
     describe("handleEventExtend", () => {
         const extent = [547196.95, 5924113.45, 580216.93, 5938983.02];
 
-        afterEach(function () {
-            sinon.restore();
-        });
         it("should call function zoomToExtent with minResolution if minReolution is type of number", () => {
-            const spy = sinon.spy(Radio, "trigger"),
-                minResolution = 1.54323;
+            const minResolution = 1.54323,
+                parameter = {extent: extent, minResolution: minResolution};
 
-            handleEventExtend(context, {extent: extent, minResolution: minResolution});
-            expect(spy).to.have.been.calledWith("Map", "zoomToExtent", {extent: extent, options: {minResolution: 1.54323}});
+            handleEventExtend({dispatch}, parameter);
+
+            expect(dispatch.firstCall.args[0]).to.equal("zoomToExtent");
         });
         it("should call function zoomToExtent without minResolution if minResolution is not type of number", () => {
-            const spy = sinon.spy(Radio, "trigger"),
-                minResolution = "1.54323";
+            const minResolution = "1.54323",
+                parameter = {extent: extent, minResolution: minResolution};
 
-            handleEventExtend(context, {extent: extent, minResolution: minResolution});
-            expect(spy).to.have.been.calledWith("Map", "zoomToExtent", {extent: extent});
+            handleEventExtend({dispatch}, parameter);
+
+            expect(dispatch.firstCall.args[0]).to.equal("zoomToExtent");
         });
     });
 });

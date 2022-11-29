@@ -22,34 +22,36 @@ export default {
             commit("setInfoText", infoText);
         }
         map.on("pointermove", (evt) => {
-            featuresAtPixel = [];
-            commit("setHoverPosition", evt.coordinate);
-            map.forEachFeatureAtPixel(evt.pixel, (feature, layer) => {
-                if (layer?.getVisible()) {
-                    if (feature.getProperties().features) {
-                        feature.get("features").forEach(clusteredFeature => {
+            if (evt.originalEvent.pointerType !== "touch") {
+                featuresAtPixel = [];
+                commit("setHoverPosition", evt.coordinate);
+                map.forEachFeatureAtPixel(evt.pixel, (feature, layer) => {
+                    if (layer?.getVisible()) {
+                        if (feature.getProperties().features) {
+                            feature.get("features").forEach(clusteredFeature => {
+                                featuresAtPixel.push(createGfiFeature(
+                                    layer,
+                                    "",
+                                    clusteredFeature
+                                ));
+                            });
+                        }
+                        else {
                             featuresAtPixel.push(createGfiFeature(
                                 layer,
                                 "",
-                                clusteredFeature
+                                feature
                             ));
-                        });
+                        }
                     }
-                    else {
-                        featuresAtPixel.push(createGfiFeature(
-                            layer,
-                            "",
-                            feature
-                        ));
-                    }
-                }
-            });
-            state.overlay.setPosition(evt.coordinate);
-            state.overlay.setElement(document.querySelector("#mousehover-overlay"));
-            commit("setInfoBox", null);
+                });
+                state.overlay.setPosition(evt.coordinate);
+                state.overlay.setElement(document.querySelector("#mousehover-overlay"));
+                commit("setInfoBox", null);
 
-            if (featuresAtPixel.length > 0) {
-                dispatch("filterInfos", featuresAtPixel);
+                if (featuresAtPixel.length > 0) {
+                    dispatch("filterInfos", featuresAtPixel);
+                }
             }
         });
     },

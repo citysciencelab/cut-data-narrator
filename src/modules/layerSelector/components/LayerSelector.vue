@@ -12,7 +12,7 @@ export default {
         execute: function () {
             this.events.forEach(evt => {
                 if (evt.event === this.execute.event) {
-                    this.handleEvent({cfg: evt, input: this.execute.argument});
+                    this.handleEvent({cfg: evt});
                 }
             });
         }
@@ -25,7 +25,8 @@ export default {
             "initialize",
             "handleEvent"
         ]),
-        ...mapMutations("LayerSelector", Object.keys(mutations))
+        ...mapMutations("LayerSelector", Object.keys(mutations)),
+        ...mapActions("Maps", ["zoomToExtent"])
     }
 };
 </script>
