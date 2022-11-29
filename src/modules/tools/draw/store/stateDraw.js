@@ -127,13 +127,7 @@ const symbol = {
         freeHand: false,
         icon: "bi-pencil-fill",
         iconList: [
-            symbol,
-            {
-                "id": "gelber Pin",
-                "type": "image",
-                "scale": 0.5,
-                "value": "https://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png"
-            }
+            symbol
         ],
         id: "draw",
         idCounter: 0,

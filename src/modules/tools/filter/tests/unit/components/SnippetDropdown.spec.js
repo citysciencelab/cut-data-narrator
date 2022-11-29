@@ -214,6 +214,39 @@ describe("src/modules/tools/filter/components/SnippetDropdown.vue", () => {
         });
     });
 
+    describe("setCurrentSource", () => {
+        it("should not set the current source if anything but a string is given", () => {
+            const wrapper = shallowMount(SnippetDropdown, {
+                propsData: {},
+                localVue
+            });
+
+            wrapper.vm.setCurrentSource({});
+            expect(wrapper.vm.source).to.be.equal("");
+            wrapper.vm.setCurrentSource([]);
+            expect(wrapper.vm.source).to.be.equal("");
+            wrapper.vm.setCurrentSource(undefined);
+            expect(wrapper.vm.source).to.be.equal("");
+            wrapper.vm.setCurrentSource(true);
+            expect(wrapper.vm.source).to.be.equal("");
+            wrapper.vm.setCurrentSource(false);
+            expect(wrapper.vm.source).to.be.equal("");
+            wrapper.vm.setCurrentSource(1234);
+            expect(wrapper.vm.source).to.be.equal("");
+            wrapper.vm.setCurrentSource(null);
+            expect(wrapper.vm.source).to.be.equal("");
+        });
+        it("should set the current source", () => {
+            const wrapper = shallowMount(SnippetDropdown, {
+                propsData: {},
+                localVue
+            });
+
+            wrapper.vm.setCurrentSource("test");
+            expect(wrapper.vm.source).to.be.equal("test");
+        });
+    });
+
     describe("display list", () => {
         it("should render a list with radio", async () => {
             const wrapper = shallowMount(SnippetDropdown, {

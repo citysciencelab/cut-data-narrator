@@ -9,8 +9,7 @@ export default {
         },
         valuelabel: {
             type: String,
-            required: true,
-            default: ""
+            required: true
         },
         value: {
             type: Number,

@@ -13,7 +13,7 @@ export default {
         })
     },
     mounted () {
-        if (!this.isMobile && Config.mouseHover) {
+        if (Config.mouseHover) {
             this.$nextTick(() => {
                 this.initialize();
             });
@@ -75,7 +75,7 @@ export default {
     max-width: inherit;
     padding: 8px;
     background-color: $white;
-    color: $light_grey;
+    color: $dark-grey;
     white-space: nowrap;
     border: 1px solid rgba(0, 0, 0, 0.2);
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);

@@ -784,6 +784,7 @@ export default {
         height: auto;
         .titleWrapper {
             .title {
+                float: left;
                 left: 0;
                 padding-right: 15px;
             }
@@ -793,6 +794,7 @@ export default {
             }
         }
         .inputWrapper {
+            clear: both;
             position: relative;
             margin-top: 5px;
             height: 24px;

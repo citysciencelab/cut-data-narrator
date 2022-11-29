@@ -21,7 +21,9 @@ function compileLayers (originalLayerGroups, originalLayers) {
             title: group.title,
             layers: layersOfGroup
         });
-        nextFilterId = layersOfGroup[layersOfGroup.length - 1].filterId + 1;
+        nextFilterId = layersOfGroup.length > 0 ?
+            layersOfGroup[layersOfGroup.length - 1].filterId + 1 :
+            nextFilterId + 1;
     });
     prepareLayers(layers, nextFilter);
     return {groups, layers};

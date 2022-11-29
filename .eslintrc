@@ -230,6 +230,7 @@
             "extensions": ["vue"],
             "shouldMatchCase": true
         }],
+        "vue/no-required-prop-with-default": ["error"],
         "vue/no-static-inline-styles": ["error"],
         "vue/padding-line-between-blocks": ["error"],
         "vue/require-direct-export": ["error"],

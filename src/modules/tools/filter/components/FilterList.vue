@@ -13,8 +13,7 @@ export default {
         },
         filters: {
             type: Array,
-            required: true,
-            default: () => []
+            required: true
         },
         selectedLayers: {
             type: Array,

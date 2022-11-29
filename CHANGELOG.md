@@ -17,12 +17,45 @@
 - fileImport: If the features of the imported file are removed from MP, the imported file name will be removed from the "Successfully imported" list
 - package.json test:vue: excluded /cosi/node_modules from test paths (now matching masterportal root packages that are not tested)
 - layerSelector: update function calls and bootstrap usage
+- The version of node was updated, must be >= 16.13.2 <= 16.18.1
+- The following NPM packages have been updated:
+    - dependencies:
+        - @masterportal/masterportalapi: 2.9.0 to 2.11.0
+        - axios: 0.27.2 to 1.2.0
+        - bootstrap: 5.2.2 to 5.2.3
+        - bootstrap-icons: 1.9.1 to 1.10.2
+        - i18next: 21.8.16 to 22.0.6
+        - i18next-browser-languagedetector: 6.1.4 to 7.0.1
+        - i18next-http-backend: 1.4.1 to 2.0.2
+        - jquery: 3.6.0 to 3.6.1
+        - jsts: 2.9.1 to 2.9.2
+        - moment-timezone: 0.5.37 to 0.5.39
+        - vue: 2.7.8 to 2.7.14
+        - vue-template-compiler: 2.7.8 to 2.7.14
+    - devDependencies
+        - @sinonjs/fake-timers: 9.1.2 to 10.0.0
+        - canvas: 2.9.3 to 2.10.2
+        - chai: 4.3.6 to 4.3.7
+        - dotenv: 16.0.1 to 16.0.3
+        - eslint: 8.21.0 to 8.28.0
+        - eslint-plugin-vue: 9.3.0 to 9.8.0
+        - eslint-plugin-vuejs-accessibility: 1.2.0 to 2.0.0
+        - husky: 8.0.1 to 8.0.2
+        - jsdoc: 3.6.11 to 4.0.0
+        - mocha: 10.0.0 to 10.1.0
+        - node-fetch: 3.2.10 to 3.3.0
+        - regenerator-runtime: 0.13.9 to 0.13.11
+        - sass: 1.54.0 to 1.56.1
+        - selenium-webdriver: 4.3.1 to 4.6.1
+        - sinon: 14.0.0 to 14.0.2
+- drawTool: removed default config for yellow pin and replaced the google yellow pushpin with bootstrap geo-fill in yellow
 
 ### Deprecated
 
 ### Removed
 
 ### Fixed
+- Filter throws error when a layerGroup has an empty layers list
 - Fix some vulnerabilities in dependencies
 - Issue #821: Sorting the table in featureLister tool now works again
 - Issue #844: fileImport now converts the projection of geoJSON if necessary
@@ -30,10 +63,13 @@
 - Issue #846: The featureLister now shows features of initial visible WFS again
 - Issue #851: Filter - When the multiLayerSelector attribute is set to false, it no longer prevents the accordions from opening.
 - Issue #853: The quickHelp tool is now configurable for the layer tree
+- Issue #852: MouseoverHover: change mouseover text information color from light to dark grey.
+- Issue #854: The save selection tool takes into account the order of layers.
 - Fix the position of the unfreeze button which should be over the menu on the touch table view
 - After a layer is selected from the search results it is now getting added to the layer tree again
 - Do not show alert message to use 2 Fingers on GFI Window or any other div apart from map if twoFingerPan is configured to true
 - Issue #820: CoordToolkit - Space inserted between 84 and (Dezimalgrad)
+- MouseHover: Fix the MouseHover to work in smaller iframes
 
 ---
 
