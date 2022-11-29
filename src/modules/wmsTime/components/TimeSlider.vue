@@ -2,9 +2,13 @@
 import {mapActions, mapGetters, mapMutations} from "vuex";
 import getters from "../store/gettersWmsTime";
 import mutations from "../store/mutationsWmsTime";
+import RoutingLoadingSpinner from "../../tools/routing/components/RoutingLoadingSpinner.vue";
 
 export default {
     name: "TimeSlider",
+    components: {
+        RoutingLoadingSpinner
+    },
     props: {
         layerId: {
             type: String,
@@ -107,7 +111,13 @@ export default {
 
 <template>
     <div class="timeSlider-wrapper centered-box-wrapper">
-        <div class="timeSlider-control-row">
+        <RoutingLoadingSpinner
+            v-if="!layerId"
+        />
+        <div
+            class="timeSlider-control-row"
+            :class="!layerId ? 'disabled' : ''"
+        >
             <div
                 v-if="minWidth"
                 class="timeSlider-innerWrapper"
@@ -174,6 +184,22 @@ export default {
 
 <style lang="scss" scoped>
 @import "~variables";
+
+.disabled {
+    pointer-events: none;
+    opacity: 0.4;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    margin-top: -25px;
+    margin-left: -25px;
+    left: 50%;
+    top: 50%;
+    position: absolute;
+    background: rgba(0, 0, 0, 0);
+}
 
 .timeSlider-wrapper {
     $base-margin: 0.25em;
