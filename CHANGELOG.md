@@ -17,6 +17,7 @@
 - fileImport: If the features of the imported file are removed from MP, the imported file name will be removed from the "Successfully imported" list
 - package.json test:vue: excluded /cosi/node_modules from test paths (now matching masterportal root packages that are not tested)
 - layerSelector: update function calls and bootstrap usage
+- The version of node was updated, must be >= 16.13.2 <= 16.18.1
 
 ### Deprecated
 
