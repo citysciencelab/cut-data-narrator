@@ -24,11 +24,8 @@
 ### Removed
 
 ### Fixed
-<<<<<<< HEAD
 - Filter throws error when a layerGroup has an empty layers list
-=======
 - Fix some vulnerabilities in dependencies
->>>>>>> dev
 - Issue #821: Sorting the table in featureLister tool now works again
 - Issue #844: fileImport now converts the projection of geoJSON if necessary
 - Issue #845: The buffer analysis tool now shows results correctly again
