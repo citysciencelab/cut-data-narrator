@@ -1,35 +1,43 @@
+import sortBy from "../../../../utils/sortBy";
 /**
-     * Filters external layers (property 'isExternal') and sorts the list.
+     * Filters external layers (property 'isExternal') and sorts the list by 'selectionIDX'.
      * If featureViaURL is contained in Config, these ids are removed from list.
-     * Returns a list with reduced models, containing 'transparency', 'isVisibleInMap' and 'id'.
+     * If mapMode is 2D, 3D-layers are removed from list.
+     * Returns a list with reduced layers, containing 'transparency', 'isVisibleInMap' and 'id'.
      *
-     * @param {?ModelList} layerList List of layers.
-     * @returns {Array} a list with reduced models
+     * @param {String} mapMode current map mode
+     * @param {Array} layerList List of layers.
+     * @returns {Array} a list with reduced layers
      */
-export default function filterAndReduceLayerList (layerList) {
+export default function filterAndReduceLayerList (mapMode, layerList) {
     const reducedLayerList = [],
         {featureViaURL} = Config,
-        getIds = [];
+        featureViaURLIds = [];
 
     if (!Array.isArray(layerList)) {
         return reducedLayerList;
     }
-    let filteredLayerList = layerList.filter(model => !model.get("isExternal"));
+    let filteredLayerList = layerList.filter(layer => !layer.get("isExternal"));
 
-    filteredLayerList = Radio.request("Util", "sortBy", filteredLayerList, model => model.get("selectionIDX"));
+    if (mapMode === "2D") {
+        filteredLayerList = filteredLayerList.filter(layer => {
+            return ["Oblique", "TileSet3D", "Terrain3D", "Entities3D"].indexOf(layer.get("typ")) === -1;
+        });
+    }
+    filteredLayerList = sortBy(filteredLayerList, layer => layer.get("selectionIDX"));
 
     // The layer defined by the featureViaUrl module are excluded, as they are only given if the needed Url parameter is given.
     if (featureViaURL !== undefined) {
         featureViaURL.layers.forEach(layer => {
-            getIds.push(layer.id);
+            featureViaURLIds.push(layer.id);
         });
+        filteredLayerList = filteredLayerList.filter(el => !featureViaURLIds.includes(el.id));
     }
-    filteredLayerList = filteredLayerList?.filter(el => !getIds.includes(el.id));
-    filteredLayerList?.forEach(layerModel => {
+    filteredLayerList.forEach(layer => {
         reducedLayerList.push(Object.freeze({
-            transparency: layerModel.get("transparency"),
-            isVisibleInMap: layerModel.get("isVisibleInMap"),
-            id: layerModel.get("id")
+            transparency: layer.get("transparency"),
+            isVisibleInMap: layer.get("isVisibleInMap"),
+            id: layer.get("id")
         }));
     });
     return reducedLayerList;
