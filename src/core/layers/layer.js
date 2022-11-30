@@ -587,7 +587,7 @@ export function handleSingleTimeLayer (isSelected, layer, model) {
             store.commit("WmsTime/setTimeSliderActive", {
                 active: true,
                 currentLayerId: timeLayer.get("id"),
-                playbackDelay: timeLayer?.attributes.playbackDelay || 1
+                playbackDelay: timeLayer?.get("time")?.playbackDelay || 1
             });
 
             store.commit("WmsTime/setTimeSliderDefaultValue", {
