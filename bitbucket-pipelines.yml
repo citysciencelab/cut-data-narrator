@@ -91,6 +91,7 @@ pipelines:
                 name: deploy on openCode
                 script:
                     - git push https://$OpenCode_User:$OpenCode_Password@gitlab.opencode.de/geowerkstatt-hamburg/masterportal.git $BITBUCKET_TAG
+                    - git push https://$OpenCode_User:$OpenCode_Password@gitlab.opencode.de/geowerkstatt-hamburg/masterportal.git dev -f
     custom: # Pipelines that are triggered manually
         End2End-Tests on saucelabs:
             - step: *install-e2e-tests-server-on-test-geoportal
