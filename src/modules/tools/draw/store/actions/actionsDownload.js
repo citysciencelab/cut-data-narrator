@@ -130,12 +130,12 @@ function setDownloadFeatures ({state, commit, dispatch, rootGetters}) {
 
         if (geometry instanceof Circle) {
             feature.set("isGeoCircle", true);
+            feature.setGeometry(fromCircle(geometry));
+            // transform after setting geometry, transformed coordinates are only for cemter and radius
             transformGeometry(rootGetters["Maps/projection"], geometry);
             feature.set("geoCircleCenter", geometry.getCenter().join(","));
             feature.set("geoCircleRadius", geometry.getRadius());
-            feature.setGeometry(fromCircle(geometry));
         }
-
         downloadFeatures.push(feature);
     });
 

@@ -12,11 +12,12 @@ import Polygon from "ol/geom/Polygon";
 import proj4 from "proj4";
 
 describe("src/modules/tools/draw/store/actions/actionsDownload.js", () => {
-    let dispatch, state, rootGetters;
+    let dispatch, state, rootGetters, commit;
 
     beforeEach(() => {
         dispatch = sinon.spy();
-        rootGetters = {"Maps/projectionCode": "EPSG:25832"};
+        commit = sinon.spy();
+        rootGetters = {"Maps/projectionCode": "EPSG:25832", "Maps/projection": "EPSG:25832"};
         proj4.defs("EPSG:25832", "+title=ETRS89/UTM 32N +proj=utm +zone=32 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs");
     });
 
@@ -132,6 +133,32 @@ describe("src/modules/tools/draw/store/actions/actionsDownload.js", () => {
             /* NOTE: i18next isn't actually working in tests yet, so here undefined
              * is compared with undefined - works, but has limited meaning */
             expect(dispatch.calledWith("Alerting/addSingleAlert", i18next.t("common:modules.tools.download.unknownGeometry", {geometry: geometry.getType()}))).to.be.true;
+        });
+    });
+    describe("setDownloadFeatures", () => {
+        it("should set the right coordinates if feature is a circle", () => {
+            const geometry = new Circle([690054.1273707711, 5340593.1785796825], 5);
+
+            state = {
+                layer: {
+                    getSource: () => {
+                        return {
+                            getFeatures: () => [new Feature({geometry})]
+                        };
+                    }
+                }
+            };
+
+            actions.setDownloadFeatures({state, commit, dispatch, rootGetters});
+
+            expect(commit.calledOnce).to.be.true;
+            expect(commit.firstCall.args[0]).to.equal("setDownloadFeatures");
+            expect(commit.firstCall.args[1].length).to.equal(1);
+            expect(commit.firstCall.args[1][0].getGeometry().getCoordinates()[0][0][0]).to.be.equals(690059.1273707711);
+            expect(commit.firstCall.args[1][0].get("geoCircleCenter")).to.be.equals("11.557298950390026,48.19011285902384");
+            expect(dispatch.calledTwice).to.be.true;
+            expect(dispatch.firstCall.args[0]).to.equal("prepareData");
+            expect(dispatch.secondCall.args[0]).to.equal("prepareDownload");
         });
     });
     describe("validateFileName", () => {

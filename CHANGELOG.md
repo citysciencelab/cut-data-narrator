@@ -68,6 +68,7 @@
 - Issue #853: The quickHelp tool is now configurable for the layer tree
 - Issue #852: MouseoverHover: change mouseover text information color from light to dark grey.
 - Issue #854: The save selection tool takes into account the order of layers.
+- Issue #848: Drawing tool Export of circles to KML gives correct coordinates.
 - Fix the position of the unfreeze button which should be over the menu on the touch table view
 - After a layer is selected from the search results it is now getting added to the layer tree again
 - Do not show alert message to use 2 Fingers on GFI Window or any other div apart from map if twoFingerPan is configured to true
