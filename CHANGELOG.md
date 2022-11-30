@@ -57,6 +57,12 @@
 ### Fixed
 - Filter throws error when a layerGroup has an empty layers list
 - Fix some vulnerabilities in dependencies
+- Issue #813: following fixes regarding wmsTime
+  - the layer on the left side is no longer visible on the right
+  - when the animation is finished, the icon of the play button displays now immediately the play icon again
+  - moving the swiper after the playback ended updates the view correctly now
+  - if the last slider position is clicked, the playing status becomes false
+  - added a loading spinner and disabled all inputs while the layer is not fully loaded
 - Issue #821: Sorting the table in featureLister tool now works again
 - Issue #844: fileImport now converts the projection of geoJSON if necessary
 - Issue #845: The buffer analysis tool now shows results correctly again
