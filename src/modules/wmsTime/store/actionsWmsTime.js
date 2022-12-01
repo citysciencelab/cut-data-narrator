@@ -49,6 +49,7 @@ const actions = {
                 }
             );
             Radio.trigger("ModelList", "addModelsByAttributes", {id: secondId});
+            commit("setLayerSwiperTargetLayer", Radio.request("ModelList", "getModelByAttributes", {id: secondId}).get("layer"));
         }
         else {
             // If the button of the "original" window is clicked, it is assumed, that the time value selected in the added window is desired to be further displayed.
@@ -90,6 +91,7 @@ const actions = {
         if (!state.timeSlider.playing) {
             mapCollection.getMap(rootGetters["Maps/mode"]).render();
         }
+
         state.layerSwiper.targetLayer?.once("prerender", renderEvent => dispatch("drawLayer", renderEvent));
         state.layerSwiper.targetLayer?.once("postrender", ({context}) => {
             context.restore();

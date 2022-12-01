@@ -13,7 +13,6 @@ export default {
     mounted () {
         const target = document.getElementById("wmsTime-layerSwiper-button");
 
-        this.setLayerSwiperTargetLayer(this.getVisibleLayerList.find(element => element.values_.id === this.currentTimeSliderObject.layerId + this.layerAppendix));
         this.setLayerSwiperValueX(mapCollection.getMap(this.mode).getSize()[0] / 2);
         mapCollection.getMap(this.mode).on("postcompose", this.updateMap);
 

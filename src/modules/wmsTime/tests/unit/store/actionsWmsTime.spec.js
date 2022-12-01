@@ -109,13 +109,17 @@ describe("src/modules/wmsTime/store/actionsWmsTime.js", () => {
         });
 
         it("should trigger the Parser to add a layer, add said layer to the ModelList and refresh tree if the swiper was activated", () => {
+            const secondId = id + state.layerAppendix;
+
             actions.toggleSwiper({commit, getters, state}, id);
 
-            expect(commitSpy.calledTwice).to.be.true;
+            expect(commitSpy.calledThrice).to.be.true;
             expect(commitSpy.firstCall.args).to.eql(["setLayerSwiperActive", true]);
             expect(commitSpy.secondCall.args[0]).to.eql("setLayerSwiperSourceLayer");
-            expect(requestSpy.calledOnce).to.be.true;
+            expect(commitSpy.thirdCall.args[0]).to.eql("setLayerSwiperTargetLayer");
+            expect(requestSpy.calledTwice).to.be.true;
             expect(requestSpy.firstCall.args).to.eql(["ModelList", "getModelByAttributes", {id}]);
+            expect(requestSpy.secondCall.args).to.eql(["ModelList", "getModelByAttributes", {id: secondId}]);
             expect(trigger.calledThrice).to.be.true;
             expect(trigger.firstCall.args[0]).to.equal("Parser");
             expect(trigger.firstCall.args[1]).to.equal("addLayer");

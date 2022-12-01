@@ -66,6 +66,7 @@
   - moving the swiper after the playback ended updates the view correctly now
   - if the last slider position is clicked, the playing status becomes false
   - added a loading spinner and disabled all inputs while the layer is not fully loaded
+  - setting the target layer for the swiper directly instead of retrieving it in mounted hook to prevent load time issues
 - Issue #821: Sorting the table in featureLister tool now works again
 - Issue #844: fileImport now converts the projection of geoJSON if necessary
 - Issue #845: The buffer analysis tool now shows results correctly again
