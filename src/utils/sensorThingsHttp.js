@@ -466,8 +466,7 @@ export class SensorThingsHttp {
 
         axios({
             method: "get",
-            url: url,
-            responseType: "text"
+            url: url
         }).then(function (response) {
             if (response !== undefined && typeof onsuccess === "function") {
                 onsuccess(response.data);

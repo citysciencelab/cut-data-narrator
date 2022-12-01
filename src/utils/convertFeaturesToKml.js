@@ -86,7 +86,6 @@ function getKmlHotSpotOfIconStyle (anchor) {
 function transform (coords, isPolygon) {
     const transCoords = [];
 
-    // NOTE(roehlipa): The polygon parts look like they would not work as intended. Simply copied from the old version.
     for (const value of coords) {
         if (isPolygon) {
             value.forEach(point => {
