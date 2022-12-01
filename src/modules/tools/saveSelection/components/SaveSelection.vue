@@ -112,7 +112,7 @@ export default {
 <style lang="scss" scoped>
 @import "~variables";
 
-@media (min-width: 768px) {
+@include media-breakpoint-up(md) {
     form {
         width: 450px;
     }

@@ -130,7 +130,7 @@ export default {
                 </a>
             </h2>
             <div
-                v-if="filter.shortDescription && !selectedLayers.includes(filter.filterId)"
+                v-if="filter.shortDescription && !selectedLayers.some(item => item.filterId === filter.filterId)"
                 class="layerInfoText"
             >
                 {{ translateKeyWithPlausibilityCheck(filter.shortDescription, key => $t(key)) }}

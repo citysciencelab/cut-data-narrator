@@ -391,7 +391,7 @@ export default {
                     margin-bottom: 1rem;
                     line-height: 2.4rem;
                 }
-                @media (max-width: 768px) {
+                @include media-breakpoint-down(sm) {
                     p.info-bottom-titel {
                         margin-bottom: 0;
                     }
@@ -403,7 +403,7 @@ export default {
                 }
             }
         }
-        @media (max-width: 768px) {
+        @include media-breakpoint-down(sm) {
             .footer-info-div {
                 padding: 2rem 3rem;
             }

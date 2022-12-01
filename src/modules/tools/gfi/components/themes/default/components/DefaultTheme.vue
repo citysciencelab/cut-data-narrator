@@ -363,12 +363,12 @@ export default {
     height: 450px;
     resize: both;
 }
-@media (min-width: 768px) {
+@include media-breakpoint-up(sm) {
     .gfi-iFrame {
         width: 450px;
     }
 }
-@media (max-width: 767px) {
+@include media-breakpoint-down(sm) {
     .gfi-iFrame {
         width: 100%;
     }

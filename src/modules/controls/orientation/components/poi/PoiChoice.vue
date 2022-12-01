@@ -216,7 +216,7 @@ export default {
                 margin-left: 15px;
                 margin-bottom: 10px;
                 min-width: 60px;
-                @media (max-width: 479px) {
+                @include media-breakpoint-up(sm) {
                     margin-left: 0;
                     margin-bottom: 0;
                     width: 100%;

@@ -44,17 +44,17 @@
         z-index: 999;
         width: 100%;
         max-height: 66vh;
-        left: 0; 
+        left: 0;
     }
 }
-@media (min-width: 768px) {
+@include media-breakpoint-up(md) {
     .navbar {
         .container-fluid {
             padding-left: 0;
         }
     }
 }
-@media (max-width: 767px) {
+@include media-breakpoint-down(md) {
     .navbar {
         .container-fluid {
             padding-left: 0;

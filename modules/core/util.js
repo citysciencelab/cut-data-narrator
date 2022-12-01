@@ -1,6 +1,7 @@
 import uniqueId from "../../src/utils/uniqueId";
 import LoaderOverlay from "../../src/utils/loaderOverlay";
 import findWhereJs from "../../src/utils/findWhereJs";
+import isMobile from "../../src/utils/isMobile";
 
 const Util = Backbone.Model.extend(/** @lends Util.prototype */{
     defaults: {
@@ -544,7 +545,7 @@ const Util = Backbone.Model.extend(/** @lends Util.prototype */{
      * @return {void}
      */
     toggleIsViewMobile: function () {
-        if (window.innerWidth >= 768) {
+        if (!isMobile()) {
             this.setIsViewMobile(false);
         }
         else {

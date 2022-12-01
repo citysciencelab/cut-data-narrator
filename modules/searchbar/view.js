@@ -17,6 +17,7 @@ import "./RadioBridge.js";
 import store from "../../src/app-store/index";
 import {getWKTGeom} from "../../src/utils/getWKTGeom";
 import Collapse from "bootstrap/js/dist/collapse";
+import isMobile from "../../src/utils/isMobile";
 
 /**
  * @member SearchbarTemplate
@@ -188,7 +189,7 @@ const SearchbarView = Backbone.View.extend(/** @lends SearchbarView.prototype */
 
         if (menuStyle !== "TABLE") {
             this.$el.html(this.template(attr));
-            if (window.innerWidth < 768) {
+            if (isMobile()) {
                 $(".navbar-toggler").before(this.$el); // prior of toggleButton
             }
             else {
@@ -292,7 +293,7 @@ const SearchbarView = Backbone.View.extend(/** @lends SearchbarView.prototype */
      * @returns {void}
      */
     setSearchInputWidth: function () {
-        if ($("#searchInput").closest(".collapse.navbar-collapse").length > 0 && window.innerWidth >= 768) {
+        if ($("#searchInput").closest(".collapse.navbar-collapse").length > 0 && !isMobile()) {
             this.$("#searchInput").width(window.innerWidth - $(".desktop").width() - 160);
             Radio.trigger("Title", "setSize");
         }
@@ -504,10 +505,8 @@ const SearchbarView = Backbone.View.extend(/** @lends SearchbarView.prototype */
             this.setMarkerZoom(hit);
         }
         else {
-            const isMobile = Radio.request("Util", "isViewMobile");
-
             // desktop - topics tree is expanded
-            if (hit && isMobile === false) {
+            if (hit && isMobile() === false) {
                 this.zoomToDesktopTopicTree(hit.id, hit.name);
             }
             // mobil

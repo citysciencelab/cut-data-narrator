@@ -303,7 +303,7 @@ export default {
         setSearchInMapExtent (value) {
             this.searchInMapExtent = value;
 
-            if (this.layerConfig?.searchInMapExtentProactive !== false && this.isStrategyActive()) {
+            if (value === true && this.layerConfig?.searchInMapExtentProactive !== false && !this.layerConfig?.searchInMapExtentPreselected && this.isStrategyActive()) {
                 this.handleActiveStrategy();
             }
         },
@@ -849,6 +849,7 @@ export default {
             <SnippetCheckboxFilterInMapExtent
                 :info="layerConfig.searchInMapExtentInfo"
                 :filter-id="layerConfig.filterId"
+                :preselected="layerConfig.searchInMapExtentPreselected"
                 @commandChanged="setSearchInMapExtent"
             />
         </div>

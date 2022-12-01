@@ -1,7 +1,7 @@
 @import "../../css/mixins.scss";
 @import "~variables";
 
-@media (max-width: 766px) {
+@include media-breakpoint-down(md) {
     .tool-window {
         right:0;
     }
@@ -60,7 +60,7 @@
             }
         }
     }
-    
+
     >.header-min {
         cursor: pointer;
         background-color: $light_red;
