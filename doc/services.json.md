@@ -523,6 +523,7 @@ For more details, consider reading the [extensive SensorThings-API documentation
 |useProxy|no|Boolean|`false`|_Deprecated in the next major release. *[GDI-DE](https://www.gdi-de.org/en)* recommends setting CORS headers on the required services instead._ Only used for GFI requests. The request will contain the requested URL as path, with dots replaced by underscores.|`false`|
 |version|no|String|"1.1"|Service version used to request data.|`"1.0"`|
 |intersect|no|Boolean|true|Setting if the sensor data is in intersect range or within range |`true`|
+|observeLocation|no|Boolean|false|Enable to subscribe to locations|`true`|
 
 **Sensor example:**
 

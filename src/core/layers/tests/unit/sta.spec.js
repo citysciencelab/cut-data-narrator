@@ -792,6 +792,32 @@ describe("src/core/layers/sta.js", () => {
         });
     });
 
+    describe("updateFeatureLocation", () => {
+        const feature = new Feature({
+                geometry: new Point([
+                    10.086822509765625,
+                    53.55825752009741
+                ])
+            }),
+            observation = {location: {geometry: {coordinates: [566625.84, 5928050.84]}}};
+
+        it("should do nothing if first param has no getGeometry function", () => {
+            const coordinates = feature.getGeometry().getCoordinates();
+
+            sensorLayer.updateFeatureLocation({});
+            expect(feature.getGeometry().getCoordinates()).to.deep.equal(coordinates);
+        });
+        it("should update the coordinates", () => {
+            store.getters = {
+                "Maps/projection": {
+                    getCode: () => "EPSG:25832"
+                }
+            };
+            sensorLayer.updateFeatureLocation(feature, observation);
+            expect(feature.getGeometry().getCoordinates()).to.deep.equal([-400603.08723813354, -7845263.190976434]);
+        });
+    });
+
     describe("enlargeExtent", () => {
         it("should return correctly enlarged extent", () => {
             expect(sensorLayer.enlargeExtent([100, 100, 200, 200], 0.1)).to.be.an("array").to.have.ordered.members([90, 90, 210, 210]);

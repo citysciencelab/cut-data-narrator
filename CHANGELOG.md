@@ -31,6 +31,7 @@ StyleModel: attribute "rotation" is added to text style.
 - The attribute `onlyDesktop` can now be used to display tools mobile by setting it to `false` for a tool.
 - Filter: New parameter 'searchInMapExtentPreselected' was added. It will preselect the checkbox searchInMapExtent if configured.
 - Missing changelog details to v2.26.0 considering oblique viewer possibilities.
+- STA: New parameter `observeLocation` to enable to subscribe moveable objects
 
 ### Changed
 - fileImport: If the features of the imported file are removed from MP, the imported file name will be removed from the "Successfully imported" list
