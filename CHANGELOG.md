@@ -3,6 +3,22 @@
 
 [Semantic versioning](https://semver.org/spec/v2.0.0.html) is used.
 
+
+## Unreleased - in development
+### __Breaking Changes__
+
+### Added
+
+### Changed
+
+### Deprecated
+
+### Removed
+
+### Fixed
+
+---
+
 ## v2.28.0 - 2022-12-07
 ### Added
 - Draw: Adds a new attribute semicolonCSVDelimiter to decide the semicolon is used as the delimiter for exported CSV file. The default value is true.
