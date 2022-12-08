@@ -32,12 +32,12 @@ export class SensorThingsMqtt {
      */
     constructor (options = null) {
         const optionsKey = JSON.stringify({
-            host: this.options?.host,
-            port: this.options?.port,
-            path: this.options?.path,
-            protocol: this.options?.protocol,
-            mqttVersion: this.options?.mqttVersion,
-            rhPath: this.options?.rhPath
+            host: options?.host,
+            port: options?.port,
+            path: options?.path,
+            protocol: options?.protocol,
+            mqttVersion: options?.mqttVersion,
+            rhPath: options?.rhPath
         });
         let connector = null;
 
