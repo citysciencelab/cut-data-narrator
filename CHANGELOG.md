@@ -8,6 +8,7 @@
 ### __Breaking Changes__
 
 ### Added
+StyleModel: attribute "rotation" is added to text style.
 
 ### Changed
 

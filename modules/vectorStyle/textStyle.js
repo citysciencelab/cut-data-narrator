@@ -1,6 +1,6 @@
 import StyleModel from "./style.js";
 import {Text, Fill, Stroke} from "ol/style.js";
-import {mapAttributes} from "../../src/utils/attributeMapper.js";
+import {isObjectPath, mapAttributes, prepareValue} from "../../src/utils/attributeMapper.js";
 
 const TextStyleModel = StyleModel.extend(/** @lends TextStyleModel.prototype */{
     /**
@@ -78,7 +78,8 @@ const TextStyleModel = StyleModel.extend(/** @lends TextStyleModel.prototype */{
          */
         "textStrokeWidth": 3,
         "labelField": "",
-        "textSuffix": ""
+        "textSuffix": "",
+        "rotation": 0
     },
 
     initialize: function (feature, styles, isClustered) {
@@ -104,6 +105,25 @@ const TextStyleModel = StyleModel.extend(/** @lends TextStyleModel.prototype */{
         }
 
         return new Text();
+    },
+
+    /**
+     * Returns the rotation value and its corresponding value according to style.json.
+     * @param {Object} rotation - The rotation object from the style.json
+     * @returns {number} - The rotation value in degrees or radiants.
+     */
+    getRotationValue: function (rotation) {
+        if (typeof rotation === "object") {
+            const {value, isDegree} = rotation;
+
+            if (isObjectPath(value) && this.attributes.values_ !== undefined) {
+                const rotationValueFromService = parseInt(prepareValue(this.attributes.values_, value), 10);
+
+                return isDegree ? rotationValueFromService * Math.PI / 180 : rotationValueFromService;
+            }
+            return isDegree ? parseInt(value, 10) * Math.PI / 180 : parseInt(value, 10);
+        }
+        return 0;
     },
 
     /**
@@ -139,7 +159,8 @@ const TextStyleModel = StyleModel.extend(/** @lends TextStyleModel.prototype */{
             stroke: new Stroke({
                 color: this.get("clusterTextStrokeColor"),
                 width: this.get("clusterTextStrokeWidth")
-            })
+            }),
+            rotation: this.getRotationValue(this.get("rotation"))
         });
     },
 
@@ -169,7 +190,8 @@ const TextStyleModel = StyleModel.extend(/** @lends TextStyleModel.prototype */{
             stroke: new Stroke({
                 color: this.get("textStrokeColor"),
                 width: this.get("textStrokeWidth")
-            })
+            }),
+            rotation: this.getRotationValue(this.get("rotation"))
         });
     }
 });
