@@ -150,6 +150,9 @@ export default class InterfaceWfsExtern {
             }
             let attrValue = feature.get(attrName);
 
+            if (typeof attrValue === "undefined") {
+                return;
+            }
             if (!isDate) {
                 try {
                     attrValue = Number(attrValue);
@@ -308,7 +311,7 @@ export default class InterfaceWfsExtern {
             this.waitingListForRequests[filterId] = [];
         }
         if (Array.isArray(this.allFetchedItems[filterId])) {
-            onsuccess(this.allFetchedItems[filterId]);
+            onsuccess(this.getUniqueValuesFromFeatures(this.allFetchedItems[filterId], attrName));
             return;
         }
 
@@ -328,19 +331,34 @@ export default class InterfaceWfsExtern {
         }
 
         this.waitingListForRequests[filterId].push(() => {
-            const uniqueObject = {};
-
-            this.allFetchedItems[filterId].forEach(feature => {
-                if (typeof feature?.get !== "function") {
-                    return;
-                }
-                const attrValue = feature.get(attrName);
-
-                uniqueObject[attrValue] = true;
-
-            });
-            onsuccess(Object.keys(uniqueObject));
+            onsuccess(this.getUniqueValuesFromFeatures(this.allFetchedItems[filterId], attrName));
         });
+    }
+    /**
+     * Gets an array with unique values.
+     * @param {ol/Feature[]} features The features to get the values from.
+     * @param {String} attrName The attrName to fetch the values for.
+     * @returns {String[]} The unique values as array.
+     */
+    getUniqueValuesFromFeatures (features, attrName) {
+        if (!Array.isArray(features) || typeof attrName !== "string") {
+            return [];
+        }
+
+        const uniqueObject = {};
+
+        features.forEach(feature => {
+            if (typeof feature?.get !== "function") {
+                return;
+            }
+            const attrValue = feature.get(attrName);
+
+            if (typeof attrValue === "undefined") {
+                return;
+            }
+            uniqueObject[attrValue] = true;
+        });
+        return Object.keys(uniqueObject);
     }
     /**
      * Returns a list of unique value (unsorted) of the given service and attrName by a GET request.

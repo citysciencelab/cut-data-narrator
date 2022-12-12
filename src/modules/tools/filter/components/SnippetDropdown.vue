@@ -326,20 +326,22 @@ export default {
             });
         }
         else if (this.api && this.autoInit !== false) {
-            this.api.getUniqueValues(this.attrName, list => {
-                this.dropdownValue = this.splitListWithDelimitor(list, this.delimitor);
-                this.dropdownSelected = this.getInitialDropdownSelected(this.prechecked, this.dropdownValue, this.multiselect);
-                this.$nextTick(() => {
-                    this.isInitializing = false;
+            this.$nextTick(() => {
+                this.api.getUniqueValues(this.attrName, list => {
+                    this.dropdownValue = this.splitListWithDelimitor(list, this.delimitor);
+                    this.dropdownSelected = this.getInitialDropdownSelected(this.prechecked, this.dropdownValue, this.multiselect);
+                    this.$nextTick(() => {
+                        this.isInitializing = false;
+                        this.disable = false;
+                        this.emitSnippetPrechecked(this.prechecked, this.snippetId, this.visible);
+                    });
+                }, error => {
                     this.disable = false;
-                    this.emitSnippetPrechecked(this.prechecked, this.snippetId, this.visible);
-                });
-            }, error => {
-                this.disable = false;
-                this.isInitializing = false;
-                this.emitSnippetPrechecked();
-                console.warn(error);
-            }, {rules: this.fixedRules, filterId: this.filterId});
+                    this.isInitializing = false;
+                    this.emitSnippetPrechecked();
+                    console.warn(error);
+                }, {rules: this.fixedRules, filterId: this.filterId});
+            });
         }
         else {
             this.dropdownValue = [];

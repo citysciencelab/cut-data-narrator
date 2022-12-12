@@ -499,7 +499,7 @@ describe("src/module/tools/filter/components/SnippetDateRange.vue", () => {
             });
         });
         describe("getMeasureWidth", () => {
-            it("should return 100% if value is set to min and max", () => {
+            it("should return 100% if value is set to min and max", async () => {
                 const api = {
                     getUniqueValues: (attrName, onsuccess) => onsuccess([
                         "20.08.2022",
@@ -515,9 +515,10 @@ describe("src/module/tools/filter/components/SnippetDateRange.vue", () => {
                     attrName: "attrName",
                     format: "DD.MM.YYYY"
                 }});
+                await wrapper.vm.$nextTick();
                 expect(wrapper.vm.getMeasureWidth()).to.equal("100.0%");
             });
-            it("should return the correct width if value is set between min and max", () => {
+            it("should return the correct width if value is set between min and max", async () => {
                 const api = {
                     getUniqueValues: (attrName, onsuccess) => onsuccess([
                         "20.08.2022",
@@ -534,11 +535,12 @@ describe("src/module/tools/filter/components/SnippetDateRange.vue", () => {
                     format: "DD.MM.YYYY",
                     prechecked: ["11.08.2022", "29.08.2022"]
                 }});
+                await wrapper.vm.$nextTick();
                 expect(wrapper.vm.getMeasureWidth()).to.equal("52.5%");
             });
         });
         describe("getMeasureLeft", () => {
-            it("should return 0% if from value equals min", () => {
+            it("should return 0% if from value equals min", async () => {
                 const api = {
                     getUniqueValues: (attrName, onsuccess) => onsuccess([
                         "20.08.2022",
@@ -554,9 +556,10 @@ describe("src/module/tools/filter/components/SnippetDateRange.vue", () => {
                     attrName: "attrName",
                     format: "DD.MM.YYYY"
                 }});
+                await wrapper.vm.$nextTick();
                 expect(wrapper.vm.getMeasureLeft()).to.equal("0.0%");
             });
-            it("should return correct percentage for left if from value is set", () => {
+            it("should return correct percentage for left if from value is set", async () => {
                 const api = {
                     getUniqueValues: (attrName, onsuccess) => onsuccess([
                         "20.08.2022",
@@ -573,6 +576,7 @@ describe("src/module/tools/filter/components/SnippetDateRange.vue", () => {
                     format: "DD.MM.YYYY",
                     prechecked: ["11.08.2022", "29.08.2022"]
                 }});
+                await wrapper.vm.$nextTick();
                 expect(wrapper.vm.getMeasureLeft()).to.equal("23.8%");
             });
         });
@@ -788,7 +792,7 @@ describe("src/module/tools/filter/components/SnippetDateRange.vue", () => {
             });
         });
         describe("getSliderIdxCloseToUntilDate", () => {
-            it("should return the last index of initialized date list, if untilDate isn't given", () => {
+            it("should return the last index of initialized date list, if untilDate isn't given", async () => {
                 const api = {
                     getUniqueValues: (attrName, onsuccess) => onsuccess([
                         "20.08.2022",
@@ -804,9 +808,10 @@ describe("src/module/tools/filter/components/SnippetDateRange.vue", () => {
                     attrName: "attrName",
                     format: "DD.MM.YYYY"
                 }});
+                await wrapper.vm.$nextTick();
                 expect(wrapper.vm.getSliderIdxCloseToUntilDate()).to.equal(4);
             });
-            it("should return the next downward index", () => {
+            it("should return the next downward index", async () => {
                 const api = {
                     getUniqueValues: (attrName, onsuccess) => onsuccess([
                         "20.08.2022",
@@ -822,9 +827,10 @@ describe("src/module/tools/filter/components/SnippetDateRange.vue", () => {
                     attrName: "attrName",
                     format: "DD.MM.YYYY"
                 }});
+                await wrapper.vm.$nextTick();
                 expect(wrapper.vm.getSliderIdxCloseToUntilDate("2022-08-29")).to.equal(3);
             });
-            it("should return the index equal to given untilDate", () => {
+            it("should return the index equal to given untilDate", async () => {
                 const api = {
                     getUniqueValues: (attrName, onsuccess) => onsuccess([
                         "20.08.2022",
@@ -840,11 +846,12 @@ describe("src/module/tools/filter/components/SnippetDateRange.vue", () => {
                     attrName: "attrName",
                     format: "DD.MM.YYYY"
                 }});
+                await wrapper.vm.$nextTick();
                 expect(wrapper.vm.getSliderIdxCloseToUntilDate("2022-08-26")).to.equal(3);
             });
         });
         describe("getSliderIdxCloseToFromDate", () => {
-            it("should return the first index of initialized date list, if fromDate isn't given", () => {
+            it("should return the first index of initialized date list, if fromDate isn't given", async () => {
                 const api = {
                     getUniqueValues: (attrName, onsuccess) => onsuccess([
                         "20.08.2022",
@@ -860,9 +867,10 @@ describe("src/module/tools/filter/components/SnippetDateRange.vue", () => {
                     attrName: "attrName",
                     format: "DD.MM.YYYY"
                 }});
+                await wrapper.vm.$nextTick();
                 expect(wrapper.vm.getSliderIdxCloseToFromDate()).to.equal(0);
             });
-            it("should return the next upward index", () => {
+            it("should return the next upward index", async () => {
                 const api = {
                     getUniqueValues: (attrName, onsuccess) => onsuccess([
                         "20.08.2022",
@@ -878,9 +886,10 @@ describe("src/module/tools/filter/components/SnippetDateRange.vue", () => {
                     attrName: "attrName",
                     format: "DD.MM.YYYY"
                 }});
+                await wrapper.vm.$nextTick();
                 expect(wrapper.vm.getSliderIdxCloseToFromDate("2022-08-11")).to.equal(1);
             });
-            it("should return the index equal to given fromDate", () => {
+            it("should return the index equal to given fromDate", async () => {
                 const api = {
                     getUniqueValues: (attrName, onsuccess) => onsuccess([
                         "20.08.2022",
@@ -896,6 +905,7 @@ describe("src/module/tools/filter/components/SnippetDateRange.vue", () => {
                     attrName: "attrName",
                     format: "DD.MM.YYYY"
                 }});
+                await wrapper.vm.$nextTick();
                 expect(wrapper.vm.getSliderIdxCloseToFromDate("2022-08-16")).to.equal(1);
             });
         });

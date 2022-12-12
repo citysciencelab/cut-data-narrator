@@ -393,7 +393,7 @@ describe("src/module/tools/filter/components/SnippetSliderRange.vue", () => {
                 }});
                 expect(wrapper.vm.getMeasureWidth()).to.equal("100.0%");
             });
-            it("should return the correct width if value is set between min and max", () => {
+            it("should return the correct width if value is set between min and max", async () => {
                 const api = {
                     getMinMax: (attrName, onsuccess) => onsuccess({
                         min: 8,
@@ -406,6 +406,7 @@ describe("src/module/tools/filter/components/SnippetSliderRange.vue", () => {
                     attrName: "attrName",
                     prechecked: [12, 80]
                 }});
+                await wrapper.vm.$nextTick();
                 expect(wrapper.vm.getMeasureWidth()).to.equal("83.8%");
             });
         });
@@ -424,7 +425,7 @@ describe("src/module/tools/filter/components/SnippetSliderRange.vue", () => {
                 }});
                 expect(wrapper.vm.getMeasureLeft()).to.equal("0.0%");
             });
-            it("should return correct percentage for left if from value is set", () => {
+            it("should return correct percentage for left if from value is set", async () => {
                 const api = {
                     getMinMax: (attrName, onsuccess) => onsuccess({
                         min: 8,
@@ -437,6 +438,7 @@ describe("src/module/tools/filter/components/SnippetSliderRange.vue", () => {
                     attrName: "attrName",
                     prechecked: [12, 80]
                 }});
+                await wrapper.vm.$nextTick();
                 expect(wrapper.vm.getMeasureLeft()).to.equal("4.6%");
             });
         });

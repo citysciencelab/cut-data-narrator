@@ -245,4 +245,51 @@ describe("src/modules/tools/filter/interfaces/utils/interface.wfs.extern.js", ()
             expect(interfaceWfsExtern.getSortedDate(["07.03.2022", "08.03.2022", "14.03.2022", "04.01.2021"])).to.deep.equal(["04.01.2021", "07.03.2022", "08.03.2022", "14.03.2022"]);
         });
     });
+
+    describe("getUniqueValuesFromFeatures", () => {
+        it("should return an empty array if anything but an array is given", () => {
+            expect(interfaceWfsExtern.getUniqueValuesFromFeatures()).to.be.an("array").and.to.be.empty;
+            expect(interfaceWfsExtern.getUniqueValuesFromFeatures(null)).to.be.an("array").and.to.be.empty;
+            expect(interfaceWfsExtern.getUniqueValuesFromFeatures({})).to.be.an("array").and.to.be.empty;
+            expect(interfaceWfsExtern.getUniqueValuesFromFeatures(1234)).to.be.an("array").and.to.be.empty;
+            expect(interfaceWfsExtern.getUniqueValuesFromFeatures("string")).to.be.an("array").and.to.be.empty;
+            expect(interfaceWfsExtern.getUniqueValuesFromFeatures(false)).to.be.an("array").and.to.be.empty;
+            expect(interfaceWfsExtern.getUniqueValuesFromFeatures(true)).to.be.an("array").and.to.be.empty;
+        });
+        it("should return an empty array if anything but an string is given as second argument", () => {
+            expect(interfaceWfsExtern.getUniqueValuesFromFeatures([{}])).to.be.an("array").and.to.be.empty;
+            expect(interfaceWfsExtern.getUniqueValuesFromFeatures([{}], {})).to.be.an("array").and.to.be.empty;
+            expect(interfaceWfsExtern.getUniqueValuesFromFeatures([{}], [])).to.be.an("array").and.to.be.empty;
+            expect(interfaceWfsExtern.getUniqueValuesFromFeatures([{}], 1234)).to.be.an("array").and.to.be.empty;
+            expect(interfaceWfsExtern.getUniqueValuesFromFeatures([{}]), true).to.be.an("array").and.to.be.empty;
+            expect(interfaceWfsExtern.getUniqueValuesFromFeatures([{}]), false).to.be.an("array").and.to.be.empty;
+            expect(interfaceWfsExtern.getUniqueValuesFromFeatures([{}]), null).to.be.an("array").and.to.be.empty;
+        });
+        it("should return an empty array if first param is an empty array", () => {
+            expect(interfaceWfsExtern.getUniqueValuesFromFeatures([], "string")).to.be.an("array").and.to.be.empty;
+        });
+        it("should return an empty array if the objects of the array from the first argument dont have a get function", () => {
+            const features = [
+                {foo: ""}
+            ];
+
+            expect(interfaceWfsExtern.getUniqueValuesFromFeatures(features, "attrName")).to.be.an("array").and.to.be.empty;
+        });
+        it("should return a list of values based on the values from the features", () => {
+            const expected = ["foo", "bar"],
+                feature = {
+                    get: () => {
+                        return "foo";
+                    }
+                },
+                feature2 = {
+                    get: () => {
+                        return "bar";
+                    }
+                },
+                features = [feature, feature2, feature];
+
+            expect(interfaceWfsExtern.getUniqueValuesFromFeatures(features, "")).to.deep.equal(expected);
+        });
+    });
 });

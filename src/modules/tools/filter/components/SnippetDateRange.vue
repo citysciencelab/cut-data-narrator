@@ -216,9 +216,28 @@ export default {
         }
 
         if (Array.isArray(this.attrName) && this.attrName.length === 2) {
-            this.getValueListFromApi(this.attrName[0], listFrom => {
-                this.getValueListFromApi(this.attrName[1], listUntil => {
-                    this.initSlider(listFrom, listUntil);
+            this.$nextTick(() => {
+                this.getValueListFromApi(this.attrName[0], listFrom => {
+                    this.getValueListFromApi(this.attrName[1], listUntil => {
+                        this.initSlider(listFrom, listUntil);
+                        this.$nextTick(() => {
+                            this.isInitializing = false;
+                            this.emitSnippetPrechecked(this.prechecked, this.snippetId, this.visible);
+                        });
+                    }, error => {
+                        this.emitSnippetPrechecked();
+                        console.warn(error);
+                    });
+                }, error => {
+                    this.emitSnippetPrechecked();
+                    console.warn(error);
+                });
+            });
+        }
+        else if (typeof this.attrName === "string" && this.attrName) {
+            this.$nextTick(() => {
+                this.getValueListFromApi(this.attrName, list => {
+                    this.initSlider(list);
                     this.$nextTick(() => {
                         this.isInitializing = false;
                         this.emitSnippetPrechecked(this.prechecked, this.snippetId, this.visible);
@@ -227,21 +246,6 @@ export default {
                     this.emitSnippetPrechecked();
                     console.warn(error);
                 });
-            }, error => {
-                this.emitSnippetPrechecked();
-                console.warn(error);
-            });
-        }
-        else if (typeof this.attrName === "string" && this.attrName) {
-            this.getValueListFromApi(this.attrName, list => {
-                this.initSlider(list);
-                this.$nextTick(() => {
-                    this.isInitializing = false;
-                    this.emitSnippetPrechecked(this.prechecked, this.snippetId, this.visible);
-                });
-            }, error => {
-                this.emitSnippetPrechecked();
-                console.warn(error);
             });
         }
     },
