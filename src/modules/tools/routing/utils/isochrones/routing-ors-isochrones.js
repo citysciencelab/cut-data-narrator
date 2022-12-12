@@ -53,7 +53,7 @@ async function fetchRoutingOrsIsochrones ({
 }) {
 
     const serviceUrl = store.getters.getRestServiceById(state.isochronesSettings.serviceId).url,
-        url = `${serviceUrl}/v2/isochrones/${routingOrsSpeedProfile(speedProfile)}`,
+        url = `${serviceUrl}/v2/isochrones/${routingOrsSpeedProfile(speedProfile)}/geojson`,
         rangeValue = optimization === "TIME" ? state.isochronesSettings.timeValue : state.isochronesSettings.distanceValue,
         optimizationMultiplicator = routingOrsOptimizationMultiplicator(optimization),
         range = rangeValue * optimizationMultiplicator,

@@ -11,6 +11,7 @@
 StyleModel: attribute "rotation" is added to text style.
 
 ### Changed
+Routing: changed isochrones url from '/v2/isochrones/$SpeedProfile' to '/v2/isochrones/$SpeedProfile/geojson' to fit to new routing service version.
 
 ### Deprecated
 
