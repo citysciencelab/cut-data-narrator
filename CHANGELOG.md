@@ -26,6 +26,7 @@ Routing: changed isochrones url from '/v2/isochrones/$SpeedProfile' to '/v2/isoc
 
 ### Fixed
 - Issue #858: layerTree: layers in mobile are now toggleable when scale change
+- layerSequence: Use of LayerSequence during initial creation of topic tree was not observed.
 
 ---
 
