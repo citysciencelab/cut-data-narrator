@@ -8,7 +8,13 @@
 ### __Breaking Changes__
 
 ### Added
-StyleModel: attribute "rotation" is added to text style.
+StyleModel:
+    - A new Style type RegularShape is implemented so that more styles like triangle can be used in MP.
+    - Attribute "rotation" is added to text style.
+
+STA:
+    - A new feature property rotation is implemented for animated features.
+    - A new parameter "rotationUnit" is implemented for defining the rotation unit for feature.
 
 ### Changed
 Routing: changed isochrones url from '/v2/isochrones/$SpeedProfile' to '/v2/isochrones/$SpeedProfile/geojson' to fit to new routing service version.

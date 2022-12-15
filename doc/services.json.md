@@ -524,6 +524,7 @@ For more details, consider reading the [extensive SensorThings-API documentation
 |version|no|String|"1.1"|Service version used to request data.|`"1.0"`|
 |intersect|no|Boolean|true|Setting if the sensor data is in intersect range or within range |`true`|
 |observeLocation|no|Boolean|false|Enable to subscribe to locations|`true`|
+|rotationUnit|no|String|""|Defines the rotation unit for feature|`degree`|
 
 **Sensor example:**
 
