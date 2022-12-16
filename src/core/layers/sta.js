@@ -1289,8 +1289,15 @@ STALayer.prototype.getDatastreamIdsInCurrentExtent = function (features, current
  * @returns {ol/Feature[]} the features in the given extent
  */
 STALayer.prototype.getFeaturesInExtent = function (features, currentExtent) {
-    const enlargedExtent = this.enlargeExtent(currentExtent, 0.05),
-        featuresInExtent = [];
+    const featuresInExtent = [];
+    let enlargedExtent = currentExtent;
+
+    if (typeof this.get("maxSpeedKmh") !== "undefined") {
+        enlargedExtent = this.enlargeExtentForMovableFeatures(currentExtent, this.get("maxSpeedKmh"), this.get("factor"));
+    }
+    else {
+        enlargedExtent = this.enlargeExtent(currentExtent, 0.05);
+    }
 
     features.forEach(feature => {
         if (containsExtent(enlargedExtent, feature.getGeometry().getExtent())) {
@@ -1309,6 +1316,34 @@ STALayer.prototype.getFeaturesInExtent = function (features, currentExtent) {
  */
 STALayer.prototype.enlargeExtent = function (extent, factor) {
     const bufferAmount = (extent[2] - extent[0]) * factor;
+
+    return buffer(extent, bufferAmount);
+};
+
+/**
+ * Enlarges the given extent depending on the max. speed of the features and an additional factor.
+ * @param {ol/extent} extent - The current map extent.
+ * @param {Number} maxSpeed - The max. speed of the features in km/h.
+ * @param {Number} [factor=10] - An optional factor to enlarge the extent.
+ * @returns {ol/extent|Boolean} The enlarged extent or false if something failed.
+ */
+STALayer.prototype.enlargeExtentForMovableFeatures = function (extent, maxSpeed, factor = 10) {
+    let defaultFactor = factor;
+
+    if (!Array.isArray(extent) || extent.length !== 4) {
+        console.error("sta.enlargeExtentForMovableFeatures: The first parameter must be an array with the length of 4, but got " + typeof extent);
+        return false;
+    }
+    if (typeof maxSpeed !== "number") {
+        console.error("sta.enlargeExtentForMovableFeatures: The second parameter must be a number, but got " + typeof maxSpeed);
+        return false;
+    }
+    if (typeof factor !== "number") {
+        console.error("sta.enlargeExtentForMovableFeatures: The third parameter must be a number, but got " + typeof factor + ". Use the default 10 instead.");
+        defaultFactor = 10;
+    }
+    const minPerSec = maxSpeed / 3600 * 1000,
+        bufferAmount = minPerSec * defaultFactor;
 
     return buffer(extent, bufferAmount);
 };

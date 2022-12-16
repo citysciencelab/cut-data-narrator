@@ -525,6 +525,8 @@ For more details, consider reading the [extensive SensorThings-API documentation
 |intersect|no|Boolean|true|Setting if the sensor data is in intersect range or within range |`true`|
 |observeLocation|no|Boolean|false|Enable to subscribe to locations|`true`|
 |rotationUnit|no|String|""|Defines the rotation unit for feature|`degree`|
+|maxSpeedKmh|no|Number|undefined|Specifies the max. speed (km/h) of moving objects. Used to calculate a buffer around the extent in which the objects are subscribed.|
+|factor|no|Number|10|Is used for the calculation of the buffer around the extent. Ignored if maxSpeedKmh is not defined.|
 
 **Sensor example:**
 
@@ -537,6 +539,8 @@ For more details, consider reading the [extensive SensorThings-API documentation
       "version" : "1.0",
       "url" : "https://51.5.242.162/itsLGVhackathon",
       "intersect": true,
+      "maxSpeedKmh": 36,
+      "factor": 20,
       "urlParameter" : {
          "root" : "Things",
          "filter" : "startswith(Things/name,'Charging')",
