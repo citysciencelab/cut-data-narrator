@@ -21,6 +21,12 @@ Routing: changed isochrones url from '/v2/isochrones/$SpeedProfile' to '/v2/isoc
 
 ---
 
+## v2.28.1 - 2022-12-16
+### Fixed
+- Filter: Now only the filtered values are displayed in the dropdowns.
+
+---
+
 ## v2.28.0 - 2022-12-07
 ### Added
 - Draw: Adds a new attribute semicolonCSVDelimiter to decide the semicolon is used as the delimiter for exported CSV file. The default value is true.
