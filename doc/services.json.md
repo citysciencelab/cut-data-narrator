@@ -527,6 +527,7 @@ For more details, consider reading the [extensive SensorThings-API documentation
 |rotationUnit|no|String|""|Defines the rotation unit for feature|`degree`|
 |maxSpeedKmh|no|Number|undefined|Specifies the max. speed (km/h) of moving objects. Used to calculate a buffer around the extent in which the objects are subscribed.|
 |factor|no|Number|10|Is used for the calculation of the buffer around the extent. Ignored if maxSpeedKmh is not defined.|
+|historicalLocations|no|Number||Set to an amount to enable historical locations for each moveable feature. The given amount of historical locations will be displayed on the map.|`5`|
 
 **Sensor example:**
 
