@@ -564,7 +564,8 @@ For more details, consider reading the [extensive SensorThings-API documentation
       "mqttOptions" : {
           "host" : "https://localhost",
           "port": "1883"
-      }
+      },
+      "rotationUnit": "degree"
    }
 ```
 
