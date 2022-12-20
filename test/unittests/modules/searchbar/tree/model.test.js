@@ -81,7 +81,7 @@ describe("modules/searchbar/tree", function () {
             const controlsConfig = {
                 startTool: {
                     "tools": [
-                        "obliqueViewer"
+                        "vcOblique"
                     ]
                 },
                 button3d: true
@@ -96,7 +96,7 @@ describe("modules/searchbar/tree", function () {
             const controlsConfig = {
                 startTool: {
                     "tools": [
-                        "obliqueViewer"
+                        "vcOblique"
                     ]
                 },
                 button3d: false

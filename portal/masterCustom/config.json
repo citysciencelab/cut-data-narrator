@@ -318,7 +318,7 @@
             "name": "translate#common:menu.tools.addWms",
             "icon": "bi-plus-lg"
           },
-          "obliqueViewer": {
+          "vcOblique": {
             "name": "translate#additional:modules.tools.obliqueViewer.title",
             "icon": "bi-image",
             "styleId": "obliqueViewer",
@@ -395,7 +395,7 @@
       "button3d": true,
       "startTool": {
         "tools": [
-          "obliqueViewer"
+          "vcOblique"
         ]
       }
     },

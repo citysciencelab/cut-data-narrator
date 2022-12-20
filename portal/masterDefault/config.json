@@ -147,7 +147,7 @@
             "icon": "bi-lamp-fill",
             "isShadowEnabled": true
           },
-          "obliqueViewer": {
+          "vcOblique": {
             "name": "translate#additional:modules.tools.obliqueViewer.title",
             "icon": "bi-image",
             "styleId": "obliqueViewer",
@@ -190,7 +190,7 @@
       "attributions": true,
       "startTool": {
         "tools": [
-          "obliqueViewer"
+          "vcOblique"
         ]
       }
     },

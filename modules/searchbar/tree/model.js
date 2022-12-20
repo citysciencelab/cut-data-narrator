@@ -193,7 +193,7 @@ const TreeModel = Backbone.Model.extend(/** @lends TreeModel.prototype */{
     removeLayerInCaseOfMissingConfig: function (layerModels, controlsConfig) {
         let filteredLayerModel = layerModels;
 
-        if (!controlsConfig?.startTool?.tools || !controlsConfig?.startTool?.tools?.includes("obliqueViewer")) {
+        if (!controlsConfig?.startTool?.tools || !controlsConfig?.startTool?.tools?.includes("vcOblique")) {
             filteredLayerModel = filteredLayerModel.filter(layerModel => layerModel?.typ?.toUpperCase() !== "OBLIQUE");
         }
         if (!controlsConfig?.button3d) {
