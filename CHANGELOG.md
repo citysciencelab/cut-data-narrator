@@ -6,6 +6,8 @@
 
 ## Unreleased - in development
 ### __Breaking Changes__
+Addon `obliqueViewer` was renamed to `vcOblique`. Please check portal configuration files if necessary.
+See [documentation](https://bitbucket.org/geowerkstatt-hamburg/addons/src/dev/vcOblique/doc/config.json.md)
 
 ### Added
 StyleModel:
