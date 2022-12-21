@@ -1,5 +1,5 @@
 import axios from "axios";
-import {handleAxiosError} from "../utils/handleAxiosError";
+import handleAxiosErrorModule from "../utils/handleAxiosError";
 import getWfsError from "../utils/getWfsError";
 import {WFS} from "ol/format.js";
 import isObject from "../../utils/isObject";
@@ -62,7 +62,7 @@ function getFeatureGET (url, payload, onerror) {
 
     return axios(options)
         .then(response => handleWfsResponse(response, onerror))
-        .catch(axiosError => handleAxiosError(axiosError, "api/wfs/getFeatureGET", onerror));
+        .catch(axiosError => handleAxiosErrorModule.handleAxiosError(axiosError, "api/wfs/getFeatureGET", onerror));
 }
 
 /**
@@ -117,7 +117,7 @@ function getFeaturePOST (url, payload, onerror) {
 
     return axios(options)
         .then(response => handleWfsResponse(response, onerror))
-        .catch(axiosError => handleAxiosError(axiosError, "api/wfs/getFeaturePOST", onerror));
+        .catch(axiosError => handleAxiosErrorModule.handleAxiosError(axiosError, "api/wfs/getFeaturePOST", onerror));
 }
 
 /**

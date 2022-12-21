@@ -2,7 +2,7 @@ import axios from "axios";
 import moment from "moment";
 import xml2json from "../utils/xml2json";
 import getNestedValues from "../../utils/getNestedValues";
-import {handleAxiosError} from "../utils/handleAxiosError.js";
+import handleAxiosErrorModule from "../utils/handleAxiosError.js";
 
 /**
  * Handles the GetRecordById request.
@@ -26,7 +26,7 @@ export function getRecordById (url, metadataId, outputSchema = "http://www.isotc
     })
         .then(response => xml2json(response.request.responseXML))
         .then(json => getMetadata(json))
-        .catch(error => handleAxiosError(error, "getRecordById"));
+        .catch(error => handleAxiosErrorModule.handleAxiosError(error, "getRecordById"));
 }
 
 /**
