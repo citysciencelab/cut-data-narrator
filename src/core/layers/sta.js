@@ -16,6 +16,8 @@ import store from "../../app-store";
 import moment from "moment";
 import "moment-timezone";
 import uniqueId from "../../utils/uniqueId";
+import {Circle as CircleStyle, Fill, Stroke, Style} from "ol/style.js";
+
 /**
  * Creates a layer for the SensorThings API.
  * @param {Object} attrs attributes of the layer
@@ -74,6 +76,7 @@ export default function STALayer (attrs) {
     this.createLayer(Object.assign(defaults, attrs));
     Layer.call(this, Object.assign(defaults, attrs), this.layer, !attrs.isChildLayer);
     this.set("style", this.getStyleFunction(attrs));
+    this.styleRules = [];
 
     moment.locale("de");
 }
@@ -213,6 +216,10 @@ STALayer.prototype.getPropertyname = function (attrs) {
 STALayer.prototype.getStyleFunction = function (attrs) {
     const styleId = attrs?.styleId,
         styleModel = bridge.getStyleModelById(styleId);
+
+    if (typeof styleModel?.get === "function" && styleModel.get("rules")) {
+        this.styleRule = styleModel.get("rules");
+    }
 
     if (typeof styleModel !== "undefined") {
         return function (feature) {
@@ -425,6 +432,11 @@ STALayer.prototype.createMqttConnectionToSensorThings = function (url, mqttOptio
                 clonedFeature.setId(uniqueId("historicalFeature-"));
                 feature.get("historicalFeatureIds").unshift(clonedFeature.getId());
                 layerSource.addFeature(clonedFeature);
+                feature.get("historicalFeatureIds").forEach((id, index) => {
+                    const scale = this.getScale(index, feature.get("historicalFeatureIds").length);
+
+                    this.setStyleOfHistoricalFeature(layerSource.getFeatureById(id), scale, this.styleRule);
+                });
             }
         }
         this.updateFeatureProperties(feature, datastreamId, observation.result, phenomenonTime, showNoDataValue, noDataValue, bridge.changeFeatureGFI);
@@ -1076,9 +1088,10 @@ STALayer.prototype.aggregatePropertiesOfOneThing = function (thing, result) {
  * @param {String} epsg the epsg of sensortype
  * @param {String|Object} gfiTheme The name of the gfiTheme or an object of gfiTheme
  * @param {String} utc="+1" UTC-Timezone to calculate correct time.
+ * @param {Boolean} isHistorical if it is historical data
  * @returns {ol/Feature[]} feature to draw
  */
-STALayer.prototype.createFeaturesFromSensorData = function (sensorData, mapProjection, epsg, gfiTheme, utc) {
+STALayer.prototype.createFeaturesFromSensorData = function (sensorData, mapProjection, epsg, gfiTheme, utc, isHistorical = false) {
     if (!Array.isArray(sensorData) || typeof epsg === "undefined") {
         return [];
     }
@@ -1104,6 +1117,9 @@ STALayer.prototype.createFeaturesFromSensorData = function (sensorData, mapProje
             feature.set("gfiParams", gfiTheme?.params, true);
         }
         feature.set("utc", utc, true);
+        if (isHistorical) {
+            feature.set("scale", this.getScale(index - 1, sensorData.length - 1));
+        }
         feature = this.aggregateDataStreamValue(feature);
         feature = this.aggregateDataStreamPhenomenonTime(feature);
         features.push(feature);
@@ -1702,12 +1718,13 @@ STALayer.prototype.parseSensorDataToFeature = function (feature, sensorData, url
         gfiTheme = this.get("gfiTheme"),
         utc = this.get("utc"),
         things = this.getAllThings(sensorData, urlParam, url, version),
-        historicalFeatures = this.createFeaturesFromSensorData(things, mapProjection, epsg, gfiTheme, utc),
+        historicalFeatures = this.createFeaturesFromSensorData(things, mapProjection, epsg, gfiTheme, utc, true),
         historicalFeatureIds = [];
 
     historicalFeatures.shift();
     historicalFeatures.forEach(hFeature => {
         historicalFeatureIds.push(hFeature.getId());
+        this.setStyleOfHistoricalFeature(hFeature, hFeature.get("scale"), this.styleRule);
     });
     layerSource.addFeatures(historicalFeatures);
     feature.set("historicalFeatureIds", historicalFeatureIds);
@@ -1726,4 +1743,79 @@ STALayer.prototype.resetHistoricalLocations = function (datastreamId) {
         feature.get("historicalFeatureIds").forEach(featureId => layerSource.removeFeature(layerSource.getFeatureById(featureId)));
         feature.unset("historicalFeatureIds");
     }
+};
+
+/**
+ * Gets the individual scale of the feature according to the index of historical feature and amount of historical features.
+ * The first historical fature has a scale 0.8 and the last one has a scale 0.2.
+ * @param {Number} index The index of the historical feature
+ * @param {Number} amount The amount of the historical features
+ * @returns {Number} scale
+ */
+STALayer.prototype.getScale = function (index, amount) {
+    return 0.8 - 0.6 * index / amount;
+};
+/**
+ * Sets the style of historical feature
+ * @param {ol/Feature} feature The feature.
+ * @param {Number} scale the icon scale in style
+ * @param {Object[]} styleRule the style rule of the sta features
+ * @returns {void}
+ */
+STALayer.prototype.setStyleOfHistoricalFeature = function (feature, scale, styleRule) {
+    if (!Array.isArray(styleRule) || !styleRule.length || !styleRule[0].style) {
+        console.error("The style rule is not right");
+        return;
+    }
+
+    const style = this.getStyleOfHistoricalFeature(styleRule[0].style, scale);
+
+    if (!style) {
+        console.error("There are not right style format for historical feature");
+        return;
+    }
+    feature.setStyle(style);
+};
+
+/**
+ * Parses and gets the style of historical feature.
+ * @param {Object} style The style object of current feature.
+ * @param {Number} scale the icon scale in style
+ * @returns {void}
+ */
+STALayer.prototype.getStyleOfHistoricalFeature = function (style, scale) {
+    let circleRadius,
+        circleFillColor,
+        circleStrokeColor,
+        circleStrokeWidth;
+
+    if (style.type === "regularShape") {
+        circleRadius = style.rsRadius;
+        circleFillColor = style.rsFillColor;
+        circleStrokeColor = style.rsStrokeColor;
+        circleStrokeWidth = style.rsStrokeWidth;
+    }
+    else if (style.type === "circle") {
+        circleRadius = style.circleRadius;
+        circleFillColor = style.circleFillColor;
+        circleStrokeColor = style.circleStrokeColor;
+        circleStrokeWidth = style.circleStrokeWidth;
+    }
+    else {
+        return false;
+    }
+
+    return new Style({
+        image: new CircleStyle({
+            radius: circleRadius,
+            fill: new Fill({
+                color: circleFillColor
+            }),
+            stroke: new Stroke({
+                color: circleStrokeColor,
+                width: circleStrokeWidth
+            }),
+            scale: scale
+        })
+    });
 };
