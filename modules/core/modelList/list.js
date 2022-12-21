@@ -517,7 +517,8 @@ const ModelList = Backbone.Collection.extend(/** @lends ModelList.prototype */{
      */
     moveModelInTree: function (model, movement) {
         const currentSelectionIdx = model.get("selectionIDX"),
-            newSelectionIndex = currentSelectionIdx + movement;
+            newSelectionIndex = currentSelectionIdx + movement,
+            isTreeMove = Config?.layerSequence?.moveModelInTree !== undefined ? Config?.layerSequence?.moveModelInTree : true;
 
         let modelToSwap = this.where({selectionIDX: newSelectionIndex});
 
@@ -533,7 +534,7 @@ const ModelList = Backbone.Collection.extend(/** @lends ModelList.prototype */{
         model.setSelectionIDX(newSelectionIndex);
         modelToSwap.setSelectionIDX(currentSelectionIdx);
 
-        this.updateLayerView();
+        this.updateLayerView(isTreeMove);
 
         this.trigger("updateSelection");
         this.trigger("updateLightTree");
@@ -660,13 +661,13 @@ const ModelList = Backbone.Collection.extend(/** @lends ModelList.prototype */{
     /**
      * Fetches all selected layers. For light tree, these are all layers of the tree. for custom tree, these
      * are only the ones listed under selected layers.
+     * @param {Boolean} isTreeMove - flag if function was called because of moving a layer in the tree
      * @return {array} Sorted selected Layers
      */
-    getSortedTreeLayers: function () {
+    getSortedTreeLayers: function (isTreeMove) {
         const combinedLayers = this.getTreeLayers(),
             newLayers = combinedLayers.filter(layer => layer.get("selectionIDX") === 0),
-            treeType = Radio.request("Parser", "getTreeType"),
-            isTreeMove = Config?.layerSequence?.moveModelInTree !== undefined ? Config?.layerSequence?.moveModelInTree : true;
+            treeType = Radio.request("Parser", "getTreeType");
 
         // we need to devide current layers from newly added ones to be able to put the latter ones in
         // at a nice position
@@ -792,11 +793,12 @@ const ModelList = Backbone.Collection.extend(/** @lends ModelList.prototype */{
 
     /**
      * Forces rerendering of all layers. Layers are sorted before rerender.
+     * @param {Boolean} isTreeMove - flag if function was called because of moving a layer in the tree
      * @fires Map#RadioTriggerMapAddLayerToIndex
      * @return {void}
      */
-    updateLayerView: function () {
-        const sortedLayers = this.getSortedTreeLayers();
+    updateLayerView: function (isTreeMove) {
+        const sortedLayers = this.getSortedTreeLayers(isTreeMove);
 
         sortedLayers.forEach(layer => {
             Radio.trigger("Map", "addLayerToIndex", [layer.get("layer"), layer.get("selectionIDX"), layer.get("layerSequence")]);
