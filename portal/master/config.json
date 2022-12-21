@@ -483,7 +483,7 @@
             "icon": "bi-arrows-angle-contract"
           },
           "vcOblique": {
-            "name": "translate#additional:modules.tools.obliqueViewer.title",
+            "name": "translate#additional:modules.tools.vcOblique.title",
             "icon": "bi-image",
             "styleId": "obliqueViewer",
             "isVisibleInMenu": false
