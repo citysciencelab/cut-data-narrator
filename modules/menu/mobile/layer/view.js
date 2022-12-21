@@ -44,7 +44,8 @@ const LayerView = Backbone.View.extend(/** @lends LayerView.prototype */{
         channel.on({
             "change:isVisibleInTree": this.removeIfNotVisible,
             "rerender": this.render,
-            "renderSetting": this.renderSetting
+            "renderSetting": this.renderSetting,
+            "change:isOutOfRange": this.toggleColor
         }, this);
 
         // translates the i18n-props into current user-language. is done this way, because model's listener to languageChange reacts too late (after render, which ist riggered by creating new Menu)
