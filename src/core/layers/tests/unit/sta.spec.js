@@ -2353,4 +2353,16 @@ describe("src/core/layers/sta.js", () => {
             expect(style.getImage().getScale()).to.equal(0.8);
         });
     });
+
+    describe("startIntervalUpdate", () => {
+        it("should do not set timeout", () => {
+            sensorLayer.startIntervalUpdate(1);
+            expect(sensorLayer.intervallRequest).to.be.null;
+        });
+        it("should do not set the timeout if no timeout is passed", () => {
+            sensorLayer.keepUpdating = true;
+            sensorLayer.startIntervalUpdate();
+            expect(sensorLayer.intervallRequest).to.be.null;
+        });
+    });
 });

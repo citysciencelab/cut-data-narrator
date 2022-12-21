@@ -18,6 +18,7 @@ STA:
     - A new feature property rotation is implemented for animated features.
     - A new parameter "rotationUnit" is implemented for defining the rotation unit for feature.
     - A new parameter "historicalLocations" is implemented for displaying the given amount of the historical locations.
+    - A new parameter "enableContinuousRequest" has been implemented which ensures that the STA API is continuously requested to load new features of the extends.
 
 ### Changed
 Routing: changed isochrones url from '/v2/isochrones/$SpeedProfile' to '/v2/isochrones/$SpeedProfile/geojson' to fit to new routing service version.

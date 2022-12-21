@@ -528,6 +528,7 @@ For more details, consider reading the [extensive SensorThings-API documentation
 |maxSpeedKmh|no|Number|undefined|Specifies the max. speed (km/h) of moving objects. Used to calculate a buffer around the extent in which the objects are subscribed.|
 |factor|no|Number|10|Is used for the calculation of the buffer around the extent. Ignored if maxSpeedKmh is not defined.|
 |historicalLocations|no|Number||Set to an amount to enable historical locations for each moveable feature. The given amount of historical locations will be displayed on the map.|`5`|
+|enableContinuousRequest|no|Boolean||Set true to enable continuous requests in an interval based on the configured `factor`. Will be ignored if no `factor` is configured.|`true`|
 
 **Sensor example:**
 
@@ -542,6 +543,7 @@ For more details, consider reading the [extensive SensorThings-API documentation
       "intersect": true,
       "maxSpeedKmh": 36,
       "factor": 20,
+      "enableContinuousRequest": true,
       "urlParameter" : {
          "root" : "Things",
          "filter" : "startswith(Things/name,'Charging')",

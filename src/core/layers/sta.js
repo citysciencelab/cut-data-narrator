@@ -78,6 +78,9 @@ export default function STALayer (attrs) {
     this.set("style", this.getStyleFunction(attrs));
     this.styleRules = [];
 
+    this.intervallRequest = null;
+    this.keepUpdating = false;
+
     moment.locale("de");
 }
 // Link prototypes and add prototype methods, means STALayer uses all methods and properties of Layer
@@ -513,10 +516,11 @@ STALayer.prototype.getFeatureByDatastreamId = function (features, id) {
 /**
  * Initial loading of sensor data
  * @param {Function} onsuccess a function to call on success
+ * @param {Boolean} updateOnly set to true to avoid clearing the source
  * @fires Core#RadioRequestUtilGetProxyURL
  * @returns {void}
  */
-STALayer.prototype.initializeConnection = function (onsuccess) {
+STALayer.prototype.initializeConnection = function (onsuccess, updateOnly = false) {
     /**
      * @deprecated in the next major-release!
      * useProxy
@@ -535,13 +539,17 @@ STALayer.prototype.initializeConnection = function (onsuccess) {
         epsg = this.get("epsg"),
         gfiTheme = this.get("gfiTheme"),
         utc = this.get("utc"),
-        isClustered = this.has("clusterDistance");
+        isClustered = this.has("clusterDistance"),
+        datastreamIds = this.getDatastreamIdsInCurrentExtent(this.get("layer").getSource().getFeatures(), store.getters["Maps/getCurrentExtent"]);
 
     this.callSensorThingsAPI(url, version, urlParams, currentExtent, intersect, sensorData => {
-        const features = this.createFeaturesFromSensorData(sensorData, mapProjection, epsg, gfiTheme, utc),
+        const filteredSensorData = !updateOnly ? sensorData : sensorData.filter(data => !datastreamIds.includes(data?.properties?.dataStreamId)),
+            features = this.createFeaturesFromSensorData(filteredSensorData, mapProjection, epsg, gfiTheme, utc),
             layerSource = this.get("layerSource") instanceof Cluster ? this.get("layerSource").getSource() : this.get("layerSource");
 
-        layerSource.clear();
+        if (!updateOnly) {
+            layerSource.clear();
+        }
 
         if (Array.isArray(features) && features.length) {
             layerSource.addFeatures(features);
@@ -558,13 +566,10 @@ STALayer.prototype.initializeConnection = function (onsuccess) {
 
         features.forEach(feature => {
             bridge.changeFeatureGFI(feature);
-            if (typeof feature?.get === "function" && Array.isArray(feature.get("historicalFeatureIds"))) {
-                feature.unset("historicalFeatureIds");
-            }
         });
 
         if (typeof onsuccess === "function") {
-            onsuccess();
+            onsuccess(features);
         }
         if (typeof this.options.afterLoading === "function") {
             this.options.afterLoading(features);
@@ -1250,11 +1255,19 @@ STALayer.prototype.startSubscription = function (features) {
         this.initializeConnection(function () {
             this.updateSubscription();
             store.dispatch("Maps/registerListener", {type: "moveend", listener: this.updateSubscription.bind(this)});
+            this.keepUpdating = true;
+            if (this.get("enableContinuousRequest")) {
+                this.startIntervalUpdate(typeof this.get("factor") === "number" ? this.get("factor") * 1000 : undefined);
+            }
         }.bind(this));
     }
     else {
         this.updateSubscription();
         store.dispatch("Maps/registerListener", {type: "moveend", listener: this.updateSubscription.bind(this)});
+        this.keepUpdating = true;
+        if (this.get("enableContinuousRequest")) {
+            this.startIntervalUpdate(typeof this.get("factor") === "number" ? this.get("factor") * 1000 : undefined);
+        }
     }
 };
 
@@ -1271,6 +1284,43 @@ STALayer.prototype.stopSubscription = function () {
     this.set("isSubscribed", false);
     store.dispatch("Maps/unregisterListener", {type: "moveend", listener: this.updateSubscription.bind(this)});
     this.unsubscribeFromSensorThings([], subscriptionTopics, version, isVisibleInMap, mqttClient);
+    clearInterval(this.intervallRequest);
+    this.keepUpdating = false;
+};
+
+/**
+ * Starts the interval for continous updating the features in the current extent.
+ * @param {Number} timeout The timeout in milliseconds.
+ * @returns {void}
+ */
+STALayer.prototype.startIntervalUpdate = function (timeout) {
+    if (!this.keepUpdating || typeof timeout !== "number") {
+        return;
+    }
+    if (this.intervallRequest !== null) {
+        clearInterval(this.intervallRequest);
+    }
+    this.intervallRequest = setTimeout(() => {
+        const datastreamIds = this.getDatastreamIdsInCurrentExtent(this.get("layer").getSource().getFeatures(), store.getters["Maps/getCurrentExtent"]),
+            subscriptionTopics = this.get("subscriptionTopics"),
+            version = this.get("version"),
+            isVisibleInMap = this.get("isVisibleInMap"),
+            mqttClient = this.mqttClient,
+            rh = this.get("mqttRh"),
+            qos = this.get("mqttQos");
+
+        this.unsubscribeFromSensorThings(datastreamIds, subscriptionTopics, version, isVisibleInMap, mqttClient);
+        this.initializeConnection(features => {
+            this.subscribeToSensorThings(
+                this.getDatastreamIdsInCurrentExtent(features, store.getters["Maps/getCurrentExtent"]),
+                subscriptionTopics,
+                version,
+                mqttClient,
+                {rh, qos}
+            );
+        }, true);
+        this.startIntervalUpdate(timeout);
+    }, timeout);
 };
 
 /**
@@ -1305,9 +1355,6 @@ STALayer.prototype.updateSubscription = function () {
                     mqttClient,
                     {rh, qos}
                 );
-                if (typeof this.get("historicalLocations") === "number") {
-                    this.getHistoricalLocationsOfFeatures();
-                }
             });
         }
     }, 2000);
@@ -1677,7 +1724,8 @@ STALayer.prototype.fetchHistoricalLocations = function (url, urlParams, version,
  */
 STALayer.prototype.getHistoricalLocationsOfFeatures = function () {
     const allFeatures = (this.get("layerSource") instanceof Cluster ? this.get("layerSource").getSource() : this.get("layerSource")).getFeatures(),
-        datastreamIds = this.getDatastreamIdsInCurrentExtent(allFeatures, store.getters["Maps/getCurrentExtent"]),
+        featuresWithoutHistoricalIds = allFeatures.filter(feature => typeof feature.get("dataStreamId") !== "undefined" && !Array.isArray(feature.get("historicalFeatureIds"))),
+        datastreamIds = this.getDatastreamIdsInCurrentExtent(featuresWithoutHistoricalIds, store.getters["Maps/getCurrentExtent"]),
         url = this.get("url"),
         urlParam = {
             orderby: "time+desc",
