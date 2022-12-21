@@ -1,6 +1,6 @@
 import {expect} from "chai";
 import Model from "@modules/vectorStyle/pointStyle";
-import {Style, Icon, Circle} from "ol/style.js";
+import {Style, Icon, Circle, RegularShape} from "ol/style.js";
 import {GeoJSON} from "ol/format.js";
 import Util from "@testUtil";
 
@@ -119,6 +119,24 @@ describe("textStyleModel", function () {
             expect(styleModel.createSVGStyle("test")).to.be.an.instanceof(Style);
             expect(styleModel.createSVGStyle("test").getImage()).to.be.an.instanceof(Icon);
             expect(styleModel.createSVGStyle("test").getImage().getSrc()).to.equal("data:image/svg+xml;charset=utf-8,test");
+        });
+    });
+
+    describe("createCircleClusterStyle", function () {
+        it("should create circle cluster style", function () {
+            expect(styleModel.createCircleClusterStyle()).to.be.an.instanceof(Style);
+            expect(styleModel.createCircleClusterStyle().getImage()).to.be.an.instanceof(Circle);
+            expect(styleModel.createCircleClusterStyle().getImage().getRadius()).to.equal(15);
+        });
+    });
+
+    describe("createRegularShapeStyle", function () {
+        it("should create RegularShape style", function () {
+            expect(styleModel.createRegularShapeStyle()).to.be.an.instanceof(Style);
+            expect(styleModel.createRegularShapeStyle().getImage()).to.be.an.instanceof(RegularShape);
+            expect(styleModel.createRegularShapeStyle().getImage().getRadius()).to.equal(10);
+            expect(styleModel.createRegularShapeStyle().getImage().getPoints()).to.equal(3);
+            expect(styleModel.createRegularShapeStyle().getImage().getAngle()).to.equal(0);
         });
     });
 

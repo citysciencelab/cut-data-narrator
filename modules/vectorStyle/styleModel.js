@@ -508,7 +508,19 @@ const VectorStyleModel = Backbone.Model.extend(/** @lends VectorStyleModel.proto
      * @returns {object[]} return all rules that fit to the feature
      */
     getRulesForFeature: function (feature) {
-        return this.get("rules").filter(rule => this.checkProperties(feature, rule));
+        const rules = [];
+
+        this.get("rules").forEach(rule => {
+            if (!this.checkProperties(feature, rule)) {
+                return;
+            }
+            if (typeof feature.get("rotation") !== "undefined") {
+                rule.style.rotation = feature.get("rotation");
+            }
+            rules.push(rule);
+        });
+
+        return rules;
     },
 
     /**

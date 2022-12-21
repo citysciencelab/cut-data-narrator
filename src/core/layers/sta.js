@@ -15,7 +15,7 @@ import crs from "@masterportal/masterportalapi/src/crs";
 import store from "../../app-store";
 import moment from "moment";
 import "moment-timezone";
-
+import uniqueId from "../../utils/uniqueId";
 /**
  * Creates a layer for the SensorThings API.
  * @param {Object} attrs attributes of the layer
@@ -410,10 +410,22 @@ STALayer.prototype.createMqttConnectionToSensorThings = function (url, mqttOptio
             features = typeof layerSource.getFeatures === "function" && Array.isArray(layerSource.getFeatures()) ? layerSource.getFeatures() : [],
             feature = this.getFeatureByDatastreamId(features, datastreamId),
             phenomenonTime = this.getLocalTimeFormat(observation.phenomenonTime, timezone);
+        let removedFeature = null,
+            clonedFeature = null;
 
         this.updateObservationForDatastreams(feature, datastreamId, observation);
-        if (this.get("observeLocation")) {
+        if (this.get("observeLocation") && isObject(feature)) {
+            clonedFeature = feature.clone();
+
             this.updateFeatureLocation(feature, observation);
+            if (typeof feature?.get === "function" && Array.isArray(feature.get("historicalFeatureIds")) && feature.get("historicalFeatureIds").length && isObject(observation?.location)) {
+                removedFeature = feature.get("historicalFeatureIds").pop();
+                layerSource.removeFeature(layerSource.getFeatureById(removedFeature));
+                clonedFeature.set("dataStreamId", undefined);
+                clonedFeature.setId(uniqueId("historicalFeature-"));
+                feature.get("historicalFeatureIds").unshift(clonedFeature.getId());
+                layerSource.addFeature(clonedFeature);
+            }
         }
         this.updateFeatureProperties(feature, datastreamId, observation.result, phenomenonTime, showNoDataValue, noDataValue, bridge.changeFeatureGFI);
     });
@@ -532,13 +544,22 @@ STALayer.prototype.initializeConnection = function (onsuccess) {
             this.get("layer").setStyle(this.get("style"));
         }
 
-        features.forEach(feature => bridge.changeFeatureGFI(feature));
+        features.forEach(feature => {
+            bridge.changeFeatureGFI(feature);
+            if (typeof feature?.get === "function" && Array.isArray(feature.get("historicalFeatureIds"))) {
+                feature.unset("historicalFeatureIds");
+            }
+        });
 
         if (typeof onsuccess === "function") {
             onsuccess();
         }
         if (typeof this.options.afterLoading === "function") {
             this.options.afterLoading(features);
+        }
+
+        if (typeof this.get("historicalLocations") === "number") {
+            this.getHistoricalLocationsOfFeatures();
         }
     }, error => {
         if (typeof this.options.onLoadingError === "function") {
@@ -810,6 +831,7 @@ STALayer.prototype.createPropertiesOfDatastreamsHelper = function (dataStreams, 
         const dataStreamId = String(dataStream["@iot.id"]),
             dataStreamName = dataStream.name,
             dataStreamValue = Array.isArray(dataStream.Observations) ? dataStream.Observations[0]?.result : "",
+            dataStreamUnit = dataStream.unitOfMeasurement?.name,
             key = "dataStream_" + dataStreamId + "_" + dataStreamName;
         let phenomenonTime = Array.isArray(dataStream.Observations) ? dataStream.Observations[0]?.phenomenonTime : "";
 
@@ -829,6 +851,13 @@ STALayer.prototype.createPropertiesOfDatastreamsHelper = function (dataStreams, 
             properties[key] = noDataValue;
             properties[key + "_phenomenonTime"] = noDataValue;
             properties.dataStreamValue.push(noDataValue);
+        }
+
+        if (typeof dataStreamUnit !== "undefined" && typeof this.get("rotationUnit") !== "undefined" && dataStreamUnit === this.get("rotationUnit")) {
+            properties.rotation = {
+                isDegree: true,
+                value: typeof dataStreamValue !== "undefined" ? dataStreamValue : 0
+            };
         }
     });
 
@@ -1246,6 +1275,9 @@ STALayer.prototype.updateSubscription = function () {
         if (!this.get("loadThingsOnlyInCurrentExtent")) {
             this.unsubscribeFromSensorThings(datastreamIds, subscriptionTopics, version, isVisibleInMap, mqttClient);
             this.subscribeToSensorThings(datastreamIds, subscriptionTopics, version, mqttClient, {rh, qos});
+            if (typeof this.get("historicalLocations") === "number") {
+                this.getHistoricalLocationsOfFeatures();
+            }
         }
         else {
             this.unsubscribeFromSensorThings(datastreamIds, subscriptionTopics, version, isVisibleInMap, mqttClient);
@@ -1257,6 +1289,9 @@ STALayer.prototype.updateSubscription = function () {
                     mqttClient,
                     {rh, qos}
                 );
+                if (typeof this.get("historicalLocations") === "number") {
+                    this.getHistoricalLocationsOfFeatures();
+                }
             });
         }
     }, 2000);
@@ -1281,8 +1316,15 @@ STALayer.prototype.getDatastreamIdsInCurrentExtent = function (features, current
  * @returns {ol/Feature[]} the features in the given extent
  */
 STALayer.prototype.getFeaturesInExtent = function (features, currentExtent) {
-    const enlargedExtent = this.enlargeExtent(currentExtent, 0.05),
-        featuresInExtent = [];
+    const featuresInExtent = [];
+    let enlargedExtent = currentExtent;
+
+    if (typeof this.get("maxSpeedKmh") !== "undefined") {
+        enlargedExtent = this.enlargeExtentForMovableFeatures(currentExtent, this.get("maxSpeedKmh"), this.get("factor"));
+    }
+    else {
+        enlargedExtent = this.enlargeExtent(currentExtent, 0.05);
+    }
 
     features.forEach(feature => {
         if (containsExtent(enlargedExtent, feature.getGeometry().getExtent())) {
@@ -1301,6 +1343,34 @@ STALayer.prototype.getFeaturesInExtent = function (features, currentExtent) {
  */
 STALayer.prototype.enlargeExtent = function (extent, factor) {
     const bufferAmount = (extent[2] - extent[0]) * factor;
+
+    return buffer(extent, bufferAmount);
+};
+
+/**
+ * Enlarges the given extent depending on the max. speed of the features and an additional factor.
+ * @param {ol/extent} extent - The current map extent.
+ * @param {Number} maxSpeed - The max. speed of the features in km/h.
+ * @param {Number} [factor=10] - An optional factor to enlarge the extent.
+ * @returns {ol/extent|Boolean} The enlarged extent or false if something failed.
+ */
+STALayer.prototype.enlargeExtentForMovableFeatures = function (extent, maxSpeed, factor = 10) {
+    let defaultFactor = factor;
+
+    if (!Array.isArray(extent) || extent.length !== 4) {
+        console.error("sta.enlargeExtentForMovableFeatures: The first parameter must be an array with the length of 4, but got " + typeof extent);
+        return false;
+    }
+    if (typeof maxSpeed !== "number") {
+        console.error("sta.enlargeExtentForMovableFeatures: The second parameter must be a number, but got " + typeof maxSpeed);
+        return false;
+    }
+    if (typeof factor !== "number") {
+        console.error("sta.enlargeExtentForMovableFeatures: The third parameter must be a number, but got " + typeof factor + ". Use the default 10 instead.");
+        defaultFactor = 10;
+    }
+    const minPerSec = maxSpeed / 3600 * 1000,
+        bufferAmount = minPerSec * defaultFactor;
 
     return buffer(extent, bufferAmount);
 };
@@ -1371,6 +1441,9 @@ STALayer.prototype.unsubscribeFromSensorThings = function (datastreamIdsNotToUns
             mqttClient.unsubscribe("v" + version + "/Datastreams(" + id + ")/Observations");
             if (this.get("observeLocation")) {
                 mqttClient.unsubscribe("v" + version + "/Datastreams(" + id + ")/Thing/Locations");
+                if (typeof this.get("historicalLocations") === "number") {
+                    this.resetHistoricalLocations(id);
+                }
             }
             subscriptionTopics[id] = false;
         }
@@ -1471,6 +1544,13 @@ STALayer.prototype.updateFeatureProperties = function (feature, dataStreamId, re
     feature.set("dataStreamValue", this.replaceValueInPipedProperty(feature, "dataStreamValue", dataStreamId, preparedResult));
     feature.set("dataStreamPhenomenonTime", this.replaceValueInPipedProperty(feature, "dataStreamPhenomenonTime", dataStreamId, phenomenonTime));
 
+    if (typeof feature.get("rotation") !== "undefined" && typeof preparedResult !== "undefined") {
+        feature.set("rotation", {
+            isDegree: true,
+            value: preparedResult
+        });
+    }
+
     if (typeof funcChangeFeatureGFI === "function") {
         funcChangeFeatureGFI(feature);
     }
@@ -1540,5 +1620,110 @@ STALayer.prototype.once = function (eventName, handler) {
 
     if (eventName === "featuresloadend") {
         this.onceEvents.featuresloadend.push(handler);
+    }
+};
+
+/**
+ * Fetches historical locations and return it to callback function.
+ * Only for the current extent to minimize the traffic.
+ * @param {String} url The base url.
+ * @param {Object} urlParams The url parameter.
+ * @param {String} version The version.
+ * @param {Function} onsuccess The callback function to return the data.
+ * @returns {void}
+ */
+STALayer.prototype.fetchHistoricalLocations = function (url, urlParams, version, onsuccess) {
+    if (typeof url !== "string" || typeof version !== "string" || !isObject(urlParams)) {
+        return;
+    }
+
+    const requestUrl = this.buildSensorThingsUrl(url, version, urlParams),
+        http = new SensorThingsHttp({
+            rootNode: urlParams?.root
+        });
+
+    http.getInExtent(requestUrl, {
+        extent: store.getters["Maps/getCurrentExtent"],
+        sourceProjection: store.getters["Maps/projection"].getCode(),
+        targetProjection: this.get("epsg")
+    }, true, result => {
+        if (typeof onsuccess === "function") {
+            onsuccess(result);
+        }
+    }, null, null, error => {
+        console.warn(error);
+    });
+};
+
+/**
+ * Calls the sta api to get historical locations.
+ * @returns {void}
+ */
+STALayer.prototype.getHistoricalLocationsOfFeatures = function () {
+    const allFeatures = (this.get("layerSource") instanceof Cluster ? this.get("layerSource").getSource() : this.get("layerSource")).getFeatures(),
+        datastreamIds = this.getDatastreamIdsInCurrentExtent(allFeatures, store.getters["Maps/getCurrentExtent"]),
+        url = this.get("url"),
+        urlParam = {
+            orderby: "time+desc",
+            expand: "Locations"
+        },
+        version = this.get("version"),
+        amount = parseInt(this.get("historicalLocations"), 10);
+
+    datastreamIds.forEach(datastreamId => {
+        if (!isNaN(amount)) {
+            urlParam.root = `Datastreams(${datastreamId})/Thing/HistoricalLocations`;
+            urlParam.top = amount + 1;
+        }
+        this.fetchHistoricalLocations(url, urlParam, version, historicalSensorData => {
+            this.resetHistoricalLocations(datastreamId);
+            this.parseSensorDataToFeature(this.getFeatureByDatastreamId(allFeatures, datastreamId), historicalSensorData, urlParam, url, version);
+        });
+    });
+};
+
+/**
+ * Parses the given sensor data to features and adds their ids to the given feature.
+ * @param {ol/Feature} feature The feature.
+ * @param {Object[]} sensorData The sensor data to create features for.
+ * @param {Object} urlParam The url param object.
+ * @param {String} url The base url.
+ * @param {String} version The version.
+ * @returns {void}
+ */
+STALayer.prototype.parseSensorDataToFeature = function (feature, sensorData, urlParam, url, version) {
+    if (typeof feature?.get !== "function" || Array.isArray(feature.get("historicalFeatureIds"))) {
+        return;
+    }
+
+    const layerSource = this.get("layerSource") instanceof Cluster ? this.get("layerSource").getSource() : this.get("layerSource"),
+        mapProjection = store.getters["Maps/projection"].getCode(),
+        epsg = this.get("epsg"),
+        gfiTheme = this.get("gfiTheme"),
+        utc = this.get("utc"),
+        things = this.getAllThings(sensorData, urlParam, url, version),
+        historicalFeatures = this.createFeaturesFromSensorData(things, mapProjection, epsg, gfiTheme, utc),
+        historicalFeatureIds = [];
+
+    historicalFeatures.shift();
+    historicalFeatures.forEach(hFeature => {
+        historicalFeatureIds.push(hFeature.getId());
+    });
+    layerSource.addFeatures(historicalFeatures);
+    feature.set("historicalFeatureIds", historicalFeatureIds);
+};
+
+/**
+ * Resets the historical locations of the feature which is found by the given datastream id.
+ * @param {Number} datastreamId The datastream id to get the feature for.
+ * @returns {void}
+ */
+STALayer.prototype.resetHistoricalLocations = function (datastreamId) {
+    const layerSource = this.get("layerSource") instanceof Cluster ? this.get("layerSource").getSource() : this.get("layerSource"),
+        feature = layerSource.getFeatures().filter(layerFeature => typeof layerFeature?.get === "function" && layerFeature.get("dataStreamId") === datastreamId)[0];
+
+    if (typeof feature?.get === "function" && Array.isArray(feature.get("historicalFeatureIds"))) {
+        feature.get("historicalFeatureIds").forEach(featureId => layerSource.removeFeature(layerSource.getFeatureById(featureId)));
+        feature.unset("historicalFeatureIds");
     }
 };

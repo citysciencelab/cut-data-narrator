@@ -8,7 +8,14 @@
 ### __Breaking Changes__
 
 ### Added
-StyleModel: attribute "rotation" is added to text style.
+StyleModel:
+    - A new Style type RegularShape is implemented so that more styles like triangle can be used in MP.
+    - Attribute "rotation" is added to text style.
+
+STA:
+    - A new feature property rotation is implemented for animated features.
+    - A new parameter "rotationUnit" is implemented for defining the rotation unit for feature.
+    - A new parameter "historicalLocations" is implemented for displaying the given amount of the historical locations.
 
 ### Changed
 Routing: changed isochrones url from '/v2/isochrones/$SpeedProfile' to '/v2/isochrones/$SpeedProfile/geojson' to fit to new routing service version.
@@ -19,6 +26,12 @@ Routing: changed isochrones url from '/v2/isochrones/$SpeedProfile' to '/v2/isoc
 
 ### Fixed
 - Issue #858: layerTree: layers in mobile are now toggleable when scale change
+
+---
+
+## v2.28.1 - 2022-12-16
+### Fixed
+- Filter: Now only the filtered values are displayed in the dropdowns.
 
 ---
 
