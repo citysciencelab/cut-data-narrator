@@ -4,30 +4,24 @@
 [Semantic versioning](https://semver.org/spec/v2.0.0.html) is used.
 
 
-## Unreleased - in development
+## v2.29.0 - 2023-01-04
 ### __Breaking Changes__
-Addon `obliqueViewer` was renamed to `vcOblique`. Please check and update portal configuration files if necessary.
-See [documentation](https://bitbucket.org/geowerkstatt-hamburg/addons/src/dev/vcOblique/doc/config.json.md)
+- Addon `obliqueViewer` was renamed to `vcOblique`. Please check and update portal configuration files if necessary. See [documentation](https://bitbucket.org/geowerkstatt-hamburg/addons/src/dev/vcOblique/doc/config.json.md)
 
 ### Added
-StyleModel:
+- StyleModel:
     - A new Style type RegularShape is implemented so that more styles like triangle can be used in MP.
     - Attribute "rotation" is added to text style.
-
-STA:
+- STA:
     - A new feature property rotation is implemented for animated features.
     - A new parameter "rotationUnit" is implemented for defining the rotation unit for feature.
     - A new parameter "historicalLocations" is implemented for displaying the given amount of the historical locations.
     - A new parameter "enableContinuousRequest" has been implemented which ensures that the STA API is continuously requested to load new features of the extends.
-i18n:
+- i18n:
     - Update italian language support
 
 ### Changed
-Routing: changed isochrones url from '/v2/isochrones/$SpeedProfile' to '/v2/isochrones/$SpeedProfile/geojson' to fit to new routing service version.
-
-### Deprecated
-
-### Removed
+- Routing: changed isochrones url from '/v2/isochrones/$SpeedProfile' to '/v2/isochrones/$SpeedProfile/geojson' to fit to new routing service version.
 
 ### Fixed
 - Issue #858: layerTree: layers in mobile are now toggleable when scale change
