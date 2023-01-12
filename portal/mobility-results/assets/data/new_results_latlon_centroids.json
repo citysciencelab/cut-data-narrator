@@ -1,0 +1,3997 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.998961982776768,
+          53.55005817081916
+        ]
+      },
+      "properties": {
+        "entryId": 16,
+        "dateCreated": "2022-06-21T11:20:46.437Z",
+        "imageFiles": [
+          "image/16_image_upload_0.jpg"
+        ],
+        "audioFiles": [
+          "audio/16_audio_record_0.mp4"
+        ],
+        "featureId": 36,
+        "title": "",
+        "comment": "",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.00847934375672,
+          53.55730357595635
+        ]
+      },
+      "properties": {
+        "entryId": 16,
+        "dateCreated": "2022-06-21T11:20:46.437Z",
+        "imageFiles": [
+          "image/16_image_upload_0.jpg"
+        ],
+        "audioFiles": [
+          "audio/16_audio_record_0.mp4"
+        ],
+        "featureId": 37,
+        "title": "",
+        "comment": "",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.993353355335172,
+          53.55091652491215
+        ]
+      },
+      "properties": {
+        "entryId": 17,
+        "dateCreated": "2022-06-21T12:51:25.196Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 38,
+        "title": "Rathaus Bode ",
+        "comment": "Kopfsteinpflaster vor Rathaus problematisch, weil der Kopf nicht gehalten werden kann und dann gegen die Halterung schlägt ",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.993724284562479,
+          53.55120156855949
+        ]
+      },
+      "properties": {
+        "entryId": 19,
+        "dateCreated": "2022-06-21T13:03:03.820Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 40,
+        "title": "Pflastersteine ",
+        "comment": "Die Steine sind für Rollstühle ungeeignet und ",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.992995343523848,
+          53.55072220120879
+        ]
+      },
+      "properties": {
+        "entryId": 18,
+        "dateCreated": "2022-06-21T12:55:53.949Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 39,
+        "title": "Hindernisse ",
+        "comment": "Für sehbehinderte Menschen schwer einzuschätzen ",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.993964533790802,
+          53.55081569289811
+        ]
+      },
+      "properties": {
+        "entryId": 20,
+        "dateCreated": "2022-06-21T13:05:30.292Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 41,
+        "title": "Übergang",
+        "comment": "Bordsteine sind nicht genug an nicht genug Orten angesenkt\nSelbst kleine Abstände führen zu mehr Aufwand für den Rollstuhl und schmerzen im Kopf\n",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.991181759758641,
+          53.55090174954302
+        ]
+      },
+      "properties": {
+        "entryId": 26,
+        "dateCreated": "2022-06-21T13:35:33.123Z",
+        "imageFiles": [
+          "image/26_image_upload_0.jpg"
+        ],
+        "audioFiles": [
+          "audio/26_audio_record_0.mp4"
+        ],
+        "featureId": 47,
+        "title": "Rampe vor Rathaus",
+        "comment": "Info kommt von Frau mit Tochter im Rollstuhl",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.994981817908938,
+          53.55161075610848
+        ]
+      },
+      "properties": {
+        "entryId": 21,
+        "dateCreated": "2022-06-21T13:07:10.485Z",
+        "imageFiles": [
+          "image/21_image_upload_0.jpg"
+        ],
+        "audioFiles": [
+          "audio/21_audio_record_0.mp4"
+        ],
+        "featureId": 42,
+        "title": "Pflastersteine ",
+        "comment": "Der ampelübergang ist gepflastert und dadurch ein hinderniss",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.011615847021417,
+          53.557565100957426
+        ]
+      },
+      "properties": {
+        "entryId": 23,
+        "dateCreated": "2022-06-21T13:11:24.562Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 44,
+        "title": "Bodenplatten",
+        "comment": "Pflastersteine sind schwer zu befahren mit dem Rollstuhl und führen zu schmerzen für die Fahrerin\n",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.989553211128607,
+          53.557958613100766
+        ]
+      },
+      "properties": {
+        "entryId": 22,
+        "dateCreated": "2022-06-21T13:11:06.017Z",
+        "imageFiles": [
+          "image/22_image_upload_1.jpg"
+        ],
+        "audioFiles": [],
+        "featureId": 43,
+        "title": "Fahrstuhl rutschig",
+        "comment": "Der Fahrstuhl hat einen Boden, der bei nässe sehr rutschig ist -> Vorkommen von Unfällen",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.97013959552228,
+          53.56813086482281
+        ]
+      },
+      "properties": {
+        "entryId": 24,
+        "dateCreated": "2022-06-21T13:13:54.322Z",
+        "imageFiles": [],
+        "audioFiles": [
+          "audio/24_audio_record_0.mp4"
+        ],
+        "featureId": 45,
+        "title": "Fahrstühle",
+        "comment": "Fahrstühle sind zu klein, sodass der elektrische Rollstuhl kaum in den Fahrstuhl passt \nRollstuhlgrössen haben sich verändert, aber nicht die Größe der Fahrstühle ",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.997553373415702,
+          53.55691648756059
+        ]
+      },
+      "properties": {
+        "entryId": 25,
+        "dateCreated": "2022-06-21T13:20:30.865Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 46,
+        "title": "Bus",
+        "comment": "Die Beschaffenheit des Bodens zum ausklappen ist rutschig, sodass der rollstuhl gefährdet ist und die begleitende Person der Gefahr ausgesetzt ist, auszurutschen",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.983237073699117,
+          53.55403137297864
+        ]
+      },
+      "properties": {
+        "entryId": 27,
+        "dateCreated": "2022-07-12T14:09:24.474Z",
+        "imageFiles": [
+          "image/27_image_upload_1.jpg"
+        ],
+        "audioFiles": [],
+        "featureId": 48,
+        "title": "",
+        "comment": "",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.985497732345332,
+          53.559648281198434
+        ]
+      },
+      "properties": {
+        "entryId": 27,
+        "dateCreated": "2022-07-12T14:09:24.474Z",
+        "imageFiles": [
+          "image/27_image_upload_1.jpg"
+        ],
+        "audioFiles": [],
+        "featureId": 49,
+        "title": "",
+        "comment": "",
+        "mobilityMode": "walk"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.987701703171108,
+          53.54712686089738
+        ]
+      },
+      "properties": {
+        "entryId": 28,
+        "dateCreated": "2022-07-12T14:12:50.599Z",
+        "imageFiles": [],
+        "audioFiles": [
+          "audio/28_audio_record_0.mp4"
+        ],
+        "featureId": 50,
+        "title": "",
+        "comment": "",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.993684942808823,
+          53.55296464206045
+        ]
+      },
+      "properties": {
+        "entryId": 29,
+        "dateCreated": "2022-07-15T12:07:59.155Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 51,
+        "title": "Fahrstuhl",
+        "comment": "Leider ist der Fahrstuhl kaputt",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.993951218010142,
+          53.55209967896196
+        ]
+      },
+      "properties": {
+        "entryId": 29,
+        "dateCreated": "2022-07-15T12:07:59.155Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 52,
+        "title": "",
+        "comment": "",
+        "mobilityMode": "walk"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.993057325406307,
+          53.5514522168785
+        ]
+      },
+      "properties": {
+        "entryId": 29,
+        "dateCreated": "2022-07-15T12:07:59.155Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 53,
+        "title": "",
+        "comment": "",
+        "mobilityMode": "bicycle"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.993201088930073,
+          53.553254049479214
+        ]
+      },
+      "properties": {
+        "entryId": 29,
+        "dateCreated": "2022-07-15T12:07:59.155Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 54,
+        "title": "Treppen schwer zugänglich",
+        "comment": "",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.990738375122445,
+          53.551314059136466
+        ]
+      },
+      "properties": {
+        "entryId": 30,
+        "dateCreated": "2022-07-19T10:30:43.422Z",
+        "imageFiles": [
+          "image/30_image_upload_0.jpg"
+        ],
+        "audioFiles": [
+          "audio/30_audio_record_0.mp4"
+        ],
+        "featureId": 55,
+        "title": "Yuppies all over",
+        "comment": "Ich fühle mich sozial ausgeschlossen. ",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.988533858119903,
+          53.55519289581143
+        ]
+      },
+      "properties": {
+        "entryId": 30,
+        "dateCreated": "2022-07-19T10:30:43.422Z",
+        "imageFiles": [
+          "image/30_image_upload_0.jpg"
+        ],
+        "audioFiles": [
+          "audio/30_audio_record_0.mp4"
+        ],
+        "featureId": 56,
+        "title": "Gänsemarkt",
+        "comment": "Sehr viele Pflaszersteine 😕",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.989103633821273,
+          53.55535368070855
+        ]
+      },
+      "properties": {
+        "entryId": 30,
+        "dateCreated": "2022-07-19T10:30:43.422Z",
+        "imageFiles": [
+          "image/30_image_upload_0.jpg"
+        ],
+        "audioFiles": [
+          "audio/30_audio_record_0.mp4"
+        ],
+        "featureId": 57,
+        "title": "Sehr schöner Radweg",
+        "comment": "Bischen gefährlich aber sehr schön.",
+        "mobilityMode": "bicycle"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.981229060876162,
+          53.555599119230195
+        ]
+      },
+      "properties": {
+        "entryId": 30,
+        "dateCreated": "2022-07-19T10:30:43.422Z",
+        "imageFiles": [
+          "image/30_image_upload_0.jpg"
+        ],
+        "audioFiles": [
+          "audio/30_audio_record_0.mp4"
+        ],
+        "featureId": 58,
+        "title": "Autoauto",
+        "comment": "Brumm brumm.",
+        "mobilityMode": "car"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.980798768321012,
+          53.55512817619018
+        ]
+      },
+      "properties": {
+        "entryId": 30,
+        "dateCreated": "2022-07-19T10:30:43.422Z",
+        "imageFiles": [
+          "image/30_image_upload_0.jpg"
+        ],
+        "audioFiles": [
+          "audio/30_audio_record_0.mp4"
+        ],
+        "featureId": 59,
+        "title": "Ubahn",
+        "comment": "Viel besserhhhhhhhhhhhjjjh",
+        "mobilityMode": "train"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.979175711067768,
+          53.55280794742911
+        ]
+      },
+      "properties": {
+        "entryId": 31,
+        "dateCreated": "2022-07-19T10:34:11.682Z",
+        "imageFiles": [
+          "image/31_image_upload_1.jpg"
+        ],
+        "audioFiles": [],
+        "featureId": 60,
+        "title": "Hhh",
+        "comment": "Hhh",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.972990321903996,
+          53.55289338761398
+        ]
+      },
+      "properties": {
+        "entryId": 31,
+        "dateCreated": "2022-07-19T10:34:11.682Z",
+        "imageFiles": [
+          "image/31_image_upload_1.jpg"
+        ],
+        "audioFiles": [],
+        "featureId": 61,
+        "title": "Guj",
+        "comment": "Hfsrzjxdghhg",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.973912019442261,
+          53.55302858553006
+        ]
+      },
+      "properties": {
+        "entryId": 32,
+        "dateCreated": "2022-07-19T10:35:20.689Z",
+        "imageFiles": [
+          "image/32_image_upload_2.jpg"
+        ],
+        "audioFiles": [],
+        "featureId": 62,
+        "title": "Jhh",
+        "comment": "",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.973628091168372,
+          53.553708721540566
+        ]
+      },
+      "properties": {
+        "entryId": 32,
+        "dateCreated": "2022-07-19T10:35:20.689Z",
+        "imageFiles": [
+          "image/32_image_upload_2.jpg"
+        ],
+        "audioFiles": [],
+        "featureId": 63,
+        "title": "Hhh",
+        "comment": "",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.982874,
+          53.543485
+        ]
+      },
+      "properties": {
+        "entryId": 33,
+        "dateCreated": "2022-07-19T10:45:58.199Z",
+        "imageFiles": [
+          "image/33_image_upload_3.jpg"
+        ],
+        "audioFiles": [],
+        "featureId": 64,
+        "title": "Hh",
+        "comment": "Hhh",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.981659,
+          53.542552
+        ]
+      },
+      "properties": {
+        "entryId": 34,
+        "dateCreated": "2022-07-19T10:48:50.079Z",
+        "imageFiles": [],
+        "audioFiles": [
+          "audio/34_audio_record_0.webm"
+        ],
+        "featureId": 65,
+        "title": "Hhh",
+        "comment": "Jjj",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.987315506001705,
+          53.54368300581308
+        ]
+      },
+      "properties": {
+        "entryId": 35,
+        "dateCreated": "2022-07-19T10:49:36.931Z",
+        "imageFiles": [
+          "image/35_image_upload_1.jpg"
+        ],
+        "audioFiles": [
+          "audio/35_audio_record_1.webm"
+        ],
+        "featureId": 66,
+        "title": "Jj",
+        "comment": "Jj",
+        "mobilityMode": "walk"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.988967862538315,
+          53.542622883746844
+        ]
+      },
+      "properties": {
+        "entryId": 36,
+        "dateCreated": "2022-07-19T10:50:54.609Z",
+        "imageFiles": [],
+        "audioFiles": [
+          "audio/36_audio_record_0.mp4"
+        ],
+        "featureId": 67,
+        "title": "Hhhh",
+        "comment": "Jjh",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.981261572063586,
+          53.54435120144141
+        ]
+      },
+      "properties": {
+        "entryId": 36,
+        "dateCreated": "2022-07-19T10:50:54.609Z",
+        "imageFiles": [],
+        "audioFiles": [
+          "audio/36_audio_record_0.mp4"
+        ],
+        "featureId": 68,
+        "title": "Jjh",
+        "comment": "Jjh",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.992802,
+          53.553713
+        ]
+      },
+      "properties": {
+        "entryId": 37,
+        "dateCreated": "2022-07-19T11:45:24.202Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 69,
+        "title": "Kjj",
+        "comment": "Jjj",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.979113686829328,
+          53.56618229428509
+        ]
+      },
+      "properties": {
+        "entryId": 38,
+        "dateCreated": "2022-07-19T11:46:08.826Z",
+        "imageFiles": [
+          "image/38_image_upload_0.jpg"
+        ],
+        "audioFiles": [],
+        "featureId": 70,
+        "title": "Gjhtkbh",
+        "comment": "Hubdzkvdzjcg",
+        "mobilityMode": "walk"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.980771520684089,
+          53.56531251478147
+        ]
+      },
+      "properties": {
+        "entryId": 39,
+        "dateCreated": "2022-07-19T11:46:47.625Z",
+        "imageFiles": [
+          "image/39_image_upload_0.jpg"
+        ],
+        "audioFiles": [],
+        "featureId": 71,
+        "title": "Ghcx",
+        "comment": "Hhvxjjc",
+        "mobilityMode": "walk"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.975917084551257,
+          53.56616085064573
+        ]
+      },
+      "properties": {
+        "entryId": 40,
+        "dateCreated": "2022-07-19T11:48:21.033Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 72,
+        "title": "Hhhhh",
+        "comment": "Hhhhhv",
+        "mobilityMode": "wheel"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.993101093709942,
+          53.552814412153225
+        ]
+      },
+      "properties": {
+        "entryId": 41,
+        "dateCreated": "2022-07-19T11:49:51.157Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 73,
+        "title": "Jhhh",
+        "comment": "Hhhhh",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.994747558876684,
+          53.55354263698895
+        ]
+      },
+      "properties": {
+        "entryId": 42,
+        "dateCreated": "2022-07-19T11:52:46.247Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 74,
+        "title": "Hhhh",
+        "comment": "Ggffkbghhg",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.98507795151208,
+          53.55205919656042
+        ]
+      },
+      "properties": {
+        "entryId": 43,
+        "dateCreated": "2022-07-19T12:18:55.360Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 75,
+        "title": "Test",
+        "comment": "Ein Kommentar ",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.996067928253646,
+          53.55745872728379
+        ]
+      },
+      "properties": {
+        "entryId": 43,
+        "dateCreated": "2022-07-19T12:18:55.360Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 76,
+        "title": "",
+        "comment": "",
+        "mobilityMode": "walk"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.018380130064935,
+          53.55905231005485
+        ]
+      },
+      "properties": {
+        "entryId": 44,
+        "dateCreated": "2022-07-20T12:56:41.619Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 77,
+        "title": "",
+        "comment": "",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.003742079479187,
+          53.557621398041476
+        ]
+      },
+      "properties": {
+        "entryId": 44,
+        "dateCreated": "2022-07-20T12:56:41.619Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 78,
+        "title": "",
+        "comment": "",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.023147,
+          53.564513
+        ]
+      },
+      "properties": {
+        "entryId": 44,
+        "dateCreated": "2022-07-20T12:56:41.619Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 79,
+        "title": "",
+        "comment": "",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.00782646639269,
+          53.55912553761179
+        ]
+      },
+      "properties": {
+        "entryId": 44,
+        "dateCreated": "2022-07-20T12:56:41.619Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 80,
+        "title": "",
+        "comment": "",
+        "mobilityMode": "walk"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.001439929503167,
+          53.55551617345074
+        ]
+      },
+      "properties": {
+        "entryId": 44,
+        "dateCreated": "2022-07-20T12:56:41.619Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 81,
+        "title": "",
+        "comment": "",
+        "mobilityMode": "car"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.013690785196815,
+          53.561275941405675
+        ]
+      },
+      "properties": {
+        "entryId": 45,
+        "dateCreated": "2022-07-20T12:58:13.479Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 82,
+        "title": "",
+        "comment": "",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.019703096861969,
+          53.55726601731686
+        ]
+      },
+      "properties": {
+        "entryId": 45,
+        "dateCreated": "2022-07-20T12:58:13.479Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 83,
+        "title": "",
+        "comment": "",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.007090682346481,
+          53.55287213111201
+        ]
+      },
+      "properties": {
+        "entryId": 45,
+        "dateCreated": "2022-07-20T12:58:13.479Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 84,
+        "title": "",
+        "comment": "",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.001076095597112,
+          53.556243496834895
+        ]
+      },
+      "properties": {
+        "entryId": 45,
+        "dateCreated": "2022-07-20T12:58:13.479Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 85,
+        "title": "",
+        "comment": "",
+        "mobilityMode": "walk"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.002804080864898,
+          53.55383619181928
+        ]
+      },
+      "properties": {
+        "entryId": 45,
+        "dateCreated": "2022-07-20T12:58:13.479Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 86,
+        "title": "",
+        "comment": "",
+        "mobilityMode": "bus"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.01726263827005,
+          53.564009132026825
+        ]
+      },
+      "properties": {
+        "entryId": 46,
+        "dateCreated": "2022-07-20T13:00:25.197Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 87,
+        "title": "",
+        "comment": "",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.991501289879158,
+          53.5582744166526
+        ]
+      },
+      "properties": {
+        "entryId": 46,
+        "dateCreated": "2022-07-20T13:00:25.197Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 88,
+        "title": "",
+        "comment": "",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.99965546737574,
+          53.557109164149566
+        ]
+      },
+      "properties": {
+        "entryId": 46,
+        "dateCreated": "2022-07-20T13:00:25.197Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 89,
+        "title": "",
+        "comment": "",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.986732883715918,
+          53.56476064959013
+        ]
+      },
+      "properties": {
+        "entryId": 46,
+        "dateCreated": "2022-07-20T13:00:25.197Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 90,
+        "title": "",
+        "comment": "",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.01069262611191,
+          53.55776892651353
+        ]
+      },
+      "properties": {
+        "entryId": 46,
+        "dateCreated": "2022-07-20T13:00:25.197Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 91,
+        "title": "",
+        "comment": "",
+        "mobilityMode": "walk"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.017094632428131,
+          53.56362798309821
+        ]
+      },
+      "properties": {
+        "entryId": 47,
+        "dateCreated": "2022-07-20T13:02:11.893Z",
+        "imageFiles": [],
+        "audioFiles": [
+          "audio/47_audio_record_0.mp4"
+        ],
+        "featureId": 92,
+        "title": "",
+        "comment": "",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.993351,
+          53.563778
+        ]
+      },
+      "properties": {
+        "entryId": 47,
+        "dateCreated": "2022-07-20T13:02:11.893Z",
+        "imageFiles": [],
+        "audioFiles": [
+          "audio/47_audio_record_0.mp4"
+        ],
+        "featureId": 93,
+        "title": "",
+        "comment": "",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.017745658290753,
+          53.56421219850381
+        ]
+      },
+      "properties": {
+        "entryId": 48,
+        "dateCreated": "2022-07-20T13:03:15.102Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 94,
+        "title": "",
+        "comment": "",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.994680301359104,
+          53.5596194646906
+        ]
+      },
+      "properties": {
+        "entryId": 48,
+        "dateCreated": "2022-07-20T13:03:15.102Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 95,
+        "title": "",
+        "comment": "",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.014754032715244,
+          53.556716098623134
+        ]
+      },
+      "properties": {
+        "entryId": 48,
+        "dateCreated": "2022-07-20T13:03:15.102Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 96,
+        "title": "",
+        "comment": "",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.02685234772196,
+          53.5563663004692
+        ]
+      },
+      "properties": {
+        "entryId": 48,
+        "dateCreated": "2022-07-20T13:03:15.102Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 97,
+        "title": "",
+        "comment": "",
+        "mobilityMode": "walk"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.00177098078952,
+          53.555065976606755
+        ]
+      },
+      "properties": {
+        "entryId": 48,
+        "dateCreated": "2022-07-20T13:03:15.102Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 98,
+        "title": "",
+        "comment": "",
+        "mobilityMode": "bicycle"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.025162556272289,
+          53.564082898916055
+        ]
+      },
+      "properties": {
+        "entryId": 49,
+        "dateCreated": "2022-07-20T13:06:46.733Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 99,
+        "title": "",
+        "comment": "",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.013515607094526,
+          53.55949627481695
+        ]
+      },
+      "properties": {
+        "entryId": 49,
+        "dateCreated": "2022-07-20T13:06:46.733Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 100,
+        "title": "",
+        "comment": "",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.018831,
+          53.559575
+        ]
+      },
+      "properties": {
+        "entryId": 49,
+        "dateCreated": "2022-07-20T13:06:46.733Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 101,
+        "title": "",
+        "comment": "",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.028517134242156,
+          53.552776864577446
+        ]
+      },
+      "properties": {
+        "entryId": 49,
+        "dateCreated": "2022-07-20T13:06:46.733Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 102,
+        "title": "",
+        "comment": "",
+        "mobilityMode": "bicycle"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.023372055544685,
+          53.55811150765711
+        ]
+      },
+      "properties": {
+        "entryId": 50,
+        "dateCreated": "2022-07-20T13:08:54.249Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 103,
+        "title": "",
+        "comment": "",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.995073427224108,
+          53.554305095471975
+        ]
+      },
+      "properties": {
+        "entryId": 50,
+        "dateCreated": "2022-07-20T13:08:54.249Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 104,
+        "title": "",
+        "comment": "",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.011459858402658,
+          53.554584758553524
+        ]
+      },
+      "properties": {
+        "entryId": 50,
+        "dateCreated": "2022-07-20T13:08:54.249Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 105,
+        "title": "",
+        "comment": "",
+        "mobilityMode": "bicycle"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.015563918018765,
+          53.56231822579829
+        ]
+      },
+      "properties": {
+        "entryId": 51,
+        "dateCreated": "2022-07-20T13:10:27.368Z",
+        "imageFiles": [],
+        "audioFiles": [
+          "audio/51_audio_record_0.webm"
+        ],
+        "featureId": 106,
+        "title": "",
+        "comment": "",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.012845,
+          53.557007
+        ]
+      },
+      "properties": {
+        "entryId": 51,
+        "dateCreated": "2022-07-20T13:10:27.368Z",
+        "imageFiles": [],
+        "audioFiles": [
+          "audio/51_audio_record_0.webm"
+        ],
+        "featureId": 107,
+        "title": "",
+        "comment": "",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.019954809474916,
+          53.556275187939534
+        ]
+      },
+      "properties": {
+        "entryId": 51,
+        "dateCreated": "2022-07-20T13:10:27.368Z",
+        "imageFiles": [],
+        "audioFiles": [
+          "audio/51_audio_record_0.webm"
+        ],
+        "featureId": 108,
+        "title": "",
+        "comment": "",
+        "mobilityMode": "walk"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.037348121155173,
+          53.56066488461651
+        ]
+      },
+      "properties": {
+        "entryId": 51,
+        "dateCreated": "2022-07-20T13:10:27.368Z",
+        "imageFiles": [],
+        "audioFiles": [
+          "audio/51_audio_record_0.webm"
+        ],
+        "featureId": 109,
+        "title": "",
+        "comment": "",
+        "mobilityMode": "car"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.025267491371093,
+          53.562162792198926
+        ]
+      },
+      "properties": {
+        "entryId": 52,
+        "dateCreated": "2022-07-20T13:11:43.677Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 110,
+        "title": "",
+        "comment": "",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.01608939390449,
+          53.56305680729953
+        ]
+      },
+      "properties": {
+        "entryId": 52,
+        "dateCreated": "2022-07-20T13:11:43.677Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 111,
+        "title": "",
+        "comment": "",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.014112426443258,
+          53.557415382907216
+        ]
+      },
+      "properties": {
+        "entryId": 52,
+        "dateCreated": "2022-07-20T13:11:43.677Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 112,
+        "title": "",
+        "comment": "",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.00471445156279,
+          53.559280855676555
+        ]
+      },
+      "properties": {
+        "entryId": 52,
+        "dateCreated": "2022-07-20T13:11:43.677Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 113,
+        "title": "",
+        "comment": "",
+        "mobilityMode": "car"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.015869422149159,
+          53.562420984362525
+        ]
+      },
+      "properties": {
+        "entryId": 53,
+        "dateCreated": "2022-07-20T13:12:41.801Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 114,
+        "title": "",
+        "comment": "",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.023697701655248,
+          53.55862247939591
+        ]
+      },
+      "properties": {
+        "entryId": 53,
+        "dateCreated": "2022-07-20T13:12:41.801Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 115,
+        "title": "",
+        "comment": "",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.007406,
+          53.556974
+        ]
+      },
+      "properties": {
+        "entryId": 53,
+        "dateCreated": "2022-07-20T13:12:41.801Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 116,
+        "title": "",
+        "comment": "",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.03503684417046,
+          53.556765474695204
+        ]
+      },
+      "properties": {
+        "entryId": 53,
+        "dateCreated": "2022-07-20T13:12:41.801Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 117,
+        "title": "",
+        "comment": "",
+        "mobilityMode": "car"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.015139061844616,
+          53.562705153206245
+        ]
+      },
+      "properties": {
+        "entryId": 54,
+        "dateCreated": "2022-07-20T13:13:44.348Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 118,
+        "title": "",
+        "comment": "",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.024110337584002,
+          53.55812209694271
+        ]
+      },
+      "properties": {
+        "entryId": 54,
+        "dateCreated": "2022-07-20T13:13:44.348Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 119,
+        "title": "",
+        "comment": "",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.010449349642004,
+          53.55752543550778
+        ]
+      },
+      "properties": {
+        "entryId": 54,
+        "dateCreated": "2022-07-20T13:13:44.348Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 120,
+        "title": "",
+        "comment": "",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.03563981089559,
+          53.55381724106008
+        ]
+      },
+      "properties": {
+        "entryId": 54,
+        "dateCreated": "2022-07-20T13:13:44.348Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 121,
+        "title": "",
+        "comment": "",
+        "mobilityMode": "bus"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.995141246776043,
+          53.55886218200663
+        ]
+      },
+      "properties": {
+        "entryId": 55,
+        "dateCreated": "2022-07-20T13:14:45.993Z",
+        "imageFiles": [
+          "image/55_image_upload_0.jpg"
+        ],
+        "audioFiles": [
+          "audio/55_audio_record_0.mp4"
+        ],
+        "featureId": 122,
+        "title": "",
+        "comment": "",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.002075327888496,
+          53.55665523978203
+        ]
+      },
+      "properties": {
+        "entryId": 55,
+        "dateCreated": "2022-07-20T13:14:45.993Z",
+        "imageFiles": [
+          "image/55_image_upload_0.jpg"
+        ],
+        "audioFiles": [
+          "audio/55_audio_record_0.mp4"
+        ],
+        "featureId": 123,
+        "title": "",
+        "comment": "",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.020237201429223,
+          53.562580289615134
+        ]
+      },
+      "properties": {
+        "entryId": 55,
+        "dateCreated": "2022-07-20T13:14:45.993Z",
+        "imageFiles": [
+          "image/55_image_upload_0.jpg"
+        ],
+        "audioFiles": [
+          "audio/55_audio_record_0.mp4"
+        ],
+        "featureId": 124,
+        "title": "",
+        "comment": "",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.007428906333352,
+          53.55132385297682
+        ]
+      },
+      "properties": {
+        "entryId": 55,
+        "dateCreated": "2022-07-20T13:14:45.993Z",
+        "imageFiles": [
+          "image/55_image_upload_0.jpg"
+        ],
+        "audioFiles": [
+          "audio/55_audio_record_0.mp4"
+        ],
+        "featureId": 125,
+        "title": "",
+        "comment": "",
+        "mobilityMode": "bus"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.01544676129227,
+          53.56239131378653
+        ]
+      },
+      "properties": {
+        "entryId": 56,
+        "dateCreated": "2022-07-20T13:15:47.610Z",
+        "imageFiles": [
+          "image/56_image_upload_1.jpg"
+        ],
+        "audioFiles": [],
+        "featureId": 126,
+        "title": "",
+        "comment": "",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.019889267087137,
+          53.56010208516199
+        ]
+      },
+      "properties": {
+        "entryId": 56,
+        "dateCreated": "2022-07-20T13:15:47.610Z",
+        "imageFiles": [
+          "image/56_image_upload_1.jpg"
+        ],
+        "audioFiles": [],
+        "featureId": 127,
+        "title": "",
+        "comment": "",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.011321892822624,
+          53.5583819072541
+        ]
+      },
+      "properties": {
+        "entryId": 56,
+        "dateCreated": "2022-07-20T13:15:47.610Z",
+        "imageFiles": [
+          "image/56_image_upload_1.jpg"
+        ],
+        "audioFiles": [],
+        "featureId": 128,
+        "title": "",
+        "comment": "",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.01399011093827,
+          53.549845487684365
+        ]
+      },
+      "properties": {
+        "entryId": 56,
+        "dateCreated": "2022-07-20T13:15:47.610Z",
+        "imageFiles": [
+          "image/56_image_upload_1.jpg"
+        ],
+        "audioFiles": [],
+        "featureId": 129,
+        "title": "",
+        "comment": "",
+        "mobilityMode": "car"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.024684987366062,
+          53.55808930398295
+        ]
+      },
+      "properties": {
+        "entryId": 57,
+        "dateCreated": "2022-07-20T13:16:42.783Z",
+        "imageFiles": [
+          "image/57_image_upload_2.jpg"
+        ],
+        "audioFiles": [],
+        "featureId": 130,
+        "title": "",
+        "comment": "",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.015044370275351,
+          53.562347905757804
+        ]
+      },
+      "properties": {
+        "entryId": 57,
+        "dateCreated": "2022-07-20T13:16:42.783Z",
+        "imageFiles": [
+          "image/57_image_upload_2.jpg"
+        ],
+        "audioFiles": [],
+        "featureId": 131,
+        "title": "",
+        "comment": "",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.012464,
+          53.559149
+        ]
+      },
+      "properties": {
+        "entryId": 57,
+        "dateCreated": "2022-07-20T13:16:42.783Z",
+        "imageFiles": [
+          "image/57_image_upload_2.jpg"
+        ],
+        "audioFiles": [],
+        "featureId": 132,
+        "title": "",
+        "comment": "",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.020705270079958,
+          53.5548484708571
+        ]
+      },
+      "properties": {
+        "entryId": 57,
+        "dateCreated": "2022-07-20T13:16:42.783Z",
+        "imageFiles": [
+          "image/57_image_upload_2.jpg"
+        ],
+        "audioFiles": [],
+        "featureId": 133,
+        "title": "",
+        "comment": "",
+        "mobilityMode": "car"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.095606931803047,
+          53.516755321992484
+        ]
+      },
+      "properties": {
+        "entryId": 58,
+        "dateCreated": "2022-07-27T11:21:15.726Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 134,
+        "title": "Rampe Umstieg Bus-S-Bahn",
+        "comment": "Rampe ist zu steil und hat keine Pausenpodeste. Auf der Aanderen Seite gibt es nur eine Treppe. Hierwäre ein Aufzug von der Straße auf die Gleise (mehrere Gleise) angebracht.",
+        "mobilityMode": "wheel"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.12409106011994,
+          53.615720517017145
+        ]
+      },
+      "properties": {
+        "entryId": 59,
+        "dateCreated": "2022-07-29T12:09:49.556Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 135,
+        "title": "Fußgängerampelphase viel zu kurz",
+        "comment": "Berner Heerweg kann selbst mit dem Fahrrad kaum überquert werden in einer Ampelphase, geschweige denn mit einem Kinderwagen oder laufendem Kind...",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.118597575667122,
+          53.60763806447084
+        ]
+      },
+      "properties": {
+        "entryId": 59,
+        "dateCreated": "2022-07-29T12:09:49.556Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 136,
+        "title": "U Bahnhof Farmsen nicht barrierefrei",
+        "comment": "Zugang mit Kinderwagen unmöglich",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.117058210508576,
+          53.6068913744929
+        ]
+      },
+      "properties": {
+        "entryId": 59,
+        "dateCreated": "2022-07-29T12:09:49.556Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 137,
+        "title": "Fahrradweg, Fußweg und Bushaltestelle kollidieren",
+        "comment": "Wirklich gefährlich für Fußgänger, besonders wenn man Kinder dabei hat.",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.12455983020433,
+          53.618308503714566
+        ]
+      },
+      "properties": {
+        "entryId": 59,
+        "dateCreated": "2022-07-29T12:09:49.556Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 138,
+        "title": "Fußgängerampelphase super kurz",
+        "comment": "Trotz wichtigem Übergang für SchülerInnen der Grundschule einfach viel zu kurze Ampelphase",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.10682163985153,
+          53.61457339164508
+        ]
+      },
+      "properties": {
+        "entryId": 59,
+        "dateCreated": "2022-07-29T12:09:49.556Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 139,
+        "title": "Kein sicherer Übergang für SchülerInnen",
+        "comment": "Hier könnte man eine Fußgängerampel wirklich gebrauchen",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.117991703834795,
+          53.625576399410726
+        ]
+      },
+      "properties": {
+        "entryId": 59,
+        "dateCreated": "2022-07-29T12:09:49.556Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 140,
+        "title": "Fußgängerampelphase viel zu kurz",
+        "comment": "Trotz vielen Kindergärten und Schulen in der Nähe - Ampelphase ist nur mit dem Rad zu schaffen, für Kinder nicht möglich.",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.125762094587397,
+          53.618392334390926
+        ]
+      },
+      "properties": {
+        "entryId": 59,
+        "dateCreated": "2022-07-29T12:09:49.556Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 141,
+        "title": "Radweg desaströs",
+        "comment": "Direkt vor der U-Bahn mit Stadtradstation: schlechtester Radweg aller Zeiten, dazu mit vielen Scherben.",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.12533067848296,
+          53.609691662338534
+        ]
+      },
+      "properties": {
+        "entryId": 59,
+        "dateCreated": "2022-07-29T12:09:49.556Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 142,
+        "title": "Verdreckter Spielplatz mit Scherben",
+        "comment": "Toller Spielplatz - leider am Wochenende immer randaliert mit Müll und Scherben.",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.029560200719592,
+          53.594028024232756
+        ]
+      },
+      "properties": {
+        "entryId": 60,
+        "dateCreated": "2022-08-10T10:40:16.805Z",
+        "imageFiles": [],
+        "audioFiles": [
+          "audio/60_audio_record_0.mp4"
+        ],
+        "featureId": 143,
+        "title": "Stadtpark",
+        "comment": "nur Treppe, kein Zugang für Rollstuhl / Kinderwagen",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.029913817987572,
+          53.59393817201484
+        ]
+      },
+      "properties": {
+        "entryId": 60,
+        "dateCreated": "2022-08-10T10:40:16.805Z",
+        "imageFiles": [],
+        "audioFiles": [
+          "audio/60_audio_record_0.mp4"
+        ],
+        "featureId": 144,
+        "title": "Stadtpark",
+        "comment": "nur Treppe, kein Zugang für Rollstuhl / Kinderwagen",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.049525547473193,
+          53.59114643359648
+        ]
+      },
+      "properties": {
+        "entryId": 61,
+        "dateCreated": "2022-08-11T09:36:06.178Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 145,
+        "title": "Kantstein nicht abgesengt",
+        "comment": "Ich komme hoer mit dem Rollstuhl nicht lang, weil der Kantstein zu hoch ist.",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.853515580701734,
+          53.474041568850495
+        ]
+      },
+      "properties": {
+        "entryId": 62,
+        "dateCreated": "2022-08-13T09:31:54.503Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 146,
+        "title": "Kein Aufzug",
+        "comment": "Der S Bahnhof Neugraben hat keinen Aufzug zu den Gleisen. Dies macht es Rollstuhlfahrern unmöglich, Gleis 2 und Gleis 3 zu benutzen.",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.004871443595308,
+          53.55404069407307
+        ]
+      },
+      "properties": {
+        "entryId": 63,
+        "dateCreated": "2022-08-22T11:38:16.051Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 147,
+        "title": "Aufzug U1 Hbf Nord unglaublich langsam",
+        "comment": "Es gibt bei der U1 Hbf Nord 2 Aufzüge: der eine ist in zwei Abschnitte geteilt und Abschnitt 1 unglaublich langsam, der zweite führt von der Straßenebene über die \"Bahnhofs\"ebene zur Gleisebene. Leider kann man in der Mitte kaum Zusteigen, da der Aufzug immer von oben nach unte und zurück fährt. Steigt man zu (egal wo), dann geht es oft ein paar Mal hoch und runter bis man da ankommt, wo man möchte.",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.969933386241248,
+          53.545719577144574
+        ]
+      },
+      "properties": {
+        "entryId": 63,
+        "dateCreated": "2022-08-22T11:38:16.051Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 148,
+        "title": "",
+        "comment": "",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.004871443595308,
+          53.55404069407307
+        ]
+      },
+      "properties": {
+        "entryId": 63,
+        "dateCreated": "2022-08-22T11:38:16.051Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 149,
+        "title": "",
+        "comment": "",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.969933386241248,
+          53.545719577144574
+        ]
+      },
+      "properties": {
+        "entryId": 63,
+        "dateCreated": "2022-08-22T11:38:16.051Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 150,
+        "title": "Übergang Landungsbrücken",
+        "comment": "Es geht nur um wenige Stufen, die ca 10m breit sind. Es gibt keine Rampe, mit Kinderwagen (oder Fahrrad, Rollstuhl etc) muss man ganz außen rum. Dabei sind da super viele Familien und Radfahrer unterwegs!",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.997398470770875,
+          53.54197372475281
+        ]
+      },
+      "properties": {
+        "entryId": 63,
+        "dateCreated": "2022-08-22T11:38:16.051Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 151,
+        "title": "Bordsteine unschön abgesenkt",
+        "comment": "In der Hafencity ist an vielen Stellen vergessen worden, die Bordsteine abzusenken. Nachträglich dann schlecht gemacht, mit Kinderwagen einfach nur super unangenehm.",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.927329754424585,
+          53.49426929051378
+        ]
+      },
+      "properties": {
+        "entryId": 64,
+        "dateCreated": "2022-08-29T09:28:17.589Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 152,
+        "title": "elbdeich e.V.",
+        "comment": "Rollstuhlzugänglicher Eingang zum Gelände und der Pausenhalle. Rolli-WC vorhanden.\nhttps://www.elbdeich.org/barrierefreiheit/",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.970337701660311,
+          53.54606320169598
+        ]
+      },
+      "properties": {
+        "entryId": 65,
+        "dateCreated": "2022-09-12T16:09:44.703Z",
+        "imageFiles": [
+          "image/65_image_upload_0.jpg"
+        ],
+        "audioFiles": [],
+        "featureId": 153,
+        "title": "Test",
+        "comment": "Test",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.971272263371079,
+          53.545895077670934
+        ]
+      },
+      "properties": {
+        "entryId": 65,
+        "dateCreated": "2022-09-12T16:09:44.703Z",
+        "imageFiles": [
+          "image/65_image_upload_0.jpg"
+        ],
+        "audioFiles": [],
+        "featureId": 154,
+        "title": "",
+        "comment": "",
+        "mobilityMode": "walk"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.971979585155944,
+          53.54512564186298
+        ]
+      },
+      "properties": {
+        "entryId": 67,
+        "dateCreated": "2022-09-13T10:14:20.163Z",
+        "imageFiles": [
+          "image/67_image_upload_0.jpg"
+        ],
+        "audioFiles": [],
+        "featureId": 157,
+        "title": "",
+        "comment": "Höhe der Balstrade ist zu gering und nicht durchsichtig. Keine Höhe für Menschen im rollstuhl",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.039487246355684,
+          53.56820516272227
+        ]
+      },
+      "properties": {
+        "entryId": 66,
+        "dateCreated": "2022-09-13T10:11:13.351Z",
+        "imageFiles": [
+          "image/66_image_upload_0.jpg"
+        ],
+        "audioFiles": [
+          "audio/66_audio_record_0.mp4"
+        ],
+        "featureId": 155,
+        "title": "",
+        "comment": "",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.01814951989433,
+          53.56144394520876
+        ]
+      },
+      "properties": {
+        "entryId": 66,
+        "dateCreated": "2022-09-13T10:11:13.351Z",
+        "imageFiles": [
+          "image/66_image_upload_0.jpg"
+        ],
+        "audioFiles": [
+          "audio/66_audio_record_0.mp4"
+        ],
+        "featureId": 156,
+        "title": "",
+        "comment": "",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.770117807770824,
+          53.5780632486481
+        ]
+      },
+      "properties": {
+        "entryId": 68,
+        "dateCreated": "2022-09-21T04:06:52.445Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 158,
+        "title": "Bordsteinkante",
+        "comment": "An der (neuen) Bordsteinkante kommen Menschen mit Rollatoren oä nicht hoch, da diese nicht abgesenkt ist. Dies stellt ein großes Problem für die Bewohner:innen des nahegelegenen Altenheims dar. ",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.031262591284927,
+          53.602709444995824
+        ]
+      },
+      "properties": {
+        "entryId": 69,
+        "dateCreated": "2022-09-21T04:22:12.136Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 159,
+        "title": "Toilette für alle ",
+        "comment": " bei der Tagespflege von Leben mit Behinderung Hamburg (mit Liege und breiter Tür, viel Platz)",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.14567810724473,
+          53.54021542240356
+        ]
+      },
+      "properties": {
+        "entryId": 70,
+        "dateCreated": "2022-09-21T05:22:34.109Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 160,
+        "title": "Zebrastreifen aber sehr hoher Bordstein",
+        "comment": "Hier ist ein Zebrastreifen um über die vielbefahrene Straße zu kommen. Das ist aber mit Kinderwagen sehr schwierig, da der Bordstein sehr hoch ist. Ein Rollstuhlfahrer würde hier nicht passieren können. ",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.969289177876126,
+          53.56369414994238
+        ]
+      },
+      "properties": {
+        "entryId": 71,
+        "dateCreated": "2022-09-21T05:29:16.245Z",
+        "imageFiles": [
+          "image/71_image_upload_0.jpg"
+        ],
+        "audioFiles": [],
+        "featureId": 161,
+        "title": "Messetunnel",
+        "comment": "Übergang zwischen Lagerstraße und Sternschanzenpark STEILE Rampe. Auf dieser Seite KEIN Zugang zur S-Bahn für Rollstuhlfahrer (nur Treppe/Rolltreppe). U-Bahn Station AUSSCHLIESSLICH Zugang über mehrere Treppen.",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.954198468517893,
+          53.56672123748174
+        ]
+      },
+      "properties": {
+        "entryId": 72,
+        "dateCreated": "2022-09-21T05:59:20.881Z",
+        "imageFiles": [
+          "image/72_image_upload_0.jpg"
+        ],
+        "audioFiles": [
+          "audio/72_audio_record_0.mp4"
+        ],
+        "featureId": 162,
+        "title": "Waterloostraße 28",
+        "comment": "Jemand hat hier eine Mauer um das Grundstück der Waterloostraße 28 gezogen. Jetzt kommt kein Rollstuhl mehr zwischen der Mauer und dem festinstallierten Fahrradständer durch. ",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.007314026318635,
+          53.59178948371995
+        ]
+      },
+      "properties": {
+        "entryId": 73,
+        "dateCreated": "2022-09-21T06:46:51.557Z",
+        "imageFiles": [],
+        "audioFiles": [
+          "audio/73_audio_record_0.mp4"
+        ],
+        "featureId": 163,
+        "title": "Hohe Strassenkamte",
+        "comment": "Höhe der Strassenkante hoch - für rollator mit unsicherer Person schwieriger",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.004533211691866,
+          53.59252635948489
+        ]
+      },
+      "properties": {
+        "entryId": 73,
+        "dateCreated": "2022-09-21T06:46:51.557Z",
+        "imageFiles": [],
+        "audioFiles": [
+          "audio/73_audio_record_0.mp4"
+        ],
+        "featureId": 164,
+        "title": "Enger Fussgängerweg",
+        "comment": "Fußgängerweg auf der Seite vom Markt weg phasenweise eng. Radfahrer achten nicht auf Fußgänger bzw fahren nebeneinander ",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.006219040785652,
+          53.58958284160307
+        ]
+      },
+      "properties": {
+        "entryId": 73,
+        "dateCreated": "2022-09-21T06:46:51.557Z",
+        "imageFiles": [],
+        "audioFiles": [
+          "audio/73_audio_record_0.mp4"
+        ],
+        "featureId": 165,
+        "title": "Alter asphaltweg",
+        "comment": "Fußgängerweg seit Jahren nicht asphaltiert. Viele Löcher, wo man mit dem Rollator hängen bleibt bzw Gleichgewicht verliert",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.004533211691866,
+          53.59252635948489
+        ]
+      },
+      "properties": {
+        "entryId": 73,
+        "dateCreated": "2022-09-21T06:46:51.557Z",
+        "imageFiles": [],
+        "audioFiles": [
+          "audio/73_audio_record_0.mp4"
+        ],
+        "featureId": 166,
+        "title": "",
+        "comment": "",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.086610580726507,
+          53.55381752192389
+        ]
+      },
+      "properties": {
+        "entryId": 75,
+        "dateCreated": "2022-09-21T07:46:19.953Z",
+        "imageFiles": [],
+        "audioFiles": [
+          "audio/75_audio_record_0.webm"
+        ],
+        "featureId": 168,
+        "title": "Einschränkungen bei Großbaustelle",
+        "comment": "Durch die Großbaustelle an der Horner Rennbahn für die Erweiterung der U4 kommt es zu sich ständig wechselnden Wegen, die für Personen mit Rollator oder Rollstuhl große Umwege bedeuten. Menschen mit Behinderung scheinen bei der Planung der Baustellen nicht mitgedacht zu werden.\n[Eintrag aufgrund eines Anrufs vom 21.9.]",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.952974316477553,
+          53.56626957964301
+        ]
+      },
+      "properties": {
+        "entryId": 74,
+        "dateCreated": "2022-09-21T07:43:50.232Z",
+        "imageFiles": [
+          "image/74_image_upload_0.jpg"
+        ],
+        "audioFiles": [],
+        "featureId": 167,
+        "title": "Überweg Sehbehinderte",
+        "comment": "Es sind Bodenindikatoren zum kreuzen eingelassen, diese führen jedoch nicht jeweils in direktem Weg zur anderen Straßenseite und aufgrund der versetzten vierfachen Kreuzung ist die Indikation der sicheren Querung hier gefährlich.",
+        "mobilityMode": "walk"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.953506348962392,
+          53.56473144480876
+        ]
+      },
+      "properties": {
+        "entryId": 76,
+        "dateCreated": "2022-09-21T07:50:31.467Z",
+        "imageFiles": [
+          "image/76_image_upload_1.png"
+        ],
+        "audioFiles": [],
+        "featureId": 169,
+        "title": "Keine sichere Querung für Grundschulkinder",
+        "comment": "Im gesamten Beeich der Langenfelder Straße gibt es keine sichere Querung für Grundschulkinder, diese müssen zwischen parkenden Autos die Straße überqueren, auch um zB ihre Turnhalle zu erreichen, die in der Langenfelder Straße liegt.",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.984705691243835,
+          53.564530380518654
+        ]
+      },
+      "properties": {
+        "entryId": 77,
+        "dateCreated": "2022-09-21T08:06:41.902Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 170,
+        "title": "",
+        "comment": "",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.986736976753491,
+          53.56340771781456
+        ]
+      },
+      "properties": {
+        "entryId": 77,
+        "dateCreated": "2022-09-21T08:06:41.902Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 171,
+        "title": "",
+        "comment": "",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.986541471728065,
+          53.56273150648046
+        ]
+      },
+      "properties": {
+        "entryId": 77,
+        "dateCreated": "2022-09-21T08:06:41.902Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 172,
+        "title": "",
+        "comment": "",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.985101877127372,
+          53.56352822010595
+        ]
+      },
+      "properties": {
+        "entryId": 77,
+        "dateCreated": "2022-09-21T08:06:41.902Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 173,
+        "title": "",
+        "comment": "",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.983569103894911,
+          53.56375488342743
+        ]
+      },
+      "properties": {
+        "entryId": 77,
+        "dateCreated": "2022-09-21T08:06:41.902Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 174,
+        "title": "",
+        "comment": "",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.947973368710908,
+          53.58279197585999
+        ]
+      },
+      "properties": {
+        "entryId": 78,
+        "dateCreated": "2022-09-21T08:36:19.538Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 175,
+        "title": "U-Bahn Lutterothstrasse",
+        "comment": "Kein Fahrstuhl und keine abwärtsfahrende Rolltreppe an diesem Ausgang.",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.970573582020187,
+          53.56826753500342
+        ]
+      },
+      "properties": {
+        "entryId": 79,
+        "dateCreated": "2022-09-21T09:38:22.538Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 176,
+        "title": "Fußgänger-Zackgasse auf dem Bürgersteig Gustav-Falke-Straße",
+        "comment": "Der Bürgersteig und Wochenmarkt Fläche in der Mitte von Gustav-Falke-Straße endet ohne einen angemessenen und sicheren Wegeleitung weder zur U-Bahn Station, zu den Bushaltestellen oder zur anderen Straßenseite. Die Bordsteinkante ist recht hoch für Kleinkinder, die zu Fuß oder mit dem Laufrad /Fahrrad unterwegs sind oder im Buggy fahren.",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.974789081755542,
+          53.565334753258426
+        ]
+      },
+      "properties": {
+        "entryId": 81,
+        "dateCreated": "2022-09-21T10:00:57.565Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 178,
+        "title": "Fehlender Übergang/ Fußgängerampel",
+        "comment": "",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.031523183616123,
+          53.58886935292188
+        ]
+      },
+      "properties": {
+        "entryId": 80,
+        "dateCreated": "2022-09-21T10:00:33.705Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 177,
+        "title": "Fahrstuhl dringend erwünscht",
+        "comment": "U-Bahnstation Saarlandstr. für Frau mit Kinderwagen nicht nutzbar. Ebensowenig für Rollstuhlfahrer/in. Ich 70jährige komme mit einem Koffer die Treppe nicht hoch. In das Gebiet um die Station ziehen immer mehr Menschen, d.h., der Bedarf an einem Fahrstuhl nimmt zu.",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.993784023089086,
+          53.51623352772677
+        ]
+      },
+      "properties": {
+        "entryId": 82,
+        "dateCreated": "2022-09-21T10:10:20.869Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 179,
+        "title": "Kein durchkommen",
+        "comment": "An dieser Stelle gibt es immer wieder Falschparker, die den Gehweg so blockieren, sodass Menschen mit Kinderwagen, Rollstuhl oder Rolator auf die Straße ausweichen müssen. ",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.115541,
+          53.607142
+        ]
+      },
+      "properties": {
+        "entryId": 84,
+        "dateCreated": "2022-09-21T11:00:19.688Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 183,
+        "title": "unebener Fußweg",
+        "comment": "der Fußweg wurde mehrfach von Energieversorgern aufgerissen. Er ist mittlerweile für Fußgänger mit Stolperfallen übersät und für Rollifahrer alleine kaum noch mehr nutzbar.\nDieses trifft aber fast alle Fußwege in den hamburger Wohnquartieren zu.",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.111715,
+          53.606107
+        ]
+      },
+      "properties": {
+        "entryId": 84,
+        "dateCreated": "2022-09-21T11:00:19.688Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 184,
+        "title": "",
+        "comment": "",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.986297925191199,
+          53.518050754563944
+        ]
+      },
+      "properties": {
+        "entryId": 83,
+        "dateCreated": "2022-09-21T10:53:57.513Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 180,
+        "title": "langer straßenabschnitt, dicht beparkt, keine abgesenkten bordsteine, keine fahrradwege",
+        "comment": "",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.986297925191199,
+          53.518050754563944
+        ]
+      },
+      "properties": {
+        "entryId": 83,
+        "dateCreated": "2022-09-21T10:53:57.513Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 181,
+        "title": "",
+        "comment": "",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.98531601017988,
+          53.518122920630816
+        ]
+      },
+      "properties": {
+        "entryId": 83,
+        "dateCreated": "2022-09-21T10:53:57.513Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 182,
+        "title": "",
+        "comment": "",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.906337508014797,
+          53.56634139085553
+        ]
+      },
+      "properties": {
+        "entryId": 85,
+        "dateCreated": "2022-09-21T11:34:20.354Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 185,
+        "title": "Abgesenkter Fußweg nicht parallel auf beiden Seiten",
+        "comment": "Abgesenkter Bordstein Ecke Regerstraße/Haydnstraße ist oft von in der Kurve parkenden Autos blockiert. Auf der gegenüberliegenden Seite (Haydnstraße, vor dem Kindergarten) ist der abgesenkte Bordstein nicht direkt gegenüber, sondern einige Meter Richtung Von-Sauer-Straße versetzt, da sich hier eine Ausfahrt von einem Parkplatz befindet. Mit einem Kinderwagen muss man von einem Bordstein zum gegenüberliegenden mehrere Meter über die Straße schieben, bis man zur Absenkung gegenüber gelangt. Ein direktes Überqueren ist nicht möglich, da dort  (gemeint ist der Fußweg parallel zur Haydnstraße) der Bordstein nicht abgesenkt ist und zudem meistens Autos an der Stelle am Straßenrand parken.",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.909837051403906,
+          53.562456682532265
+        ]
+      },
+      "properties": {
+        "entryId": 86,
+        "dateCreated": "2022-09-21T11:40:55.333Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 186,
+        "title": "Abgesenkte Bordsteine nur auf Fahrradspur",
+        "comment": "An den Kreuzungen entlang der eingezeichneten Strecke sind die Bordsteine zwar abgesenkt, aber nur an den Stellen, die für Fahrrad markiert sind. Die baulich/farblich getrennten Fußwege sind nicht abgesenkt. Dadurch kommt es teilweise zu Konflikten zwischen Fahrradfahrer:innen und z. B. Menschen mit Kinderwagen, da letztere an den Kreuzungen auf den Fahrradweg wechseln müssen, um die Straße barrierearm zu passieren.",
+        "mobilityMode": "walk"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.007156456849774,
+          53.583957372619324
+        ]
+      },
+      "properties": {
+        "entryId": 87,
+        "dateCreated": "2022-09-21T13:55:07.175Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 187,
+        "title": "Schwierig zu navigieren",
+        "comment": "Autos parken zu weit auf dem Gehweg, Fahrräder am Zaun zu Gebäuden angeschlossen, so dass teilweise mit Kinderwagen oder Rollstuhl der Bürgersteig nicht befahrbar ist. Die ungepflasterten Bereiche um die Bäume haben zu den gepflasterten Teilen enorme Sprünge, so dass es mit Kinderwagen sehr schwer zu passieren ist. Mit dem Rollstuhl teilweise unmöglich ",
+        "mobilityMode": "wheel"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.002642165914528,
+          53.59049965901004
+        ]
+      },
+      "properties": {
+        "entryId": 88,
+        "dateCreated": "2022-09-21T21:40:12.693Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 188,
+        "title": "Ubahnhof",
+        "comment": "Kein Fahrstuhl",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.934718777547122,
+          53.55207068632792
+        ]
+      },
+      "properties": {
+        "entryId": 89,
+        "dateCreated": "2022-09-22T05:20:54.657Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 189,
+        "title": "Aufzug zu S-Bahngleisen",
+        "comment": "Die Aufzüge zu den S-Bahngleisen sind schwer zu finden und immer überfüllt. Lange warten und Frust. ",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.929596590486637,
+          53.55268984950019
+        ]
+      },
+      "properties": {
+        "entryId": 90,
+        "dateCreated": "2022-09-22T05:25:11.409Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 190,
+        "title": "Abgesenkt Bordstein zugeparkt",
+        "comment": "In Ottensen sind häufig die abgesenkten Bordseteine und Kurven zugeparkt. ",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.993839998602395,
+          53.5522852004194
+        ]
+      },
+      "properties": {
+        "entryId": 91,
+        "dateCreated": "2022-09-22T08:59:02.873Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 191,
+        "title": "S-Bahn Jungfernstieg",
+        "comment": "Kommt man am Jungfernstieg mit der S-Bahn an, so gibt es keine Möglichkeit, mit dem Aufzug nach oben zu gelangen. Somit ist der ganze Jungfernstieg, der Rathausmarkt und die EuropaPassage für RollstuhlfahrerInnen, Eltern mit Kinderwagen usw. nicht erreichbar! Und das mitten in der Innenstadt!!!",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.978446464789902,
+          53.460957005848
+        ]
+      },
+      "properties": {
+        "entryId": 92,
+        "dateCreated": "2022-09-22T10:07:30.255Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 192,
+        "title": "",
+        "comment": "",
+        "mobilityMode": "walk"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.978408221488719,
+          53.46089859472178
+        ]
+      },
+      "properties": {
+        "entryId": 92,
+        "dateCreated": "2022-09-22T10:07:30.255Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 193,
+        "title": "Kein Weg von der S-Bahn Harburg Rathaus zur Medical School",
+        "comment": "Von der S-Bahn Harburg-Rathaus kann man als Mensch mit einer Gehbehinderung (Rollstuhlfahrerin), mit Kinderwagen oder Reha-Buggy praktisch nicht auf die andere Seite der Buxtehuder Straße kommen, zum Beispiel zur Medical School. Die Fußgänger-Brücke ist eine unüberwindliche Barriere und der Fußgänger-Tunnel fast nicht zu finden (keine Ausschilderung, in Karten-Apps für Smartphones nicht als Route zu finden).  ",
+        "mobilityMode": "wheel"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.978316746998225,
+          53.46093237619978
+        ]
+      },
+      "properties": {
+        "entryId": 92,
+        "dateCreated": "2022-09-22T10:07:30.255Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 194,
+        "title": "Kein Weg von der S-Bahn Harburg Rathaus zur Medical School",
+        "comment": "Mit einer Gehbehinderung oder auch nur mit einem Kinderwagen oder einem Reha-Buggy von der S-Bahn Harburg Rathaus auf die andere Seite der Buxtehuder Straße zu kommen ist fast unmöglich. Die Fußgängerbrücke ist völlig ungeeignet und der Fußgänger-Tunnel extrem schlecht zu finden (keine Ausschilderung, in Karten-Apps nicht als Route auffindbar. ",
+        "mobilityMode": "wheel"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.118319566763878,
+          53.60544069600203
+        ]
+      },
+      "properties": {
+        "entryId": 93,
+        "dateCreated": "2022-09-23T12:59:18.411Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 195,
+        "title": "Nicht nutzbarer Aufzug.",
+        "comment": "Von oben kaum nutzbarer Aufzug. Für Gehbehinderte kein Zustand, da der Aufzug immer den inneren Anfragen zuert dient.",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.045867045080067,
+          53.555310825758774
+        ]
+      },
+      "properties": {
+        "entryId": 94,
+        "dateCreated": "2022-09-24T08:22:32.834Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 196,
+        "title": "test",
+        "comment": "",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.024308690635642,
+          53.55317746423115
+        ]
+      },
+      "properties": {
+        "entryId": 95,
+        "dateCreated": "2022-09-24T09:55:02.527Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 197,
+        "title": "weg ubahn zur sbahn berliner tor",
+        "comment": "übergang ist nicht barrierefrei, zumindest früher gab es hier mehrere treppen, die füt körperlich beeinträchtigte menschen ein problem sind.",
+        "mobilityMode": "walk"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.007277851003927,
+          53.55256786256195
+        ]
+      },
+      "properties": {
+        "entryId": 96,
+        "dateCreated": "2022-09-24T11:36:14.253Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 198,
+        "title": "",
+        "comment": "",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.020319687859581,
+          53.56011556391386
+        ]
+      },
+      "properties": {
+        "entryId": 96,
+        "dateCreated": "2022-09-24T11:36:14.253Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 199,
+        "title": "",
+        "comment": "",
+        "mobilityMode": "wheel"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.033539431150684,
+          53.55799331935498
+        ]
+      },
+      "properties": {
+        "entryId": 96,
+        "dateCreated": "2022-09-24T11:36:14.253Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 200,
+        "title": "",
+        "comment": "",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.008113302617343,
+          53.539924445313005
+        ]
+      },
+      "properties": {
+        "entryId": 96,
+        "dateCreated": "2022-09-24T11:36:14.253Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 201,
+        "title": "Haus ist barrierefrei",
+        "comment": "",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.047703453520063,
+          53.584314595169545
+        ]
+      },
+      "properties": {
+        "entryId": 97,
+        "dateCreated": "2022-09-25T07:31:21.399Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 202,
+        "title": "Ampel",
+        "comment": "An der Ampelanlage müssen Fußgänger Grün anfordern. Die Drücker an den Ampelmasten sind auf ca. 1,50 m Höhe angebracht und damit zu hoch für Kinder, RollstuhlfahrerInnen und kleine Menschen\n",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.984226286789427,
+          53.5105746704116
+        ]
+      },
+      "properties": {
+        "entryId": 98,
+        "dateCreated": "2022-09-25T12:04:53.074Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 203,
+        "title": "Übergang Neuhöfer Straße",
+        "comment": "Der Weg entlang des Kanals ist ein sehr beliebter und frequentierter Fuß- und Radweg. Zu den Schulzeiten sieht man auch viele Kinder auf dem Schlweg, teilweise ohne Eltern. Der Übergang über die Neuhöfer Straße ist dabei sehr schlecht gemacht. Es gibt weder Zebrastreifen noch Ampel. Dabei ist auf der Straße viel Verkehr und besonders viele große und gefährliche LKW. Die Kinder, die ich sehe, sind oft verunsichert und wissen nicht, wann sie rüber gehen können. Gerade wegen den vielen LKW wäre hier ein sicherer Übergang für Kinder besonders wichtig. Zudem ist der Übergang auch baulich nicht gut gemacht für Radfahrer. Hier müsste dringend ein Zebrastreifen hin und am besten auch eine bauliche Überarbeitung, um für Radfahrer eine bessere Überfahrt zu ermöglichen.",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.991760095512797,
+          53.50326318700172
+        ]
+      },
+      "properties": {
+        "entryId": 99,
+        "dateCreated": "2022-09-25T12:09:06.821Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 204,
+        "title": "Übergang Georg-Wilhelm-Straße",
+        "comment": "Hier führt der \"Loop\" Radweg über die vielbefahrene Georg-Wilhelm-Straße. Morgens und Nachmittags sind hier viele Kinder auf dem Schulweg unterwegs. Bei dem dichten Verkehr finde ich es grenzwertig, dass es weder Ampel noch Zebrastreifen gibt. Kinder ohne Eltern sind überfordert und verunsichert. Hier sollte dringend im Interesse der Sicherheit der Kinder entweder ein Zebrastreifen oder eine Ampel hin.",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.964176598232198,
+          53.58205364047498
+        ]
+      },
+      "properties": {
+        "entryId": 100,
+        "dateCreated": "2022-09-27T12:24:03.267Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 205,
+        "title": "",
+        "comment": "Dicht parkende Fahrzeuge erschweren die Überquerung der Straße z.B. mit Kinderwagen ",
+        "mobilityMode": "walk"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.964059160022902,
+          53.582110121259156
+        ]
+      },
+      "properties": {
+        "entryId": 101,
+        "dateCreated": "2022-09-27T12:29:42.747Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 206,
+        "title": "Absenkung Bordsteinkante ",
+        "comment": "An dieser Stelle wäre eine Absenkung des Bordsteins für Rollstuhlfahrende oder Kinderwagen wünschenswert um das Überqueren der Straße zu erleichtern ",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.964525059701373,
+          53.5651797347636
+        ]
+      },
+      "properties": {
+        "entryId": 102,
+        "dateCreated": "2022-09-28T09:05:40.104Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 207,
+        "title": "Bushaltestelle - Kinderarzt",
+        "comment": "Unterwegs mit dem Kinderwagen am Vormittag. ",
+        "mobilityMode": "walk"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.963807102213286,
+          53.56494842486066
+        ]
+      },
+      "properties": {
+        "entryId": 102,
+        "dateCreated": "2022-09-28T09:05:40.104Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 208,
+        "title": "Bürgersteig",
+        "comment": "Der Bürgersteig ist zu schmal. Es sind häufig Eltern mit Kinderwagen unterwegs. In Gegenrichtung muss dann eine oder andere zwischen den parkenden Autos abbiegen und die andere durchgehen lassen.",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.964595977063158,
+          53.56516441330398
+        ]
+      },
+      "properties": {
+        "entryId": 102,
+        "dateCreated": "2022-09-28T09:05:40.104Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 209,
+        "title": "Temporäre Hindernisse",
+        "comment": "",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.964118777608968,
+          53.56506179238869
+        ]
+      },
+      "properties": {
+        "entryId": 102,
+        "dateCreated": "2022-09-28T09:05:40.104Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 210,
+        "title": "Schmaler Bürgersteig",
+        "comment": "Kaum Ausweichmöglichkeiten, wenn Fußgänger mit Kinderwägen aus der Gegenrichtung kommen.",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.963637914734926,
+          53.56489803503931
+        ]
+      },
+      "properties": {
+        "entryId": 102,
+        "dateCreated": "2022-09-28T09:05:40.104Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 211,
+        "title": "Fahrradstellplätze nicht ausreichend",
+        "comment": "",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.962607310065374,
+          53.56464128948445
+        ]
+      },
+      "properties": {
+        "entryId": 103,
+        "dateCreated": "2022-09-28T09:28:47.865Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 212,
+        "title": "Straße überqueren",
+        "comment": "Straße überqueren mit dem Kinderwagen oder mit dem Kind, das Fahrrad fährt oder beides. ",
+        "mobilityMode": "walk"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.962576183359257,
+          53.564631172545475
+        ]
+      },
+      "properties": {
+        "entryId": 103,
+        "dateCreated": "2022-09-28T09:28:47.865Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 213,
+        "title": "Straße überqueren unerwünscht?",
+        "comment": "Es fehlt hier ein Hinweis für die AutofahrerInnen, dass hier Fußgänger über die Straße gehen dürfen. Oder dürfen die das nicht? Es wäre logisch die zwei  Gehwege zu verbinden. Im Moment müsste man hier zwischen den parkenden Autos mit dem Kinderwagen irgendwie durchpassen, wenn man Glück hat und die Autos nicht zu dicht hintereinander geparkt sind wie auf dem Foto. Dazu noch die Bürgersteigkante meistern.",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.962496631229255,
+          53.56460531610316
+        ]
+      },
+      "properties": {
+        "entryId": 103,
+        "dateCreated": "2022-09-28T09:28:47.865Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 214,
+        "title": "",
+        "comment": "Gehweg endet auf dem Parkbucht.",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.96252175659766,
+          53.56460968056515
+        ]
+      },
+      "properties": {
+        "entryId": 104,
+        "dateCreated": "2022-09-28T09:43:05.974Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 215,
+        "title": "Gehweg endet auf dem Parkbucht",
+        "comment": "",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.96252145965843,
+          53.56459660217159
+        ]
+      },
+      "properties": {
+        "entryId": 104,
+        "dateCreated": "2022-09-28T09:43:05.974Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 216,
+        "title": "Straße überqueren",
+        "comment": "Straße überqueren mit dem Kinderwagen oder mit dem Kind, das Laufrad/ Fahrrad fährt. ",
+        "mobilityMode": "walk"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.962575229908044,
+          53.56461236836702
+        ]
+      },
+      "properties": {
+        "entryId": 104,
+        "dateCreated": "2022-09-28T09:43:05.974Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 217,
+        "title": "Zebrastreifen oder ähnliches?",
+        "comment": "Hier wäre es ganz schön eine Möglichkeit für die FußgängerInnen zu schaffen, sicher die Straße überqueren, auch wenn man gleichzeitig auf die Kinder aufpassen muss. Oder ist das überqueren unerwünscht? Im Moment kann man Glück haben und der Parkbucht ist nicht vollgeparkt und man passt dort mit dem Kinderwagen durch und meistert dabei die Bürgersteigkante. (Für kleine Kinder mit dem Laufrad nicht so einfach).",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.962550578342748,
+          53.56447635224883
+        ]
+      },
+      "properties": {
+        "entryId": 105,
+        "dateCreated": "2022-09-28T10:01:01.079Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 218,
+        "title": "Straße überqueren unerwünscht?",
+        "comment": "Es sieht so aus, als wäre hier unerwünscht Fußgänger über die Straße gehen zu lassen. Der Bürgersteig auf der östlicher Seite ist mit kleinen Pfosten und Straßenpfosten quasi blockiert und mit dem Fahrradweg und merkwürdigen \"Insel\" abgeschnitten und auf der westlichen Seite nach dem gleichen Muster. Die einzige Option ist den Fahrradweg zu nutzen und extra aufzupassen.",
+        "mobilityMode": "walk"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.962745881211433,
+          53.56454446537587
+        ]
+      },
+      "properties": {
+        "entryId": 105,
+        "dateCreated": "2022-09-28T10:01:01.079Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 219,
+        "title": "Fußweg abgesperrt",
+        "comment": "",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.974963267225442,
+          53.565446477532525
+        ]
+      },
+      "properties": {
+        "entryId": 106,
+        "dateCreated": "2022-09-28T10:18:43.197Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 220,
+        "title": "Unoffizieller Fußgängerüberweg",
+        "comment": "Hier fehlt ein Fußgängerampel, Zebrastreifen oder wenigstens ein Verkehrsinsel, wenn man die gesamte Strecke nicht aufeinmal schafft. Ein Umweg über die jetzt bestehenden Ampel sind einfach zu anstrengend mit den Kindern, zumal es eine sehr laute und stressige Straße ist.",
+        "mobilityMode": "walk"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.969941085104072,
+          53.56777839482872
+        ]
+      },
+      "properties": {
+        "entryId": 107,
+        "dateCreated": "2022-09-28T10:25:10.123Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 221,
+        "title": "Ampelschaltung zu kurz",
+        "comment": "Die Ampelschaltung für die Fußgänger ist zu kurz. Die kleineren Kinder schaffen das nicht immer ohne in den Arm genommen zu werden über die Straße zu hetzen. Auch ältere Menschen mit Rollatoren brauchen länger. ",
+        "mobilityMode": "walk"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.96949523544148,
+          53.56784931580363
+        ]
+      },
+      "properties": {
+        "entryId": 108,
+        "dateCreated": "2022-09-28T10:38:57.733Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 222,
+        "title": "Warum ist die Straße hier nicht Tempo 30?",
+        "comment": "Warum darf man hier mit Tempo 50 fahren?",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.970061601725428,
+          53.567719862100425
+        ]
+      },
+      "properties": {
+        "entryId": 108,
+        "dateCreated": "2022-09-28T10:38:57.733Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 223,
+        "title": "Ampel",
+        "comment": "Mit kleineren Kindern ist es sehr stressig an den Ampel zu warten, wenn große Fahrzeuge mit 50-70 km/h vorbeifahren. Die Bewegungsfreiheit der Kinder wird dadurch eingeschränkt. Neben dem Kinderwagen laufen oder mit dem eigenen Fahrrad neben Elternfahrrad zu fahren ist viel zu gefährlich. ",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.986071738576069,
+          53.56477782851047
+        ]
+      },
+      "properties": {
+        "entryId": 109,
+        "dateCreated": "2022-10-05T10:46:20.430Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 224,
+        "title": "Rampe",
+        "comment": "zu steile Rampe",
+        "mobilityMode": "wheel"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.022040633602815,
+          53.62678168988532
+        ]
+      },
+      "properties": {
+        "entryId": 110,
+        "dateCreated": "2022-11-06T15:22:06.438Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 225,
+        "title": "",
+        "comment": "Kein Zugang zu den öffentlichen Toiletten. Auch die Rolli-Toilette hat kein EURO-Schloss",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.971569582261154,
+          53.54467608493326
+        ]
+      },
+      "properties": {
+        "entryId": 111,
+        "dateCreated": "2022-11-09T08:19:36.488Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 226,
+        "title": "",
+        "comment": "",
+        "mobilityMode": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.96982558751169,
+          53.54507225808884
+        ]
+      },
+      "properties": {
+        "entryId": 111,
+        "dateCreated": "2022-11-09T08:19:36.488Z",
+        "imageFiles": [],
+        "audioFiles": [],
+        "featureId": 227,
+        "title": "",
+        "comment": "",
+        "mobilityMode": ""
+      }
+    }
+  ]
+}

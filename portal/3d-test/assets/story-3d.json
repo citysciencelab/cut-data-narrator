@@ -1,0 +1,202 @@
+{
+  "title": "3D Test",
+  "author": "City Science Lab",
+  "description": "Diese Story soll die Funktionalitäten des 3D Modus im Storytellingtool veranschaulichen.",
+  "coverImagePath": "assets/img/3dcover.png",
+  "htmlFolder": "story",
+  "isScrollytelling" : true,
+  "chapters": [
+    {
+      "chapterNumber": 1,
+      "chapterTitle": "3d showcase"
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "stepWidth": 600,
+      "visible": true,
+      "associatedChapter": 1,
+      "title": "Normale 2D Ansicht",
+      "htmlFile": "",
+      "centerCoordinate": [
+        563140.367837,
+        5934788.314655
+      ],
+      "zoomLevel": 7,
+      "layers": [],
+      "interactionAddons": []
+    },
+    {
+      "stepNumber": 2,
+      "stepWidth": 600,
+      "visible": true,
+      "associatedChapter": 1,
+      "title": "3D Model aktiviert",
+      "htmlFile": "",
+      "centerCoordinate": [],
+      "is3D": true,
+      "navigation3D": {
+        "cameraPosition": [
+          9.946620,
+          53.554060,
+          150.0
+        ],
+        "heading": 0.08619862675293799,
+        "pitch": -0.41983749405932813
+      },
+      "zoomLevel": 0,
+      "layers": ["12883", "12884", "6666"],
+      "interactionAddons": []
+    },
+    {
+      "stepNumber": 3,
+      "stepWidth": 600,
+      "visible": true,
+      "associatedChapter": 1,
+      "title": "GLTF 3D Objekt",
+      "htmlFile": "",
+      "centerCoordinate": [],
+      "is3D": true,
+      "navigation3D": {
+        "cameraPosition": [
+          9.948301,
+          53.552374,
+          343.8
+        ],
+        "heading": 0.38138509963163635,
+        "pitch": -0.4525214263618002
+      },
+      "zoomLevel": 0,
+      "layers": ["12883", "12884", "6666"],
+      "interactionAddons": []
+    },
+    {
+      "stepNumber": 4,
+      "stepWidth": 600,
+      "visible": true,
+      "associatedChapter": 1,
+      "title": "Veränderung des Blickwinkels",
+      "htmlFile": "",
+      "centerCoordinate": [],
+      "is3D": true,
+      "navigation3D": {
+        "cameraPosition": [
+          9.951139,
+          53.556209,
+          170.0
+        ],
+        "heading": 0.48138509963163635,
+        "pitch": -0.3525214263618002
+      },
+      "zoomLevel": 0,
+      "layers": ["12883", "12884", "6666"],
+      "interactionAddons": []
+    },
+    {
+      "stepNumber": 5,
+      "stepWidth": 600,
+      "visible": true,
+      "associatedChapter": 1,
+      "title": "Veränderung des Blickwinkels II",
+      "htmlFile": "",
+      "centerCoordinate": [],
+      "is3D": true,
+      "navigation3D": {
+        "cameraPosition": [
+          9.952388,
+          53.558770,
+          138.7
+        ],
+        "heading": 2.581385093478189,
+        "pitch": -0.5925214409342683
+      },
+      "zoomLevel": 0,
+      "layers": ["12883", "12884", "6666"],
+      "interactionAddons": []
+    },
+    {
+      "stepNumber": 6,
+      "stepWidth": 600,
+      "visible": true,
+      "associatedChapter": 1,
+      "title": "Veränderung des Blickwinkels III",
+      "htmlFile": "",
+      "centerCoordinate": [],
+      "is3D": true,
+      "navigation3D": {
+        "cameraPosition": [
+          9.953082,
+          53.557907,
+          56.7
+        ],
+        "heading": 5.9085336246057905,
+        "pitch": -0.6927398353366296
+      },
+      "zoomLevel": 0,
+      "layers": ["12883", "12884", "6666"],
+      "interactionAddons": []
+    },
+    {
+      "stepNumber": 7,
+      "stepWidth": 600,
+      "visible": true,
+      "associatedChapter": 1,
+      "title": "Objekte auf Strassenebene",
+      "htmlFile": "",
+      "centerCoordinate": [],
+      "is3D": true,
+      "navigation3D": {
+        "cameraPosition": [
+          9.963555987544352,
+          53.55717039629356,
+          27.544068712440062
+        ],
+        "heading": 3.730118431106418,
+        "pitch": -0.03720150451527693
+      },
+      "zoomLevel": 0,
+      "layers": ["12883", "12884", "6666"],
+      "interactionAddons": []
+    },
+    {
+      "stepNumber": 8,
+      "stepWidth": 600,
+      "visible": true,
+      "associatedChapter": 1,
+      "title": "Beiträge / Kommentare platzieren",
+      "htmlFile": "",
+      "centerCoordinate": [],
+      "is3D": true,
+      "navigation3D": {
+        "cameraPosition": [
+          10.004705231941385,
+          53.541642338681065,
+          99.70853233385624
+        ],
+        "heading": 4.7758579053777375,
+        "pitch": -0.3306013170445623
+      },
+      "zoomLevel": 0,
+      "layers": ["12883", "12884", "6666"],
+      "interactionAddons": []
+    },
+    {
+      "stepNumber": 9,
+      "stepWidth": 600,
+      "visible": true,
+      "associatedChapter": 1,
+      "title": "3D deaktiviert",
+      "htmlFile": "",
+      "centerCoordinate": [
+        567770.5793074201,
+        5936891.307962078
+      ],
+      "is3D": false,
+      "navigation3D": {},
+      "zoomLevel": 0,
+      "layers": [],
+      "interactionAddons": []
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+Model Information:
+* title:	Parametric high-rise building
+* source:	https://sketchfab.com/3d-models/parametric-high-rise-building-e6188bfc730b4d1092e34392ca25dc13
+* author:	randum (https://sketchfab.com/randum)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Parametric high-rise building" (https://sketchfab.com/3d-models/parametric-high-rise-building-e6188bfc730b4d1092e34392ca25dc13) by randum (https://sketchfab.com/randum) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

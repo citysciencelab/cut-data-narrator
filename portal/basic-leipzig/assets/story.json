@@ -1,0 +1,62 @@
+{
+  "title": "Test Leipzig",
+  "author": "City Science Lab",
+  "description": "Eine Story zum Testen",
+  "coverImagePath": "https://www.leipzig.travel/fileadmin/_processed_/5/d/csm_panorama-city-hochhaus-neues-rathaus-bundesverwaltungsgericht-sehenswuerdigkeiten-architektur-natur-philipp-kirschner-leipzig.travel-2021-02-08-160302-w2500-q80_14a957bce2.jpg",
+  "htmlFolder": "story",
+  "chapters": [
+    {
+      "chapterNumber": 1,
+      "chapterTitle": "Test 1"
+    },
+    {
+      "chapterNumber": 2,
+      "chapterTitle": "Test 2"
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "stepWidth": 800,
+      "visible": true,
+      "associatedChapter": 1,
+      "title": "Einleitung",
+      "htmlFile": "step_1-1.html",
+      "centerCoordinate": [
+        316714.11, 5691041.52
+      ],
+      "zoomLevel": 4,
+      "layers": ["1"],
+      "interactionAddons": []
+    },
+    {
+      "stepNumber": 2,
+      "stepWidth": 700,
+      "visible": true,
+      "associatedChapter": 1,
+      "title": "Was ist unbezahlte Sorgearbeit?",
+      "htmlFile": "step_1-2.html",
+      "centerCoordinate": [
+        316523.86,
+        5690995.03
+      ],
+      "zoomLevel": 4,
+      "layers": ["12", "4"],
+      "interactionAddons": []
+    },
+    {
+      "stepNumber": 1,
+      "stepWidth": 600,
+      "visible": true,
+      "associatedChapter": 2,
+      "title": "Wo findet Sorgearbeit statt?",
+      "htmlFile": "step_2-1.html",
+      "centerCoordinate": [
+        317593.97, 5691129.80
+      ],
+      "zoomLevel": 4,
+      "layers": ["13", "7", "8"],
+      "interactionAddons": []
+    }
+  ]
+}

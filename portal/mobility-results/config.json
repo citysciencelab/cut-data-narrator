@@ -1,0 +1,166 @@
+{
+  "Portalconfig": {
+    "treeType": "light",
+    "isScrollyStory" : true,
+    "mapView": {
+      "extent": [
+        442800,
+        5809000,
+        738000,
+        6102200
+      ],
+      "startResolution": 5.2916638091682096
+    },
+    "searchBar": {
+      "minChars": 3,
+      "placeholder": "translate#common:modules.searchbar.placeholder.addressTopicParcel",
+      "quickHelp": false,
+      "osm": {
+        "minChars": 3,
+        "serviceId": "10",
+        "limit": 60,
+        "states": "Hamburg, Nordrhein-Westfalen, Niedersachsen",
+        "classes": "place,highway,building,shop,historic,leisure,city,county"
+      }
+    },
+    "menu": {
+      "tree": {
+        "name": "translate#common:menu.topics",
+        "glyphicon": "glyphicon-list",
+        "isAlwaysExpanded": [
+          "SelectedLayer"
+        ]
+      },
+      "tools": {
+        "name": "translate#common:menu.tools.name",
+        "glyphicon": "glyphicon-wrench",
+        "children": {
+          "gfi": {
+            "name": "translate#common:menu.tools.getInfos",
+            "glyphicon": "glyphicon-info-sign",
+            "desktopType": "attached",
+            "active": true
+          },
+          "storyTellingTool": {
+            "name": "translate#additional:modules.tools.storyTellingTool.title",
+            "glyphicon": "glyphicon-book",
+            "active": true
+          },
+          "measure": {
+            "name": "translate#common:menu.tools.measure",
+            "icon": "bi-rulers"
+          }
+        }
+      },
+      "legend": {
+        "name": "common:modules.legend.name",
+        "showCollapseAllButton": true,
+        "showLegend": false
+      }
+    },
+    "controls": {
+      "orientation3d": false,
+      "button3d": false,
+      "toggleMenu": true,
+      "fullScreen": false,
+      "zoom": false,
+      "orientation": false,
+      "mousePosition": false,
+      "attributions": false,
+      "buttonOblique": false
+    },
+    "singleBaselayer": true
+  },
+  "Themenconfig": {
+    "Hintergrundkarten": {
+      "name": "translate#common:tree.backgroundMaps",
+      "Layer": [
+        {
+          "id": [
+            "1043",
+            "1044",
+            "1045",
+            "1046",
+            "13649",
+            "13652",
+            "13654",
+            "13656"
+          ],
+          "name": "Geobasiskarten (grau-blau)",
+          "visibility": true,
+          "isVisibleInTree": false,
+          "legend": false
+
+        }
+      ]
+    },
+    "Fachdaten": {
+      "Layer": [
+        {
+          "id" : "11111",
+          "name" : "lokale GeoJSON",
+          "url" : "assets/data/new_results_latlon.json",
+          "typ" : "GeoJSON",
+          "gfiAttributes" : "showAll",
+          "gfiTheme" : "default",
+          "layerAttribution" : "nicht vorhanden",
+          "legend" : false,
+          "datasets": [],
+          "urlIsVisible": true,
+          "visibility": true,
+          "isVisibleInTree": true,
+          "mouseHoverField": [
+            "comment",
+            "kapitelbezeichnung"
+          ]
+        }
+      ]
+    },
+    "Fachdaten": {
+      "Layer": [
+        {
+          "id" : "11111",
+          "name" : "Ergebnisse RE2",
+          "url" : "assets/data/new_results_latlon.json",
+          "typ" : "GeoJSON",
+          "gfiAttributes" : "showAll",
+          "gfiTheme" : "default",
+          "layerAttribution" : "nicht vorhanden",
+          "legend" : false,
+          "datasets": [],
+          "urlIsVisible": true,
+          "visibility": false,
+          "isVisibleInTree": true
+        },
+        {
+          "id" : "111112",
+          "name" : "Ergebnisse RE2 Centroids",
+          "url" : "assets/data/new_results_latlon_centroids.json",
+          "typ" : "GeoJSON",
+          "gfiTheme" : "schulinfo",
+          "layerAttribution" : "nicht vorhanden",
+          "legend" : false,
+          "datasets": [],
+          "urlIsVisible": true,
+          "visibility": false,
+          "isVisibleInTree": true
+        },
+        {
+          "id" : "111113",
+          "name" : "Ergebnisse RE2 Centroids Hover",
+          "url" : "assets/data/new_results_latlon_centroids_all.json",
+          "typ" : "GeoJSON",
+          "gfiAttributes" : "showAll",
+          "gfiTheme": "resultsTheme",
+          "styleId": "20221202",
+          "layerAttribution" : "nicht vorhanden",
+          "legend" : false,
+          "datasets": [],
+          "urlIsVisible": true,
+          "visibility": true,
+          "isVisibleInTree": true
+        }
+      ]
+    }
+  }
+}

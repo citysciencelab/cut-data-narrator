@@ -1,0 +1,121 @@
+{
+  "Portalconfig": {
+    "treeType": "light",
+    "mapView": {
+      "extent": [
+        442800,
+        5809000,
+        738000,
+        6102200
+      ],
+      "startResolution": 5.2916638091682096
+    },
+    "searchBar": {
+      "minChars": 3,
+      "placeholder": "translate#common:modules.searchbar.placeholder.addressTopicParcel",
+      "quickHelp": false,
+      "osm": {
+        "minChars": 3,
+        "serviceId": "10",
+        "limit": 60,
+        "states": "Hamburg, Nordrhein-Westfalen, Niedersachsen",
+        "classes": "place,highway,building,shop,historic,leisure,city,county"
+      }
+    },
+    "menu": {
+      "tree": {
+        "name": "translate#common:menu.topics",
+        "glyphicon": "glyphicon-list",
+        "isAlwaysExpanded": [
+          "SelectedLayer"
+        ]
+      },
+      "tools": {
+        "name": "translate#common:menu.tools.name",
+        "glyphicon": "glyphicon-wrench",
+        "children": {
+          "storyTellingTool": {
+            "name": "translate#additional:modules.tools.storyTellingTool.title",
+            "glyphicon": "glyphicon-book",
+            "active": true
+          },
+          "storyCreationTool": {
+            "name": "translate#additional:modules.tools.storyCreationTool.title",
+            "glyphicon": "glyphicon-text-size",
+            "active": true
+          },
+          "gfi": {
+            "name": "translate#common:menu.tools.getInfos",
+            "glyphicon": "glyphicon-info-sign",
+            "desktopType": "attached",
+            "active": true
+          }
+        }
+      },
+      "legend": {
+        "name": "common:modules.legend.name",
+        "showCollapseAllButton": true,
+        "showLegend": false
+      }
+    },
+    "controls": {
+      "orientation3d": true,
+      "button3d": false,
+      "toggleMenu": true,
+      "fullScreen": false,
+      "zoom": false,
+      "orientation": false,
+      "mousePosition": false,
+      "attributions": false,
+      "buttonOblique": false
+    },
+    "singleBaselayer": true
+  },
+  "Themenconfig": {
+    "Hintergrundkarten": {
+      "name": "translate#common:tree.backgroundMaps",
+      "Layer": [
+        {
+          "id": [
+            "1043",
+            "1044",
+            "1045",
+            "1046",
+            "13649",
+            "13652",
+            "13654",
+            "13656"
+          ],
+          "name": "Geobasiskarten (grau-blau)",
+          "visibility": true,
+          "isVisibleInTree": false,
+          "legend": false
+        }
+      ]
+    },
+    "Fachdaten": {
+      "Layer": [
+        {
+          "id": "12883",
+          "name": "Gelände",
+          "visibility": false
+        },
+        {
+          "id": "12884",
+          "name": "Gebäude LoD2",
+          "visibility": false
+        },
+        {
+          "id": "123456",
+          "name": "EntitiesLayerName",
+          "visibility": false
+        },
+        {
+          "id": "6666",
+          "name": "3d objects",
+          "typ": "Entities3D"
+        }
+      ]
+    }
+  }
+}

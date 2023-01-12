@@ -1,0 +1,490 @@
+[
+  {
+    "id": "1043",
+    "name": "M100000 (grau-blau)",
+    "url": "https://geodienste.hamburg.de/HH_WMS_Geobasiskarten_GB",
+    "typ": "WMS",
+    "layers": "M100000_graublau",
+    "format": "image/png",
+    "version": "1.3.0",
+    "singleTile": false,
+    "transparent": true,
+    "transparency": 0,
+    "urlIsVisible": true,
+    "tilesize": 512,
+    "gutter": 0,
+    "minScale": "79370",
+    "maxScale": "132283",
+    "infoFormat": "text/xml",
+    "gfiAttributes": "showAll",
+    "gfiTheme": "default",
+    "layerAttribution": "nicht vorhanden",
+    "legendURL": "https://geodienste.hamburg.de/HH_WMS_Geobasiskarten_GB?language=ger&version=1.3.0&service=WMS&request=GetLegendGraphic&sld_version=1.1.0&layer=Geobasiskarten_graublau&format=image/png&STYLE=default",
+    "cache": false,
+    "featureCount": 1,
+    "datasets": [
+      {
+        "md_id": "B6A59A2B-2D40-4676-9094-0EB73039ED34",
+        "csw_url": "https://metaver.de/csw",
+        "show_doc_url": "https://metaver.de/trefferanzeige?cmd=doShowDocument&docuuid=",
+        "rs_id": "https://registry.gdi-de.org/id/de.hh/001719df-6619-40b7-aefe-32e8aaf49337",
+        "md_name": "GeoBasisKarten Hamburg",
+        "bbox": "466251.429277335,5844577.89467225,661887.12578721,6042030.30978004",
+        "kategorie_opendata": [
+          "Umwelt"
+        ],
+        "kategorie_inspire": [
+          "kein INSPIRE-Thema"
+        ],
+        "kategorie_organisation": "Landesbetrieb Geoinformation und Vermessung"
+      }
+    ],
+    "notSupportedFor3DNeu": false
+  },
+  {
+    "id": "1044",
+    "name": "M60000 (grau-blau)",
+    "url": "https://geodienste.hamburg.de/HH_WMS_Geobasiskarten_GB",
+    "typ": "WMS",
+    "layers": "M60000_graublau",
+    "format": "image/png",
+    "version": "1.3.0",
+    "singleTile": false,
+    "transparent": true,
+    "transparency": 0,
+    "urlIsVisible": true,
+    "tilesize": 512,
+    "gutter": 0,
+    "minScale": "43388",
+    "maxScale": "79370",
+    "infoFormat": "text/xml",
+    "gfiAttributes": "showAll",
+    "gfiTheme": "default",
+    "layerAttribution": "nicht vorhanden",
+    "legendURL": "https://geodienste.hamburg.de/HH_WMS_Geobasiskarten_GB?language=ger&version=1.3.0&service=WMS&request=GetLegendGraphic&sld_version=1.1.0&layer=Geobasiskarten_graublau&format=image/png&STYLE=default",
+    "cache": false,
+    "featureCount": 1,
+    "datasets": [
+      {
+        "md_id": "B6A59A2B-2D40-4676-9094-0EB73039ED34",
+        "csw_url": "https://metaver.de/csw",
+        "show_doc_url": "https://metaver.de/trefferanzeige?cmd=doShowDocument&docuuid=",
+        "rs_id": "https://registry.gdi-de.org/id/de.hh/001719df-6619-40b7-aefe-32e8aaf49337",
+        "md_name": "GeoBasisKarten Hamburg",
+        "bbox": "466251.429277335,5844577.89467225,661887.12578721,6042030.30978004",
+        "kategorie_opendata": [
+          "Umwelt"
+        ],
+        "kategorie_inspire": [
+          "kein INSPIRE-Thema"
+        ],
+        "kategorie_organisation": "Landesbetrieb Geoinformation und Vermessung"
+      }
+    ],
+    "notSupportedFor3DNeu": false
+  },
+  {
+    "id": "1045",
+    "name": "M20000 (grau-blau)",
+    "url": "https://geodienste.hamburg.de/HH_WMS_Geobasiskarten_GB",
+    "typ": "WMS",
+    "layers": "M20000_graublau",
+    "format": "image/png",
+    "version": "1.3.0",
+    "singleTile": false,
+    "transparent": true,
+    "transparency": 0,
+    "urlIsVisible": true,
+    "tilesize": 512,
+    "gutter": 0,
+    "minScale": "15874",
+    "maxScale": "30689",
+    "infoFormat": "text/xml",
+    "gfiAttributes": "showAll",
+    "gfiTheme": "default",
+    "layerAttribution": "nicht vorhanden",
+    "legendURL": "https://geodienste.hamburg.de/HH_WMS_Geobasiskarten_GB?language=ger&version=1.3.0&service=WMS&request=GetLegendGraphic&sld_version=1.1.0&layer=Geobasiskarten_graublau&format=image/png&STYLE=default",
+    "cache": false,
+    "featureCount": 1,
+    "datasets": [
+      {
+        "md_id": "B6A59A2B-2D40-4676-9094-0EB73039ED34",
+        "csw_url": "https://metaver.de/csw",
+        "show_doc_url": "https://metaver.de/trefferanzeige?cmd=doShowDocument&docuuid=",
+        "rs_id": "https://registry.gdi-de.org/id/de.hh/001719df-6619-40b7-aefe-32e8aaf49337",
+        "md_name": "GeoBasisKarten Hamburg",
+        "bbox": "466251.429277335,5844577.89467225,661887.12578721,6042030.30978004",
+        "kategorie_opendata": [
+          "Umwelt"
+        ],
+        "kategorie_inspire": [
+          "kein INSPIRE-Thema"
+        ],
+        "kategorie_organisation": "Landesbetrieb Geoinformation und Vermessung"
+      }
+    ],
+    "notSupportedFor3DNeu": false
+  },
+  {
+    "id": "1046",
+    "name": "M5000 (grau-blau)",
+    "url": "https://geodienste.hamburg.de/HH_WMS_Geobasiskarten_GB",
+    "typ": "WMS",
+    "layers": "M5000_graublau",
+    "format": "image/png",
+    "version": "1.3.0",
+    "singleTile": false,
+    "transparent": true,
+    "transparency": 0,
+    "urlIsVisible": true,
+    "tilesize": 512,
+    "gutter": 0,
+    "minScale": "3174",
+    "maxScale": "7407",
+    "infoFormat": "text/xml",
+    "gfiAttributes": "showAll",
+    "gfiTheme": "default",
+    "layerAttribution": "nicht vorhanden",
+    "legendURL": "https://geodienste.hamburg.de/HH_WMS_Geobasiskarten_GB?language=ger&version=1.3.0&service=WMS&request=GetLegendGraphic&sld_version=1.1.0&layer=Geobasiskarten_graublau&format=image/png&STYLE=default",
+    "cache": false,
+    "featureCount": 1,
+    "datasets": [
+      {
+        "md_id": "B6A59A2B-2D40-4676-9094-0EB73039ED34",
+        "csw_url": "https://metaver.de/csw",
+        "show_doc_url": "https://metaver.de/trefferanzeige?cmd=doShowDocument&docuuid=",
+        "rs_id": "https://registry.gdi-de.org/id/de.hh/001719df-6619-40b7-aefe-32e8aaf49337",
+        "md_name": "GeoBasisKarten Hamburg",
+        "bbox": "466251.429277335,5844577.89467225,661887.12578721,6042030.30978004",
+        "kategorie_opendata": [
+          "Umwelt"
+        ],
+        "kategorie_inspire": [
+          "kein INSPIRE-Thema"
+        ],
+        "kategorie_organisation": "Landesbetrieb Geoinformation und Vermessung"
+      }
+    ],
+    "notSupportedFor3DNeu": false
+  },
+  {
+    "id": "13649",
+    "name": "M125000 (grau-blau)",
+    "url": "https://geodienste.hamburg.de/HH_WMS_Geobasiskarten_GB",
+    "typ": "WMS",
+    "layers": "M125000_graublau",
+    "format": "image/png",
+    "version": "1.3.0",
+    "singleTile": false,
+    "transparent": true,
+    "transparency": 0,
+    "urlIsVisible": true,
+    "tilesize": 512,
+    "gutter": 0,
+    "minScale": "132283",
+    "maxScale": "2500000",
+    "infoFormat": "text/xml",
+    "gfiAttributes": "showAll",
+    "gfiTheme": "default",
+    "layerAttribution": "nicht vorhanden",
+    "legendURL": "https://geodienste.hamburg.de/HH_WMS_Geobasiskarten_GB?language=ger&version=1.3.0&service=WMS&request=GetLegendGraphic&sld_version=1.1.0&layer=Geobasiskarten_graublau&format=image/png&STYLE=default",
+    "cache": false,
+    "featureCount": 1,
+    "datasets": [
+      {
+        "md_id": "B6A59A2B-2D40-4676-9094-0EB73039ED34",
+        "csw_url": "https://metaver.de/csw",
+        "show_doc_url": "https://metaver.de/trefferanzeige?cmd=doShowDocument&docuuid=",
+        "rs_id": "https://registry.gdi-de.org/id/de.hh/001719df-6619-40b7-aefe-32e8aaf49337",
+        "md_name": "GeoBasisKarten Hamburg",
+        "bbox": "466251.429277335,5844577.89467225,661887.12578721,6042030.30978004",
+        "kategorie_opendata": [
+          "Umwelt"
+        ],
+        "kategorie_inspire": [
+          "kein INSPIRE-Thema"
+        ],
+        "kategorie_organisation": "Landesbetrieb Geoinformation und Vermessung"
+      }
+    ],
+    "notSupportedFor3DNeu": false
+  },
+  {
+    "id": "13652",
+    "name": "M40000 (grau-blau)",
+    "url": "https://geodienste.hamburg.de/HH_WMS_Geobasiskarten_GB",
+    "typ": "WMS",
+    "layers": "M40000_graublau",
+    "format": "image/png",
+    "version": "1.3.0",
+    "singleTile": false,
+    "transparent": true,
+    "transparency": 0,
+    "urlIsVisible": true,
+    "tilesize": 512,
+    "gutter": 0,
+    "minScale": "30689",
+    "maxScale": "43388",
+    "infoFormat": "text/xml",
+    "gfiAttributes": "showAll",
+    "gfiTheme": "default",
+    "layerAttribution": "nicht vorhanden",
+    "legendURL": "https://geodienste.hamburg.de/HH_WMS_Geobasiskarten_GB?language=ger&version=1.3.0&service=WMS&request=GetLegendGraphic&sld_version=1.1.0&layer=Geobasiskarten_graublau&format=image/png&STYLE=default",
+    "cache": false,
+    "featureCount": 1,
+    "datasets": [
+      {
+        "md_id": "B6A59A2B-2D40-4676-9094-0EB73039ED34",
+        "csw_url": "https://metaver.de/csw",
+        "show_doc_url": "https://metaver.de/trefferanzeige?cmd=doShowDocument&docuuid=",
+        "rs_id": "https://registry.gdi-de.org/id/de.hh/001719df-6619-40b7-aefe-32e8aaf49337",
+        "md_name": "GeoBasisKarten Hamburg",
+        "bbox": "466251.429277335,5844577.89467225,661887.12578721,6042030.30978004",
+        "kategorie_opendata": [
+          "Umwelt"
+        ],
+        "kategorie_inspire": [
+          "kein INSPIRE-Thema"
+        ],
+        "kategorie_organisation": "Landesbetrieb Geoinformation und Vermessung"
+      }
+    ],
+    "notSupportedFor3DNeu": false
+  },
+  {
+    "id": "13654",
+    "name": "M10000 (grau-blau)",
+    "url": "https://geodienste.hamburg.de/HH_WMS_Geobasiskarten_GB",
+    "typ": "WMS",
+    "layers": "M10000_graublau",
+    "format": "image/png",
+    "version": "1.3.0",
+    "singleTile": false,
+    "transparent": true,
+    "transparency": 0,
+    "urlIsVisible": true,
+    "tilesize": 512,
+    "gutter": 0,
+    "minScale": "7407",
+    "maxScale": "15874",
+    "infoFormat": "text/xml",
+    "gfiAttributes": "showAll",
+    "gfiTheme": "default",
+    "layerAttribution": "nicht vorhanden",
+    "legendURL": "https://geodienste.hamburg.de/HH_WMS_Geobasiskarten_GB?language=ger&version=1.3.0&service=WMS&request=GetLegendGraphic&sld_version=1.1.0&layer=Geobasiskarten_graublau&format=image/png&STYLE=default",
+    "cache": false,
+    "featureCount": 1,
+    "datasets": [
+      {
+        "md_id": "B6A59A2B-2D40-4676-9094-0EB73039ED34",
+        "csw_url": "https://metaver.de/csw",
+        "show_doc_url": "https://metaver.de/trefferanzeige?cmd=doShowDocument&docuuid=",
+        "rs_id": "https://registry.gdi-de.org/id/de.hh/001719df-6619-40b7-aefe-32e8aaf49337",
+        "md_name": "GeoBasisKarten Hamburg",
+        "bbox": "466251.429277335,5844577.89467225,661887.12578721,6042030.30978004",
+        "kategorie_opendata": [
+          "Umwelt"
+        ],
+        "kategorie_inspire": [
+          "kein INSPIRE-Thema"
+        ],
+        "kategorie_organisation": "Landesbetrieb Geoinformation und Vermessung"
+      }
+    ],
+    "notSupportedFor3DNeu": false
+  },
+  {
+    "id": "13656",
+    "name": "M2500 (grau-blau)",
+    "url": "https://geodienste.hamburg.de/HH_WMS_Geobasiskarten_GB",
+    "typ": "WMS",
+    "layers": "M2500_graublau",
+    "format": "image/png",
+    "version": "1.3.0",
+    "singleTile": false,
+    "transparent": true,
+    "transparency": 0,
+    "urlIsVisible": true,
+    "tilesize": 512,
+    "gutter": 0,
+    "minScale": "0",
+    "maxScale": "3174",
+    "infoFormat": "text/xml",
+    "gfiAttributes": "showAll",
+    "gfiTheme": "default",
+    "layerAttribution": "nicht vorhanden",
+    "legendURL": "https://geodienste.hamburg.de/HH_WMS_Geobasiskarten_GB?language=ger&version=1.3.0&service=WMS&request=GetLegendGraphic&sld_version=1.1.0&layer=Geobasiskarten_graublau&format=image/png&STYLE=default",
+    "cache": false,
+    "featureCount": 1,
+    "datasets": [
+      {
+        "md_id": "B6A59A2B-2D40-4676-9094-0EB73039ED34",
+        "csw_url": "https://metaver.de/csw",
+        "show_doc_url": "https://metaver.de/trefferanzeige?cmd=doShowDocument&docuuid=",
+        "rs_id": "https://registry.gdi-de.org/id/de.hh/001719df-6619-40b7-aefe-32e8aaf49337",
+        "md_name": "GeoBasisKarten Hamburg",
+        "bbox": "466251.429277335,5844577.89467225,661887.12578721,6042030.30978004",
+        "kategorie_opendata": [
+          "Umwelt"
+        ],
+        "kategorie_inspire": [
+          "kein INSPIRE-Thema"
+        ],
+        "kategorie_organisation": "Landesbetrieb Geoinformation und Vermessung"
+      }
+    ],
+    "notSupportedFor3DNeu": false
+  },
+  {
+    "id": "12883",
+    "name": "Gelaende",
+    "url": "https://daten-hamburg.de/gdi3d/datasource-data/Gelaende",
+    "typ": "Terrain3D",
+    "layerAttribution": "nicht vorhanden",
+    "legendURL": "ignore",
+    "cesiumTerrainProviderOptions": {
+      "requestVertexNormals": true
+    },
+    "datasets": [
+      {
+        "md_id": "5C3F3C13-C8A5-4B47-8639-53F8265B3697",
+        "csw_url": "https://metaver.de/csw",
+        "show_doc_url": "https://metaver.de/trefferanzeige?cmd=doShowDocument&docuuid=",
+        "rs_id": "https://registry.gdi-de.org/id/de.hh/5dbb3ad6-dff3-4e91-a20b-55619a343f36",
+        "md_name": "Digitales Höhenmodell Hamburg DGM 5H",
+        "bbox": "461468.96892897453,5916367.229806512,587010.9095989474,5980347.755797674",
+        "kategorie_opendata": [
+          "Umwelt"
+        ],
+        "kategorie_inspire": [
+          "Höhe"
+        ],
+        "kategorie_organisation": "Landesbetrieb Geoinformation und Vermessung"
+      }
+    ],
+    "urlIsVisible": false
+  },
+  {
+    "id": "12884",
+    "name": "Gebäude LoD2",
+    "url": "https://daten-hamburg.de/gdi3d/datasource-data/LoD2",
+    "typ": "TileSet3D",
+    "gfiAttributes": {
+      "Objektart": "Objektart",
+      "Wertbezeichnung": "Wertbezeichnung",
+      "Dachform": "Dachform",
+      "measuredHeight": "Relative Höhe des Gebäudes in Metern",
+      "storeysAboveGround": "Anzahl der Obergeschosse (ALKIS)",
+      "DatenquelleLage": "Datenquelle Lage",
+      "Straße": "Straße",
+      "Hausnummer": "Hausnummer",
+      "PLZ": "PLZ",
+      "Stadt": "Stadt",
+      "creationDate": "Ableitungsdatum",
+      "Grundrissaktualitaet": "Grundrissaktualität (ALKIS)"
+    },
+    "layerAttribution": "nicht vorhanden",
+    "legendURL": "ignore",
+    "cesium3DTilesetOptions": {
+      "maximumScreenSpaceError": 6
+    },
+    "datasets": [
+      {
+        "md_id": "2C1F2EEC-CF9F-4D8B-ACAC-79D8C1334D5E",
+        "csw_url": "https://metaver.de/csw",
+        "show_doc_url": "https://metaver.de/trefferanzeige?cmd=doShowDocument&docuuid=",
+        "rs_id": "https://registry.gdi-de.org/id/de.hh/948321ba-e9b2-4290-88c3-8dda2912defa",
+        "md_name": "3D-Stadtmodell LoD2-DE Hamburg",
+        "bbox": "461468.96892897453,5916367.229806512,587010.9095989474,5980347.755797674",
+        "kategorie_opendata": [
+          "Umwelt"
+        ],
+        "kategorie_inspire": [
+          "Gebäude"
+        ],
+        "kategorie_organisation": "Landesbetrieb Geoinformation und Vermessung"
+      }
+    ],
+    "urlIsVisible": true
+  },
+  {
+    "id": "6666",
+    "name": "3d objects",
+    "typ": "Entities3D",
+    "entities": [
+      {
+        "url": "./assets/3dobjects/hotel/scene.gltf",
+        "latitude": 53.558085,
+        "longitude": 9.953076,
+        "height": 16,
+        "heading": -1.2502079000000208,
+        "pitch": 0,
+        "roll": 0,
+        "scale": 1,
+        "allowPicking": false,
+        "show": true
+      },
+      {
+        "url": "./assets/3dobjects/lightpole2/scene.gltf",
+        "latitude": 53.556691,
+        "longitude": 9.962919,
+        "height": 16,
+        "heading": -1.2502079000000208,
+        "pitch": 0,
+        "roll": 0,
+        "scale": 1,
+        "allowPicking": false,
+        "show": true
+      },
+      {
+        "url": "./assets/3dobjects/lightpole2/scene.gltf",
+        "latitude": 53.556627,
+        "longitude": 9.962887,
+        "height": 16,
+        "heading": -1.2502079000000208,
+        "pitch": -0.6927398353366296,
+        "roll": 0,
+        "scale": 1,
+        "allowPicking": false,
+        "show": true
+      },
+      {
+        "url": "./assets/3dobjects/bubble/scene.gltf",
+        "latitude": 53.541884,
+        "longitude": 10.001402,
+        "height": 55,
+        "heading": -1.2502079000000208,
+        "pitch": -0.6927398353366296,
+        "roll": 0,
+        "scale": 0.05,
+        "allowPicking": false,
+        "show": true
+      }
+    ]
+  },
+  {
+    "id": "123456",
+    "name": "EntitiesLayerName",
+    "typ": "Entities3D",
+    "entities": [
+      {
+        "url": "https://daten-hamburg.de/gdi3d/datasource-data/Simple_Building.glb",
+        "attributes": {
+          "name": "einfaches Haus in Planten und Blomen"
+        },
+        "latitude": 53.5631,
+        "longitude": 9.9800,
+        "height": 12,
+        "heading": 0,
+        "pitch": 0,
+        "roll": 0,
+        "scale": 5,
+        "allowPicking": true,
+        "show": true
+      }
+    ],
+    "gfiAttributes" : {
+      "name": "Name"
+    }
+  }
+]

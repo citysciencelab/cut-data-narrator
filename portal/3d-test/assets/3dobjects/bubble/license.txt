@@ -1,0 +1,11 @@
+Model Information:
+* title:	Speech Bubble 02
+* source:	https://sketchfab.com/3d-models/speech-bubble-02-5605d3d4fff640c490388e50c99e72cf
+* author:	tasook (https://sketchfab.com/tasook)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Speech Bubble 02" (https://sketchfab.com/3d-models/speech-bubble-02-5605d3d4fff640c490388e50c99e72cf) by tasook (https://sketchfab.com/tasook) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
