@@ -4,8 +4,8 @@
   "description": "Diese Story zeigt den Prozess und die Ergebnisse der ersten beiden Realexperiment des CSL im Rahmen des CUT-Projektes über die Mobilitätsbedarfe von unbezahlten Carearbeiter*innen.",
   "coverImagePath": "./assets/img/story-cover.png",
   "htmlFolder": "story",
-  "isScrollytelling" : true,
-  "isNoCreateMode" : true,
+  "isScrollytelling": false,
+  "isNoCreateMode": true,
   "chapters": [
     {
       "chapterNumber": 1,

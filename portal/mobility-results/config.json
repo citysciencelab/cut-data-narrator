@@ -1,7 +1,6 @@
 {
   "Portalconfig": {
     "treeType": "light",
-    "isScrollyStory" : true,
     "mapView": {
       "extent": [
         442800,
@@ -90,21 +89,20 @@
           "visibility": true,
           "isVisibleInTree": false,
           "legend": false
-
         }
       ]
     },
     "Fachdaten": {
       "Layer": [
         {
-          "id" : "11111",
-          "name" : "lokale GeoJSON",
-          "url" : "assets/data/new_results_latlon.json",
-          "typ" : "GeoJSON",
-          "gfiAttributes" : "showAll",
-          "gfiTheme" : "default",
-          "layerAttribution" : "nicht vorhanden",
-          "legend" : false,
+          "id": "11111",
+          "name": "lokale GeoJSON",
+          "url": "assets/data/new_results_latlon.json",
+          "typ": "GeoJSON",
+          "gfiAttributes": "showAll",
+          "gfiTheme": "default",
+          "layerAttribution": "nicht vorhanden",
+          "legend": false,
           "datasets": [],
           "urlIsVisible": true,
           "visibility": true,
@@ -119,42 +117,28 @@
     "Fachdaten": {
       "Layer": [
         {
-          "id" : "11111",
-          "name" : "Ergebnisse RE2",
-          "url" : "assets/data/new_results_latlon.json",
-          "typ" : "GeoJSON",
-          "gfiAttributes" : "showAll",
-          "gfiTheme" : "default",
-          "layerAttribution" : "nicht vorhanden",
-          "legend" : false,
-          "datasets": [],
-          "urlIsVisible": true,
-          "visibility": false,
-          "isVisibleInTree": true
-        },
-        {
-          "id" : "111112",
-          "name" : "Ergebnisse RE2 Centroids",
-          "url" : "assets/data/new_results_latlon_centroids.json",
-          "typ" : "GeoJSON",
-          "gfiTheme" : "schulinfo",
-          "layerAttribution" : "nicht vorhanden",
-          "legend" : false,
-          "datasets": [],
-          "urlIsVisible": true,
-          "visibility": false,
-          "isVisibleInTree": true
-        },
-        {
-          "id" : "111113",
-          "name" : "Ergebnisse RE2 Centroids Hover",
-          "url" : "assets/data/new_results_latlon_centroids_all.json",
-          "typ" : "GeoJSON",
-          "gfiAttributes" : "showAll",
+          "id": "111113",
+          "name": "Ergebnisse RE2 Centroids Hover",
+          "url": "assets/data/new_results_latlon_centroids.json",
+          "typ": "GeoJSON",
           "gfiTheme": "resultsTheme",
+          "gfiAttributes": {
+            "Title": "Title",
+            "entryId": "EID",
+            "featureId": "FID",
+            "DateCreated": {
+              "name": "Datum",
+              "type": "date",
+              "format": "YYYY-MM-DD"
+            },
+            "Comment": "Beschreibung",
+            "MobilityMode": "Fortbewegungsmittel",
+            "ImageFiles": "Bilder",
+            "AudioFiles": "Audio"
+          },
           "styleId": "20221202",
-          "layerAttribution" : "nicht vorhanden",
-          "legend" : false,
+          "layerAttribution": "nicht vorhanden",
+          "legend": false,
           "datasets": [],
           "urlIsVisible": true,
           "visibility": true,
