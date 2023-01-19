@@ -8,7 +8,7 @@ import sinon from "sinon";
 import STALayer from "../../sta";
 import store from "../../../../app-store";
 import Collection from "ol/Collection";
-import {Circle} from "ol/style.js";
+import {Circle, Style} from "ol/style.js";
 
 describe("src/core/layers/sta.js", () => {
     const consoleWarn = console.warn;
@@ -292,7 +292,7 @@ describe("src/core/layers/sta.js", () => {
                     if (arg === "returnModelById") {
                         ret = {
                             id: "id",
-                            createStyle: () => sinon.stub(),
+                            createStyle: () => new Style(),
                             getGeometryTypeFromWFS: () => sinon.stub(),
                             getLegendInfos: () => sinon.stub()
                         };
@@ -300,6 +300,12 @@ describe("src/core/layers/sta.js", () => {
                 });
                 return ret;
             });
+            store.getters = {
+                "Maps/getView": {
+                    getZoomForResolution: () => 1,
+                    getResolutions: () => 10
+                }
+            };
             const staLayer = new STALayer(attributes),
                 layer = staLayer.get("layer");
 
@@ -307,12 +313,12 @@ describe("src/core/layers/sta.js", () => {
             staLayer.showAllFeatures();
 
             expect(staLayer.get("layer").getSource().getFeatures().length).to.be.equals(3);
-            expect(typeof style1).to.be.equals("function");
-            expect(style1()).not.to.be.null;
-            expect(typeof style2).to.be.equals("function");
-            expect(style2()).not.to.be.null;
-            expect(typeof style3).to.be.equals("function");
-            expect(style3()).not.to.be.null;
+            expect(typeof style1).to.be.equals("object");
+            expect(style1).not.to.be.null;
+            expect(typeof style2).to.be.equals("object");
+            expect(style2).not.to.be.null;
+            expect(typeof style3).to.be.equals("object");
+            expect(style3).not.to.be.null;
 
         });
         it("showFeaturesByIds", () => {
@@ -323,7 +329,7 @@ describe("src/core/layers/sta.js", () => {
                     if (arg === "returnModelById") {
                         ret = {
                             id: "id",
-                            createStyle: () => sinon.stub(),
+                            createStyle: () => new Style(),
                             getGeometryTypeFromWFS: () => sinon.stub(),
                             getLegendInfos: () => sinon.stub()
                         };
@@ -331,6 +337,12 @@ describe("src/core/layers/sta.js", () => {
                 });
                 return ret;
             });
+            store.getters = {
+                "Maps/getView": {
+                    getZoomForResolution: () => 1,
+                    getResolutions: () => 10
+                }
+            };
             const staLayer = new STALayer(attributes),
                 layer = staLayer.get("layer"),
                 clearStub = sinon.stub(layer.getSource(), "clear");
@@ -341,8 +353,8 @@ describe("src/core/layers/sta.js", () => {
             staLayer.showFeaturesByIds(["1"]);
 
             expect(staLayer.get("layer").getSource().getFeatures().length).to.be.equals(3);
-            expect(typeof style1).to.be.equals("function");
-            expect(style1()).not.to.be.null;
+            expect(typeof style1).to.be.equals("object");
+            expect(style1).not.to.be.null;
             expect(typeof style2).to.be.equals("function");
             expect(style2()).to.be.null;
             expect(typeof style3).to.be.equals("function");
@@ -376,6 +388,59 @@ describe("src/core/layers/sta.js", () => {
             staLayer.styling();
             expect(typeof staLayer.get("layer").getStyle()).to.be.equals("function");
             expect(staLayer.get("layer").getStyle()()).to.be.equals("test");
+        });
+    });
+
+    describe("updateHistoricalFeatures", () => {
+        it("should do nothing if first param is no object with 'get' method", () => {
+            const removeFeatureStub = sinon.stub(sensorLayer.get("layer").getSource(), "removeFeature"),
+                feature = {};
+
+            sensorLayer.updateHistoricalFeatures(feature);
+            expect(removeFeatureStub.called).to.be.false;
+        });
+        it("should do nothing if the get('historicalFeatureIds') function on the first param does not return an array", () => {
+            const removeFeatureStub = sinon.stub(sensorLayer.get("layer").getSource(), "removeFeature"),
+                feature = {
+                    get: () => undefined
+                };
+
+            sensorLayer.updateHistoricalFeatures(feature, feature);
+            expect(removeFeatureStub.called).to.be.false;
+        });
+        it("should do nothing if third param is no object with 'set' method", () => {
+            const removeFeatureStub = sinon.stub(sensorLayer.get("layer").getSource(), "removeFeature"),
+                feature = {
+                    get: () => undefined
+                };
+
+            sensorLayer.updateHistoricalFeatures(feature, feature);
+            expect(removeFeatureStub.called).to.be.false;
+        });
+        it("should call all expected functions", () => {
+            const removeFeatureStub = sinon.stub(sensorLayer.get("layer").getSource(), "removeFeature"),
+                getFeatureByIdStub = sinon.stub(sensorLayer.get("layer").getSource(), "getFeatureById"),
+                addFeatureStub = sinon.stub(sensorLayer.get("layer").getSource(), "addFeature"),
+                getScaleStub = sinon.stub(sensorLayer, "getScale"),
+                feature = {
+                    get: () => [0],
+                    getId: sinon.stub(),
+                    set: sinon.stub(),
+                    setId: sinon.stub()
+                };
+
+            store.getters = {
+                "Maps/getView": {
+                    getZoom: () => 0,
+                    getResolutions: () => []
+                }
+            };
+
+            sensorLayer.updateHistoricalFeatures(feature, feature, sensorLayer.get("layer").getSource());
+            expect(removeFeatureStub.called).to.be.true;
+            expect(getFeatureByIdStub.called).to.be.true;
+            expect(addFeatureStub.called).to.be.true;
+            expect(getScaleStub.called).to.be.true;
         });
     });
 
@@ -2218,17 +2283,112 @@ describe("src/core/layers/sta.js", () => {
 
     describe("getHistoricalLocationsOfFeatures", () => {
         it("should do nothing", () => {
-            const fetchHistoricalLocationsStub = sinon.stub(sensorLayer, "fetchHistoricalLocations");
+            const fetchHistoricalLocationsByDatastreamIdStub = sinon.stub(sensorLayer, "fetchHistoricalLocationsByDatastreamId");
 
             sinon.stub(sensorLayer, "getDatastreamIdsInCurrentExtent").returns([]);
             sensorLayer.getHistoricalLocationsOfFeatures();
-            expect(fetchHistoricalLocationsStub.called).to.be.false;
+            expect(fetchHistoricalLocationsByDatastreamIdStub.called).to.be.false;
         });
         it("should call fetchHistoricalLocations if datastream id's are found in current extent", () => {
-            const fetchHistoricalLocationsStub = sinon.stub(sensorLayer, "fetchHistoricalLocations");
+            const fetchHistoricalLocationsByDatastreamIdStub = sinon.stub(sensorLayer, "fetchHistoricalLocationsByDatastreamId");
 
             sinon.stub(sensorLayer, "getDatastreamIdsInCurrentExtent").returns([0]);
             sensorLayer.getHistoricalLocationsOfFeatures();
+            expect(fetchHistoricalLocationsByDatastreamIdStub.called).to.be.true;
+        });
+    });
+
+    describe("fetchHistoricalLocationsByDatastreamId", () => {
+        it("should do nothing if first param is no array", () => {
+            const getFeatureByDatastreamIdStub = sinon.stub(sensorLayer, "getFeatureByDatastreamId");
+
+            sensorLayer.fetchHistoricalLocationsByDatastreamId({});
+            expect(getFeatureByDatastreamIdStub.called).to.be.false;
+            sensorLayer.fetchHistoricalLocationsByDatastreamId("");
+            expect(getFeatureByDatastreamIdStub.called).to.be.false;
+            sensorLayer.fetchHistoricalLocationsByDatastreamId(1234);
+            expect(getFeatureByDatastreamIdStub.called).to.be.false;
+            sensorLayer.fetchHistoricalLocationsByDatastreamId(true);
+            expect(getFeatureByDatastreamIdStub.called).to.be.false;
+            sensorLayer.fetchHistoricalLocationsByDatastreamId(false);
+            expect(getFeatureByDatastreamIdStub.called).to.be.false;
+            sensorLayer.fetchHistoricalLocationsByDatastreamId(undefined);
+            expect(getFeatureByDatastreamIdStub.called).to.be.false;
+            sensorLayer.fetchHistoricalLocationsByDatastreamId(null);
+            expect(getFeatureByDatastreamIdStub.called).to.be.false;
+        });
+        it("should do nothing if second param is no undefined", () => {
+            const getFeatureByDatastreamIdStub = sinon.stub(sensorLayer, "getFeatureByDatastreamId");
+
+            sensorLayer.fetchHistoricalLocationsByDatastreamId([], undefined);
+            expect(getFeatureByDatastreamIdStub.called).to.be.false;
+        });
+        it("should do nothing if third param is NaN", () => {
+            const getFeatureByDatastreamIdStub = sinon.stub(sensorLayer, "getFeatureByDatastreamId");
+
+            sensorLayer.fetchHistoricalLocationsByDatastreamId([], 0, NaN);
+            expect(getFeatureByDatastreamIdStub.called).to.be.false;
+        });
+        it("should do nothing if fourth param is not a string", () => {
+            const getFeatureByDatastreamIdStub = sinon.stub(sensorLayer, "getFeatureByDatastreamId");
+
+            sensorLayer.fetchHistoricalLocationsByDatastreamId([], 0, 0, undefined);
+            expect(getFeatureByDatastreamIdStub.called).to.be.false;
+            sensorLayer.fetchHistoricalLocationsByDatastreamId([], 0, 0, true);
+            expect(getFeatureByDatastreamIdStub.called).to.be.false;
+            sensorLayer.fetchHistoricalLocationsByDatastreamId([], 0, 0, false);
+            expect(getFeatureByDatastreamIdStub.called).to.be.false;
+            sensorLayer.fetchHistoricalLocationsByDatastreamId([], 0, 0, {});
+            expect(getFeatureByDatastreamIdStub.called).to.be.false;
+            sensorLayer.fetchHistoricalLocationsByDatastreamId([], 0, 0, []);
+            expect(getFeatureByDatastreamIdStub.called).to.be.false;
+            sensorLayer.fetchHistoricalLocationsByDatastreamId([], 0, 0, null);
+            expect(getFeatureByDatastreamIdStub.called).to.be.false;
+            sensorLayer.fetchHistoricalLocationsByDatastreamId([], 0, 0, 1234);
+            expect(getFeatureByDatastreamIdStub.called).to.be.false;
+        });
+        it("should do nothing if fifht param is not an object", () => {
+            const getFeatureByDatastreamIdStub = sinon.stub(sensorLayer, "getFeatureByDatastreamId");
+
+            sensorLayer.fetchHistoricalLocationsByDatastreamId([], 0, 0, "string", undefined);
+            expect(getFeatureByDatastreamIdStub.called).to.be.false;
+            sensorLayer.fetchHistoricalLocationsByDatastreamId([], 0, 0, "string", null);
+            expect(getFeatureByDatastreamIdStub.called).to.be.false;
+            sensorLayer.fetchHistoricalLocationsByDatastreamId([], 0, 0, "string", true);
+            expect(getFeatureByDatastreamIdStub.called).to.be.false;
+            sensorLayer.fetchHistoricalLocationsByDatastreamId([], 0, 0, "string", false);
+            expect(getFeatureByDatastreamIdStub.called).to.be.false;
+            sensorLayer.fetchHistoricalLocationsByDatastreamId([], 0, 0, "string", 1234);
+            expect(getFeatureByDatastreamIdStub.called).to.be.false;
+            sensorLayer.fetchHistoricalLocationsByDatastreamId([], 0, 0, "string", "string");
+            expect(getFeatureByDatastreamIdStub.called).to.be.false;
+            sensorLayer.fetchHistoricalLocationsByDatastreamId([], 0, 0, "string", []);
+            expect(getFeatureByDatastreamIdStub.called).to.be.false;
+        });
+        it("should do nothing if sixht param is not a string", () => {
+            const getFeatureByDatastreamIdStub = sinon.stub(sensorLayer, "getFeatureByDatastreamId");
+
+            sensorLayer.fetchHistoricalLocationsByDatastreamId([], 0, 0, "string", {}, undefined);
+            expect(getFeatureByDatastreamIdStub.called).to.be.false;
+            sensorLayer.fetchHistoricalLocationsByDatastreamId([], 0, 0, "string", {}, null);
+            expect(getFeatureByDatastreamIdStub.called).to.be.false;
+            sensorLayer.fetchHistoricalLocationsByDatastreamId([], 0, 0, "string", {}, {});
+            expect(getFeatureByDatastreamIdStub.called).to.be.false;
+            sensorLayer.fetchHistoricalLocationsByDatastreamId([], 0, 0, "string", {}, []);
+            expect(getFeatureByDatastreamIdStub.called).to.be.false;
+            sensorLayer.fetchHistoricalLocationsByDatastreamId([], 0, 0, "string", {}, true);
+            expect(getFeatureByDatastreamIdStub.called).to.be.false;
+            sensorLayer.fetchHistoricalLocationsByDatastreamId([], 0, 0, "string", {}, false);
+            expect(getFeatureByDatastreamIdStub.called).to.be.false;
+            sensorLayer.fetchHistoricalLocationsByDatastreamId([], 0, 0, "string", {}, 1234);
+            expect(getFeatureByDatastreamIdStub.called).to.be.false;
+        });
+        it("should call fetchHistoricalLocations", () => {
+            const getFeatureByDatastreamIdStub = sinon.stub(sensorLayer, "getFeatureByDatastreamId"),
+                fetchHistoricalLocationsStub = sinon.stub(sensorLayer, "fetchHistoricalLocations");
+
+            sensorLayer.fetchHistoricalLocationsByDatastreamId([], 0, 0, "string", {}, "string");
+            expect(getFeatureByDatastreamIdStub.called).to.be.true;
             expect(fetchHistoricalLocationsStub.called).to.be.true;
         });
     });
@@ -2309,12 +2469,36 @@ describe("src/core/layers/sta.js", () => {
         it("returns the scale", () => {
             const staLayer = new STALayer(attributes);
 
-            expect(staLayer.getScale(0, 4)).to.be.equal(0.8);
-            expect(staLayer.getScale(1, 4)).to.be.equal(0.65);
-            expect(staLayer.getScale(2, 4)).to.be.equal(0.5);
-            expect(staLayer.getScale(3, 4).toFixed(2)).to.be.equal("0.35");
+            expect(staLayer.getScale(0, 4)).to.be.equal(0.7);
+            expect(staLayer.getScale(1, 4)).to.be.equal(0.575);
+            expect(staLayer.getScale(2, 4).toFixed(2)).to.be.equal("0.45");
+            expect(staLayer.getScale(3, 4).toFixed(2)).to.be.equal("0.32");
             expect(staLayer.getScale(4, 4).toFixed(1)).to.be.equal("0.2");
 
+        });
+
+        it("should returns the correct scale if zoomLevel ignore", () => {
+            const staLayer = new STALayer(attributes),
+                zoomLevel = 2;
+
+            expect(staLayer.getScale(0, 4, false, zoomLevel)).to.be.equal(0.7);
+
+        });
+
+        it("should returns the correct scale by the given zoomLevel", () => {
+            const staLayer = new STALayer(attributes),
+                zoomLevel = 2;
+
+            expect(staLayer.getScale(0, 4, true, zoomLevel)).to.be.equal(1.4);
+
+        });
+
+        it("should returns the correct scale by the give zoomLevel and zoomLevelCount", () => {
+            const staLayer = new STALayer(attributes),
+                zoomLevel = 3,
+                zoomLevelCount = 7;
+
+            expect(staLayer.getScale(0, 4, true, zoomLevel, zoomLevelCount).toFixed(2)).to.be.equal("0.30");
         });
     });
 
@@ -2363,6 +2547,49 @@ describe("src/core/layers/sta.js", () => {
             sensorLayer.keepUpdating = true;
             sensorLayer.startIntervalUpdate();
             expect(sensorLayer.intervallRequest).to.be.null;
+        });
+    });
+
+    describe("setDynamicalScaleOfHistoricalFeatures", () => {
+        it("should not change the scale of feature", () => {
+            const staLayer = new STALayer(attributes),
+                style = new Style({
+                    image: new Circle({
+                        scale: 1
+                    })
+                }),
+                feature = new Feature();
+
+            feature.setStyle(() => style);
+
+            staLayer.setDynamicalScaleOfHistoricalFeatures([feature], undefined, 10, true, true);
+            expect(feature.getStyle()(feature).getImage().getScale()).to.equal(1);
+            staLayer.setDynamicalScaleOfHistoricalFeatures([feature], 2, 0, true, true);
+            expect(feature.getStyle()(feature).getImage().getScale()).to.equal(1);
+            staLayer.setDynamicalScaleOfHistoricalFeatures([feature], 2, 10, false, true);
+            expect(feature.getStyle()(feature).getImage().getScale()).to.equal(1);
+            staLayer.setDynamicalScaleOfHistoricalFeatures([feature], 2, 10, true, false);
+            expect(feature.getStyle()(feature).getImage().getScale()).to.equal(1);
+        });
+
+        it("should change the scale of feature", () => {
+            const staLayer = new STALayer(attributes),
+                style = new Style({
+                    image: new Circle({
+                        scale: 1
+                    })
+                }),
+                feature = new Feature();
+
+            feature.setStyle(() => style);
+            feature.set("originScale", 1);
+
+            staLayer.setDynamicalScaleOfHistoricalFeatures([feature], 1, 10, true, true);
+            expect(feature.getStyle()(feature).getImage().getScale()).to.equal(0.1);
+            staLayer.setDynamicalScaleOfHistoricalFeatures([feature], 2, 10, true, true);
+            expect(feature.getStyle()(feature).getImage().getScale()).to.equal(0.2);
+            staLayer.setDynamicalScaleOfHistoricalFeatures([feature], 5, 10, true, true);
+            expect(feature.getStyle()(feature).getImage().getScale()).to.equal(0.5);
         });
     });
 });

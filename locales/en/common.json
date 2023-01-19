@@ -139,6 +139,10 @@
                 "errorTimeLayer": "Error while retrieving information for the layer with the id {{id}}: {{error}}",
                 "invalidTimeLayer": "The configured layer with the id {{id}} does not contain the necessary values for a WMS-T.",
                 "warningTimeLayerQuantity": "<strong>Warning:</strong> More than one TimeLayer was initially selected. </br>Only <strong>{{name}} </strong>is displayed."
+              },
+              "errorHandling": {
+                "403": "<strong>Access to {{layerName}}is not possible!</strong></br>Unfortunately, you are not authorised to view the data for {{layerName}}. The topic has been automatically deactivated.</br></br>Please contact the office responsible for this data for access authorisation.</br></br>" ,
+                "LinkMetadata": "Contact details and further information can be found <a href={{linkMetadata}} target=\"_blank\">here</a>."
               }
             }
           }

@@ -7,7 +7,8 @@
 ### __Breaking Changes__
 
 ### Added
-
+- layers:
+    - Errorhandling for secure services.
 ### Changed
 
 ### Deprecated

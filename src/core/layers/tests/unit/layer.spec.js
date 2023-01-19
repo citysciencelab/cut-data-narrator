@@ -16,13 +16,15 @@ describe("src/core/layers/layer.js", () => {
         layerOpacity = 1,
         layerResoMin = 0,
         layerResoMax = 1000,
-        featureList = [];
+        featureList = [],
+        origDispatch;
     const olLayer = {
         values_: {opacity: layerOpacity},
         getSource: () => {
             return {
                 refresh: () => sinon.spy,
-                getFeatures: () => featureList
+                getFeatures: () => featureList,
+                on: () => sinon.spy
             };
         },
         setSource: () => {
@@ -56,6 +58,10 @@ describe("src/core/layers/layer.js", () => {
     };
 
     before(() => {
+        i18next.init({
+            lng: "cimode",
+            debug: false
+        });
         mapCollection.clear();
         mapOL = {
             id: "ol",
@@ -77,6 +83,7 @@ describe("src/core/layers/layer.js", () => {
         };
 
         mapCollection.addMap(mapOL, "2D");
+        origDispatch = store.dispatch;
     });
     beforeEach(() => {
         attributes = {
@@ -104,6 +111,7 @@ describe("src/core/layers/layer.js", () => {
         layerRemoved = false;
         layerVisible = false;
         newLayerSource = false;
+        store.dispatch = origDispatch;
     });
 
     it("createLayer shall create an ol.Layer with source", function () {
@@ -892,6 +900,21 @@ describe("src/core/layers/layer.js", () => {
         expect(alteredFeatures[0].getGeometry().getCoordinates()[1][0]).to.be.equals(2);
         expect(alteredFeatures[0].getGeometry().getCoordinates()[1][1]).to.be.equals(2);
         expect(alteredFeatures[0].getGeometry().getCoordinates()[1][2]).to.be.equals(attributes.altitudeOffset + 2);
+    });
+    it("errorHandling shall dispatch Alerting with i18next key", function () {
+        const dispatchCalls = {},
+            layerWrapper = new Layer(attributes, olLayer);
+        let alertMessage = null;
+
+        store.dispatch = (arg1, arg2) => {
+            dispatchCalls[arg1] = arg2 !== undefined ? arg2 : "called";
+        };
+        layerWrapper.errorHandling(403, "Layer1");
+
+        alertMessage = dispatchCalls["Alerting/addSingleAlert"];
+
+        expect(alertMessage.content).to.be.equals("modules.core.modelList.layer.errorHandling.403");
+        expect(alertMessage.multipleAlert).to.be.equals(true);
     });
 
     /**

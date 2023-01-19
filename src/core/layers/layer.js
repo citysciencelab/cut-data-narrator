@@ -1,6 +1,7 @@
 import store from "../../app-store";
 import * as bridge from "./RadioBridge.js";
 import deepCopy from "../../utils/deepCopy.js";
+import axios from "axios";
 
 /**
  * Creates a layer object to extend from.
@@ -68,6 +69,34 @@ export default function Layer (attrs, layer, initialize = true) {
     this.handleScaleRange();
     bridge.onLanguageChanged(this);
     this.changeLang();
+
+    if (typeof this.layer.getSource === "function") {
+        this.layer.getSource()?.on("featuresloaderror", async function () {
+            const url = this.attributes.url
+            + "&service="
+            + this.attributes.typ
+            + "&version="
+            + this.attributes.version
+            + "&request=describeFeatureType";
+
+            await this.errorHandling(await axios.get(url, {withCredentials: true})
+                .catch(function (error) {
+                    return error.toJSON().status;
+                }), this.get("name"));
+        }.bind(this));
+        this.layer.getSource()?.on("tileloaderror", async function (evt) {
+            await this.errorHandling(await axios.get(evt.tile.src_, {withCredentials: true})
+                .catch(function (error) {
+                    return error.toJSON().status;
+                }), this.get("name"));
+        }.bind(this));
+        this.layer.getSource()?.on("imageloaderror", async function (evt) {
+            await this.errorHandling(await axios.get(evt.image.src_, {withCredentials: true})
+                .catch(function (error) {
+                    return error.toJSON().status;
+                }), this.get("name"));
+        }.bind(this));
+    }
 }
 /**
  * Initalizes the layer. Sets property singleBaselayer and sets the layer visible, if selected in attributes or treetype light.
@@ -96,6 +125,37 @@ Layer.prototype.initialize = function (attrs) {
     else {
         this.layer.setVisible(false);
     }
+};
+
+/**
+ * Error handling for secure services when error 403 is thrown .
+ * @param {Number} errorCode Error Number of the request
+ * @param {String} layerName Name of the layer
+ * @returns {void}
+ */
+Layer.prototype.errorHandling = function (errorCode, layerName) {
+    let linkMetadata = "",
+        alertingContent = "";
+
+    if (this.get("datasets") && this.get("datasets")[0]) {
+        linkMetadata = i18next.t("common:modules:core:modelList:layer.errorHandling:LinkMetadata",
+            {linkMetadata: this.get("datasets")[0].show_doc_url + this.get("datasets")[0].md_id
+            });
+    }
+    if (errorCode === 403) {
+        alertingContent = i18next.t("common:modules.core.modelList.layer.errorHandling.403",
+            {
+                layerName: layerName
+            })
+            + linkMetadata;
+
+        store.dispatch("Alerting/addSingleAlert", {content: alertingContent, multipleAlert: true});
+    }
+    store.watch((state, getters) => getters["Alerting/showTheModal"], showTheModal => {
+        this.setIsSelected(showTheModal);
+    });
+
+
 };
 /**
  * To be overwritten, does nothing.

@@ -526,9 +526,11 @@ For more details, consider reading the [extensive SensorThings-API documentation
 |observeLocation|no|Boolean|false|Enable to subscribe to locations|`true`|
 |rotationUnit|no|String|""|Defines the rotation unit for feature|`degree`|
 |maxSpeedKmh|no|Number|undefined|Specifies the max. speed (km/h) of moving objects. Used to calculate a buffer around the extent in which the objects are subscribed.|
+|maxScaleForHistoricalFeatures|no|Number|undefined|Specifies the max. scale to show historical features.|
 |factor|no|Number|10|Is used for the calculation of the buffer around the extent. Ignored if maxSpeedKmh is not defined.|
 |historicalLocations|no|Number||Set to an amount to enable historical locations for each moveable feature. The given amount of historical locations will be displayed on the map.|`5`|
 |enableContinuousRequest|no|Boolean||Set true to enable continuous requests in an interval based on the configured `factor`. Will be ignored if no `factor` is configured.|`true`|
+|scaleStyleByZoom|no|Boolean|Scales the style depending on the zoom level. Works only for image styles and subclasses.|'true'|
 
 **Sensor example:**
 
@@ -542,6 +544,7 @@ For more details, consider reading the [extensive SensorThings-API documentation
       "url" : "https://51.5.242.162/itsLGVhackathon",
       "intersect": true,
       "maxSpeedKmh": 36,
+      "maxScaleForHistoricalFeatures": 40000,
       "factor": 20,
       "enableContinuousRequest": true,
       "urlParameter" : {
