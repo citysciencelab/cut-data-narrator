@@ -1,7 +1,7 @@
 {
   "title": "FairCare Verkehr",
   "author": "City Science Lab",
-  "description": "Diese Story zeigt den Prozess und die Ergebnisse der ersten beiden Realexperiment des CSL im Rahmen des CUT-Projektes über die Mobilitätsbedarfe von unbezahlten Carearbeiter*innen.",
+  "description": "Diese Story zeigt den Prozess und die Ergebnisse der ersten beiden Realexperiment des City Science Labs zu den Mobilitätsbedarfen von unbezahlten Carearbeiter*innen.",
   "coverImagePath": "./assets/img/story-cover.png",
   "htmlFolder": "story",
   "isScrollytelling": false,
@@ -17,11 +17,7 @@
     },
     {
       "chapterNumber": 3,
-      "chapterTitle": "Next steps"
-    },
-    {
-      "chapterNumber": 4,
-      "chapterTitle": "Übersicht der Ergebnisse"
+      "chapterTitle": "Code und Kontakt"
     }
   ],
   "steps": [
@@ -42,17 +38,18 @@
     },
     {
       "stepNumber": 2,
-      "stepWidth": 800,
+      "stepWidth": 700,
       "visible": true,
       "associatedChapter": 1,
-      "title": "Connected Urban Twins",
+      "title": "Realexperiment 1",
       "htmlFile": "step_1-2.html",
       "centerCoordinate": [
-        555894.6872343315,
-        5931378.984010641
+        562959.0584195709,
+        5935089.763256823
       ],
-      "zoomLevel": 0,
-      "layers": [],
+      "zoomLevel": 1,
+      "layers": [
+      ],
       "interactionAddons": []
     },
     {
@@ -60,8 +57,24 @@
       "stepWidth": 700,
       "visible": true,
       "associatedChapter": 1,
-      "title": "Unbezahlte Sorgearbeit",
+      "title": "Realexperiment 2",
       "htmlFile": "step_1-3.html",
+      "centerCoordinate": [
+        562959.0584195709,
+        5935089.763256823
+      ],
+      "zoomLevel": 1,
+      "layers": [
+      ],
+      "interactionAddons": []
+    },
+    {
+      "stepNumber": 4,
+      "stepWidth": 700,
+      "visible": true,
+      "associatedChapter": 1,
+      "title": "Unbezahlte Sorgearbeit",
+      "htmlFile": "step_1-4.html",
       "centerCoordinate": [
         555894.6872343315,
         5931378.984010641
@@ -73,19 +86,18 @@
       "interactionAddons": []
     },
     {
-      "stepNumber": 4,
-      "stepWidth": 700,
+      "stepNumber": 5,
+      "stepWidth": 800,
       "visible": true,
       "associatedChapter": 1,
-      "title": "Realexperiment",
-      "htmlFile": "step_1-4.html",
+      "title": "Connected Urban Twins",
+      "htmlFile": "step_1-5.html",
       "centerCoordinate": [
-        562959.0584195709,
-        5935089.763256823
+        555894.6872343315,
+        5931378.984010641
       ],
-      "zoomLevel": 1,
-      "layers": [
-      ],
+      "zoomLevel": 0,
+      "layers": [],
       "interactionAddons": []
     },
     {
@@ -157,42 +169,11 @@
       "interactionAddons": []
     },
     {
-      "stepNumber": 1,
-      "stepWidth": 600,
-      "visible": true,
-      "associatedChapter": 3,
-      "title": "Software, Netzwerk, Weiternutzung",
-      "htmlFile": "step_3-1.html",
-      "centerCoordinate": [
-        553783.313374474,
-        5933114.649740055
-      ],
-      "zoomLevel": 0,
-      "layers": [],
-      "interactionAddons": []
-    },
-    {
-      "stepNumber": 2,
-      "stepWidth": 600,
-      "visible": true,
-      "associatedChapter": 3,
-      "title": "Danke an die AllipA",
-      "htmlFile": "step_3-2.html",
-      "centerCoordinate": [
-        559285.3963894194,
-        5933970.309539413
-      ],
-      "zoomLevel": 1,
-      "layers": [
-      ],
-      "interactionAddons": []
-    },
-    {
       "stepNumber": 3,
       "stepWidth": 600,
       "visible": true,
       "associatedChapter": 3,
-      "title": "Code und Kontakt",
+      "title": "Code",
       "htmlFile": "step_3-3.html",
       "centerCoordinate": [
         559285.3963894194,
@@ -204,11 +185,11 @@
       "interactionAddons": []
     },
     {
-      "stepNumber": 4,
+      "stepNumber": 1,
       "stepWidth": 600,
       "visible": true,
       "associatedChapter": 3,
-      "title": "CUT geht weiter",
+      "title": "Kontakt",
       "htmlFile": "step_3-4.html",
       "centerCoordinate": [
         559285.3963894194,
@@ -216,6 +197,7 @@
       ],
       "zoomLevel": 1,
       "layers": [
+        "111113"
       ],
       "interactionAddons": []
     },
@@ -223,9 +205,9 @@
       "stepNumber": 1,
       "stepWidth": 600,
       "visible": true,
-      "associatedChapter": 4,
+      "associatedChapter": 3,
       "title": "Schauen Sie sich um",
-      "htmlFile": "step_4-1.html",
+      "htmlFile": "step_3-4.html",
       "centerCoordinate": [
         559285.3963894194,
         5933970.309539413
