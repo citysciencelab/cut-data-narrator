@@ -13,12 +13,8 @@
             "properties": {
                 "entryId": 16,
                 "dateCreated": "2022-06-21T11:20:46.437Z",
-                "imageFiles": [
-                    "image/16_image_upload_0.jpg"
-                ],
-                "audioFiles": [
-                    "audio/16_audio_record_0.mp4"
-                ],
+                "imageFile": null,
+                "audioFile": "audio/36_audio_record_0.mp4",
                 "featureId": 36,
                 "title": "",
                 "comment": "",
@@ -37,12 +33,8 @@
             "properties": {
                 "entryId": 16,
                 "dateCreated": "2022-06-21T11:20:46.437Z",
-                "imageFiles": [
-                    "image/16_image_upload_0.jpg"
-                ],
-                "audioFiles": [
-                    "audio/16_audio_record_0.mp4"
-                ],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 37,
                 "title": "",
                 "comment": "",
@@ -61,8 +53,8 @@
             "properties": {
                 "entryId": 17,
                 "dateCreated": "2022-06-21T12:51:25.196Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": "image/38_image_upload_0.jpg",
+                "audioFile": null,
                 "featureId": 38,
                 "title": "Rathaus Bode ",
                 "comment": "Kopfsteinpflaster vor Rathaus problematisch, weil der Kopf nicht gehalten werden kann und dann gegen die Halterung schlägt ",
@@ -81,8 +73,8 @@
             "properties": {
                 "entryId": 19,
                 "dateCreated": "2022-06-21T13:03:03.820Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 40,
                 "title": "Pflastersteine ",
                 "comment": "Die Steine sind für Rollstühle ungeeignet und ",
@@ -101,8 +93,8 @@
             "properties": {
                 "entryId": 18,
                 "dateCreated": "2022-06-21T12:55:53.949Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": "image/39_image_upload_0.jpg",
+                "audioFile": null,
                 "featureId": 39,
                 "title": "Hindernisse ",
                 "comment": "Für sehbehinderte Menschen schwer einzuschätzen ",
@@ -121,8 +113,8 @@
             "properties": {
                 "entryId": 20,
                 "dateCreated": "2022-06-21T13:05:30.292Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 41,
                 "title": "Übergang",
                 "comment": "Bordsteine sind nicht genug an nicht genug Orten angesenkt\nSelbst kleine Abstände führen zu mehr Aufwand für den Rollstuhl und schmerzen im Kopf\n",
@@ -141,12 +133,8 @@
             "properties": {
                 "entryId": 26,
                 "dateCreated": "2022-06-21T13:35:33.123Z",
-                "imageFiles": [
-                    "image/26_image_upload_0.jpg"
-                ],
-                "audioFiles": [
-                    "audio/26_audio_record_0.mp4"
-                ],
+                "imageFile": null,
+                "audioFile": "audio/47_audio_record_0.mp4",
                 "featureId": 47,
                 "title": "Rampe vor Rathaus",
                 "comment": "Info kommt von Frau mit Tochter im Rollstuhl",
@@ -165,12 +153,8 @@
             "properties": {
                 "entryId": 21,
                 "dateCreated": "2022-06-21T13:07:10.485Z",
-                "imageFiles": [
-                    "image/21_image_upload_0.jpg"
-                ],
-                "audioFiles": [
-                    "audio/21_audio_record_0.mp4"
-                ],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 42,
                 "title": "Pflastersteine ",
                 "comment": "Der ampelübergang ist gepflastert und dadurch ein hinderniss",
@@ -189,8 +173,8 @@
             "properties": {
                 "entryId": 23,
                 "dateCreated": "2022-06-21T13:11:24.562Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 44,
                 "title": "Bodenplatten",
                 "comment": "Pflastersteine sind schwer zu befahren mit dem Rollstuhl und führen zu schmerzen für die Fahrerin\n",
@@ -209,10 +193,8 @@
             "properties": {
                 "entryId": 22,
                 "dateCreated": "2022-06-21T13:11:06.017Z",
-                "imageFiles": [
-                    "image/22_image_upload_1.jpg"
-                ],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 43,
                 "title": "Fahrstuhl rutschig",
                 "comment": "Der Fahrstuhl hat einen Boden, der bei nässe sehr rutschig ist -> Vorkommen von Unfällen",
@@ -231,10 +213,8 @@
             "properties": {
                 "entryId": 24,
                 "dateCreated": "2022-06-21T13:13:54.322Z",
-                "imageFiles": [],
-                "audioFiles": [
-                    "audio/24_audio_record_0.mp4"
-                ],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 45,
                 "title": "Fahrstühle",
                 "comment": "Fahrstühle sind zu klein, sodass der elektrische Rollstuhl kaum in den Fahrstuhl passt \nRollstuhlgrössen haben sich verändert, aber nicht die Größe der Fahrstühle ",
@@ -253,112 +233,11 @@
             "properties": {
                 "entryId": 25,
                 "dateCreated": "2022-06-21T13:20:30.865Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 46,
                 "title": "Bus",
                 "comment": "Die Beschaffenheit des Bodens zum ausklappen ist rutschig, sodass der rollstuhl gefährdet ist und die begleitende Person der Gefahr ausgesetzt ist, auszurutschen",
-                "mobilityMode": ""
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    9.983237073699117,
-                    53.55403137297864
-                ]
-            },
-            "properties": {
-                "entryId": 27,
-                "dateCreated": "2022-07-12T14:09:24.474Z",
-                "imageFiles": [
-                    "image/27_image_upload_1.jpg"
-                ],
-                "audioFiles": [],
-                "featureId": 48,
-                "title": "",
-                "comment": "",
-                "mobilityMode": ""
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "LineString",
-                "coordinates": [
-                    [
-                        9.983879490676088,
-                        53.563358206609905
-                    ],
-                    [
-                        9.985497732345332,
-                        53.559648281198434
-                    ],
-                    [
-                        9.99328176600167,
-                        53.56193957299338
-                    ]
-                ]
-            },
-            "properties": {
-                "entryId": 27,
-                "dateCreated": "2022-07-12T14:09:24.474Z",
-                "imageFiles": [
-                    "image/27_image_upload_1.jpg"
-                ],
-                "audioFiles": [],
-                "featureId": 49,
-                "title": "",
-                "comment": "",
-                "mobilityMode": "walk",
-                "hidden": true
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    9.985497732345332,
-                    53.559648281198434
-                ]
-            },
-            "properties": {
-                "entryId": 27,
-                "dateCreated": "2022-07-12T14:09:24.474Z",
-                "imageFiles": [
-                    "image/27_image_upload_1.jpg"
-                ],
-                "audioFiles": [],
-                "featureId": 49,
-                "title": "",
-                "comment": "",
-                "mobilityMode": "walk",
-                "hidden": false,
-                "hoverCircle": true
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    9.987701703171108,
-                    53.54712686089738
-                ]
-            },
-            "properties": {
-                "entryId": 28,
-                "dateCreated": "2022-07-12T14:12:50.599Z",
-                "imageFiles": [],
-                "audioFiles": [
-                    "audio/28_audio_record_0.mp4"
-                ],
-                "featureId": 50,
-                "title": "",
-                "comment": "",
                 "mobilityMode": ""
             }
         },
@@ -374,8 +253,8 @@
             "properties": {
                 "entryId": 29,
                 "dateCreated": "2022-07-15T12:07:59.155Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 51,
                 "title": "Fahrstuhl",
                 "comment": "Leider ist der Fahrstuhl kaputt",
@@ -412,8 +291,8 @@
             "properties": {
                 "entryId": 29,
                 "dateCreated": "2022-07-15T12:07:59.155Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 52,
                 "title": "",
                 "comment": "",
@@ -433,8 +312,8 @@
             "properties": {
                 "entryId": 29,
                 "dateCreated": "2022-07-15T12:07:59.155Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 52,
                 "title": "",
                 "comment": "",
@@ -481,8 +360,8 @@
             "properties": {
                 "entryId": 29,
                 "dateCreated": "2022-07-15T12:07:59.155Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 53,
                 "title": "",
                 "comment": "",
@@ -502,8 +381,8 @@
             "properties": {
                 "entryId": 29,
                 "dateCreated": "2022-07-15T12:07:59.155Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 53,
                 "title": "",
                 "comment": "",
@@ -544,8 +423,8 @@
             "properties": {
                 "entryId": 29,
                 "dateCreated": "2022-07-15T12:07:59.155Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 54,
                 "title": "Treppen schwer zugänglich",
                 "comment": "",
@@ -566,8 +445,8 @@
             "properties": {
                 "entryId": 29,
                 "dateCreated": "2022-07-15T12:07:59.155Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 54,
                 "title": "Treppen schwer zugänglich",
                 "comment": "",
@@ -588,10 +467,8 @@
             "properties": {
                 "entryId": 47,
                 "dateCreated": "2022-07-20T13:02:11.893Z",
-                "imageFiles": [],
-                "audioFiles": [
-                    "audio/47_audio_record_0.mp4"
-                ],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 92,
                 "title": "",
                 "comment": "",
@@ -626,10 +503,8 @@
             "properties": {
                 "entryId": 47,
                 "dateCreated": "2022-07-20T13:02:11.893Z",
-                "imageFiles": [],
-                "audioFiles": [
-                    "audio/47_audio_record_0.mp4"
-                ],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 93,
                 "title": "",
                 "comment": "",
@@ -650,10 +525,8 @@
             "properties": {
                 "entryId": 47,
                 "dateCreated": "2022-07-20T13:02:11.893Z",
-                "imageFiles": [],
-                "audioFiles": [
-                    "audio/47_audio_record_0.mp4"
-                ],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 93,
                 "title": "",
                 "comment": "",
@@ -696,8 +569,8 @@
             "properties": {
                 "entryId": 58,
                 "dateCreated": "2022-07-27T11:21:15.726Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 134,
                 "title": "Rampe Umstieg Bus-S-Bahn",
                 "comment": "Rampe ist zu steil und hat keine Pausenpodeste. Auf der Aanderen Seite gibt es nur eine Treppe. Hierwäre ein Aufzug von der Straße auf die Gleise (mehrere Gleise) angebracht.",
@@ -717,8 +590,8 @@
             "properties": {
                 "entryId": 58,
                 "dateCreated": "2022-07-27T11:21:15.726Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 134,
                 "title": "Rampe Umstieg Bus-S-Bahn",
                 "comment": "Rampe ist zu steil und hat keine Pausenpodeste. Auf der Aanderen Seite gibt es nur eine Treppe. Hierwäre ein Aufzug von der Straße auf die Gleise (mehrere Gleise) angebracht.",
@@ -739,8 +612,8 @@
             "properties": {
                 "entryId": 59,
                 "dateCreated": "2022-07-29T12:09:49.556Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 135,
                 "title": "Fußgängerampelphase viel zu kurz",
                 "comment": "Berner Heerweg kann selbst mit dem Fahrrad kaum überquert werden in einer Ampelphase, geschweige denn mit einem Kinderwagen oder laufendem Kind...",
@@ -759,8 +632,8 @@
             "properties": {
                 "entryId": 59,
                 "dateCreated": "2022-07-29T12:09:49.556Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 136,
                 "title": "U Bahnhof Farmsen nicht barrierefrei",
                 "comment": "Zugang mit Kinderwagen unmöglich",
@@ -779,8 +652,8 @@
             "properties": {
                 "entryId": 59,
                 "dateCreated": "2022-07-29T12:09:49.556Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 137,
                 "title": "Fahrradweg, Fußweg und Bushaltestelle kollidieren",
                 "comment": "Wirklich gefährlich für Fußgänger, besonders wenn man Kinder dabei hat.",
@@ -799,8 +672,8 @@
             "properties": {
                 "entryId": 59,
                 "dateCreated": "2022-07-29T12:09:49.556Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 138,
                 "title": "Fußgängerampelphase super kurz",
                 "comment": "Trotz wichtigem Übergang für SchülerInnen der Grundschule einfach viel zu kurze Ampelphase",
@@ -819,8 +692,8 @@
             "properties": {
                 "entryId": 59,
                 "dateCreated": "2022-07-29T12:09:49.556Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 139,
                 "title": "Kein sicherer Übergang für SchülerInnen",
                 "comment": "Hier könnte man eine Fußgängerampel wirklich gebrauchen",
@@ -839,8 +712,8 @@
             "properties": {
                 "entryId": 59,
                 "dateCreated": "2022-07-29T12:09:49.556Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 140,
                 "title": "Fußgängerampelphase viel zu kurz",
                 "comment": "Trotz vielen Kindergärten und Schulen in der Nähe - Ampelphase ist nur mit dem Rad zu schaffen, für Kinder nicht möglich.",
@@ -859,8 +732,8 @@
             "properties": {
                 "entryId": 59,
                 "dateCreated": "2022-07-29T12:09:49.556Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 141,
                 "title": "Radweg desaströs",
                 "comment": "Direkt vor der U-Bahn mit Stadtradstation: schlechtester Radweg aller Zeiten, dazu mit vielen Scherben.",
@@ -879,8 +752,8 @@
             "properties": {
                 "entryId": 59,
                 "dateCreated": "2022-07-29T12:09:49.556Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 142,
                 "title": "Verdreckter Spielplatz mit Scherben",
                 "comment": "Toller Spielplatz - leider am Wochenende immer randaliert mit Müll und Scherben.",
@@ -899,10 +772,8 @@
             "properties": {
                 "entryId": 60,
                 "dateCreated": "2022-08-10T10:40:16.805Z",
-                "imageFiles": [],
-                "audioFiles": [
-                    "audio/60_audio_record_0.mp4"
-                ],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 143,
                 "title": "Stadtpark",
                 "comment": "nur Treppe, kein Zugang für Rollstuhl / Kinderwagen",
@@ -921,10 +792,8 @@
             "properties": {
                 "entryId": 60,
                 "dateCreated": "2022-08-10T10:40:16.805Z",
-                "imageFiles": [],
-                "audioFiles": [
-                    "audio/60_audio_record_0.mp4"
-                ],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 144,
                 "title": "Stadtpark",
                 "comment": "nur Treppe, kein Zugang für Rollstuhl / Kinderwagen",
@@ -943,8 +812,8 @@
             "properties": {
                 "entryId": 61,
                 "dateCreated": "2022-08-11T09:36:06.178Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 145,
                 "title": "Kantstein nicht abgesengt",
                 "comment": "Ich komme hoer mit dem Rollstuhl nicht lang, weil der Kantstein zu hoch ist.",
@@ -963,8 +832,8 @@
             "properties": {
                 "entryId": 62,
                 "dateCreated": "2022-08-13T09:31:54.503Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 146,
                 "title": "Kein Aufzug",
                 "comment": "Der S Bahnhof Neugraben hat keinen Aufzug zu den Gleisen. Dies macht es Rollstuhlfahrern unmöglich, Gleis 2 und Gleis 3 zu benutzen.",
@@ -983,8 +852,8 @@
             "properties": {
                 "entryId": 63,
                 "dateCreated": "2022-08-22T11:38:16.051Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 147,
                 "title": "Aufzug U1 Hbf Nord unglaublich langsam",
                 "comment": "Es gibt bei der U1 Hbf Nord 2 Aufzüge: der eine ist in zwei Abschnitte geteilt und Abschnitt 1 unglaublich langsam, der zweite führt von der Straßenebene über die \"Bahnhofs\"ebene zur Gleisebene. Leider kann man in der Mitte kaum Zusteigen, da der Aufzug immer von oben nach unte und zurück fährt. Steigt man zu (egal wo), dann geht es oft ein paar Mal hoch und runter bis man da ankommt, wo man möchte.",
@@ -1003,8 +872,8 @@
             "properties": {
                 "entryId": 63,
                 "dateCreated": "2022-08-22T11:38:16.051Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 148,
                 "title": "",
                 "comment": "",
@@ -1023,8 +892,8 @@
             "properties": {
                 "entryId": 63,
                 "dateCreated": "2022-08-22T11:38:16.051Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 149,
                 "title": "",
                 "comment": "",
@@ -1043,8 +912,8 @@
             "properties": {
                 "entryId": 63,
                 "dateCreated": "2022-08-22T11:38:16.051Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 150,
                 "title": "Übergang Landungsbrücken",
                 "comment": "Es geht nur um wenige Stufen, die ca 10m breit sind. Es gibt keine Rampe, mit Kinderwagen (oder Fahrrad, Rollstuhl etc) muss man ganz außen rum. Dabei sind da super viele Familien und Radfahrer unterwegs!",
@@ -1063,8 +932,8 @@
             "properties": {
                 "entryId": 63,
                 "dateCreated": "2022-08-22T11:38:16.051Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 151,
                 "title": "Bordsteine unschön abgesenkt",
                 "comment": "In der Hafencity ist an vielen Stellen vergessen worden, die Bordsteine abzusenken. Nachträglich dann schlecht gemacht, mit Kinderwagen einfach nur super unangenehm.",
@@ -1083,8 +952,8 @@
             "properties": {
                 "entryId": 64,
                 "dateCreated": "2022-08-29T09:28:17.589Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": "image/152_image_upload_0.jpg",
+                "audioFile": null,
                 "featureId": 152,
                 "title": "elbdeich e.V.",
                 "comment": "Rollstuhlzugänglicher Eingang zum Gelände und der Pausenhalle. Rolli-WC vorhanden.\nhttps://www.elbdeich.org/barrierefreiheit/",
@@ -1103,8 +972,8 @@
             "properties": {
                 "entryId": 68,
                 "dateCreated": "2022-09-21T04:06:52.445Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 158,
                 "title": "Bordsteinkante",
                 "comment": "An der (neuen) Bordsteinkante kommen Menschen mit Rollatoren oä nicht hoch, da diese nicht abgesenkt ist. Dies stellt ein großes Problem für die Bewohner:innen des nahegelegenen Altenheims dar. ",
@@ -1123,8 +992,8 @@
             "properties": {
                 "entryId": 69,
                 "dateCreated": "2022-09-21T04:22:12.136Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": "image/159_image_upload_0.jpg",
+                "audioFile": null,
                 "featureId": 159,
                 "title": "Toilette für alle ",
                 "comment": " bei der Tagespflege von Leben mit Behinderung Hamburg (mit Liege und breiter Tür, viel Platz)",
@@ -1143,12 +1012,405 @@
             "properties": {
                 "entryId": 70,
                 "dateCreated": "2022-09-21T05:22:34.109Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": "image/160_image_upload_0.jpg",
+                "audioFile": null,
                 "featureId": 160,
                 "title": "Zebrastreifen aber sehr hoher Bordstein",
                 "comment": "Hier ist ein Zebrastreifen um über die vielbefahrene Straße zu kommen. Das ist aber mit Kinderwagen sehr schwierig, da der Bordstein sehr hoch ist. Ein Rollstuhlfahrer würde hier nicht passieren können. ",
                 "mobilityMode": ""
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            9.968480109367786,
+                            53.56407682830702
+                        ],
+                        [
+                            9.968480109367786,
+                            53.56407682830702
+                        ],
+                        [
+                            9.968480109367786,
+                            53.56407682830702
+                        ],
+                        [
+                            9.968919036038677,
+                            53.56405424703129
+                        ],
+                        [
+                            9.969325870818231,
+                            53.56385117144981
+                        ],
+                        [
+                            9.969448573020712,
+                            53.56362661439349
+                        ],
+                        [
+                            9.969806134989293,
+                            53.563190860513686
+                        ],
+                        [
+                            9.96971766627256,
+                            53.563165416186536
+                        ],
+                        [
+                            9.96930160490743,
+                            53.56366348034741
+                        ],
+                        [
+                            9.96907078727054,
+                            53.56387702158393
+                        ],
+                        [
+                            9.96893813743855,
+                            53.56401603908952
+                        ],
+                        [
+                            9.968451335192855,
+                            53.56404138639574
+                        ],
+                        [
+                            9.968480109367786,
+                            53.56407682830702
+                        ]
+                    ]
+                ]
+            },
+            "properties": {
+                "entryId": 71,
+                "dateCreated": "2022-09-21T05:29:16.245Z",
+                "imageFile": null,
+                "audioFile": null,
+                "featureId": 161,
+                "title": "Messetunnel",
+                "comment": "Übergang zwischen Lagerstraße und Sternschanzenpark STEILE Rampe. Auf dieser Seite KEIN Zugang zur S-Bahn für Rollstuhlfahrer (nur Treppe/Rolltreppe). U-Bahn Station AUSSCHLIESSLICH Zugang über mehrere Treppen.",
+                "mobilityMode": "",
+                "type": "Polygon",
+                "hidden": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    9.969289177876126,
+                    53.56369414994238
+                ]
+            },
+            "properties": {
+                "entryId": 71,
+                "dateCreated": "2022-09-21T05:29:16.245Z",
+                "imageFile": null,
+                "audioFile": null,
+                "featureId": 161,
+                "title": "Messetunnel",
+                "comment": "Übergang zwischen Lagerstraße und Sternschanzenpark STEILE Rampe. Auf dieser Seite KEIN Zugang zur S-Bahn für Rollstuhlfahrer (nur Treppe/Rolltreppe). U-Bahn Station AUSSCHLIESSLICH Zugang über mehrere Treppen.",
+                "mobilityMode": "",
+                "hidden": false,
+                "hoverCircle": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    9.954198468517893,
+                    53.56672123748174
+                ]
+            },
+            "properties": {
+                "entryId": 72,
+                "dateCreated": "2022-09-21T05:59:20.881Z",
+                "imageFile": "image/162_image_upload_0.jpg",
+                "audioFile": null,
+                "featureId": 162,
+                "title": "Waterloostraße 28",
+                "comment": "Jemand hat hier eine Mauer um das Grundstück der Waterloostraße 28 gezogen. Jetzt kommt kein Rollstuhl mehr zwischen der Mauer und dem festinstallierten Fahrradständer durch. ",
+                "mobilityMode": ""
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    10.007314026318635,
+                    53.59178948371995
+                ]
+            },
+            "properties": {
+                "entryId": 73,
+                "dateCreated": "2022-09-21T06:46:51.557Z",
+                "imageFile": null,
+                "audioFile": null,
+                "featureId": 163,
+                "title": "Hohe Strassenkamte",
+                "comment": "Höhe der Strassenkante hoch - für rollator mit unsicherer Person schwieriger",
+                "mobilityMode": ""
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    10.004533211691866,
+                    53.59252635948489
+                ]
+            },
+            "properties": {
+                "entryId": 73,
+                "dateCreated": "2022-09-21T06:46:51.557Z",
+                "imageFile": null,
+                "audioFile": null,
+                "featureId": 164,
+                "title": "Enger Fussgängerweg",
+                "comment": "Fußgängerweg auf der Seite vom Markt weg phasenweise eng. Radfahrer achten nicht auf Fußgänger bzw fahren nebeneinander ",
+                "mobilityMode": ""
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    10.006219040785652,
+                    53.58958284160307
+                ]
+            },
+            "properties": {
+                "entryId": 73,
+                "dateCreated": "2022-09-21T06:46:51.557Z",
+                "imageFile": null,
+                "audioFile": null,
+                "featureId": 165,
+                "title": "Alter asphaltweg",
+                "comment": "Fußgängerweg seit Jahren nicht asphaltiert. Viele Löcher, wo man mit dem Rollator hängen bleibt bzw Gleichgewicht verliert",
+                "mobilityMode": ""
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    10.004533211691866,
+                    53.59252635948489
+                ]
+            },
+            "properties": {
+                "entryId": 73,
+                "dateCreated": "2022-09-21T06:46:51.557Z",
+                "imageFile": null,
+                "audioFile": null,
+                "featureId": 166,
+                "title": "",
+                "comment": "",
+                "mobilityMode": ""
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            10.089773799771926,
+                            53.55415904590473
+                        ],
+                        [
+                            10.087795999059392,
+                            53.554908395496014
+                        ],
+                        [
+                            10.084505066541668,
+                            53.554682609295696
+                        ],
+                        [
+                            10.083527803893553,
+                            53.554733088179816
+                        ],
+                        [
+                            10.08431585321066,
+                            53.55353082284378
+                        ],
+                        [
+                            10.086817546539894,
+                            53.55218510207221
+                        ],
+                        [
+                            10.089773799771926,
+                            53.55415904590473
+                        ]
+                    ]
+                ]
+            },
+            "properties": {
+                "entryId": 75,
+                "dateCreated": "2022-09-21T07:46:19.953Z",
+                "imageFile": null,
+                "audioFile": null,
+                "featureId": 168,
+                "title": "Einschränkungen bei Großbaustelle",
+                "comment": "Durch die Großbaustelle an der Horner Rennbahn für die Erweiterung der U4 kommt es zu sich ständig wechselnden Wegen, die für Personen mit Rollator oder Rollstuhl große Umwege bedeuten. Menschen mit Behinderung scheinen bei der Planung der Baustellen nicht mitgedacht zu werden.\n[Eintrag aufgrund eines Anrufs vom 21.9.]",
+                "mobilityMode": "",
+                "type": "Polygon",
+                "hidden": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    10.086610580726507,
+                    53.55381752192389
+                ]
+            },
+            "properties": {
+                "entryId": 75,
+                "dateCreated": "2022-09-21T07:46:19.953Z",
+                "imageFile": null,
+                "audioFile": null,
+                "featureId": 168,
+                "title": "Einschränkungen bei Großbaustelle",
+                "comment": "Durch die Großbaustelle an der Horner Rennbahn für die Erweiterung der U4 kommt es zu sich ständig wechselnden Wegen, die für Personen mit Rollator oder Rollstuhl große Umwege bedeuten. Menschen mit Behinderung scheinen bei der Planung der Baustellen nicht mitgedacht zu werden.\n[Eintrag aufgrund eines Anrufs vom 21.9.]",
+                "mobilityMode": "",
+                "hidden": false,
+                "hoverCircle": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        9.95282630913467,
+                        53.56626124542044
+                    ],
+                    [
+                        9.952964177455875,
+                        53.56635171251287
+                    ],
+                    [
+                        9.952974316477553,
+                        53.56626957964301
+                    ],
+                    [
+                        9.952846174332993,
+                        53.56625633053679
+                    ]
+                ]
+            },
+            "properties": {
+                "entryId": 74,
+                "dateCreated": "2022-09-21T07:43:50.232Z",
+                "imageFile": null,
+                "audioFile": null,
+                "featureId": 167,
+                "title": "Überweg Sehbehinderte",
+                "comment": "Es sind Bodenindikatoren zum kreuzen eingelassen, diese führen jedoch nicht jeweils in direktem Weg zur anderen Straßenseite und aufgrund der versetzten vierfachen Kreuzung ist die Indikation der sicheren Querung hier gefährlich.",
+                "mobilityMode": "walk",
+                "hidden": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    9.952974316477553,
+                    53.56626957964301
+                ]
+            },
+            "properties": {
+                "entryId": 74,
+                "dateCreated": "2022-09-21T07:43:50.232Z",
+                "imageFile": null,
+                "audioFile": null,
+                "featureId": 167,
+                "title": "Überweg Sehbehinderte",
+                "comment": "Es sind Bodenindikatoren zum kreuzen eingelassen, diese führen jedoch nicht jeweils in direktem Weg zur anderen Straßenseite und aufgrund der versetzten vierfachen Kreuzung ist die Indikation der sicheren Querung hier gefährlich.",
+                "mobilityMode": "walk",
+                "hidden": false,
+                "hoverCircle": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            9.953499847606892,
+                            53.564969191272695
+                        ],
+                        [
+                            9.953560671341378,
+                            53.56500913788573
+                        ],
+                        [
+                            9.953587911219097,
+                            53.564985791317476
+                        ],
+                        [
+                            9.953546524104134,
+                            53.564921906553295
+                        ],
+                        [
+                            9.953555421963175,
+                            53.564962267098984
+                        ],
+                        [
+                            9.953499847606892,
+                            53.564969191272695
+                        ]
+                    ]
+                ]
+            },
+            "properties": {
+                "entryId": 76,
+                "dateCreated": "2022-09-21T07:50:31.467Z",
+                "imageFile": null,
+                "audioFile": null,
+                "featureId": 169,
+                "title": "Keine sichere Querung für Grundschulkinder",
+                "comment": "Im gesamten Beeich der Langenfelder Straße gibt es keine sichere Querung für Grundschulkinder, diese müssen zwischen parkenden Autos die Straße überqueren, auch um zB ihre Turnhalle zu erreichen, die in der Langenfelder Straße liegt.",
+                "mobilityMode": "",
+                "type": "Polygon",
+                "hidden": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    9.953506348962392,
+                    53.56473144480876
+                ]
+            },
+            "properties": {
+                "entryId": 76,
+                "dateCreated": "2022-09-21T07:50:31.467Z",
+                "imageFile": null,
+                "audioFile": null,
+                "featureId": 169,
+                "title": "Keine sichere Querung für Grundschulkinder",
+                "comment": "Im gesamten Beeich der Langenfelder Straße gibt es keine sichere Querung für Grundschulkinder, diese müssen zwischen parkenden Autos die Straße überqueren, auch um zB ihre Turnhalle zu erreichen, die in der Langenfelder Straße liegt.",
+                "mobilityMode": "",
+                "hidden": false,
+                "hoverCircle": true
             }
         },
         {
@@ -1163,8 +1425,8 @@
             "properties": {
                 "entryId": 78,
                 "dateCreated": "2022-09-21T08:36:19.538Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 175,
                 "title": "U-Bahn Lutterothstrasse",
                 "comment": "Kein Fahrstuhl und keine abwärtsfahrende Rolltreppe an diesem Ausgang.",
@@ -1231,8 +1493,8 @@
             "properties": {
                 "entryId": 79,
                 "dateCreated": "2022-09-21T09:38:22.538Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 176,
                 "title": "Fußgänger-Zackgasse auf dem Bürgersteig Gustav-Falke-Straße",
                 "comment": "Der Bürgersteig und Wochenmarkt Fläche in der Mitte von Gustav-Falke-Straße endet ohne einen angemessenen und sicheren Wegeleitung weder zur U-Bahn Station, zu den Bushaltestellen oder zur anderen Straßenseite. Die Bordsteinkante ist recht hoch für Kleinkinder, die zu Fuß oder mit dem Laufrad /Fahrrad unterwegs sind oder im Buggy fahren.",
@@ -1253,8 +1515,8 @@
             "properties": {
                 "entryId": 79,
                 "dateCreated": "2022-09-21T09:38:22.538Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 176,
                 "title": "Fußgänger-Zackgasse auf dem Bürgersteig Gustav-Falke-Straße",
                 "comment": "Der Bürgersteig und Wochenmarkt Fläche in der Mitte von Gustav-Falke-Straße endet ohne einen angemessenen und sicheren Wegeleitung weder zur U-Bahn Station, zu den Bushaltestellen oder zur anderen Straßenseite. Die Bordsteinkante ist recht hoch für Kleinkinder, die zu Fuß oder mit dem Laufrad /Fahrrad unterwegs sind oder im Buggy fahren.",
@@ -1275,8 +1537,8 @@
             "properties": {
                 "entryId": 81,
                 "dateCreated": "2022-09-21T10:00:57.565Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 178,
                 "title": "Fehlender Übergang/ Fußgängerampel",
                 "comment": "",
@@ -1295,8 +1557,8 @@
             "properties": {
                 "entryId": 80,
                 "dateCreated": "2022-09-21T10:00:33.705Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 177,
                 "title": "Fahrstuhl dringend erwünscht",
                 "comment": "U-Bahnstation Saarlandstr. für Frau mit Kinderwagen nicht nutzbar. Ebensowenig für Rollstuhlfahrer/in. Ich 70jährige komme mit einem Koffer die Treppe nicht hoch. In das Gebiet um die Station ziehen immer mehr Menschen, d.h., der Bedarf an einem Fahrstuhl nimmt zu.",
@@ -1315,8 +1577,8 @@
             "properties": {
                 "entryId": 82,
                 "dateCreated": "2022-09-21T10:10:20.869Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 179,
                 "title": "Kein durchkommen",
                 "comment": "An dieser Stelle gibt es immer wieder Falschparker, die den Gehweg so blockieren, sodass Menschen mit Kinderwagen, Rollstuhl oder Rolator auf die Straße ausweichen müssen. ",
@@ -1351,8 +1613,8 @@
             "properties": {
                 "entryId": 84,
                 "dateCreated": "2022-09-21T11:00:19.688Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 183,
                 "title": "unebener Fußweg",
                 "comment": "der Fußweg wurde mehrfach von Energieversorgern aufgerissen. Er ist mittlerweile für Fußgänger mit Stolperfallen übersät und für Rollifahrer alleine kaum noch mehr nutzbar.\nDieses trifft aber fast alle Fußwege in den hamburger Wohnquartieren zu.",
@@ -1373,8 +1635,8 @@
             "properties": {
                 "entryId": 84,
                 "dateCreated": "2022-09-21T11:00:19.688Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 183,
                 "title": "unebener Fußweg",
                 "comment": "der Fußweg wurde mehrfach von Energieversorgern aufgerissen. Er ist mittlerweile für Fußgänger mit Stolperfallen übersät und für Rollifahrer alleine kaum noch mehr nutzbar.\nDieses trifft aber fast alle Fußwege in den hamburger Wohnquartieren zu.",
@@ -1411,8 +1673,8 @@
             "properties": {
                 "entryId": 84,
                 "dateCreated": "2022-09-21T11:00:19.688Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 184,
                 "title": "",
                 "comment": "",
@@ -1433,8 +1695,8 @@
             "properties": {
                 "entryId": 84,
                 "dateCreated": "2022-09-21T11:00:19.688Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 184,
                 "title": "",
                 "comment": "",
@@ -1455,8 +1717,8 @@
             "properties": {
                 "entryId": 83,
                 "dateCreated": "2022-09-21T10:53:57.513Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 180,
                 "title": "langer straßenabschnitt, dicht beparkt, keine abgesenkten bordsteine, keine fahrradwege",
                 "comment": "",
@@ -1475,8 +1737,8 @@
             "properties": {
                 "entryId": 83,
                 "dateCreated": "2022-09-21T10:53:57.513Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 181,
                 "title": "",
                 "comment": "",
@@ -1495,8 +1757,8 @@
             "properties": {
                 "entryId": 83,
                 "dateCreated": "2022-09-21T10:53:57.513Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 182,
                 "title": "",
                 "comment": "",
@@ -1515,8 +1777,8 @@
             "properties": {
                 "entryId": 85,
                 "dateCreated": "2022-09-21T11:34:20.354Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 185,
                 "title": "Abgesenkter Fußweg nicht parallel auf beiden Seiten",
                 "comment": "Abgesenkter Bordstein Ecke Regerstraße/Haydnstraße ist oft von in der Kurve parkenden Autos blockiert. Auf der gegenüberliegenden Seite (Haydnstraße, vor dem Kindergarten) ist der abgesenkte Bordstein nicht direkt gegenüber, sondern einige Meter Richtung Von-Sauer-Straße versetzt, da sich hier eine Ausfahrt von einem Parkplatz befindet. Mit einem Kinderwagen muss man von einem Bordstein zum gegenüberliegenden mehrere Meter über die Straße schieben, bis man zur Absenkung gegenüber gelangt. Ein direktes Überqueren ist nicht möglich, da dort  (gemeint ist der Fußweg parallel zur Haydnstraße) der Bordstein nicht abgesenkt ist und zudem meistens Autos an der Stelle am Straßenrand parken.",
@@ -1541,8 +1803,8 @@
             "properties": {
                 "entryId": 86,
                 "dateCreated": "2022-09-21T11:40:55.333Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 186,
                 "title": "Abgesenkte Bordsteine nur auf Fahrradspur",
                 "comment": "An den Kreuzungen entlang der eingezeichneten Strecke sind die Bordsteine zwar abgesenkt, aber nur an den Stellen, die für Fahrrad markiert sind. Die baulich/farblich getrennten Fußwege sind nicht abgesenkt. Dadurch kommt es teilweise zu Konflikten zwischen Fahrradfahrer:innen und z. B. Menschen mit Kinderwagen, da letztere an den Kreuzungen auf den Fahrradweg wechseln müssen, um die Straße barrierearm zu passieren.",
@@ -1562,8 +1824,8 @@
             "properties": {
                 "entryId": 86,
                 "dateCreated": "2022-09-21T11:40:55.333Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 186,
                 "title": "Abgesenkte Bordsteine nur auf Fahrradspur",
                 "comment": "An den Kreuzungen entlang der eingezeichneten Strecke sind die Bordsteine zwar abgesenkt, aber nur an den Stellen, die für Fahrrad markiert sind. Die baulich/farblich getrennten Fußwege sind nicht abgesenkt. Dadurch kommt es teilweise zu Konflikten zwischen Fahrradfahrer:innen und z. B. Menschen mit Kinderwagen, da letztere an den Kreuzungen auf den Fahrradweg wechseln müssen, um die Straße barrierearm zu passieren.",
@@ -1594,8 +1856,8 @@
             "properties": {
                 "entryId": 87,
                 "dateCreated": "2022-09-21T13:55:07.175Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 187,
                 "title": "Schwierig zu navigieren",
                 "comment": "Autos parken zu weit auf dem Gehweg, Fahrräder am Zaun zu Gebäuden angeschlossen, so dass teilweise mit Kinderwagen oder Rollstuhl der Bürgersteig nicht befahrbar ist. Die ungepflasterten Bereiche um die Bäume haben zu den gepflasterten Teilen enorme Sprünge, so dass es mit Kinderwagen sehr schwer zu passieren ist. Mit dem Rollstuhl teilweise unmöglich ",
@@ -1615,8 +1877,8 @@
             "properties": {
                 "entryId": 87,
                 "dateCreated": "2022-09-21T13:55:07.175Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 187,
                 "title": "Schwierig zu navigieren",
                 "comment": "Autos parken zu weit auf dem Gehweg, Fahrräder am Zaun zu Gebäuden angeschlossen, so dass teilweise mit Kinderwagen oder Rollstuhl der Bürgersteig nicht befahrbar ist. Die ungepflasterten Bereiche um die Bäume haben zu den gepflasterten Teilen enorme Sprünge, so dass es mit Kinderwagen sehr schwer zu passieren ist. Mit dem Rollstuhl teilweise unmöglich ",
@@ -1637,8 +1899,8 @@
             "properties": {
                 "entryId": 88,
                 "dateCreated": "2022-09-21T21:40:12.693Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 188,
                 "title": "Ubahnhof",
                 "comment": "Kein Fahrstuhl",
@@ -1657,8 +1919,8 @@
             "properties": {
                 "entryId": 89,
                 "dateCreated": "2022-09-22T05:20:54.657Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 189,
                 "title": "Aufzug zu S-Bahngleisen",
                 "comment": "Die Aufzüge zu den S-Bahngleisen sind schwer zu finden und immer überfüllt. Lange warten und Frust. ",
@@ -1705,8 +1967,8 @@
             "properties": {
                 "entryId": 90,
                 "dateCreated": "2022-09-22T05:25:11.409Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 190,
                 "title": "Abgesenkt Bordstein zugeparkt",
                 "comment": "In Ottensen sind häufig die abgesenkten Bordseteine und Kurven zugeparkt. ",
@@ -1727,8 +1989,8 @@
             "properties": {
                 "entryId": 90,
                 "dateCreated": "2022-09-22T05:25:11.409Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 190,
                 "title": "Abgesenkt Bordstein zugeparkt",
                 "comment": "In Ottensen sind häufig die abgesenkten Bordseteine und Kurven zugeparkt. ",
@@ -1749,8 +2011,8 @@
             "properties": {
                 "entryId": 91,
                 "dateCreated": "2022-09-22T08:59:02.873Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 191,
                 "title": "S-Bahn Jungfernstieg",
                 "comment": "Kommt man am Jungfernstieg mit der S-Bahn an, so gibt es keine Möglichkeit, mit dem Aufzug nach oben zu gelangen. Somit ist der ganze Jungfernstieg, der Rathausmarkt und die EuropaPassage für RollstuhlfahrerInnen, Eltern mit Kinderwagen usw. nicht erreichbar! Und das mitten in der Innenstadt!!!",
@@ -1775,8 +2037,8 @@
             "properties": {
                 "entryId": 92,
                 "dateCreated": "2022-09-22T10:07:30.255Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 192,
                 "title": "",
                 "comment": "",
@@ -1796,8 +2058,8 @@
             "properties": {
                 "entryId": 92,
                 "dateCreated": "2022-09-22T10:07:30.255Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 192,
                 "title": "",
                 "comment": "",
@@ -1824,8 +2086,8 @@
             "properties": {
                 "entryId": 92,
                 "dateCreated": "2022-09-22T10:07:30.255Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 193,
                 "title": "Kein Weg von der S-Bahn Harburg Rathaus zur Medical School",
                 "comment": "Von der S-Bahn Harburg-Rathaus kann man als Mensch mit einer Gehbehinderung (Rollstuhlfahrerin), mit Kinderwagen oder Reha-Buggy praktisch nicht auf die andere Seite der Buxtehuder Straße kommen, zum Beispiel zur Medical School. Die Fußgänger-Brücke ist eine unüberwindliche Barriere und der Fußgänger-Tunnel fast nicht zu finden (keine Ausschilderung, in Karten-Apps für Smartphones nicht als Route zu finden).  ",
@@ -1845,8 +2107,8 @@
             "properties": {
                 "entryId": 92,
                 "dateCreated": "2022-09-22T10:07:30.255Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 193,
                 "title": "Kein Weg von der S-Bahn Harburg Rathaus zur Medical School",
                 "comment": "Von der S-Bahn Harburg-Rathaus kann man als Mensch mit einer Gehbehinderung (Rollstuhlfahrerin), mit Kinderwagen oder Reha-Buggy praktisch nicht auf die andere Seite der Buxtehuder Straße kommen, zum Beispiel zur Medical School. Die Fußgänger-Brücke ist eine unüberwindliche Barriere und der Fußgänger-Tunnel fast nicht zu finden (keine Ausschilderung, in Karten-Apps für Smartphones nicht als Route zu finden).  ",
@@ -1877,8 +2139,8 @@
             "properties": {
                 "entryId": 92,
                 "dateCreated": "2022-09-22T10:07:30.255Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 194,
                 "title": "Kein Weg von der S-Bahn Harburg Rathaus zur Medical School",
                 "comment": "Mit einer Gehbehinderung oder auch nur mit einem Kinderwagen oder einem Reha-Buggy von der S-Bahn Harburg Rathaus auf die andere Seite der Buxtehuder Straße zu kommen ist fast unmöglich. Die Fußgängerbrücke ist völlig ungeeignet und der Fußgänger-Tunnel extrem schlecht zu finden (keine Ausschilderung, in Karten-Apps nicht als Route auffindbar. ",
@@ -1898,8 +2160,8 @@
             "properties": {
                 "entryId": 92,
                 "dateCreated": "2022-09-22T10:07:30.255Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 194,
                 "title": "Kein Weg von der S-Bahn Harburg Rathaus zur Medical School",
                 "comment": "Mit einer Gehbehinderung oder auch nur mit einem Kinderwagen oder einem Reha-Buggy von der S-Bahn Harburg Rathaus auf die andere Seite der Buxtehuder Straße zu kommen ist fast unmöglich. Die Fußgängerbrücke ist völlig ungeeignet und der Fußgänger-Tunnel extrem schlecht zu finden (keine Ausschilderung, in Karten-Apps nicht als Route auffindbar. ",
@@ -1920,8 +2182,8 @@
             "properties": {
                 "entryId": 93,
                 "dateCreated": "2022-09-23T12:59:18.411Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 195,
                 "title": "Nicht nutzbarer Aufzug.",
                 "comment": "Von oben kaum nutzbarer Aufzug. Für Gehbehinderte kein Zustand, da der Aufzug immer den inneren Anfragen zuert dient.",
@@ -1940,8 +2202,8 @@
             "properties": {
                 "entryId": 94,
                 "dateCreated": "2022-09-24T08:22:32.834Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 196,
                 "title": "test",
                 "comment": "",
@@ -1974,8 +2236,8 @@
             "properties": {
                 "entryId": 95,
                 "dateCreated": "2022-09-24T09:55:02.527Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 197,
                 "title": "weg ubahn zur sbahn berliner tor",
                 "comment": "übergang ist nicht barrierefrei, zumindest früher gab es hier mehrere treppen, die füt körperlich beeinträchtigte menschen ein problem sind.",
@@ -1995,8 +2257,8 @@
             "properties": {
                 "entryId": 95,
                 "dateCreated": "2022-09-24T09:55:02.527Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 197,
                 "title": "weg ubahn zur sbahn berliner tor",
                 "comment": "übergang ist nicht barrierefrei, zumindest früher gab es hier mehrere treppen, die füt körperlich beeinträchtigte menschen ein problem sind.",
@@ -2017,8 +2279,8 @@
             "properties": {
                 "entryId": 96,
                 "dateCreated": "2022-09-24T11:36:14.253Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 198,
                 "title": "",
                 "comment": "",
@@ -2047,8 +2309,8 @@
             "properties": {
                 "entryId": 96,
                 "dateCreated": "2022-09-24T11:36:14.253Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 199,
                 "title": "",
                 "comment": "",
@@ -2068,8 +2330,8 @@
             "properties": {
                 "entryId": 96,
                 "dateCreated": "2022-09-24T11:36:14.253Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 199,
                 "title": "",
                 "comment": "",
@@ -2110,8 +2372,8 @@
             "properties": {
                 "entryId": 96,
                 "dateCreated": "2022-09-24T11:36:14.253Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 200,
                 "title": "",
                 "comment": "",
@@ -2132,8 +2394,8 @@
             "properties": {
                 "entryId": 96,
                 "dateCreated": "2022-09-24T11:36:14.253Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 200,
                 "title": "",
                 "comment": "",
@@ -2154,8 +2416,8 @@
             "properties": {
                 "entryId": 96,
                 "dateCreated": "2022-09-24T11:36:14.253Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 201,
                 "title": "Haus ist barrierefrei",
                 "comment": "",
@@ -2174,8 +2436,8 @@
             "properties": {
                 "entryId": 97,
                 "dateCreated": "2022-09-25T07:31:21.399Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 202,
                 "title": "Ampel",
                 "comment": "An der Ampelanlage müssen Fußgänger Grün anfordern. Die Drücker an den Ampelmasten sind auf ca. 1,50 m Höhe angebracht und damit zu hoch für Kinder, RollstuhlfahrerInnen und kleine Menschen\n",
@@ -2194,8 +2456,8 @@
             "properties": {
                 "entryId": 98,
                 "dateCreated": "2022-09-25T12:04:53.074Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 203,
                 "title": "Übergang Neuhöfer Straße",
                 "comment": "Der Weg entlang des Kanals ist ein sehr beliebter und frequentierter Fuß- und Radweg. Zu den Schulzeiten sieht man auch viele Kinder auf dem Schlweg, teilweise ohne Eltern. Der Übergang über die Neuhöfer Straße ist dabei sehr schlecht gemacht. Es gibt weder Zebrastreifen noch Ampel. Dabei ist auf der Straße viel Verkehr und besonders viele große und gefährliche LKW. Die Kinder, die ich sehe, sind oft verunsichert und wissen nicht, wann sie rüber gehen können. Gerade wegen den vielen LKW wäre hier ein sicherer Übergang für Kinder besonders wichtig. Zudem ist der Übergang auch baulich nicht gut gemacht für Radfahrer. Hier müsste dringend ein Zebrastreifen hin und am besten auch eine bauliche Überarbeitung, um für Radfahrer eine bessere Überfahrt zu ermöglichen.",
@@ -2214,8 +2476,8 @@
             "properties": {
                 "entryId": 99,
                 "dateCreated": "2022-09-25T12:09:06.821Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 204,
                 "title": "Übergang Georg-Wilhelm-Straße",
                 "comment": "Hier führt der \"Loop\" Radweg über die vielbefahrene Georg-Wilhelm-Straße. Morgens und Nachmittags sind hier viele Kinder auf dem Schulweg unterwegs. Bei dem dichten Verkehr finde ich es grenzwertig, dass es weder Ampel noch Zebrastreifen gibt. Kinder ohne Eltern sind überfordert und verunsichert. Hier sollte dringend im Interesse der Sicherheit der Kinder entweder ein Zebrastreifen oder eine Ampel hin.",
@@ -2276,8 +2538,8 @@
             "properties": {
                 "entryId": 100,
                 "dateCreated": "2022-09-27T12:24:03.267Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 205,
                 "title": "",
                 "comment": "Dicht parkende Fahrzeuge erschweren die Überquerung der Straße z.B. mit Kinderwagen ",
@@ -2297,8 +2559,8 @@
             "properties": {
                 "entryId": 100,
                 "dateCreated": "2022-09-27T12:24:03.267Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 205,
                 "title": "",
                 "comment": "Dicht parkende Fahrzeuge erschweren die Überquerung der Straße z.B. mit Kinderwagen ",
@@ -2319,8 +2581,8 @@
             "properties": {
                 "entryId": 101,
                 "dateCreated": "2022-09-27T12:29:42.747Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 206,
                 "title": "Absenkung Bordsteinkante ",
                 "comment": "An dieser Stelle wäre eine Absenkung des Bordsteins für Rollstuhlfahrende oder Kinderwagen wünschenswert um das Überqueren der Straße zu erleichtern ",
@@ -2385,8 +2647,8 @@
             "properties": {
                 "entryId": 102,
                 "dateCreated": "2022-09-28T09:05:40.104Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 207,
                 "title": "Bushaltestelle - Kinderarzt",
                 "comment": "Unterwegs mit dem Kinderwagen am Vormittag. ",
@@ -2406,8 +2668,8 @@
             "properties": {
                 "entryId": 102,
                 "dateCreated": "2022-09-28T09:05:40.104Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 207,
                 "title": "Bushaltestelle - Kinderarzt",
                 "comment": "Unterwegs mit dem Kinderwagen am Vormittag. ",
@@ -2448,8 +2710,8 @@
             "properties": {
                 "entryId": 102,
                 "dateCreated": "2022-09-28T09:05:40.104Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 208,
                 "title": "Bürgersteig",
                 "comment": "Der Bürgersteig ist zu schmal. Es sind häufig Eltern mit Kinderwagen unterwegs. In Gegenrichtung muss dann eine oder andere zwischen den parkenden Autos abbiegen und die andere durchgehen lassen.",
@@ -2470,8 +2732,8 @@
             "properties": {
                 "entryId": 102,
                 "dateCreated": "2022-09-28T09:05:40.104Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 208,
                 "title": "Bürgersteig",
                 "comment": "Der Bürgersteig ist zu schmal. Es sind häufig Eltern mit Kinderwagen unterwegs. In Gegenrichtung muss dann eine oder andere zwischen den parkenden Autos abbiegen und die andere durchgehen lassen.",
@@ -2492,8 +2754,8 @@
             "properties": {
                 "entryId": 102,
                 "dateCreated": "2022-09-28T09:05:40.104Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": "image/209_image_upload_2.jpg",
+                "audioFile": null,
                 "featureId": 209,
                 "title": "Temporäre Hindernisse",
                 "comment": "",
@@ -2512,8 +2774,8 @@
             "properties": {
                 "entryId": 102,
                 "dateCreated": "2022-09-28T09:05:40.104Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 210,
                 "title": "Schmaler Bürgersteig",
                 "comment": "Kaum Ausweichmöglichkeiten, wenn Fußgänger mit Kinderwägen aus der Gegenrichtung kommen.",
@@ -2532,8 +2794,8 @@
             "properties": {
                 "entryId": 102,
                 "dateCreated": "2022-09-28T09:05:40.104Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 211,
                 "title": "Fahrradstellplätze nicht ausreichend",
                 "comment": "",
@@ -2570,8 +2832,8 @@
             "properties": {
                 "entryId": 103,
                 "dateCreated": "2022-09-28T09:28:47.865Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 212,
                 "title": "Straße überqueren",
                 "comment": "Straße überqueren mit dem Kinderwagen oder mit dem Kind, das Fahrrad fährt oder beides. ",
@@ -2591,8 +2853,8 @@
             "properties": {
                 "entryId": 103,
                 "dateCreated": "2022-09-28T09:28:47.865Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 212,
                 "title": "Straße überqueren",
                 "comment": "Straße überqueren mit dem Kinderwagen oder mit dem Kind, das Fahrrad fährt oder beides. ",
@@ -2613,8 +2875,8 @@
             "properties": {
                 "entryId": 103,
                 "dateCreated": "2022-09-28T09:28:47.865Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 213,
                 "title": "Straße überqueren unerwünscht?",
                 "comment": "Es fehlt hier ein Hinweis für die AutofahrerInnen, dass hier Fußgänger über die Straße gehen dürfen. Oder dürfen die das nicht? Es wäre logisch die zwei  Gehwege zu verbinden. Im Moment müsste man hier zwischen den parkenden Autos mit dem Kinderwagen irgendwie durchpassen, wenn man Glück hat und die Autos nicht zu dicht hintereinander geparkt sind wie auf dem Foto. Dazu noch die Bürgersteigkante meistern.",
@@ -2633,8 +2895,8 @@
             "properties": {
                 "entryId": 103,
                 "dateCreated": "2022-09-28T09:28:47.865Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 214,
                 "title": "",
                 "comment": "Gehweg endet auf dem Parkbucht.",
@@ -2653,8 +2915,8 @@
             "properties": {
                 "entryId": 104,
                 "dateCreated": "2022-09-28T09:43:05.974Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": "image/215_image_upload_0.jpg",
+                "audioFile": null,
                 "featureId": 215,
                 "title": "Gehweg endet auf dem Parkbucht",
                 "comment": "",
@@ -2687,8 +2949,8 @@
             "properties": {
                 "entryId": 104,
                 "dateCreated": "2022-09-28T09:43:05.974Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 216,
                 "title": "Straße überqueren",
                 "comment": "Straße überqueren mit dem Kinderwagen oder mit dem Kind, das Laufrad/ Fahrrad fährt. ",
@@ -2708,8 +2970,8 @@
             "properties": {
                 "entryId": 104,
                 "dateCreated": "2022-09-28T09:43:05.974Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 216,
                 "title": "Straße überqueren",
                 "comment": "Straße überqueren mit dem Kinderwagen oder mit dem Kind, das Laufrad/ Fahrrad fährt. ",
@@ -2730,8 +2992,8 @@
             "properties": {
                 "entryId": 104,
                 "dateCreated": "2022-09-28T09:43:05.974Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": "image/217_image_upload_2.jpg",
+                "audioFile": null,
                 "featureId": 217,
                 "title": "Zebrastreifen oder ähnliches?",
                 "comment": "Hier wäre es ganz schön eine Möglichkeit für die FußgängerInnen zu schaffen, sicher die Straße überqueren, auch wenn man gleichzeitig auf die Kinder aufpassen muss. Oder ist das überqueren unerwünscht? Im Moment kann man Glück haben und der Parkbucht ist nicht vollgeparkt und man passt dort mit dem Kinderwagen durch und meistert dabei die Bürgersteigkante. (Für kleine Kinder mit dem Laufrad nicht so einfach).",
@@ -2760,8 +3022,8 @@
             "properties": {
                 "entryId": 105,
                 "dateCreated": "2022-09-28T10:01:01.079Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": "image/218_image_upload_0.jpg",
+                "audioFile": null,
                 "featureId": 218,
                 "title": "Straße überqueren unerwünscht?",
                 "comment": "Es sieht so aus, als wäre hier unerwünscht Fußgänger über die Straße gehen zu lassen. Der Bürgersteig auf der östlicher Seite ist mit kleinen Pfosten und Straßenpfosten quasi blockiert und mit dem Fahrradweg und merkwürdigen \"Insel\" abgeschnitten und auf der westlichen Seite nach dem gleichen Muster. Die einzige Option ist den Fahrradweg zu nutzen und extra aufzupassen.",
@@ -2781,8 +3043,8 @@
             "properties": {
                 "entryId": 105,
                 "dateCreated": "2022-09-28T10:01:01.079Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": "image/218_image_upload_0.jpg",
+                "audioFile": null,
                 "featureId": 218,
                 "title": "Straße überqueren unerwünscht?",
                 "comment": "Es sieht so aus, als wäre hier unerwünscht Fußgänger über die Straße gehen zu lassen. Der Bürgersteig auf der östlicher Seite ist mit kleinen Pfosten und Straßenpfosten quasi blockiert und mit dem Fahrradweg und merkwürdigen \"Insel\" abgeschnitten und auf der westlichen Seite nach dem gleichen Muster. Die einzige Option ist den Fahrradweg zu nutzen und extra aufzupassen.",
@@ -2803,8 +3065,8 @@
             "properties": {
                 "entryId": 105,
                 "dateCreated": "2022-09-28T10:01:01.079Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": "image/219_image_upload_1.jpg",
+                "audioFile": null,
                 "featureId": 219,
                 "title": "Fußweg abgesperrt",
                 "comment": "",
@@ -2837,8 +3099,8 @@
             "properties": {
                 "entryId": 106,
                 "dateCreated": "2022-09-28T10:18:43.197Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": "image/220_image_upload_0.jpg",
+                "audioFile": null,
                 "featureId": 220,
                 "title": "Unoffizieller Fußgängerüberweg",
                 "comment": "Hier fehlt ein Fußgängerampel, Zebrastreifen oder wenigstens ein Verkehrsinsel, wenn man die gesamte Strecke nicht aufeinmal schafft. Ein Umweg über die jetzt bestehenden Ampel sind einfach zu anstrengend mit den Kindern, zumal es eine sehr laute und stressige Straße ist.",
@@ -2858,8 +3120,8 @@
             "properties": {
                 "entryId": 106,
                 "dateCreated": "2022-09-28T10:18:43.197Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": "image/220_image_upload_0.jpg",
+                "audioFile": null,
                 "featureId": 220,
                 "title": "Unoffizieller Fußgängerüberweg",
                 "comment": "Hier fehlt ein Fußgängerampel, Zebrastreifen oder wenigstens ein Verkehrsinsel, wenn man die gesamte Strecke nicht aufeinmal schafft. Ein Umweg über die jetzt bestehenden Ampel sind einfach zu anstrengend mit den Kindern, zumal es eine sehr laute und stressige Straße ist.",
@@ -2910,8 +3172,8 @@
             "properties": {
                 "entryId": 107,
                 "dateCreated": "2022-09-28T10:25:10.123Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 221,
                 "title": "Ampelschaltung zu kurz",
                 "comment": "Die Ampelschaltung für die Fußgänger ist zu kurz. Die kleineren Kinder schaffen das nicht immer ohne in den Arm genommen zu werden über die Straße zu hetzen. Auch ältere Menschen mit Rollatoren brauchen länger. ",
@@ -2931,8 +3193,8 @@
             "properties": {
                 "entryId": 107,
                 "dateCreated": "2022-09-28T10:25:10.123Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 221,
                 "title": "Ampelschaltung zu kurz",
                 "comment": "Die Ampelschaltung für die Fußgänger ist zu kurz. Die kleineren Kinder schaffen das nicht immer ohne in den Arm genommen zu werden über die Straße zu hetzen. Auch ältere Menschen mit Rollatoren brauchen länger. ",
@@ -2953,8 +3215,8 @@
             "properties": {
                 "entryId": 108,
                 "dateCreated": "2022-09-28T10:38:57.733Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 222,
                 "title": "Warum ist die Straße hier nicht Tempo 30?",
                 "comment": "Warum darf man hier mit Tempo 50 fahren?",
@@ -2973,8 +3235,8 @@
             "properties": {
                 "entryId": 108,
                 "dateCreated": "2022-09-28T10:38:57.733Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 223,
                 "title": "Ampel",
                 "comment": "Mit kleineren Kindern ist es sehr stressig an den Ampel zu warten, wenn große Fahrzeuge mit 50-70 km/h vorbeifahren. Die Bewegungsfreiheit der Kinder wird dadurch eingeschränkt. Neben dem Kinderwagen laufen oder mit dem eigenen Fahrrad neben Elternfahrrad zu fahren ist viel zu gefährlich. ",
@@ -2999,8 +3261,8 @@
             "properties": {
                 "entryId": 109,
                 "dateCreated": "2022-10-05T10:46:20.430Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 224,
                 "title": "Rampe",
                 "comment": "zu steile Rampe",
@@ -3020,8 +3282,8 @@
             "properties": {
                 "entryId": 109,
                 "dateCreated": "2022-10-05T10:46:20.430Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 224,
                 "title": "Rampe",
                 "comment": "zu steile Rampe",
@@ -3042,8 +3304,8 @@
             "properties": {
                 "entryId": 110,
                 "dateCreated": "2022-11-06T15:22:06.438Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": "image/225_image_upload_0.jpg",
+                "audioFile": null,
                 "featureId": 225,
                 "title": "",
                 "comment": "Kein Zugang zu den öffentlichen Toiletten. Auch die Rolli-Toilette hat kein EURO-Schloss",
@@ -3062,8 +3324,8 @@
             "properties": {
                 "entryId": 111,
                 "dateCreated": "2022-11-09T08:19:36.488Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 226,
                 "title": "",
                 "comment": "",
@@ -3082,8 +3344,8 @@
             "properties": {
                 "entryId": 111,
                 "dateCreated": "2022-11-09T08:19:36.488Z",
-                "imageFiles": [],
-                "audioFiles": [],
+                "imageFile": null,
+                "audioFile": null,
                 "featureId": 227,
                 "title": "",
                 "comment": "",

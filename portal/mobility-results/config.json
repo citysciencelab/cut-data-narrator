@@ -95,28 +95,6 @@
     "Fachdaten": {
       "Layer": [
         {
-          "id": "11111",
-          "name": "lokale GeoJSON",
-          "url": "assets/data/new_results_latlon.json",
-          "typ": "GeoJSON",
-          "gfiAttributes": "showAll",
-          "gfiTheme": "default",
-          "layerAttribution": "nicht vorhanden",
-          "legend": false,
-          "datasets": [],
-          "urlIsVisible": true,
-          "visibility": true,
-          "isVisibleInTree": true,
-          "mouseHoverField": [
-            "comment",
-            "kapitelbezeichnung"
-          ]
-        }
-      ]
-    },
-    "Fachdaten": {
-      "Layer": [
-        {
           "id": "111113",
           "name": "Ergebnisse RE2 Centroids Hover",
           "url": "assets/data/new_results_latlon_centroids.json",
@@ -133,8 +111,8 @@
             },
             "Comment": "Beschreibung",
             "MobilityMode": "Fortbewegungsmittel",
-            "ImageFiles": "Bilder",
-            "AudioFiles": "Audio"
+            "ImageFile": "Bild",
+            "AudioFile": "Audio"
           },
           "styleId": "20221202",
           "layerAttribution": "nicht vorhanden",
