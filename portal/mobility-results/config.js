@@ -14,7 +14,7 @@ const Config = {
         "GEOM"
     ],
     wfsImgPath: "https://geodienste.hamburg.de/lgv-config/img/",
-    vuetify: "addons/storyTellingTool/vuetify",
+    vuetify: "addons/dipasAddons/storyTellingTool/vuetify",
     metadata: {
         useProxy: ["https://metaver.de/csw"]
     },
@@ -22,11 +22,8 @@ const Config = {
         orderBy: "opendata",
         saveSelection: true,
 
-        layerIDsToIgnore: [
-        ],
-        layerIDsToStyle: [
-
-        ]
+        layerIDsToIgnore: [],
+        layerIDsToStyle: []
     },
     scaleLine: true,
     quickHelp: {

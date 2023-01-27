@@ -41,14 +41,15 @@
       "stepWidth": 700,
       "visible": true,
       "associatedChapter": 1,
-      "title": "Realexperiment 1",
+      "title": "Unbezahlte Sorgearbeit",
       "htmlFile": "step_1-2.html",
       "centerCoordinate": [
-        562959.0584195709,
-        5935089.763256823
+        555894.6872343315,
+        5931378.984010641
       ],
-      "zoomLevel": 1,
+      "zoomLevel": 0,
       "layers": [
+        "111113"
       ],
       "interactionAddons": []
     },
@@ -57,7 +58,7 @@
       "stepWidth": 700,
       "visible": true,
       "associatedChapter": 1,
-      "title": "Realexperiment 2",
+      "title": "Realexperiment 1",
       "htmlFile": "step_1-3.html",
       "centerCoordinate": [
         562959.0584195709,
@@ -73,15 +74,14 @@
       "stepWidth": 700,
       "visible": true,
       "associatedChapter": 1,
-      "title": "Unbezahlte Sorgearbeit",
+      "title": "Realexperiment 2",
       "htmlFile": "step_1-4.html",
       "centerCoordinate": [
-        555894.6872343315,
-        5931378.984010641
+        562959.0584195709,
+        5935089.763256823
       ],
-      "zoomLevel": 0,
+      "zoomLevel": 1,
       "layers": [
-        "111113"
       ],
       "interactionAddons": []
     },
@@ -169,12 +169,12 @@
       "interactionAddons": []
     },
     {
-      "stepNumber": 3,
+      "stepNumber": 1,
       "stepWidth": 600,
       "visible": true,
       "associatedChapter": 3,
       "title": "Code",
-      "htmlFile": "step_3-3.html",
+      "htmlFile": "step_3-1.html",
       "centerCoordinate": [
         559285.3963894194,
         5933970.309539413
@@ -185,12 +185,12 @@
       "interactionAddons": []
     },
     {
-      "stepNumber": 1,
+      "stepNumber": 2,
       "stepWidth": 600,
       "visible": true,
       "associatedChapter": 3,
       "title": "Kontakt",
-      "htmlFile": "step_3-4.html",
+      "htmlFile": "step_3-2.html",
       "centerCoordinate": [
         559285.3963894194,
         5933970.309539413
@@ -202,12 +202,12 @@
       "interactionAddons": []
     },
     {
-      "stepNumber": 1,
+      "stepNumber": 3,
       "stepWidth": 600,
       "visible": true,
       "associatedChapter": 3,
       "title": "Schauen Sie sich um",
-      "htmlFile": "step_3-4.html",
+      "htmlFile": "step_3-3.html",
       "centerCoordinate": [
         559285.3963894194,
         5933970.309539413
