@@ -95,6 +95,9 @@
     "Fachdaten": {
       "Layer": [
         {
+          "id": "2426"
+        },
+        {
           "id": "111113",
           "name": "Ergebnisse RE2 Centroids Hover",
           "url": "assets/data/new_results_latlon_centroids.json",

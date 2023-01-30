@@ -6,46 +6,6 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    9.998961982776768,
-                    53.55005817081916
-                ]
-            },
-            "properties": {
-                "entryId": 16,
-                "dateCreated": "2022-06-21T11:20:46.437Z",
-                "imageFile": null,
-                "audioFile": "audio/36_audio_record_0.mp4",
-                "featureId": 36,
-                "title": "",
-                "comment": "",
-                "mobilityMode": ""
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    10.00847934375672,
-                    53.55730357595635
-                ]
-            },
-            "properties": {
-                "entryId": 16,
-                "dateCreated": "2022-06-21T11:20:46.437Z",
-                "imageFile": null,
-                "audioFile": null,
-                "featureId": 37,
-                "title": "",
-                "comment": "",
-                "mobilityMode": ""
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
                     9.993353355335172,
                     53.55091652491215
                 ]
@@ -449,86 +409,6 @@
                 "audioFile": null,
                 "featureId": 54,
                 "title": "Treppen schwer zugänglich",
-                "comment": "",
-                "mobilityMode": "",
-                "hidden": false,
-                "hoverCircle": true
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    10.017094632428131,
-                    53.56362798309821
-                ]
-            },
-            "properties": {
-                "entryId": 47,
-                "dateCreated": "2022-07-20T13:02:11.893Z",
-                "imageFile": null,
-                "audioFile": null,
-                "featureId": 92,
-                "title": "",
-                "comment": "",
-                "mobilityMode": ""
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [
-                            9.996883494197975,
-                            53.5642502045867
-                        ],
-                        [
-                            9.989976734696628,
-                            53.56209144661916
-                        ],
-                        [
-                            9.989661073988453,
-                            53.564518840900305
-                        ],
-                        [
-                            9.996883494197975,
-                            53.5642502045867
-                        ]
-                    ]
-                ]
-            },
-            "properties": {
-                "entryId": 47,
-                "dateCreated": "2022-07-20T13:02:11.893Z",
-                "imageFile": null,
-                "audioFile": null,
-                "featureId": 93,
-                "title": "",
-                "comment": "",
-                "mobilityMode": "",
-                "type": "Polygon",
-                "hidden": true
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    9.993351,
-                    53.563778
-                ]
-            },
-            "properties": {
-                "entryId": 47,
-                "dateCreated": "2022-07-20T13:02:11.893Z",
-                "imageFile": null,
-                "audioFile": null,
-                "featureId": 93,
-                "title": "",
                 "comment": "",
                 "mobilityMode": "",
                 "hidden": false,
@@ -958,6 +838,78 @@
                 "title": "elbdeich e.V.",
                 "comment": "Rollstuhlzugänglicher Eingang zum Gelände und der Pausenhalle. Rolli-WC vorhanden.\nhttps://www.elbdeich.org/barrierefreiheit/",
                 "mobilityMode": ""
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            9.971431739316577,
+                            53.54527805559873
+                        ],
+                        [
+                            9.97150924620529,
+                            53.54517515763781
+                        ],
+                        [
+                            9.971941749629876,
+                            53.54505510497128
+                        ],
+                        [
+                            9.972335362210918,
+                            53.54498055528577
+                        ],
+                        [
+                            9.972520974662235,
+                            53.54506466601253
+                        ],
+                        [
+                            9.972056751447369,
+                            53.545194491946184
+                        ],
+                        [
+                            9.971431739316577,
+                            53.54527805559873
+                        ]
+                    ]
+                ]
+            },
+            "properties": {
+                "entryId": 67,
+                "dateCreated": "2022-09-13T10:14:20.163Z",
+                "imageFile": null,
+                "audioFile": null,
+                "featureId": 157,
+                "title": "",
+                "comment": "Höhe der Balstrade ist zu gering und nicht durchsichtig. Keine Höhe für Menschen im rollstuhl",
+                "mobilityMode": "",
+                "type": "Polygon",
+                "hidden": true
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    9.971979585155944,
+                    53.54512564186298
+                ]
+            },
+            "properties": {
+                "entryId": 67,
+                "dateCreated": "2022-09-13T10:14:20.163Z",
+                "imageFile": null,
+                "audioFile": null,
+                "featureId": 157,
+                "title": "",
+                "comment": "Höhe der Balstrade ist zu gering und nicht durchsichtig. Keine Höhe für Menschen im rollstuhl",
+                "mobilityMode": "",
+                "hidden": false,
+                "hoverCircle": true
             }
         },
         {
@@ -2195,240 +2147,6 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    10.045867045080067,
-                    53.555310825758774
-                ]
-            },
-            "properties": {
-                "entryId": 94,
-                "dateCreated": "2022-09-24T08:22:32.834Z",
-                "imageFile": null,
-                "audioFile": null,
-                "featureId": 196,
-                "title": "test",
-                "comment": "",
-                "mobilityMode": ""
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "LineString",
-                "coordinates": [
-                    [
-                        10.023246416294047,
-                        53.553430337423784
-                    ],
-                    [
-                        10.024308690635642,
-                        53.55317746423115
-                    ],
-                    [
-                        10.02511348214423,
-                        53.55259976676162
-                    ],
-                    [
-                        10.025181923492184,
-                        53.55253972155478
-                    ]
-                ]
-            },
-            "properties": {
-                "entryId": 95,
-                "dateCreated": "2022-09-24T09:55:02.527Z",
-                "imageFile": null,
-                "audioFile": null,
-                "featureId": 197,
-                "title": "weg ubahn zur sbahn berliner tor",
-                "comment": "übergang ist nicht barrierefrei, zumindest früher gab es hier mehrere treppen, die füt körperlich beeinträchtigte menschen ein problem sind.",
-                "mobilityMode": "walk",
-                "hidden": true
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    10.024308690635642,
-                    53.55317746423115
-                ]
-            },
-            "properties": {
-                "entryId": 95,
-                "dateCreated": "2022-09-24T09:55:02.527Z",
-                "imageFile": null,
-                "audioFile": null,
-                "featureId": 197,
-                "title": "weg ubahn zur sbahn berliner tor",
-                "comment": "übergang ist nicht barrierefrei, zumindest früher gab es hier mehrere treppen, die füt körperlich beeinträchtigte menschen ein problem sind.",
-                "mobilityMode": "walk",
-                "hidden": false,
-                "hoverCircle": true
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    10.007277851003927,
-                    53.55256786256195
-                ]
-            },
-            "properties": {
-                "entryId": 96,
-                "dateCreated": "2022-09-24T11:36:14.253Z",
-                "imageFile": null,
-                "audioFile": null,
-                "featureId": 198,
-                "title": "",
-                "comment": "",
-                "mobilityMode": ""
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "LineString",
-                "coordinates": [
-                    [
-                        10.027183562009526,
-                        53.55653687052482
-                    ],
-                    [
-                        10.020319687859581,
-                        53.56011556391386
-                    ],
-                    [
-                        10.016241405349287,
-                        53.563289688737356
-                    ]
-                ]
-            },
-            "properties": {
-                "entryId": 96,
-                "dateCreated": "2022-09-24T11:36:14.253Z",
-                "imageFile": null,
-                "audioFile": null,
-                "featureId": 199,
-                "title": "",
-                "comment": "",
-                "mobilityMode": "wheel",
-                "hidden": true
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    10.020319687859581,
-                    53.56011556391386
-                ]
-            },
-            "properties": {
-                "entryId": 96,
-                "dateCreated": "2022-09-24T11:36:14.253Z",
-                "imageFile": null,
-                "audioFile": null,
-                "featureId": 199,
-                "title": "",
-                "comment": "",
-                "mobilityMode": "wheel",
-                "hidden": false,
-                "hoverCircle": true
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [
-                            10.038620999174993,
-                            53.55710403154191
-                        ],
-                        [
-                            10.028581970544021,
-                            53.55490758009798
-                        ],
-                        [
-                            10.027866312656053,
-                            53.558338543918424
-                        ],
-                        [
-                            10.03848621522071,
-                            53.561386218294146
-                        ],
-                        [
-                            10.038620999174993,
-                            53.55710403154191
-                        ]
-                    ]
-                ]
-            },
-            "properties": {
-                "entryId": 96,
-                "dateCreated": "2022-09-24T11:36:14.253Z",
-                "imageFile": null,
-                "audioFile": null,
-                "featureId": 200,
-                "title": "",
-                "comment": "",
-                "mobilityMode": "",
-                "type": "Polygon",
-                "hidden": true
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    10.033539431150684,
-                    53.55799331935498
-                ]
-            },
-            "properties": {
-                "entryId": 96,
-                "dateCreated": "2022-09-24T11:36:14.253Z",
-                "imageFile": null,
-                "audioFile": null,
-                "featureId": 200,
-                "title": "",
-                "comment": "",
-                "mobilityMode": "",
-                "hidden": false,
-                "hoverCircle": true
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    10.008113302617343,
-                    53.539924445313005
-                ]
-            },
-            "properties": {
-                "entryId": 96,
-                "dateCreated": "2022-09-24T11:36:14.253Z",
-                "imageFile": null,
-                "audioFile": null,
-                "featureId": 201,
-                "title": "Haus ist barrierefrei",
-                "comment": "",
-                "mobilityMode": ""
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
                     10.047703453520063,
                     53.584314595169545
                 ]
@@ -3309,46 +3027,6 @@
                 "featureId": 225,
                 "title": "",
                 "comment": "Kein Zugang zu den öffentlichen Toiletten. Auch die Rolli-Toilette hat kein EURO-Schloss",
-                "mobilityMode": ""
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    9.971569582261154,
-                    53.54467608493326
-                ]
-            },
-            "properties": {
-                "entryId": 111,
-                "dateCreated": "2022-11-09T08:19:36.488Z",
-                "imageFile": null,
-                "audioFile": null,
-                "featureId": 226,
-                "title": "",
-                "comment": "",
-                "mobilityMode": ""
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    9.96982558751169,
-                    53.54507225808884
-                ]
-            },
-            "properties": {
-                "entryId": 111,
-                "dateCreated": "2022-11-09T08:19:36.488Z",
-                "imageFile": null,
-                "audioFile": null,
-                "featureId": 227,
-                "title": "",
-                "comment": "",
                 "mobilityMode": ""
             }
         }

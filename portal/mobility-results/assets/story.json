@@ -61,10 +61,10 @@
       "title": "Realexperiment 1",
       "htmlFile": "step_1-3.html",
       "centerCoordinate": [
-        562959.0584195709,
-        5935089.763256823
+        566393.2015999235,
+        5933073.271797102
       ],
-      "zoomLevel": 1,
+      "zoomLevel": 7,
       "layers": [
       ],
       "interactionAddons": []
@@ -77,10 +77,10 @@
       "title": "Realexperiment 2",
       "htmlFile": "step_1-4.html",
       "centerCoordinate": [
-        562959.0584195709,
-        5935089.763256823
+        565812.1178976087,
+        5933989.376410703
       ],
-      "zoomLevel": 1,
+      "zoomLevel": 8,
       "layers": [
       ],
       "interactionAddons": []
@@ -93,10 +93,10 @@
       "title": "Connected Urban Twins",
       "htmlFile": "step_1-5.html",
       "centerCoordinate": [
-        555894.6872343315,
-        5931378.984010641
+        564836.1878134455,
+        5935939.413177104
       ],
-      "zoomLevel": 0,
+      "zoomLevel": 3,
       "layers": [],
       "interactionAddons": []
     },
@@ -108,10 +108,10 @@
       "title": "Die Datenerhebung",
       "htmlFile": "step_2-1.html",
       "centerCoordinate": [
-        562562.1836338834,
-        5934983.929980639
+        562282.6651470402,
+        5932955.500508483
       ],
-      "zoomLevel": 1,
+      "zoomLevel": 0,
       "layers": [
         "111113"
       ],
@@ -125,8 +125,8 @@
       "title": "Überblick über die Ergebnisse",
       "htmlFile": "step_2-2.html",
       "centerCoordinate": [
-        562562.1836338834,
-        5934983.929980639
+        561564.76006545,
+        5929331.885145498
       ],
       "zoomLevel": 1,
       "layers": [
@@ -142,10 +142,10 @@
       "title": "Besonderes Thema",
       "htmlFile": "step_2-3.html",
       "centerCoordinate": [
-        562562.1836338834,
-        5934983.929980639
+        573608.0005294154,
+        5940783.486513051
       ],
-      "zoomLevel": 1,
+      "zoomLevel": 5,
       "layers": [
         "111113"
       ],
