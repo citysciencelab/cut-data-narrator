@@ -139,7 +139,7 @@
       "stepWidth": 700,
       "visible": true,
       "associatedChapter": 2,
-      "title": "Besonderes Thema",
+      "title": "Besondere Themen",
       "htmlFile": "step_2-3.html",
       "centerCoordinate": [
         573608.0005294154,
@@ -159,10 +159,10 @@
       "title": "Gebiet mit vielen Einträgen",
       "htmlFile": "step_2-4.html",
       "centerCoordinate": [
-        553783.313374474,
-        5933114.649740055
+        563804.2386013605,
+        5935689.157774419
       ],
-      "zoomLevel": 0,
+      "zoomLevel": 7,
       "layers": [
         "111113"
       ],
