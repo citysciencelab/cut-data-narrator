@@ -1,0 +1,10 @@
+{
+  "storyTellingTool": {
+    "path": "dipasAddons/storyTellingTool",
+    "type": "tool"
+  },
+  "resultsTheme": {
+    "path": "results",
+    "type": "gfiTheme"
+  }
+}
