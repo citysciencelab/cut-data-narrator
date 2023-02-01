@@ -20,7 +20,8 @@ RUN apk add --update --no-cache \
 
 COPY . .
 
-RUN mkdir -p addons/dipasAddons
+RUN mkdir -p addons/
+RUN mkdir -p addons/dipasAddons/
 RUN git clone https://till-hcu:GtsKKEPfVqKz,5/@bitbucket.org/geowerkstatt-hamburg/dipas-masterportal-addons.git addons/dipasAddons
 
 COPY portal/mobility-results/addonsConf.json addons/
