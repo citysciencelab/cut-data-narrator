@@ -40,10 +40,6 @@ export default {
         isWebLink,
         translateKeyWithPlausibilityCheck,
 
-        close () {
-            console.log("close");
-        },
-
         /**
          * Saves the geometry as WKT.
          * @param {string} ring polygon from feature
