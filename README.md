@@ -1,12 +1,12 @@
 <p align="center">
-<img src="https://user-images.githubusercontent.com/61881523/186185988-e0eeb32a-3d2c-4fcc-bd33-bfb4abd7a35c.png" alt="drawing" width="400"/>
+    <img src="https://user-images.githubusercontent.com/36763878/218791112-6ffb1963-b9d2-4da0-b8d9-5fb06470c4a8.png" alt="drawing" width="600"/>
 </p>
 
-# Storytelling Tool
+# Data Narrator
 
 ## City Science Lab - Connected Urban Twin
 
-The Storytelling Tool is a **[Masterportal](https://www.masterportal.org/)** add-on that can be used to add text, photos
+The Data Narrator is a **[Masterportal](https://www.masterportal.org/)** add-on that can be used to add text, photos
 and images to geo-referenced data sets. In this way, the usually very technical and purely data-based representations
 can be supplemented with information and more descriptive representations. The data shown is contextualized and complex
 relationships become easier to understand. Users click their way through a story step by step.
