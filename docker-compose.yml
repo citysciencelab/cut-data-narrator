@@ -1,14 +1,8 @@
 version: '3.9'
 services:
-    # Frontend incl. Masterportal configuration for the storytelling tool
-    stt-frontend:
-        container_name: stt-frontend
+    mobility-frontend-re2:
         build:
             context: .
             dockerfile: Dockerfile
-        networks:
-            - proxy
-
-networks:
-    proxy:
-        external: true
+        ports:
+            - '80:80'

@@ -1,7 +1,5 @@
-# Create container for building stt-frontend
-FROM node:16.14.0-alpine as build
-
-RUN apk add --update git openssh
+# Create container for building mobility-frontend
+FROM node:16.13.2-alpine as build
 
 RUN mkdir -p /usr/app
 WORKDIR /usr/app
@@ -18,24 +16,20 @@ RUN apk add --update --no-cache \
     autoconf \
     automake
 
-COPY . .
+COPY . ./masterportal
 
-RUN mkdir -p addons/
-RUN mkdir -p addons/dipasAddons/
-RUN git clone https://till-hcu:GtsKKEPfVqKz,5/@bitbucket.org/geowerkstatt-hamburg/dipas-masterportal-addons.git addons/dipasAddons
+RUN git clone https://till-hcu:ATBB8uZXuGFtaKkCs9Mt9hhNwZWk74C19AD8@bitbucket.org/geowerkstatt-hamburg/dipas-masterportal-addons.git masterportal/addons/dipasAddons
+COPY portal/addonsConf.json ./masterportal/addons/
 
-COPY portal/mobility-results/addonsConf.json addons/
-COPY portal/mobility-results/gfi-addon/results addons/
+RUN npm i --prefix masterportal/addons/dipasAddons/storyTellingTool
+RUN npm i --prefix masterportal
 
-RUN npm i --prefix addons/dipasAddons/storyTellingTool
-RUN npm i --prefix
+RUN npm run buildPortal --prefix masterportal
 
-RUN npm run buildPortal --prefix
-
-# Create container for running stt-frontend
+# Create container for running mobility-frontend
 FROM nginx
 
 # Copy build files from build container
-COPY --from=build /usr/app/dist /usr/share/nginx/html
+COPY --from=build /usr/app/masterportal/dist /usr/share/nginx/html
 
 EXPOSE 80
