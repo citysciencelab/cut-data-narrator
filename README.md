@@ -1,4 +1,5 @@
 # Data Narrator
+
 ## City Science Lab - Connected Urban Twin
 
 <p align="center">
@@ -12,14 +13,14 @@ more descriptive representations.
 The data shown is contextualized and complex relationships become easier to understand.
 Users click their way through a story step by step.
 
-To tests the STT with an example story go to the GitHub page of
-the **[City Science Lab ](https://github.com/citysciencelab/cut-storytelling-tool)**
+To test DANA with an example story go to the GitHub page of
+the **[City Science Lab ](https://github.com/citysciencelab/cut-data-narrator)**
 The aforementioned repository includes an example from the real-life experiment 'Mobilities of care'. Topics such as the
 mobility behavior of unpaid care workers can thus be communicated and located more easily. This is available under the
 portal configuration called '/mobility-data/'.
 The example portal configuration is included in this repository in the example folder. A running portal configuration
 that includes 3D data can be
-found **[here](https://github.com/citysciencelab/cut-storytelling-tool/tree/main/portal/3d-test)**
+found **[here](https://github.com/citysciencelab/cut-data-narrator/tree/dev/portal/3d-test)**
 
 [![example story video](./doc/videoimage.jpg)](https://user-images.githubusercontent.com/36763878/161025746-b8ac51be-a687-4e63-8bcf-b1da01334ead.mp4 "Example story video - Click to Watch!")
 
@@ -95,8 +96,8 @@ The Data Narrator let's the user explore and create stories.
 
 ```json
 "dataNarrator": {
-  "name": "Data Narrator",
-  "glyphicon": "glyphicon-book"
+"name": "Data Narrator",
+"glyphicon": "glyphicon-book"
 }
 ```
 
@@ -152,6 +153,133 @@ config.js
 const Config = {
     addons: ["dataNarrator"],
     storyConf: "./story.json",
-    [...]
-};
+    [...
+]
+}
+;
 ```
+
+
+### Docker setup
+
+Quick setup of a local version of the storytelling tool.
+
+#### Docker Deployment
+
+Deploy the frontend and backend applications including database to Docker.
+
+```
+docker-compose up
+```
+
+Default URL for the application deployed on your local machine is: http://localhost/mobility-data/
+
+### Masterportal setup
+
+You can also start the application with npm if you plan on connecting a database, creating a new story or adjusting the
+code to your needs.
+
+#### Node.js
+
+Install **[Node.js](http://nodejs.org)**. Last known working version is *v10.18.0 LTS* with *NPM version 6.13.4*.
+
+#### Tool installation
+
+Execute the git bash as admin and navigate to the folder the repository is to be cloned to.
+
+Clone the repository and navigate to the folder created:
+
+```console
+git clone https://github.com/citysciencelab/cut-data-narrator.git
+```
+
+Navigate to the addons folder and into it clone the dipasAddons
+
+```console
+git clone https://till-hcu@bitbucket.org/geowerkstatt-hamburg/dipas-masterportal-addons.git
+```
+
+Install the `node_modules` required for the addons:
+
+Step 1:
+
+```console
+cd cut-data-narrator\addons\dipasAddons\dataNarrator
+npm install
+```
+
+Install the `node_modules` required for the Masterportal:
+
+```console
+cd cut-data-narrator
+npm install
+```
+
+With this, all dependencies are installed.
+
+Add the following attributes to config.js of your configured portal:
+
+```
+addons: ["storyTellingTool"],
+vuetify: "addons/storyTellingTool/vuetify",
+storyConf: "./ressources/story.json",
+uiStyle: "table",
+
+```
+
+Add the following line to index.html of your configured portal:
+
+```
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Material+Icons">
+```
+
+Copy and potentially replace the file
+```
+cut-data-narrator\portal\addonsConf.json
+```
+to
+```
+cut-data-narrator\addons\
+```
+
+
+
+In case you need further information about how add-ons configured and developed, please refer to
+the **[add-ons documentation](doc/addonsVue.md)** for further assistance.
+
+This command will start a local development server.
+
+```console
+npm start
+```
+
+- After compilation, you may open the following links for comprehensive demo applications:
+    - https://localhost:9001/portal/mobility-data Portal that includes the initial Faircare story as well as the data
+      gathering tool
+
+An example story can be found in the folder:
+
+```
+portal\mobility-data\assets
+```
+
+The stories are referenced in the storyConf variable in the [config.js](portal\mobility-data\config.js).
+
+---
+
+#### Following is the official documentation of the Masterportal
+
+Official website of the [Masterportal](https://www.masterportal.org/)
+
+The Masterportal is a tool-kit to create geo web applications based on [OpenLayers](https://openlayers.org)
+, [Vue.js](https://vuejs.org/) and [Backbone.js](https://backbonejs.org). The Masterportal is Open Source Software
+published under the [MIT License](https://bitbucket.org/geowerkstatt-hamburg/masterportal/src/dev/License.txt).
+
+The Masterportal is a project by [Geowerkstatt Hamburg](https://www.hamburg.de/geowerkstatt/).
+
+###### Developer section
+
+* [Developer documentation](doc/devdoc.md)
+* [Tutorial 01: Creating a new module (Scale switcher)](https://bitbucket.org/geowerkstatt-hamburg/masterportal/src/dev/doc/vueTutorial.md)
+* [Community board (Developer forum and issue tracker)](https://trello.com/c/qajdXkMa/110-willkommen)
+
