@@ -1,25 +1,31 @@
-<p align="center">
-    <img src="https://user-images.githubusercontent.com/36763878/218791112-6ffb1963-b9d2-4da0-b8d9-5fb06470c4a8.png" alt="drawing" width="600"/>
-</p>
-
 # Data Narrator
-
 ## City Science Lab - Connected Urban Twin
 
-The Data Narrator is a **[Masterportal](https://www.masterportal.org/)** add-on that can be used to add text, photos
-and images to geo-referenced data sets. In this way, the usually very technical and purely data-based representations
-can be supplemented with information and more descriptive representations. The data shown is contextualized and complex
-relationships become easier to understand. Users click their way through a story step by step.
+<p align="center">
+<img src="./doc/data-narrator-logo.png" alt="drawing" width="600"/>
+</p>
 
-The current version of the repository includes an example from the real-life experiment 'Mobilities of care'. Topics
-such as the mobility behavior of unpaid care workers can thus be communicated and located more easily. This is available
-under the portal configuration called '/mobility-data/'.
+The Data Narrator (DANA) is a **[Masterportal](https://www.masterportal.org/)** add-on that can be used to add text,
+photos and images to geo-referenced data sets.
+In this way, the usually very technical and purely data-based representations can be supplemented with information and
+more descriptive representations.
+The data shown is contextualized and complex relationships become easier to understand.
+Users click their way through a story step by step.
 
-https://user-images.githubusercontent.com/36763878/161025746-b8ac51be-a687-4e63-8bcf-b1da01334ead.mp4
+To tests the STT with an example story go to the GitHub page of
+the **[City Science Lab ](https://github.com/citysciencelab/cut-storytelling-tool)**
+The aforementioned repository includes an example from the real-life experiment 'Mobilities of care'. Topics such as the
+mobility behavior of unpaid care workers can thus be communicated and located more easily. This is available under the
+portal configuration called '/mobility-data/'.
+The example portal configuration is included in this repository in the example folder. A running portal configuration
+that includes 3D data can be
+found **[here](https://github.com/citysciencelab/cut-storytelling-tool/tree/main/portal/3d-test)**
+
+[![example story video](./doc/videoimage.jpg)](https://user-images.githubusercontent.com/36763878/161025746-b8ac51be-a687-4e63-8bcf-b1da01334ead.mp4 "Example story video - Click to Watch!")
 
 ### Story JSON
 
-The main attributes of the story configuration file are the follwing:
+The main attributes of the story.json configuration file are the follwing:
 
 1. "title" - The name of the story
 2. "author" - The author visible at the story entry page
@@ -34,8 +40,10 @@ The main attributes of the story configuration file are the follwing:
    "chapterTitle": "title"
    },)
 8. "steps" - Array of the story steps
+9. "isNoCreateMode" - Defines if the option to get to the story creation is displayed
+10. "storyInterval" - Definition of the automatic playback of a story in millisecond
 
-The story JSON attributes are the follwing:
+The story steps attributes in the story.json are the follwing:
 
 1. "stepNumber" - Number of the index of the step
 2. "stepWidth" - The maximal width on screen that will be shown
@@ -67,136 +75,83 @@ The story JSON attributes are the follwing:
     })
     In the case of a 3D mode, the attributes 'zoomLevel' and 'centerCoordinate' are obsolete
 
-### Setup
+## Configuration
 
-1. copy master portal storytelling tool repository and follow the **[Masterportal setup](#masterportal-setup)**
-2. copy portal configuration 'basic' and select desired name for portal
-3. remove all unused files from the folder '*portalname*/resources' and corresponding references from config.js
-4. enter all used services into a JSON and reference them in config.js in the attribute 'layerConf
-5. configure attribute namedProjections in config.js
-6. specify the attributes startCenter, extent, startZoomLevel, epsg of the mapView attribute in config.json
-7. fill the attributes background maps and subject data with the corresponding IDs of the JSON from point 4
-8. add the following attributes to config.js:
+The Data Narrator let's the user explore and create stories.
 
-```
-addons: ["storyTellingTool"],
-vuetify: "addons/storyTellingTool/vuetify",
-storyConf: "./ressources/story.json",
-uiStyle: "table",
+| Name               | Required | Type    | Default        | Description                                                                              |
+| ------------------ | -------- | ------- |----------------| ---------------------------------------------------------------------------------------- |
+| active             | no       | Boolean | false          | Whether the tool is initially opened or not.                                             |
+| name               | no       | String  | Data Narrator  | Name of the tool in the menu.                                                            |
+| glyphicon          | no       | String  | glyphicon-book | CSS class of the glyphicons, which is displayed before the name of the tool in the menu. |
+| renderToWindow     | no       | Boolean | true           | Whether the tools is rendered in a separate window or not.                               |
+| resizableWindow    | no       | Boolean | true           | Whether the tool window is resizeable or not.                                            |
+| isVisibleInMenu    | no       | Boolean | true           | Whether the tool is visible in the menu or not.                                          |
+| deactivateGFI      | no       | Boolean | false          | If set to `true`, the filter tool deactivates GFI requests while open.                   |
+| initialWidth       | no       | Number  | 500            | The initial width of the tool.                                                           |
+| initialWidthMobile | no       | Number  | 300            | The initial width of the tool on mobile devices.                                         |
 
-```
+**Example**
 
-9. configure the tools attribute of config.json as follows:
-
-```
-    "tools": {
-        "name": "translate#common:menu.tools.name",
-        "glyphicon": "glyphicon-wrench",
-        "children": {
-            "storyTellingTool": {
-                "name": "translate#additional:modules.tools.storyTellingTool.title",
-                "glyphicon": "glyphicon-book",
-                "active": true
-            }
-        }
-    },
+```json
+"dataNarrator": {
+  "name": "Data Narrator",
+  "glyphicon": "glyphicon-book"
+}
 ```
 
-10. add the following line to index.html:
+## Explore your story
+
+After creating your story in the creator section of the Data Narrator, you can download the story as zip file.
+The zip file contains a `story.json` and, in case you added HTML content to your story, a `story` folder.
+
+**Example**
+
+story.zip content folder structure
 
 ```
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Material+Icons">
+story.zip
+|-- story.json
+|-- story
+|    step_1-1.html
+|    step_2-1.html
+|    step_2-2.html
+|   |-- images
+|   |   |-- step_1-1_1.png
+|   |   |-- step_1-1_2.jpg
 ```
 
-12. create test story
-13. start with docker or npm
+To explore your story in the Data Narrator ...
 
-### Docker
+1. place the content of the zip file in your portal config folder
+2. add a `storyConf` parameter to the `Config` in your portal's `config.js` with the path to the `story.json` as value
 
-Quick setup of a local version of the storytelling tool.
+**Example**
 
-#### Docker Deployment
-
-Deploy the frontend and backend applications including database to Docker.
+portal folder structure
 
 ```
-docker-compose up
+masterportal/portal
+|-- my_portal
+|    config.js
+|    config.json
+|    index.html
+|   |-- story.json
+|   |-- story
+|   |    step_1-1.html
+|   |    step_2-1.html
+|   |    step_2-2.html
+|   |   |-- images
+|   |   |   |-- step_1-1_1.png
+|   |   |   |-- step_1-1_2.jpg
 ```
 
-Default URL for the application deployed on your local machine is: http://localhost/mobility-data/
+config.js
 
-### Masterportal setup
-
-You can also start the application with npm if you plan on connecting a database, creating a new story or adjusting the
-code to your needs.
-
-#### Node.js
-
-Install **[Node.js](http://nodejs.org)**. Last known working version is *v10.18.0 LTS* with *NPM version 6.13.4*.
-
-#### Tool installation
-
-Execute the git bash as admin and navigate to the folder the repository is to be cloned to.
-
-Clone the repository and navigate to the folder created:
-
-```console
-git clone https://github.com/citysciencelab/cut-storytelling-tool.git
+```js
+const Config = {
+    addons: ["dataNarrator"],
+    storyConf: "./story.json",
+    [...]
+};
 ```
-
-Install the `node_modules` required for the addons:
-
-Step 1:
-
-```console
-cd cut-storytelling-tool\addons\storyTellingTool
-npm install
-```
-
-Install the `node_modules` required for the Masterportal:
-
-```console
-cd masterportal
-npm install
-```
-
-With this, all dependencies are installed.
-
-In case you need further information about how add-ons configured and developed, please refer to
-the **[add-ons documentation](doc/addonsVue.md)** for further assistance.
-
-This command will start a local development server.
-
-```console
-npm start
-```
-
-- After compilation, you may open the following links for comprehensive demo applications:
-    - https://localhost:9001/portal/mobility-data Portal that includes the initial Faircare story as well as the data
-      gathering tool
-
-An example story can be found in the folder:
-
-```
-cut-storytelling-tool\portal\mobility-data\assets
-```
-
-The stories are referenced in the storyConf variable in the [config.js](portal\mobility-data\config.js).
-
----
-
-#### Following is the official documentation of the Masterportal
-
-Official website of the [Masterportal](https://www.masterportal.org/)
-
-The Masterportal is a tool-kit to create geo web applications based on [OpenLayers](https://openlayers.org)
-, [Vue.js](https://vuejs.org/) and [Backbone.js](https://backbonejs.org). The Masterportal is Open Source Software
-published under the [MIT License](https://bitbucket.org/geowerkstatt-hamburg/masterportal/src/dev/License.txt).
-
-The Masterportal is a project by [Geowerkstatt Hamburg](https://www.hamburg.de/geowerkstatt/).
-
-###### Developer section
-
-* [Developer documentation](doc/devdoc.md)
-* [Tutorial 01: Creating a new module (Scale switcher)](https://bitbucket.org/geowerkstatt-hamburg/masterportal/src/dev/doc/vueTutorial.md)
-* [Community board (Developer forum and issue tracker)](https://trello.com/c/qajdXkMa/110-willkommen)
