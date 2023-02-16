@@ -1,6 +1,6 @@
 {
-  "storyTellingTool": {
-    "path": "dipasAddons/storyTellingTool",
+  "dataNarrator": {
+    "path": "dipasAddons/dataNarrator",
     "type": "tool"
   },
   "resultsTheme": {

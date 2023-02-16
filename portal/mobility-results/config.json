@@ -40,8 +40,8 @@
             "desktopType": "attached",
             "active": true
           },
-          "storyTellingTool": {
-            "name": "translate#additional:modules.tools.storyTellingTool.title",
+          "dataNarrator": {
+            "name": "translate#additional:modules.tools.dataNarrator.title",
             "glyphicon": "glyphicon-book",
             "active": true
           },

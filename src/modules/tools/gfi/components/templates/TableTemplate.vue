@@ -150,10 +150,11 @@ export default {
 .gfi-detached-table {
     box-shadow: 8px 8px 12px rgba(0, 0, 0, 0.3);
     border-radius: 12px;
-    background-color:  $dark_grey;
+    background-color: $dark_grey;
     color: $dark_grey;
     touch-action: pan-x pan-y;
-    .tool-window-heading{
+
+    .tool-window-heading {
         padding: 0;
         border-bottom: 1px solid $dark_grey;
         border-radius: 11px 11px 0 0;
@@ -161,23 +162,28 @@ export default {
         color: $light_grey;
         padding-top: 8px;
         padding-left: 8px;
+
         .heading-element > h2 {
             color: $white;
             margin-right: 50px;
             text-overflow: ellipsis;
         }
     }
+
     .vue-tool-content-body {
         border-radius: 12px;
     }
+
     .vue-tool-content-body .body {
         max-height: 175px;
         overflow-x: hidden;
         overflow: auto;
     }
+
     .vue-tool-content-body .body::-webkit-scrollbar {
         width: 20px;
     }
+
     .vue-tool-content-body .body::-webkit-scrollbar-track {
         border: 5px solid transparent;
         border-radius: 12px;
@@ -191,6 +197,7 @@ export default {
         border-radius: 12px;
         background-clip: content-box;
     }
+
     .icon-turnarticle {
         color: $light_grey;
         position: relative;
@@ -199,30 +206,38 @@ export default {
         margin: 6px 0 0 10px;
         cursor: pointer;
         font-size: $font_size_icon_lg;
+
         &:focus {
             @include primary_action_focus;
         }
+
         &:hover {
             @include primary_action_hover;
         }
     }
+
     .icon-turnarticle::before {
         color: $light_grey;
     }
+
     span.bootstrap-icon > .bi-x-lg::before {
         color: $light_grey;
     }
 }
-.rotate0{
+
+.rotate0 {
     transform: rotate(0deg);
 }
-.rotate-90{
+
+.rotate-90 {
     transform: rotate(-90deg);
 }
-.rotate-180{
+
+.rotate-180 {
     transform: rotate(-180deg);
 }
-.rotate-270{
+
+.rotate-270 {
     transform: rotate(-270deg);
 }
 

@@ -1,5 +1,5 @@
 const Config = {
-    addons: ["storyTellingTool"],
+    addons: ["dataNarrator"],
     ignoredKeys: [
         "BOUNDEDBY",
         "SHAPE",
@@ -14,7 +14,7 @@ const Config = {
         "GEOM"
     ],
     wfsImgPath: "https://geodienste.hamburg.de/lgv-config/img/",
-    vuetify: "addons/storyTellingTool/vuetify",
+    vuetify: "addons/dipasAddons/dataNarrator/vuetify",
     metadata: {
         useProxy: ["https://metaver.de/csw"]
     },

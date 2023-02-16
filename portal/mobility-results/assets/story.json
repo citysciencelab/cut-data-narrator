@@ -6,6 +6,7 @@
   "htmlFolder": "story",
   "isScrollytelling": false,
   "isNoCreateMode": true,
+  "storyInterval": 2500,
   "chapters": [
     {
       "chapterNumber": 1,

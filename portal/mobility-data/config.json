@@ -1,7 +1,7 @@
 {
   "Portalconfig": {
     "treeType": "light",
-    "isScrollyStory" : true,
+    "isScrollyStory": true,
     "mapView": {
       "extent": [
         442800,
@@ -35,8 +35,8 @@
         "name": "translate#common:menu.tools.name",
         "glyphicon": "glyphicon-wrench",
         "children": {
-          "storyTellingTool": {
-            "name": "translate#additional:modules.tools.storyTellingTool.title",
+          "dataNarrator": {
+            "name": "translate#additional:modules.tools.dataNarrator.title",
             "glyphicon": "glyphicon-book",
             "active": true
           },
@@ -90,7 +90,6 @@
           "visibility": true,
           "isVisibleInTree": false,
           "legend": false
-
         }
       ]
     },

@@ -1,6 +1,6 @@
 const Config = {
-    addons: ["storyTellingTool"],
-    vuetify: "addons/storyTellingTool/vuetify",
+    addons: ["dataNarrator"],
+    vuetify: "addons/dipasAddons/dataNarrator/vuetify",
     storyConf: "./assets/story.json",
     uiStyle: "table",
     namedProjections: [

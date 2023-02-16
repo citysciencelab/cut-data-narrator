@@ -34,8 +34,8 @@
         "name": "translate#common:menu.tools.name",
         "glyphicon": "glyphicon-wrench",
         "children": {
-          "storyTellingTool": {
-            "name": "translate#additional:modules.tools.storyTellingTool.title",
+          "dataNarrator": {
+            "name": "translate#additional:modules.tools.dataNarrator.title",
             "glyphicon": "glyphicon-book",
             "active": true
           },

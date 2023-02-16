@@ -1,4 +1,8 @@
 {
+  "dataNarrator": {
+    "path": "dipasAddons/dataNarrator",
+    "type": "tool"
+  },
   "resultsTheme": {
     "path": "results",
     "type": "gfiTheme"
