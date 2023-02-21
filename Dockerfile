@@ -18,7 +18,8 @@ RUN apk add --update --no-cache \
 
 COPY . ./masterportal
 
-RUN git clone https://till-hcu:ATBB8uZXuGFtaKkCs9Mt9hhNwZWk74C19AD8@bitbucket.org/geowerkstatt-hamburg/dipas-masterportal-addons.git masterportal/addons/dipasAddons
+
+RUN git clone --depth=1 --branch re2-results-running https://bitbucket.org/geowerkstatt-hamburg/dipas-masterportal-addons.git masterportal/addons/dipasAddons
 COPY portal/addonsConf.json ./masterportal/addons/
 
 RUN npm i --prefix masterportal/addons/dipasAddons/storyTellingTool
