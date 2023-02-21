@@ -11,13 +11,18 @@ photos and images to geo-referenced data sets.
 In this way, the usually very technical and purely data-based representations can be supplemented with information and
 more descriptive representations.
 The data shown is contextualized and complex relationships become easier to understand.
-Users click their way through a story step by step. You can test the tool **[here](https://re1.cut.hcu-hamburg.de/mobility-data/)**.
+Users click their way through a story step by step. You can test the
+tool **[here](https://re1.cut.hcu-hamburg.de/mobility-data/)**.
+
+:bangbang: The Data Narrator is the new name and this is the new repository for the
+former **[Storytelling Tool](https://github.com/citysciencelab/cut-storytelling-tool)**.
 
 To test DANA with an example story go to the GitHub page of
 the **[City Science Lab ](https://github.com/citysciencelab/cut-data-narrator)**
 The aforementioned repository includes an example from the real-life experiment 'Mobilities of care'. Topics such as the
 mobility behavior of unpaid care workers can thus be communicated and located more easily. This is available under the
-portal configuration called **['/mobility-data/'](https://github.com/citysciencelab/cut-data-narrator/tree/dev/portal/mobility-data)**.
+portal configuration
+called **['/mobility-data/'](https://github.com/citysciencelab/cut-data-narrator/tree/dev/portal/mobility-data)**.
 The example portal configuration is included in this repository in the example folder. A running portal configuration
 that includes 3D data can be
 found **[here](https://github.com/citysciencelab/cut-data-narrator/tree/dev/portal/3d-test)**
@@ -25,7 +30,10 @@ found **[here](https://github.com/citysciencelab/cut-data-narrator/tree/dev/port
 [![example story video](./doc/videoimage.jpg)](https://user-images.githubusercontent.com/36763878/161025746-b8ac51be-a687-4e63-8bcf-b1da01334ead.mp4 "Example story video - Click to Watch!")
 
 ### Story JSON
-The main attributes of the **[story.json](https://github.com/citysciencelab/cut-data-narrator/blob/dev/portal/mobility-data/assets/story.json)** configuration file are the follwing:
+
+The main attributes of
+the **[story.json](https://github.com/citysciencelab/cut-data-narrator/blob/dev/portal/mobility-data/assets/story.json)**
+configuration file are the follwing:
 
 1. "title" - The name of the story
 2. "author" - The author visible at the story entry page
@@ -43,7 +51,9 @@ The main attributes of the **[story.json](https://github.com/citysciencelab/cut-
 9. "isNoCreateMode" - Defines if the option to get to the story creation is displayed
 10. "storyInterval" - Definition of the automatic playback of a story in millisecond
 
-The story steps attributes in the **[story.json](https://github.com/citysciencelab/cut-data-narrator/blob/dev/portal/mobility-data/assets/story.json)** are the follwing:
+The story steps attributes in
+the **[story.json](https://github.com/citysciencelab/cut-data-narrator/blob/dev/portal/mobility-data/assets/story.json)**
+are the follwing:
 
 1. "stepNumber" - Number of the index of the step
 2. "stepWidth" - The maximal width on screen that will be shown
@@ -75,11 +85,11 @@ The story steps attributes in the **[story.json](https://github.com/citysciencel
     })
     In the case of a 3D mode, the attributes 'zoomLevel' and 'centerCoordinate' are obsolete
 
-
 ## Explore your story
 
 After creating your story in the creator section of the Data Narrator, you can download the story as zip file.
-The zip file contains a `story.json` and, in case you added HTML content to your story, a `story` folder. You can access the story creator **[here](https://re1.cut.hcu-hamburg.de/mobility-data/)**.
+The zip file contains a `story.json` and, in case you added HTML content to your story, a `story` folder. You can access
+the story creator **[here](https://re1.cut.hcu-hamburg.de/mobility-data/)**.
 
 **Example**
 
@@ -122,8 +132,9 @@ masterportal/portal
 |   |   |   |-- step_1-1_2.jpg
 ```
 
-
-The configuration of the Data Narrator addon in the **[config.json](https://github.com/citysciencelab/cut-data-narrator/blob/dev/portal/mobility-data/config.json)** can include the following parameters
+The configuration of the Data Narrator addon in
+the **[config.json](https://github.com/citysciencelab/cut-data-narrator/blob/dev/portal/mobility-data/config.json)** can
+include the following parameters
 
 | Name               | Required | Type    | Default        | Description                                                                              |
 | ------------------ | -------- | ------- |----------------| ---------------------------------------------------------------------------------------- |
@@ -146,9 +157,12 @@ The configuration of the Data Narrator addon in the **[config.json](https://gith
 }
 ```
 
-You also have to adjust the **[config.js](https://github.com/citysciencelab/cut-data-narrator/blob/dev/portal/mobility-data/config.js)** and add the following parameters.
+You also have to adjust
+the **[config.js](https://github.com/citysciencelab/cut-data-narrator/blob/dev/portal/mobility-data/config.js)** and add
+the following parameters.
 
 **Example**
+
 ```js
 const Config = {
     addons: ["dataNarrator"],
@@ -156,14 +170,15 @@ const Config = {
 }
 ```
 
-
 ### Docker setup
 
 Quick setup of a local version of the storytelling tool.
 
 #### Docker Deployment
 
-Deploy the frontend (masterportal and pulled addon from the  **[Dipass Addons](https://bitbucket.org/geowerkstatt-hamburg/dipas-masterportal-addons/src/dev/)** repository) to Docker. Install Docker on your local machine, pull this repository and execute the following command.
+Deploy the frontend (masterportal and pulled addon from
+the  **[Dipass Addons](https://bitbucket.org/geowerkstatt-hamburg/dipas-masterportal-addons/src/dev/)** repository) to
+Docker. Install Docker on your local machine, pull this repository and execute the following command.
 
 ```
 docker-compose up
@@ -231,15 +246,16 @@ Add the following line to index.html of your configured portal:
 ```
 
 Copy and potentially replace the file
+
 ```
 cut-data-narrator\portal\addonsConf.json
 ```
+
 to
+
 ```
 cut-data-narrator\addons\
 ```
-
-
 
 In case you need further information about how add-ons configured and developed, please refer to
 the **[add-ons documentation](doc/addonsVue.md)** for further assistance.
