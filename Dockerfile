@@ -22,7 +22,7 @@ COPY . ./masterportal
 RUN git clone --depth=1 --branch re2-results-running https://bitbucket.org/geowerkstatt-hamburg/dipas-masterportal-addons.git masterportal/addons/dipasAddons
 COPY portal/addonsConf.json ./masterportal/addons/
 
-RUN npm i --prefix masterportal/addons/dipasAddons/storyTellingTool
+RUN npm i --prefix masterportal/addons/dipasAddons/dataNarrator
 RUN npm i --prefix masterportal
 
 RUN npm run buildPortal --prefix masterportal
