@@ -11259,14 +11259,12 @@
           "circleStrokeColor": [
             249,
             248,
-            113,
-            0.9
+            113
           ],
           "circleFillColor": [
             89,
             109,
-            155,
-            0.6
+            155
           ]
         }
       },
@@ -11422,14 +11420,12 @@
           "circleStrokeColor": [
             255,
             255,
-            255,
-            0.6
+            255
           ],
           "circleFillColor": [
             142,
             160,
-            210,
-            0.8
+            210
           ],
           "polygonFillColor": [
             102,

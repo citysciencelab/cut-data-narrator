@@ -54,7 +54,7 @@
       "legend": {
         "name": "common:modules.legend.name",
         "showCollapseAllButton": true,
-        "showLegend": false
+        "showLegend": true
       }
     },
     "controls": {
@@ -99,7 +99,7 @@
         },
         {
           "id": "111113",
-          "name": "Ergebnisse RE2 Centroids Hover",
+          "name": "FairCare Datenerhebung",
           "url": "assets/data/new_results_latlon_centroids.json",
           "typ": "GeoJSON",
           "gfiTheme": "resultsTheme",
@@ -119,7 +119,8 @@
           },
           "styleId": "20221202",
           "layerAttribution": "nicht vorhanden",
-          "legend": false,
+          "legend": true,
+          "legendURL": "assets/story/images/results-legend.png",
           "datasets": [],
           "urlIsVisible": true,
           "visibility": true,

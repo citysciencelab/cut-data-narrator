@@ -200,6 +200,8 @@ export default {
 
 <style lang="scss" scoped>
 .table-hover {
+    font-size: 10pt;
+
     .result_image {
         width: 200px;
         cursor: pointer;
