@@ -5,11 +5,11 @@ const uuid = require("uuid"),
     // This info must match the details of a running postgres database. See readme.md for details on DB setup
     Pool = require("pg").Pool,
     pool = new Pool({
-        user: 'me',
-        host: 'localhost',
-        database: 'stories',
-        password: 'password',
-        port: 5432,
+        user: "postgres",
+        host: "localhost",
+        database: "stories",
+        password: "hECJFh7",
+        port: 5432
     });
 
 /**
