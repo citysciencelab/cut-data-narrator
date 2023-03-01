@@ -19,7 +19,7 @@ router.get("/step/:storyId/:step_major/:step_minor", controllers.getStoryStep);
 // POST
 router.post("/add/story", controllers.createStory);
 router.post("/add/step/:storyId/:step_major/:step_minor", controllers.createStep);
-router.post("/add/step/:storyId/:step_major/:step_minor/image", controllers.imageUpload.single("image"), controllers.addImagePath);
+router.post("/add/step/:storyId/:step_major/:step_minor/:image_name/image", controllers.imageUpload.single("image"), controllers.addImagePath);
 router.post("/add/step/:storyId/:step_major/:step_minor/html", controllers.addHtml);
 
 

@@ -1,6 +1,4 @@
-const fs = require("fs");
-const uuid = require("uuid"),
-
+const mime = require("mime-types"),
     // usually this file should not be public but hey
     // This info must match the details of a running postgres database. See readme.md for details on DB setup
     Pool = require("pg").Pool,
@@ -31,7 +29,7 @@ const multer = require("multer"), // Create multer object
                 filename: function (req, file, cb) {
                     cb(
                         null,
-                        new Date().valueOf() + "_" + uuid.v4()
+                        req.params.image_name + "." + mime.extension(file.mimetype)
                     );
                 }
             }
@@ -343,17 +341,19 @@ function createStep (request, response, next) {
  */
 function addImagePath (request, response, next) {
     console.log("ADD IMAGE PATH");
-    const filepath = request.file.path;
+
+
+    const filepath = request.file.path,
+        filetype = request.file.mimetype,
+        fullStepReference = request.params.storyId + "-" + request.params.step_major + "-" + request.params.step_minor,
+        query = {
+            name: "store-image-file-path",
+            text: "INSERT into images (fullstepID, hash, filetype) VALUES ($1, $2, $3)",
+            values: [fullStepReference, request.params.image_name, filetype]
+        };
 
     console.log(filepath);
-    console.log(request.params);
-    const query = {
-        name: "store-image-file-path",
-        // UPDATE table SET array_field = array_field || '{"new item"}' WHERE ...
-        text: "UPDATE steps SET image = image || ARRAY[$4] WHERE storyID = $1 AND step_major = $2 AND step_minor = $3",
-        values: [request.params.storyId, request.params.step_major, request.params.step_minor, filepath]
-    };
-
+    console.log(filetype);
     pool.query(query,
         (error) => {
             if (error) {
@@ -447,6 +447,7 @@ function deleteStory (request, response, next) {
                     }
                 });
         });
+    // TODO: delete all images associated with story
 }
 
 /**
