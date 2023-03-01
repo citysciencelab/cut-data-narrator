@@ -29,7 +29,7 @@ const multer = require("multer"), // Create multer object
                 filename: function (req, file, cb) {
                     cb(
                         null,
-                        req.params.image_name + "." + mime.extension(file.mimetype)
+                        req.params.image_hash + "." + mime.extension(file.mimetype)
                     );
                 }
             }
@@ -349,7 +349,7 @@ function addImagePath (request, response, next) {
         query = {
             name: "store-image-file-path",
             text: "INSERT into images (fullstepID, hash, filetype) VALUES ($1, $2, $3)",
-            values: [fullStepReference, request.params.image_name, filetype]
+            values: [fullStepReference, request.params.image_hash, filetype]
         };
 
     console.log(filepath);
