@@ -34,7 +34,9 @@ CREATE TABLE IF NOT EXISTS steps (
 
 CREATE TABLE IF NOT EXISTS images (
   imageID integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 ),
-  fullstepID varchar(40),
+  storyID INT,
+  step_major INT,
+  step_minor INT,
   hash TEXT,
   filetype varchar(40),
   PRIMARY KEY(imageID)

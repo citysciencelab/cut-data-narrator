@@ -8,7 +8,8 @@ const mime = require("mime-types"),
         database: "stories",
         password: "hECJFh7",
         port: 5432
-    });
+    }),
+    imagePath = "images/";
 
 /**
  * storing image files on disk
@@ -24,7 +25,7 @@ const multer = require("multer"), // Create multer object
         storage: multer.diskStorage(
             {
                 destination: function (req, file, cb) {
-                    cb(null, "images/");
+                    cb(null, imagePath);
                 },
                 filename: function (req, file, cb) {
                     cb(
@@ -176,6 +177,7 @@ function getStoryStep (request, response, next) {
 
 }
 
+
 /**
  * description
  *
@@ -185,13 +187,10 @@ function getStoryStep (request, response, next) {
  * @returns {void}
  */
 function getImage (request, response, next) {
-    if (!request.params.imageId) {
-        request.params.imageId = 1;
-    }
     const query = {
         name: "get-image-file-path",
-        text: "SELECT image[$4] FROM steps WHERE storyID = $1 AND step_major = $2 AND step_minor = $3 LIMIT 1",
-        values: [request.params.storyId, request.params.step_major, request.params.step_minor, request.params.imageId]
+        text: "SELECT * FROM image WHERE storyID = $1 AND step_major = $2 AND step_minor = $3 LIMIT 1",
+        values: [request.params.storyId, request.params.step_major, request.params.step_minor]
     };
 
     pool.query(query,
@@ -214,9 +213,48 @@ function getImage (request, response, next) {
             catch (err) {
                 next(err);
             }
-
         });
 }
+
+
+/**
+ * Retrieves image by id from database
+ *
+ * @param {Object} request description
+ * @param {Number} response description
+ * @param {function} next description
+ * @returns {void}
+ */
+function getImageById (request, response, next) {
+    const query = {
+        name: "get-image-file-path-by_id",
+        text: "SELECT * FROM images WHERE hash = $1 LIMIT 1",
+        values: [request.params.image_hash]
+    };
+
+    pool.query(query,
+        (error, results) => {
+            if (error) {
+                next(error);
+                return;
+            }
+
+            try {
+                if (!Object.hasOwn(results.rows[0], "hash")) {
+                    response.status(400).send("nonexistent image id");
+                }
+                else {
+                    const image_path = imagePath + results.rows[0].hash + "." + mime.extension(results.rows[0].filetype);
+
+                    response.sendFile(image_path, {root: __dirname + "/../"});
+                }
+            }
+            catch (err) {
+                next(err);
+            }
+        });
+}
+
 
 /**
  * description
@@ -342,14 +380,12 @@ function createStep (request, response, next) {
 function addImagePath (request, response, next) {
     console.log("ADD IMAGE PATH");
 
-
     const filepath = request.file.path,
         filetype = request.file.mimetype,
-        fullStepReference = request.params.storyId + "-" + request.params.step_major + "-" + request.params.step_minor,
         query = {
             name: "store-image-file-path",
-            text: "INSERT into images (fullstepID, hash, filetype) VALUES ($1, $2, $3)",
-            values: [fullStepReference, request.params.image_hash, filetype]
+            text: "INSERT into images (storyId, step_major, step_minor, hash, filetype) VALUES ($1, $2, $3, $4, $5)",
+            values: [request.params.storyId, request.params.step_major, request.params.step_minor, request.params.image_hash, filetype]
         };
 
     console.log(filepath);
@@ -558,6 +594,7 @@ module.exports = {
     addImagePath,
     addHtml,
     getImage,
+    getImageById,
     getHtml
 };
 
