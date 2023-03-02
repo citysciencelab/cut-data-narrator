@@ -189,7 +189,7 @@ function getStoryStep (request, response, next) {
 function getImage (request, response, next) {
     const query = {
         name: "get-image-file-path",
-        text: "SELECT * FROM image WHERE storyID = $1 AND step_major = $2 AND step_minor = $3 LIMIT 1",
+        text: "SELECT * FROM images WHERE storyID = $1 AND step_major = $2 AND step_minor = $3 LIMIT 1",
         values: [request.params.storyId, request.params.step_major, request.params.step_minor]
     };
 
@@ -201,12 +201,12 @@ function getImage (request, response, next) {
             }
 
             try {
-                const image_path = results.rows[0].image;
-
-                if (!image_path) {
+                if (!Object.hasOwn(results.rows[0], "hash")) {
                     response.status(400).send("nonexistent image id");
                 }
                 else {
+                    const image_path = imagePath + results.rows[0].hash + "." + mime.extension(results.rows[0].filetype);
+
                     response.sendFile(image_path, {root: __dirname + "/../"});
                 }
             }
@@ -240,6 +240,7 @@ function getImageById (request, response, next) {
             }
 
             try {
+                console.log(results.rows[0]);
                 if (!Object.hasOwn(results.rows[0], "hash")) {
                     response.status(400).send("nonexistent image id");
                 }
