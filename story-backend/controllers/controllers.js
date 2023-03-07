@@ -216,6 +216,36 @@ function getImage (request, response, next) {
         });
 }
 
+/**
+ * Retrieve all story steps for a given story
+ * @param {Object} request description
+ * @param {Number} response description
+ * @param {function} next description
+ * @returns {void}
+ */
+function getStepsByStoryId (request, response, next) {
+    const query = {
+        name: "get-steps-by-story-id",
+        text: "SELECT * FROM steps WHERE storyID = $1",
+        values: [request.params.storyId]
+    };
+
+    pool.query(query,
+        (error, results) => {
+            if (error) {
+                next(error);
+                return;
+            }
+
+            try {
+                response.status(200).json(results.rows);
+            }
+            catch (err) {
+                next(err);
+            }
+        });
+}
+
 
 /**
  * Retrieves image by id from database
@@ -240,7 +270,6 @@ function getImageById (request, response, next) {
             }
 
             try {
-                console.log(results.rows[0]);
                 if (!Object.hasOwn(results.rows[0], "hash")) {
                     response.status(400).send("nonexistent image id");
                 }
@@ -302,11 +331,12 @@ function getHtml (request, response, next) {
 function createStory (request, response, next) {
     const {name, category} = request.body;
 
+    console.log("request.body");
     console.log(request.body);
     const query_new_story = {
             name: "new-story",
             text: "INSERT INTO stories (name, category, story_json, author, description) VALUES ($1, $2, $3,$4,$5)",
-            values: [request.body.name, request.body.category, request.body.story_json, request.body.author, request.body.description]
+            values: [request.body.story_json.title, null, request.body.story_json, request.body.author, request.body.description]
         },
         query_latest_story_id = {
             name: "latest-story-id",
@@ -315,11 +345,12 @@ function createStory (request, response, next) {
         };
 
     pool.query(query_new_story,
-        (error) => {
+        (error, resultStory) => {
             if (error) {
                 next(error);
                 return;
             }
+            console.log("sdgfas", resultStory.rows[0]);
 
             // if successfully inserted, return latest story ID
             const storyID = null;
@@ -331,6 +362,7 @@ function createStory (request, response, next) {
                         return;
                     }
                     try {
+                        console.log(results.rows[0]);
                         response.status(201).send({success: true, storyID: results.rows[0].max});
                     }
                     catch (err) {
@@ -586,6 +618,7 @@ module.exports = {
     getStoryStructure,
     getSteps,
     getStoryStep,
+    getStepsByStoryId,
     createStory,
     createStep,
     deleteStory,

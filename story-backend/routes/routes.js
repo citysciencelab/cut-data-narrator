@@ -9,10 +9,11 @@ module.exports = router;
 // GET
 router.get("/story", controllers.getStories);
 router.get("/story/:storyId", controllers.getStoryStructure);
-router.get("/step/:storyId/:step_major/:step_minor/image", controllers.getImage);
 router.get("/image/:image_hash", controllers.getImageById);
+router.get("/step/:storyId", controllers.getStepsByStoryId);
 router.get("/step/:storyId/:step_major/:step_minor/html", controllers.getHtml);
 router.get("/step/:storyId/:step_major/:step_minor", controllers.getStoryStep);
+router.get("/step/:storyId/:step_major/:step_minor/image", controllers.getImage);
 
 
 // POST
