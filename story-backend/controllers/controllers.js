@@ -49,7 +49,7 @@ const multer = require("multer"), // Create multer object
  * @returns {void}
  */
 function getStories (request, response, next) {
-    pool.query("SELECT storyid AS id, name, author, description, category  FROM stories", (error, results) => {
+    pool.query("SELECT storyid AS id, title, author, description, category  FROM stories", (error, results) => {
         if (error) {
             next(error);
             return;
@@ -335,7 +335,7 @@ function createStory (request, response, next) {
     console.log(request.body);
     const query_new_story = {
             name: "new-story",
-            text: "INSERT INTO stories (name, category, story_json, author, description) VALUES ($1, $2, $3,$4,$5)",
+            text: "INSERT INTO stories (title, category, story_json, author, description) VALUES ($1, $2, $3,$4,$5)",
             values: [request.body.story_json.title, null, request.body.story_json, request.body.author, request.body.description]
         },
         query_latest_story_id = {

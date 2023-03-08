@@ -9,11 +9,17 @@ DROP TABLE IF EXISTS images;
 
 CREATE TABLE IF NOT EXISTS stories (
   storyID integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 ),
-  name VARCHAR(30),
+  title VARCHAR(30),
   category VARCHAR(120),
   description TEXT,
   author TEXT,
   story_json TEXT,
+  date_created timestamp not null default CURRENT_TIMESTAMP,
+  date_published timestamp,
+  highlight_index INT,
+  count_views INT,
+  reading_time INT,
+  langcode VARCHAR(10),
   PRIMARY KEY(storyID)
 );
 
@@ -42,18 +48,3 @@ CREATE TABLE IF NOT EXISTS images (
   PRIMARY KEY(imageID)
 );
 
-
--- CREATE TABLE IF NOT EXISTS images (
---   imageID integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 ),
---   stepID INT,
---   step_major INT,
---   step_minor INT,
---   html TEXT,
---   image TEXT,
-
---   PRIMARY KEY(stepID),
---   CONSTRAINT storyID
---   FOREIGN KEY(storyID)
---   REFERENCES stories(storyID)
-
--- );
