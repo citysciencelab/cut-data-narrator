@@ -8,6 +8,7 @@ module.exports = router;
 
 // GET
 router.get("/story", controllers.getStories);
+router.get("/dipastoryselector", controllers.getStoriesForDipas);
 router.get("/story/:storyId", controllers.getStoryStructure);
 router.get("/image/:image_hash", controllers.getImageById);
 router.get("/step/:storyId", controllers.getStepsByStoryId);

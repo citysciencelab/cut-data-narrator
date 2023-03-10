@@ -64,7 +64,37 @@ function getStories (request, response, next) {
 }
 
 /**
- * description
+ * Returns all stories with further information necessary for the dipas story selector
+ *
+ * @param {Object} request description
+ * @param {Number} response description
+ * @param {function} next description
+ * @returns {void}
+ */
+function getStoriesForDipas (request, response, next) {
+    pool.query("SELECT storyid AS id, title, author, description, category  FROM stories", (error, results) => {
+        if (error) {
+            next(error);
+            return;
+        }
+        try {
+            const result = {
+                baseURL: "data.storybaseurl",
+                proceedingname: "data.proceedingname",
+                proceedingurl: "data.proceedingurl",
+                stories: results.rows
+            };
+
+            response.status(200).json(result);
+        }
+        catch (err) {
+            next(err);
+        }
+    });
+}
+
+/**
+ * Returns all th structure of all stories
  *
  * @param {Object} request description
  * @param {Number} response description
@@ -614,6 +644,7 @@ function deleteStepMinor (request, response, next) {
 module.exports = {
     imageUpload,
     getStories,
+    getStoriesForDipas,
     getStoriesAllData,
     getStoryStructure,
     getSteps,

@@ -38,7 +38,8 @@
           "dataNarrator": {
             "name": "translate#additional:modules.tools.dataNarrator.title",
             "glyphicon": "glyphicon-book",
-            "active": true
+            "active": true,
+            "backendURL": "http://localhost:3000/"
           },
           "gfi": {
             "name": "translate#common:menu.tools.getInfos",
