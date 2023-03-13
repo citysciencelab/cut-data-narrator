@@ -19,7 +19,8 @@ CREATE TABLE IF NOT EXISTS stories (
   highlight_index INT,
   count_views INT,
   reading_time INT,
-  langcode VARCHAR(10),
+  lang_code VARCHAR(10),
+  title_image VARCHAR(100),
   PRIMARY KEY(storyID)
 );
 
@@ -43,7 +44,7 @@ CREATE TABLE IF NOT EXISTS images (
   storyID INT,
   step_major INT,
   step_minor INT,
-  hash TEXT,
+  hash  VARCHAR(100),
   filetype varchar(40),
   PRIMARY KEY(imageID)
 );

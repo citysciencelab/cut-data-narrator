@@ -49,7 +49,7 @@ const multer = require("multer"), // Create multer object
  * @returns {void}
  */
 function getStories (request, response, next) {
-    pool.query("SELECT storyid AS id, title, author, description, category  FROM stories", (error, results) => {
+    pool.query("SELECT storyid AS id, title, author, description, category, title_image  FROM stories", (error, results) => {
         if (error) {
             next(error);
             return;
@@ -306,6 +306,7 @@ function getImageById (request, response, next) {
                 else {
                     const image_path = imagePath + results.rows[0].hash + "." + mime.extension(results.rows[0].filetype);
 
+                    console.log(image_path);
                     response.sendFile(image_path, {root: __dirname + "/../"});
                 }
             }
@@ -365,8 +366,8 @@ function createStory (request, response, next) {
     console.log(request.body);
     const query_new_story = {
             name: "new-story",
-            text: "INSERT INTO stories (title, category, story_json, author, description) VALUES ($1, $2, $3,$4,$5)",
-            values: [request.body.story_json.title, null, request.body.story_json, request.body.author, request.body.description]
+            text: "INSERT INTO stories (title, category, story_json, author, description, title_image) VALUES ($1, $2, $3, $4, $5, $6)",
+            values: [request.body.story_json.title, null, request.body.story_json, request.body.author, request.body.description, request.body.title_image]
         },
         query_latest_story_id = {
             name: "latest-story-id",
