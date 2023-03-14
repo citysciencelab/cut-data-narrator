@@ -48,7 +48,7 @@ configuration file are the follwing:
    "chapterTitle": "title"
    },)
 8. "steps" - Array of the story steps
-9. "isNoCreateMode" - Defines if the option to get to the story creation is displayed
+9. "isNoCreateMode" - Defines if other options than the play modes are displayed
 10. "storyInterval" - Definition of the automatic playback of a story in millisecond
 
 The story steps attributes in
