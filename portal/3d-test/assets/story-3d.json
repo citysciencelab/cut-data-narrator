@@ -1,8 +1,8 @@
 {
-  "title": "3D Test",
+  "title": "3D Story Test",
   "author": "City Science Lab",
   "description": "Diese Story soll die Funktionalitäten des 3D Modus im Data Narrator veranschaulichen.",
-  "coverImagePath": "assets/img/3dcover.png",
+  "coverImagePath": "assets/img/3d-story-cover.png",
   "htmlFolder": "story",
   "isScrollytelling": true,
   "chapters": [
