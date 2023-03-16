@@ -339,7 +339,6 @@ function getHtml (request, response, next) {
                 return;
             }
             try {
-                console.log(results.rows.size);
                 response.status(201).send(results.rows[0].html);
             }
             catch (err) {
@@ -366,14 +365,17 @@ function createStory (request, response, next) {
     console.log(request.body);
     const query_new_story = {
             name: "new-story",
-            text: "INSERT INTO stories (title, category, story_json, author, description, title_image) VALUES ($1, $2, $3, $4, $5, $6)",
-            values: [request.body.story_json.title, null, request.body.story_json, request.body.author, request.body.description, request.body.title_image]
+            text: "INSERT INTO stories (title, category, story_json, author, description, title_image, story_interval, scrolly) " +
+                "VALUES ($1, $2, $3, $4, $5, $6, $7, $8)",
+            values: [request.body.story_json.title, null, request.body.story_json, request.body.author, request.body.description, request.body.title_image, request.body.story_interval, request.body.story_scrolly]
         },
         query_latest_story_id = {
             name: "latest-story-id",
             text: "SELECT max(storyID) FROM stories",
             values: []
         };
+
+    console.log(query_new_story);
 
     pool.query(query_new_story,
         (error, resultStory) => {

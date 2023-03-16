@@ -43,7 +43,8 @@
           "dataNarrator": {
             "name": "translate#additional:modules.tools.dataNarrator.title",
             "glyphicon": "glyphicon-book",
-            "active": true
+            "active": true,
+            "autoplay": true
           },
           "measure": {
             "name": "translate#common:menu.tools.measure",

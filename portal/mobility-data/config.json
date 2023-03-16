@@ -39,7 +39,8 @@
             "name": "translate#additional:modules.tools.dataNarrator.title",
             "glyphicon": "glyphicon-book",
             "active": true,
-            "backendURL": "http://localhost:3000/"
+            "backendURL": "http://localhost:3000/",
+            "autoplay": true
           },
           "gfi": {
             "name": "translate#common:menu.tools.getInfos",
