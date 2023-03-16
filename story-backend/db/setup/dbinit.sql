@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS stories (
   count_views INT,
   reading_time INT,
   story_interval INT,
-  srolly BOOLEAN NOT NULL DEFAULT FALSE,
+  display_type VARCHAR(20),
   lang_code VARCHAR(10),
   title_image VARCHAR(100),
   PRIMARY KEY(storyID)

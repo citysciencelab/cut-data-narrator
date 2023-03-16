@@ -365,9 +365,9 @@ function createStory (request, response, next) {
     console.log(request.body);
     const query_new_story = {
             name: "new-story",
-            text: "INSERT INTO stories (title, category, story_json, author, description, title_image, story_interval, scrolly) " +
+            text: "INSERT INTO stories (title, category, story_json, author, description, title_image, story_interval, display_type) " +
                 "VALUES ($1, $2, $3, $4, $5, $6, $7, $8)",
-            values: [request.body.story_json.title, null, request.body.story_json, request.body.author, request.body.description, request.body.title_image, request.body.story_interval, request.body.story_scrolly]
+            values: [request.body.story_json.title, null, request.body.story_json, request.body.author, request.body.description, request.body.title_image, request.body.story_interval, request.body.display_type]
         },
         query_latest_story_id = {
             name: "latest-story-id",

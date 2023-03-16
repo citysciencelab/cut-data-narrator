@@ -4,7 +4,6 @@
   "description": "Diese Story zeigt den Prozess und die Ergebnisse der ersten beiden Realexperiment des City Science Labs zu den Mobilitätsbedarfen von unbezahlten Carearbeiter*innen.",
   "coverImagePath": "./assets/img/story-cover.png",
   "htmlFolder": "story",
-  "isScrollytelling": false,
   "isNoCreateMode": true,
   "chapters": [
     {

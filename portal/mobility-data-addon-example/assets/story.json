@@ -4,7 +4,6 @@
   "description": "The general description of the story can go here",
   "coverImagePath": "./assets/story/images/cover.jpg",
   "htmlFolder": "story",
-  "isScrollytelling": false,
   "chapters": [
     {
       "chapterNumber": 1,

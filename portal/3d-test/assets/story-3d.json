@@ -4,7 +4,7 @@
   "description": "Diese Story soll die Funktionalitäten des 3D Modus im Data Narrator veranschaulichen.",
   "coverImagePath": "assets/img/3d-story-cover.png",
   "htmlFolder": "story",
-  "isScrollytelling": true,
+  "display_type": "scrolly",
   "chapters": [
     {
       "chapterNumber": 1,
