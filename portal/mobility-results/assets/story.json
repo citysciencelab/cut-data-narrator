@@ -1,7 +1,7 @@
 {
-  "title": "FairCare Verkehr Ergebnisse",
+  "title": "FairCare Verkehr Realexperimente",
   "author": "City Science Lab",
-  "description": "Diese Story zeigt den Prozess und die Ergebnisse der ersten beiden Realexperiment des City Science Labs zu den Mobilitätsbedarfen von unbezahlten Carearbeiter*innen.",
+  "description": "Die Story handelt von zwei Realexperimenten des City Science Labs. Dabei ging es um die Mobilität von unbezahlten Sorgearbeiter:innen und wie diese mit digitalen Tools erforscht werden können. ",
   "coverImagePath": "./assets/img/story-cover.png",
   "htmlFolder": "story",
   "isNoCreateMode": true,
@@ -89,7 +89,7 @@
       "stepWidth": 800,
       "visible": true,
       "associatedChapter": 1,
-      "title": "Connected Urban Twins",
+      "title": "Zum Hintergrund: Das Projekt Connected Urban Twins",
       "htmlFile": "step_1-5.html",
       "centerCoordinate": [
         564836.1878134455,
@@ -121,7 +121,7 @@
       "stepWidth": 700,
       "visible": true,
       "associatedChapter": 2,
-      "title": "Überblick über die Ergebnisse",
+      "title": "Überblick über die erhobenen Daten",
       "htmlFile": "step_2-2.html",
       "centerCoordinate": [
         561564.76006545,
@@ -172,7 +172,7 @@
       "stepWidth": 600,
       "visible": true,
       "associatedChapter": 3,
-      "title": "Code",
+      "title": "Software Code",
       "htmlFile": "step_3-1.html",
       "centerCoordinate": [
         559285.3963894194,
