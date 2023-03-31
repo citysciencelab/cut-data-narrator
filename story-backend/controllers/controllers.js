@@ -55,6 +55,9 @@ function getStories (request, response, next) {
             return;
         }
         try {
+            results.rows.forEach(function (part, index, arr) {
+                arr[index].coverImagePath = arr[index].title_image;
+            });
             response.status(200).json(results.rows);
         }
         catch (err) {
@@ -116,9 +119,10 @@ function getStoryStructure (request, response, next) {
             }
 
             try {
+                const storyJson = JSON.parse(results.rows[0].story_json);
 
-                console.log(results.rows);
-                response.status(200).json(JSON.parse(results.rows[0].story_json));
+                storyJson.coverImagePath = storyJson.titleImage;
+                response.status(200).json(storyJson);
             } // the json is stored as a string, so we have to parse that string before sending back the data. Would be better to store json properly in the database.
             catch (err) {
                 next(err);
