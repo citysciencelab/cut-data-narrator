@@ -4,7 +4,7 @@
   "description": "Eine Story für das erste Realexperiment des CSL im Rahmen des CUT-Projektes über die Mobilitätsbedarfe von unbezahlten Carearbeiter*innen.",
   "coverImagePath": "https://raw.githubusercontent.com/herzogrh/faircare-verkehr/main/assets/img/stroller-1.jpg",
   "htmlFolder": "story",
-  "display_type": "scrolly",
+  "displayType": "dipas",
   "chapters": [
     {
       "chapterNumber": 1,
