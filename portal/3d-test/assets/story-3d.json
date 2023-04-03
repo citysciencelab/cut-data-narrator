@@ -5,6 +5,7 @@
   "coverImagePath": "assets/img/3d-story-cover.png",
   "htmlFolder": "story",
   "display_type": "scrolly",
+  "isNoCreateMode": true,
   "chapters": [
     {
       "chapterNumber": 1,

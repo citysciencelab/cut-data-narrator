@@ -1,4 +1,10 @@
 {
+  "title": "Leipzigs Daten zum Radverkehr",
+  "description": "",
+  "author": "Leipzig",
+  "htmlFolder": "story",
+  "coverImagePath": "https://static.leipzig.de/fileadmin/_processed_/c/f/csm_Radfahren-in-Leipzig_d7a94db175.jpg",
+  "isNoCreateMode": true,
   "chapters": [
     {
       "chapterNumber": 1,
@@ -249,10 +255,5 @@
       "is3D": false,
       "navigation3D": {}
     }
-  ],
-  "title": "Leipzigs Daten zum Radverkehr",
-  "description": "",
-  "author": "Leipzig",
-  "htmlFolder": "story",
-  "coverImagePath": "https://static.leipzig.de/fileadmin/_processed_/c/f/csm_Radfahren-in-Leipzig_d7a94db175.jpg"
+  ]
 }
