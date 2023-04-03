@@ -1,0 +1,72 @@
+//Colors
+$main-pink: #f2b1b7;
+$main-mint: #73c1a9;
+$scnd-mint: rgba(115, 193, 169, 0.2);
+$main-blue: #8ea0d2;
+$white: #FFFFFF;
+
+// New style for the Data Narrator tool
+
+.win-heading, .table-tool-win-all-vue {
+    background-color: $main-blue !important;
+}
+
+#tool-window-vue {
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 50%)
+}
+
+// Working layout for the legend should be provided by masterportal.css (currently not - recheck)
+
+.legend-window-table[data-v-3b5a1b75] {
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 50%)
+}
+
+.legend-title-table {
+    background-color: $main-mint !important;
+    padding-bottom: 3px !important;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+#legend .legend-title-table div {
+    position: absolute;
+    top: 20px;
+    right: 10px;
+}
+
+.d-lg-inline-block {
+    @media (min-width: 992px) {
+        display: none !important;
+    }
+}
+
+.legend-window-table .legend-content,
+.panel, .panel-default,
+.legend-window-table .legend-content .card {
+    background-color: $white !important;
+}
+
+#legend .legend-content .layer-title {
+    background-color: $scnd-mint !important;
+}
+
+#legend .legend-content .layer {
+    margin: 0 !important;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+#legend .legend-content {
+    overflow: unset !important;
+    margin-top: 0 !important;
+}
+
+.panel-heading, .layer-title {
+    border-radius: 4px !important;
+    background-color: fade($main-mint, 20%) !important;
+    border-bottom: 0px !important;
+}
+
+.win-body-vue {
+    background-color: $white !important;
+}
