@@ -120,7 +120,6 @@ export default {
                 img.src = "data:image/jpeg;" + response.data;
 
                 img.onload = function () {
-                    console.log("draw");
                     ctx.drawImage(img, 0, 0);
                 };
             })

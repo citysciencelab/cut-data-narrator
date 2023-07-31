@@ -1,4 +1,5 @@
 const mime = require("mime-types"),
+    path = require("path"),
     // usually this file should not be public but hey
     // This info must match the details of a running postgres database. See readme.md for details on DB setup
     Pool = require("pg").Pool,
@@ -187,7 +188,6 @@ function getStoriesAllData (request, response, next) {
  * @returns {void}
  */
 function getStoryStep (request, response, next) {
-    console.log(request.params);
     const query = {
         name: "get-story-step",
         // text: 'SELECT * FROM steps WHERE storyID = $1 AND step_major = $2 AND step_minor = $3',
@@ -241,7 +241,7 @@ function getImage (request, response, next) {
                 else {
                     const image_path = imagePath + results.rows[0].hash + "." + mime.extension(results.rows[0].filetype);
 
-                    response.sendFile(image_path, {root: __dirname + "/../"});
+                    response.sendFile(image_path, {root: path.join(__dirname, "/../")});
                 }
             }
             catch (err) {
@@ -310,8 +310,7 @@ function getImageById (request, response, next) {
                 else {
                     const image_path = imagePath + results.rows[0].hash + "." + mime.extension(results.rows[0].filetype);
 
-                    console.log(image_path);
-                    response.sendFile(image_path, {root: __dirname + "/../"});
+                    response.sendFile(image_path, {root: path.join(__dirname, "/../")});
                 }
             }
             catch (err) {
@@ -363,10 +362,6 @@ function getHtml (request, response, next) {
  * @returns {void}
  */
 function createStory (request, response, next) {
-    const {name, category} = request.body;
-
-    console.log("request.body");
-    console.log(request.body);
     const query_new_story = {
             name: "new-story",
             text: "INSERT INTO stories (title, category, story_json, author, description, title_image, story_interval, display_type) " +
@@ -379,18 +374,12 @@ function createStory (request, response, next) {
             values: []
         };
 
-    console.log(query_new_story);
-
     pool.query(query_new_story,
-        (error, resultStory) => {
+        (error) => {
             if (error) {
                 next(error);
                 return;
             }
-            console.log("sdgfas", resultStory.rows[0]);
-
-            // if successfully inserted, return latest story ID
-            const storyID = null;
 
             pool.query(query_latest_story_id,
                 (error2, results) => {
@@ -399,7 +388,6 @@ function createStory (request, response, next) {
                         return;
                     }
                     try {
-                        console.log(results.rows[0]);
                         response.status(201).send({success: true, storyID: results.rows[0].max});
                     }
                     catch (err) {
@@ -448,8 +436,6 @@ function createStep (request, response, next) {
  * @returns {void}
  */
 function addImagePath (request, response, next) {
-    console.log("ADD IMAGE PATH");
-
     const filepath = request.file.path,
         filetype = request.file.mimetype,
         query = {
@@ -458,8 +444,6 @@ function addImagePath (request, response, next) {
             values: [request.params.storyId, request.params.step_major, request.params.step_minor, request.params.image_hash, filetype]
         };
 
-    console.log(filepath);
-    console.log(filetype);
     pool.query(query,
         (error) => {
             if (error) {
@@ -484,7 +468,6 @@ function addImagePath (request, response, next) {
  * @returns {void}
  */
 function addHtml (request, response, next) {
-    console.log(request);
     const query = {
         name: "store-image-file-path",
         text: "UPDATE steps SET html = $4 WHERE storyID = $1 AND step_major = $2 AND step_minor = $3",
@@ -519,13 +502,13 @@ function addHtml (request, response, next) {
  */
 function deleteStory (request, response, next) {
     // delete all steps...
-    const query = {
+    const deleteQuery = {
         name: "delete-step-all-fullstory",
         text: "DELETE FROM steps WHERE storyID = $1",
         values: [request.params.storyId]
     };
 
-    pool.query(query,
+    pool.query(deleteQuery,
         (error) => {
             if (error) {
                 next(error);
